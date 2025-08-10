@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="images/cybercraft-banner.png" alt="Cybercraft 5e" width="80%">
+</p>
+
+
 # Cybercraft 5e
 
 Welcome to **Cybercraft 5e**, a cyberpunk-eldritch setting for the 5e rules system.
