@@ -5,8 +5,11 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,3 +18,4 @@ jobs:
           python-version: 3.x
       - run: pip install mkdocs mkdocs-material
       - run: mkdocs gh-deploy --force
+
