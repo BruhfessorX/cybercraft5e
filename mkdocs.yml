@@ -1,0 +1,28 @@
+site_name: Cybercraft 5e
+theme:
+  name: material
+nav:
+  - Home: index.md
+  - Rules:
+    - Core Rules: rules/core-rules.md
+    - Skills & Checks: rules/skills-checks.md
+    - Combat: rules/combat.md
+    - Sanity & Corruption: rules/sanity-corruption.md
+    - Economy & Currency: rules/economy.md
+  - Player Options:
+    - Races: player-options/races.md
+    - Classes: player-options/classes.md
+    - Backgrounds: player-options/backgrounds.md
+    - Feats: player-options/feats.md
+    - Gear & Items: player-options/gear-items.md
+  - Game Master:
+    - Running Cybercraft: game-master/running.md
+    - Setting Overview: game-master/setting-overview.md
+    - Factions: game-master/factions.md
+    - City Zones: game-master/city-zones.md
+    - Anomalies & The Veil: game-master/anomalies.md
+    - Bestiary: game-master/bestiary.md
+  - Resources:
+    - Character Sheet: resources/character-sheet.md
+    - Quick Reference: resources/quick-reference.md
+    - Legal: resources/legal.md
