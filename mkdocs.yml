@@ -1,28 +1,80 @@
 site_name: Cybercraft 5e
+site_url: https://bruhfessorx.github.io/cybercraft5e/
+repo_url: https://github.com/BruhfessorX/cybercraft5e
+repo_name: BruhfessorX/cybercraft5e
+edit_uri: ""
+
 theme:
   name: material
+  palette:
+    - scheme: slate
+      primary: purple
+      accent: pink
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+    - scheme: default
+      primary: deep purple
+      accent: pink
+      toggle:
+        icon: material/white-balance-sunny
+        name: Switch to dark mode
+  font:
+    text: Roboto
+    code: Fira Code
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
+extra_css:
+  - stylesheets/extra.css
+
 nav:
   - Home: index.md
   - Rules:
-    - Core Rules: rules/core-rules.md
-    - Skills & Checks: rules/skills-checks.md
-    - Combat: rules/combat.md
-    - Sanity & Corruption: rules/sanity-corruption.md
-    - Economy & Currency: rules/economy.md
+      - Core Rules: rules/core-rules.md
+      - Skills & Checks: rules/skill-checks.md
+      - Combat: rules/combat.md
+      - Sanity & Corruption: rules/sanity-corruption.md
+      - Economy: rules/economy.md
   - Player Options:
-    - Races: player-options/races.md
-    - Classes: player-options/classes.md
-    - Backgrounds: player-options/backgrounds.md
-    - Feats: player-options/feats.md
-    - Gear & Items: player-options/gear-items.md
+      - Races: player-options/races.md
+      - Classes: player-options/classes.md
+      - Backgrounds: player-options/backgrounds.md
+      - Feats: player-options/feats.md
+      - Gear & Items: player-options/gear-items.md
   - Game Master:
-    - Running Cybercraft: game-master/running.md
-    - Setting Overview: game-master/setting-overview.md
-    - Factions: game-master/factions.md
-    - City Zones: game-master/city-zones.md
-    - Anomalies & The Veil: game-master/anomalies.md
-    - Bestiary: game-master/bestiary.md
+      - Running: game-master/running.md
+      - Setting Overview: game-master/setting-overview.md
+      - Factions: game-master/factions.md
+      - City Zones: game-master/city-zones.md
+      - Anomalies: game-master/anomalies.md
+      - Bestiary: game-master/bestiary.md
   - Resources:
-    - Character Sheet: resources/character-sheet.md
-    - Quick Reference: resources/quick-reference.md
-    - Legal: resources/legal.md
+      - Character Sheet: resources/character-sheet.md
+      - Quick Reference: resources/quick-reference.md
+      - Legal: resources/legal.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+

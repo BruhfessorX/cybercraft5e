@@ -1,0 +1,25 @@
+:root {
+  --md-primary-fg-color: #9c27b0; /* Neon Purple */
+  --md-accent-fg-color: #ff4081;  /* Neon Pink */
+}
+
+/* Make headers glow slightly */
+h1, h2, h3, h4 {
+  text-shadow: 0 0 5px rgba(255, 64, 129, 0.6);
+}
+
+/* Cyberpunk link colors */
+a {
+  color: #ff80ab;
+}
+a:hover {
+  color: #ff4081;
+  text-shadow: 0 0 5px rgba(255, 64, 129, 0.8);
+}
+
+/* Code blocks */
+code, pre {
+  background: rgba(20, 0, 40, 0.8);
+  color: #ff80ab;
+  border-radius: 4px;
+}
