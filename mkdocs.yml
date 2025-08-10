@@ -6,6 +6,7 @@ edit_uri: ""
 
 theme:
   name: material
+  logo: images/cybercraft-banner.png
   palette:
     - scheme: slate
       primary: purple
@@ -19,6 +20,7 @@ theme:
       toggle:
         icon: material/white-balance-sunny
         name: Switch to dark mode
+
   font:
     text: Roboto
     code: Fira Code
