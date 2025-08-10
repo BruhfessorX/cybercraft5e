@@ -56,3 +56,23 @@ code, pre {
   color: #ff80ab;
   font-style: italic;
 }
+
+/* Homepage quick nav list */
+.md-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.md-content ul li {
+  margin-bottom: 0.4em;
+}
+
+.md-content ul li a {
+  color: #ff80ab;
+  text-decoration: none;
+}
+
+.md-content ul li a:hover {
+  color: #ff4081;
+  text-shadow: 0 0 5px rgba(255, 64, 129, 0.8);
+}

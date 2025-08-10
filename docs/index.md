@@ -2,6 +2,33 @@
   <img src="images/cybercraft-banner.png" alt="Cybercraft 5e" width="80%">
 </p>
 
+# Welcome to Cybercraft 5e
+
+<small>Last updated: {{ git_revision_date_localized }}</small>
+
+---
+
+## Quick Navigation
+
+- [Rules](rules/core-rules.md)
+- [Player Options](player-options/races.md)
+  - [Races](player-options/races.md)
+  - [Classes](player-options/classes.md)
+  - [Backgrounds](player-options/backgrounds.md)
+  - [Feats](player-options/feats.md)
+  - [Gear & Items](player-options/gear-items.md)
+- [Game Master Tools](game-master/setting-overview.md)
+  - [Setting Overview](game-master/setting-overview.md)
+  - [Factions](game-master/factions.md)
+  - [City Zones](game-master/city-zones.md)
+  - [Anomalies](game-master/anomalies.md)
+  - [Bestiary](game-master/bestiary.md)
+- [Resources](resources/character-sheet.md)
+  - [Character Sheet](resources/character-sheet.md)
+  - [Quick Reference](resources/quick-reference.md)
+  - [Legal](resources/legal.md)
+
+---
 
 # Cybercraft 5e
 
