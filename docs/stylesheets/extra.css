@@ -50,3 +50,9 @@ code, pre {
   color: #ff4081;
   text-shadow: 0 0 5px rgba(255, 64, 129, 0.8);
 }
+
+/* Last updated text */
+.md-source-file__fact {
+  color: #ff80ab;
+  font-style: italic;
+}

@@ -92,3 +92,10 @@ extra:
     © 2025 Cybercraft 5e. All content is licensed under the
     <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0 License</a>
     unless otherwise noted.
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      type: date
+      fallback_to_build_date: true
+      enable_creation_date: false
