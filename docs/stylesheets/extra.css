@@ -29,3 +29,24 @@ code, pre {
   height: 60px; /* Adjust height as needed */
   width: auto;
 }
+
+/* Footer customization */
+.md-footer {
+  background-color: #12001f; /* dark purple */
+  border-top: 2px solid #ff4081; /* neon pink */
+}
+
+.md-footer-meta {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #ff80ab;
+}
+
+.md-footer-meta a {
+  color: #ff80ab;
+  text-decoration: none;
+}
+.md-footer-meta a:hover {
+  color: #ff4081;
+  text-shadow: 0 0 5px rgba(255, 64, 129, 0.8);
+}

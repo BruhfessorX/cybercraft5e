@@ -41,7 +41,7 @@ nav:
   - Home: index.md
   - Rules:
       - Core Rules: rules/core-rules.md
-      - Skills & Checks: rules/skill-checks.md
+      - Skills & Checks: rules/skills-checks.md
       - Combat: rules/combat.md
       - Sanity & Corruption: rules/sanity-corruption.md
       - Economy: rules/economy.md
@@ -80,3 +80,15 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
 
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/BruhfessorX/cybercraft5e
+      name: GitHub
+    - icon: material/email
+      link: mailto:your-email@example.com
+      name: Email
+  copyright: >
+    © 2025 Cybercraft 5e. All content is licensed under the
+    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0 License</a>
+    unless otherwise noted.
