@@ -7,6 +7,7 @@ Each tier determines how easy it is to acquire, the level of craftsmanship, and 
 
 ## Item Index
 
+### Tier 1 – Street
 | Tier | Item Name               | Type         | Cost Range | Notes |
 |------|------------------------|--------------|------------|-------|
 | 1    | Slug Pistol             | Weapon       | 50–250 cr  | 2d6 piercing, reload 6 |
@@ -19,6 +20,9 @@ Each tier determines how easy it is to acquire, the level of craftsmanship, and 
 | 1    | Subdermal Plating       | Cybernetic   | 50–250 cr  | +1 AC |
 | 1    | Voice Modulator         | Cybernetic   | 50–250 cr  | Advantage on Deception/Intimidation |
 
+### Tier 2 – Syndicate
+| Tier | Item Name               | Type         | Cost Range | Notes |
+|------|------------------------|--------------|------------|-------|
 | 2    | Silenced SMG            | Weapon       | 500–2,500 cr | 2d8 piercing, burst fire |
 | 2    | Plasma Dagger           | Weapon       | 500–2,500 cr | 1d8 fire, magical |
 | 2    | Spine Launcher          | Weapon       | 500–2,500 cr | 1d10 piercing + poison |
@@ -29,6 +33,9 @@ Each tier determines how easy it is to acquire, the level of craftsmanship, and 
 | 2    | Dermal Armor            | Cybernetic   | 500–2,500 cr | +2 AC, natural armor |
 | 2    | Cyberarm Grapple Launcher | Cybernetic | 500–2,500 cr | 30 ft grapple hook |
 
+### Tier 3 – Corporate
+| Tier | Item Name               | Type         | Cost Range | Notes |
+|------|------------------------|--------------|------------|-------|
 | 3    | Rail Pistol             | Weapon       | 5,000–25,000 cr | 2d10 piercing, ignores 3 AC |
 | 3    | Runic Edge              | Weapon       | 5,000–25,000 cr | 1d8 slashing + 1d6 psychic |
 | 3    | Grav Shotgun            | Weapon       | 5,000–25,000 cr | 2d12 force, push 10 ft |
@@ -39,6 +46,9 @@ Each tier determines how easy it is to acquire, the level of craftsmanship, and 
 | 3    | Adaptive Limb System    | Cybernetic   | 5,000–25,000 cr | +2 Str/Dex, swap bonus action |
 | 3    | Cortical Processor      | Cybernetic   | 5,000–25,000 cr | Int adv & mind control resist |
 
+### Tier 4 – Forbidden
+| Tier | Item Name               | Type         | Cost Range | Notes |
+|------|------------------------|--------------|------------|-------|
 | 4    | Eclipse Cannon          | Weapon       | Priceless / Quest | 4d12 necrotic + 2d12 force |
 | 4    | Mindflayer’s Lash       | Weapon       | Priceless / Quest | 1d8 psychic, 30 ft grapple |
 | 4    | Entropy Blade           | Weapon       | Priceless / Quest | 1d10 slashing + 1d10 necrotic |
@@ -49,9 +59,12 @@ Each tier determines how easy it is to acquire, the level of craftsmanship, and 
 | 4    | Black Lung              | Cybernetic   | Priceless / Quest | Breathe toxic/airless env |
 | 4    | Symbiotic Heart         | Cybernetic   | Priceless / Quest | 1/day survive at 1 HP |
 
-| Any  | Parasite Familiar       | Eldritch Enh.| Varies         | Telepathy, +1d4 psychic dmg |
-| Any  | Runestone Core          | Eldritch Enh.| Varies         | Adv vs magic saves |
-| Any  | Living Ink              | Eldritch Enh.| Varies         | +2 Initiative |
+### Eldritch Enhancements (Any Tier)
+| Tier | Item Name         | Type           | Cost Range | Notes |
+|------|------------------|----------------|------------|-------|
+| Any  | Parasite Familiar | Eldritch Enh.  | Varies     | Telepathy, +1d4 psychic dmg |
+| Any  | Runestone Core    | Eldritch Enh.  | Varies     | Adv vs magic saves |
+| Any  | Living Ink        | Eldritch Enh.  | Varies     | +2 Initiative |
 
 ---
 
