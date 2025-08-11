@@ -40,11 +40,18 @@ extra_css:
 nav:
   - Home: index.md
   - Player Options:
+      - Classes:
+          - Overview: player-options/classes.md
+          - Fleshshaper: player-options/classes/fleshshaper.md
+          - Ghostlink: player-options/classes/ghostlink.md
+          - Scriptweaver: player-options/classes/scriptweaver.md
+          - Veilbreaker: player-options/classes/veilbreaker.md
+          - Voidrunner: player-options/classes/voidrunner.md
+          - Warjack: player-options/classes/warjack.md
       - Races: player-options/races.md
-      - Classes: player-options/classes.md
+      - Backgrounds: player-options/backgrounds.md
       - Feats: player-options/feats.md
       - Gear & Items: player-options/gear-items.md
-      - Backgrounds: player-options/backgrounds.md
   - Rules:
       - Core Rules: rules/core-rules.md
       - Combat: rules/combat.md
@@ -59,9 +66,10 @@ nav:
       - Bestiary: game-master/bestiary.md
       - Running the Game: game-master/running.md
   - Resources:
-      - Character Sheet: resources/character-sheet.md
       - Quick Reference: resources/quick-reference.md
+      - Character Sheet: resources/character-sheet.md
       - Legal: resources/legal.md
+
 
 
 markdown_extensions:
@@ -87,7 +95,7 @@ extra:
       link: https://github.com/BruhfessorX/cybercraft5e
       name: GitHub
     - icon: material/email
-      link: mailto:your-email@example.com
+      link: captainhornigold77@gmail.com
       name: Email
   copyright: >
     © 2025 Cybercraft 5e. All content is licensed under the
