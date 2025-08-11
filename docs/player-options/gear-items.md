@@ -68,6 +68,59 @@ Each tier determines how easy it is to acquire, the level of craftsmanship, and 
 
 ---
 
+## Faction Gear
+
+Faction gear is **exclusive** — only available to characters with sufficient **Reputation (Rep)** in that faction.  
+Costs shown already include standard faction discounts.  
+*GM Note: Elite (Rep 9+) items may also require special missions or story milestones in addition to credits.*  
+
+---
+
+### Tier 2 – Rep 4+
+| Item | Type | Damage/AC/Effect | Properties | Cost | Faction | Rep Req | Tier Pricing Ref |
+|------|------|------------------|------------|------|---------|---------|------------------|
+| Photon Edge | Weapon (melee) | 1d8 + Dex/Str slashing + 1d6 fire | Finesse, light, ignores nonmagical armor | 2,500 cr | Neon Ascendancy | 4+ | Economy Tier 2 |
+| Neural Uplink Visor | Cybernetic | +2 Investigation & Technology; record/replay 60 sec | Requires attunement | 1,500 cr | Neon Ascendancy | 4+ | Economy Tier 2 |
+| Obsidian Fang | Weapon (melee) | 1d8 slashing + 1d6 necrotic | Finesse, light, Con save vs disadvantage | 3,000 cr | Voidborn Syndicate | 4+ | Economy Tier 2 |
+| Nightglass Eyes | Cybernetic | Darkvision 60 ft in magical darkness; Perception advantage in dim light | Requires attunement | 2,000 cr | Voidborn Syndicate | 4+ | Economy Tier 2 |
+| Chrome Fang Blade | Weapon (melee) | 1d10 slashing (1d12 versatile) | Bonus 1d4 damage vs surprised targets | 1,000 cr | Red Chrome Rebellion | 4+ | Economy Tier 2 |
+| Cathedral Visor | Cybernetic | +2 Insight & Perception; advantage vs charm/fear | Requires attunement | 2,000 cr | Glass Covenant | 4+ | Economy Tier 2 |
+| Sanguine Blade | Weapon (melee) | 1d8 slashing + 1d4 necrotic | Finesse, regain HP on crit | 3,000 cr | Crimson Dominion | 4+ | Economy Tier 2 |
+
+---
+
+### Tier 3 – Rep 4+
+| Item | Type | Damage/AC/Effect | Properties | Cost | Faction | Rep Req | Tier Pricing Ref |
+|------|------|------------------|------------|------|---------|---------|------------------|
+| Bulwark Frame | Armor (medium) | AC 16 + Dex (max 2); pierce resistance | Requires attunement | 5,000 cr | Aegis Protocol | 4+ | Economy Tier 3 |
+| Aegis Shield Drone | Equipment | Deployable cover, moves 15 ft, lasts 10 min | Uses drone battery | 3,000 cr | Aegis Protocol | 4+ | Economy Tier 3 |
+| Molotov Web Launcher | Weapon (ranged) | 2d6 fire (10 ft radius) + burning webs | 30/90 ft range, creates difficult terrain | 1,500 cr | Red Chrome Rebellion | 4+ | Economy Tier 3 |
+| Glitchcloak | Armor (light) | AC 13 + Dex; cloaking (adv. Stealth) | 1 min/day active | 4,000 cr | The Underveil | 4+ | Economy Tier 3 |
+| Echo Spike | Device | 15 ft cone, 3d6 psychic, stun on failed Int save (DC 15) | 1/day | 3,500 cr | The Underveil | 4+ | Economy Tier 3 |
+
+---
+
+### Tier 4 – Rep 7+
+| Item | Type | Damage/AC/Effect | Properties | Cost | Faction | Rep Req | Tier Pricing Ref |
+|------|------|------------------|------------|------|---------|---------|------------------|
+| Seraphim Arm | Cybernetic | +2 Str; 1/day melee +3d8 radiant | Requires attunement | 6,000 cr | Glass Covenant | 7+ | Economy Tier 4 |
+| Hemocore Reactor | Cybernetic | 1/day full heal & resist all damage for 1 min after kill | Requires attunement | 8,000 cr | Crimson Dominion | 7+ | Economy Tier 4 |
+
+---
+
+### Tier 5 – Rep 9+ (Elite)
+| Item | Type | Damage/AC/Effect | Properties | Cost | Faction | Rep Req | Tier Pricing Ref |
+|------|------|------------------|------------|------|---------|---------|------------------|
+| Aurora Frame | Armor (powered) | AC 18; immune to being blinded; resistance to all energy damage | Integrated jump jets (30 ft leap) | 15,000 cr | Neon Ascendancy | 9+ | Economy Tier 5 |
+| Ebon Maw | Weapon (melee) | 2d8 slashing + 2d6 necrotic | Finesse; on kill regain HP equal to necrotic dealt & advantage on all attacks until end of next turn | 14,000 cr | Voidborn Syndicate | 9+ | Economy Tier 5 |
+| Aegis Titan Suit | Armor (heavy) | AC 20; resistance to bludgeoning, piercing, slashing (nonmagical) | Once/day deploy 10 ft energy barrier (3/4 cover) for 1 min | 18,000 cr | Aegis Protocol | 9+ | Economy Tier 5 |
+| Crimson Star Howitzer | Weapon (ranged heavy) | 4d10 fire in 20 ft radius (Dex save half, DC 16) | 300 ft range; reload after each shot; counts as vehicle weapon if mounted | 16,000 cr | Red Chrome Rebellion | 9+ | Economy Tier 5 |
+| Nullveil Node | Device | 30 ft radius anti-tech field (1 min, once/day) — disables all non-faction cyberware & drones | Activates as action | 17,000 cr | The Underveil | 9+ | Economy Tier 5 |
+| Halo Crown | Cybernetic | Immunity to charm, fear, possession; once/day cast *Mass Heal* as action | Requires attunement | 20,000 cr | Glass Covenant | 9+ | Economy Tier 5 |
+| Throne of Blood | Cybernetic exo-rig | Immune to exhaustion; regeneration 5 HP/round; 1/day enter Blood Ascendancy for 1 min (+2 AC, advantage on all attacks, +10 ft speed) | Requires attunement | 22,000 cr | Crimson Dominion | 9+ | Economy Tier 5 |
+
+---
+
 ## Weapons
 
 ### Tier 1 – Street
