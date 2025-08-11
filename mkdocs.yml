@@ -48,7 +48,13 @@ nav:
           - Veilbreaker: player-options/classes/veilbreaker.md
           - Voidrunner: player-options/classes/voidrunner.md
           - Warjack: player-options/classes/warjack.md
-      - Races: player-options/races.md
+      - Races:
+          - Overview: player-options/races.md
+          - Anomalie: player-options/races/anomalie.md
+          - Humans: player-options/races/humans.md
+          - Synthetics: player-options/races/synthetics.md
+          - Umbraliths: player-options/races/umbraliths.md
+          - Vampyrus: player-options/races/vampyrus.md
       - Backgrounds: player-options/backgrounds.md
       - Feats: player-options/feats.md
       - Gear & Items: player-options/gear-items.md
@@ -69,6 +75,7 @@ nav:
       - Quick Reference: resources/quick-reference.md
       - Character Sheet: resources/character-sheet.md
       - Legal: resources/legal.md
+
 
 
 
