@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="images/cybercraft-banner.png" alt="Cybercraft 5e" width="80%">
-</p>
-
 # Welcome to Cybercraft 5e
 
 <small>Last updated: {{ git_revision_date_localized }}</small>
@@ -34,7 +30,7 @@
 
 Welcome to **Cybercraft 5e**, a cyberpunk-eldritch setting for the 5e rules system.
 
-Here you'll find everything you need to create characters, run games, and explore the neon-lit, shadow-infested streets of **Echolight City**.
+Here you'll find everything you need to create characters, run games, and explore the neon-lit, shadow-infested streets of **Echo City**.
 
 ## Quick Links
 - [Player Options](player-options/races.md)

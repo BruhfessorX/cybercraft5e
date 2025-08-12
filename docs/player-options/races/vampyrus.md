@@ -1,5 +1,5 @@
 # Vampyrus
-*Predators in the shadows of Echolight City.*
+*Predators in the shadows of Echo City.*
 
 ---
 
@@ -84,6 +84,6 @@ At creation, choose one Vampyrus bloodline. Each grants additional features.
 ---
 
 ## In the World
-- **Shadow Politics:** The Vampyrus nation wields influence in Echolight City through espionage, trade, and assassination.  
+- **Shadow Politics:** The Vampyrus nation wields influence in Echo City through espionage, trade, and assassination.  
 - **Factions:** Some clans integrate into mortal society, while others isolate themselves in decadent courts hidden from the sun.  
 - **Appearance:** Pallid skin, eyes that glow faintly in darkness, elongated canines, and an air of predatory elegance.

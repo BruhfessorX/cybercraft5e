@@ -1,6 +1,6 @@
 # Setting Overview
 
-Cybercraft is set in **Echolight City**, a sprawling megacity built atop ancient ruins where the Veil between worlds runs thin.
+Cybercraft is set in **Echo City**, a sprawling megacity built atop ancient ruins where the Veil between worlds runs thin.
 
 ## Key Facts
 - The city is divided into **Corporate Towers**, **Street Sectors**, and **Veil Zones**.

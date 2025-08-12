@@ -1,5 +1,5 @@
 # Races
-*The peoples of Letheris, from the familiar to the otherworldly.*
+*The peoples of Lavara, from the familiar to the otherworldly.*
 
 ---
 
@@ -29,7 +29,7 @@ When selecting your race, consider:
 
 ## Role in the World
 Races in Letheris are more than stat bonuses — they are political identities.  
-In Echolight City:
+In Echo City:
 - Humans dominate population numbers but not necessarily power.  
 - Vampyrus control the underworld and hidden courts.  
 - Umbraliths keep to the shadowed edges, feared for their connection to the Void.  

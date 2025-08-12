@@ -4,9 +4,9 @@
 ---
 
 ## Overview
-Humans are the most numerous and varied race in Letheris, thriving in every corner of Echolight City. While they lack the supernatural origins of other species, they make up for it with innovation, determination, and adaptability. From street hustlers to corporate moguls, humans embody both the brightest hopes and darkest ambitions of the city.
+Humans are the most numerous and varied race in Lavara, thriving in every corner of Echo City. While they lack the supernatural origins of other species, they make up for it with innovation, determination, and adaptability. From street hustlers to corporate moguls, humans embody both the brightest hopes and darkest ambitions of the city.
 
-Their diversity is unmatched — physically, culturally, and ideologically — making them the foundation upon which much of Echolight’s society is built.
+Their diversity is unmatched — physically, culturally, and ideologically — making them the foundation upon which much of Echo’s society is built.
 
 ---
 
