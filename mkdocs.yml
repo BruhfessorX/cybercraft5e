@@ -61,12 +61,13 @@ nav:
           - Synthetics: player-options/races/synthetics.md
       - Backgrounds: player-options/backgrounds.md
       - Feats: player-options/feats.md
-      - Gear & Items: player-options/gear-items.md
+      - Gear & Items:
           - Overview: gear-items.md
           - Weapons: gear-items/weapons.md
           - Armor: gear-items/armor.md
           - Cybernetics: gear-items/cybernetics.md
           - Devices & Gear: gear-items/devices-and-gear.md
+
   - Rules:
       - Core Rules: rules/core-rules.md
       - Combat: rules/combat.md
