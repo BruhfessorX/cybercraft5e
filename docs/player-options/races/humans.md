@@ -1,32 +1,85 @@
 # Humans
+*Adaptable, resilient, and endlessly diverse.*
 
-Humans in Letheris are adaptable survivors. Their ability to rapidly evolve culturally and technologically has allowed them to thrive in all environments.
+---
 
-## Traits
-- **Ability Score Increase:** Increase each ability score by 1.
-- **Age:** Adulthood in late teens; rarely live past a century.
-- **Size:** Medium.
-- **Speed:** 30 ft.
-- **Adaptable Talent:** Gain proficiency in one skill of your choice.
-- **Versatile Feat:** Gain one feat of your choice.
+## Overview
+Humans are the most numerous and varied race in Letheris, thriving in every corner of Echolight City. While they lack the supernatural origins of other species, they make up for it with innovation, determination, and adaptability. From street hustlers to corporate moguls, humans embody both the brightest hopes and darkest ambitions of the city.
 
-### Templates
-**Voidtouched**
-- ASI: Con +2, Int +1
-- Powers: You know *thaumaturgy*. At 3rd level, cast *arms of hadar* 1/day.
+Their diversity is unmatched — physically, culturally, and ideologically — making them the foundation upon which much of Echolight’s society is built.
 
-**Augmented**
-- ASI: Con +2, Str or Dex +1
-- Features: Advantage vs poison, resistance to poison damage.
+---
 
-**Mutated**
-- ASI: Con +2, Wis +1
-- Features: Darkvision 60 ft., one environmental adaptation.
+## Human Traits
+Your Human character has the following racial traits.
 
-**Psyker**
-- ASI: Int +2, Cha +1
-- Powers: You know *mage hand*. At 3rd level, cast *detect thoughts* 1/day.
+**Ability Score Increase.** Increase one ability score by **2** and another by **1**, or increase three different scores by **1** each.
 
-**Bioengineered**
-- ASI: Str, Dex, or Int +2, Con +1
-- Features: Advantage vs disease, require only 4 hours sleep for a long rest.
+**Age.** Humans reach adulthood in their late teens and live around a century without augmentation or magical interference.
+
+**Size.** Humans vary widely in build and height. Your size is **Medium**.
+
+**Speed.** Your base walking speed is **30 feet**.
+
+---
+
+### **Ingenuity**
+You gain proficiency in one skill and one tool of your choice.
+
+---
+
+### **Adaptability**
+You gain one bonus feat of your choice at 1st level.
+
+---
+
+### **Languages**
+You can speak, read, and write Common and one additional language of your choice.
+
+---
+
+## Templates
+At creation, choose one Human template. Each grants additional features.
+
+---
+
+### **Voidtouched**
+*Marked by eldritch influence.*  
+- **Eldritch Manifestation:** You know the *thaumaturgy* cantrip. Charisma is your spellcasting ability for it.  
+- **Voidmark:** You have resistance to psychic damage.
+
+---
+
+### **Augmented**
+*Cybernetic precision.*  
+- **Cybernetic Upgrade:** Choose one ability score. You have advantage on ability checks using that score once per short or long rest.  
+- **Mechanical Integration:** You have advantage on saving throws against being poisoned and resistance to poison damage.
+
+---
+
+### **Mutated**
+*Forged by chaos.*  
+- **Mutant Resilience:** You have resistance to one damage type of your choice: acid, cold, fire, lightning, or poison. You can change this after a long rest if narratively justified (exposure, mutation shift, etc.).  
+- **Unnatural Physiology:** You have advantage on saving throws against disease.
+
+---
+
+### **Psyker**
+*Minds beyond the veil.*  
+- **Psychic Gift:** You know the *mage hand* cantrip, and it is invisible. Intelligence, Wisdom, or Charisma (your choice) is your spellcasting ability for it.  
+- **Mental Fortitude:** You have advantage on saving throws against effects that would charm or frighten you.
+
+---
+
+### **Bioengineered**
+*Life by design.*  
+- **Genetic Optimization:** Choose Strength, Dexterity, Constitution, Intelligence, Wisdom, or Charisma. Increase that score by an additional +1.  
+- **Specialized Training:** Gain proficiency in one saving throw of your choice.
+
+---
+
+## In the World
+- **Everywhere and Everyone:** From slums to spires, humans can be found in every social stratum.  
+- **Factions:** Every major faction employs humans in some capacity, from corporate executives to rebel fighters.  
+- **Appearance:** Humans vary widely — skin tone, eye shape, height, build, and style are as varied as their ambitions.
+
