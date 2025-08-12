@@ -62,7 +62,7 @@ nav:
       - Backgrounds: player-options/backgrounds.md
       - Feats: player-options/feats.md
       - Gear & Items:
-          - Overview: gear-items.md
+          - Overview: player-options/gear-items.md
           - Weapons: gear-items/weapons.md
           - Armor: gear-items/armor.md
           - Cybernetics: gear-items/cybernetics.md
