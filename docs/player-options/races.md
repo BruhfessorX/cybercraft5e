@@ -1,41 +1,37 @@
 # Races
-*From neon-lit streets to the void between stars, the people of Cybercraft 5e are as varied as the worlds they inhabit.*
-
-In **Cybercraft 5e**, your race shapes your heritage, physiology, and innate abilities. Each race offers unique traits that influence how you interact with the world — from enhanced senses to void-born resilience.
+*The peoples of Letheris, from the familiar to the otherworldly.*
 
 ---
 
-## Race List
-
-### **Anomalie**
-*The living glitch.*  
-Born from reality-warping events, Anomalies bend the laws of physics around them. They are unpredictable, dangerous, and often hunted for the strange energies they carry.  
-[Read More →](races/anomalie.md)
+In **Cybercraft 5e**, your choice of race reflects not just your physical form, but your cultural heritage, social connections, and sometimes the supernatural forces that shaped you.  
+Whether you are a street-born Human, an immortal predator among the Vampyrus, a shadow-born Umbralith, a mind-bending Anomalie, or a machine-souled Synthetic, your race shapes your place in Echolight City.
 
 ---
 
-### **Humans**
-*Infinite potential.*  
-Versatile and adaptive, humans thrive in any environment — from corporate boardrooms to lawless wastelands. They excel through sheer determination and resourcefulness.  
-[Read More →](races/humans.md)
+## Available Races
+
+- **[Humans](humans.md)** — Adaptable, resilient, and endlessly diverse. Masters of ingenuity and survival, they thrive in any environment.  
+- **[Vampyrus](vampyrus.md)** — Immortal predators wielding shadow and blood magic, ruling in secrecy from their hidden courts.  
+- **[Umbraliths](umbraliths.md)** — Void-born entities infused with eldritch darkness, walking the line between reality and the abyss.  
+- **[Anomalie](anomalie.md)** — Living anomalies that defy natural law, embodying strange and unpredictable powers.  
+- **[Synthetics](synthetics.md)** — Intelligent machines, from nanomorph infiltrators to quantum phantoms, shaped by megacorp design or rebellion.
 
 ---
 
-### **Synthetics**
-*Metal, memory, and soul.*  
-Artificial beings built for countless purposes — soldiers, companions, explorers. Some seek independence from their creators, others embrace their programmed roles.  
-[Read More →](races/synthetics.md)
+## Choosing a Race
+When selecting your race, consider:
+- **Origin:** Where were you born or created?  
+- **Faction Ties:** Does your race give you allies or enemies?  
+- **Appearance:** What features set you apart from others?  
+- **Abilities:** How will your racial traits shape your playstyle?
 
 ---
 
-### **Umbraliths**
-*Children of the Void.*  
-Eldritch beings adapted to the darkness between stars. Their alien biology grants them strange powers and an otherworldly presence.  
-[Read More →](races/umbraliths.md)
-
----
-
-### **Vampyrus**
-*The crimson aristocracy.*  
-An ancient nation of bio-engineered predators who feed on living essence. Equal parts alluring and terrifying, they command power through politics and fear.  
-[Read More →](races/vampyrus.md)
+## Role in the World
+Races in Letheris are more than stat bonuses — they are political identities.  
+In Echolight City:
+- Humans dominate population numbers but not necessarily power.  
+- Vampyrus control the underworld and hidden courts.  
+- Umbraliths keep to the shadowed edges, feared for their connection to the Void.  
+- Anomalie are unpredictable, often viewed with suspicion or awe.  
+- Synthetics serve as both tools of the megacorps and free-thinking individuals.
