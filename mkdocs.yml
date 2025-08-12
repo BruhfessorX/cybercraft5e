@@ -6,6 +6,10 @@ edit_uri: ""
 
 theme:
   name: material
+  features:
+    - navigation.tabs
+    - navigation.expand
+    - navigation.instant
   logo: images/cybercraft-banner.png
   palette:
     - scheme: slate
@@ -38,10 +42,22 @@ extra_css:
   - stylesheets/extra.css
 
 nav:
+nav_descriptions:
+  player-options/races/humans.md: "Adaptable, resilient, and endlessly diverse."
+  player-options/races/vampyrus.md: "Immortal predators ruling in secrecy."
+  player-options/races/umbraliths.md: "Void-born entities infused with darkness."
+  player-options/races/anomalie.md: "Living anomalies that defy natural law."
+  player-options/races/synthetics.md: "Intelligent machines shaped by design or rebellion."
+  player-options/classes/fleshshaper.md: "Masters of bio-modification and adaptive fleshcraft."
+  player-options/classes/ghostlink.md: "Digital infiltrators who merge mind and machine."
+  player-options/classes/scriptweaver.md: "Hackers of reality, weaving code and arcane logic."
+  player-options/classes/veilbreaker.md: "Hunters of the hidden, tearing through lies and illusions."
+  player-options/classes/voidrunner.md: "Navigators of the void, thriving in hostile environments."
+  player-options/classes/warjack.md: "Heavy cybernetic warriors built for frontline combat."
   - Home: index.md
   - Player Options:
       - Classes:
-          - Overview: player-options/classes.md
+          - Classes Overview: player-options/classes.md
           - Fleshshaper: player-options/classes/fleshshaper.md
           - Ghostlink: player-options/classes/ghostlink.md
           - Scriptweaver: player-options/classes/scriptweaver.md
@@ -49,12 +65,12 @@ nav:
           - Voidrunner: player-options/classes/voidrunner.md
           - Warjack: player-options/classes/warjack.md
       - Races:
-          - Overview: player-options/races.md
-          - Anomalie: player-options/races/anomalie.md
+          - Races Overview: player-options/races.md
           - Humans: player-options/races/humans.md
-          - Synthetics: player-options/races/synthetics.md
-          - Umbraliths: player-options/races/umbraliths.md
           - Vampyrus: player-options/races/vampyrus.md
+          - Umbraliths: player-options/races/umbraliths.md
+          - Anomalie: player-options/races/anomalie.md
+          - Synthetics: player-options/races/synthetics.md
       - Backgrounds: player-options/backgrounds.md
       - Feats: player-options/feats.md
       - Gear & Items: player-options/gear-items.md
