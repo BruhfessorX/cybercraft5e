@@ -329,10 +329,10 @@ th, td { border: 1px solid #4B0082; }
 }
 /* ==== Floating Cyberpunk Panels with Transparency ==== */
 
-/* Shared floating panel style for left and right sidebars */
-[data-md-color-scheme="default"] .md-sidebar,
+/* Shared floating panel style for left nav (primary) and right TOC (secondary) */
+[data-md-color-scheme="default"] .md-sidebar--primary,
 [data-md-color-scheme="default"] .md-sidebar--secondary,
-[data-md-color-scheme="slate"] .md-sidebar,
+[data-md-color-scheme="slate"] .md-sidebar--primary,
 [data-md-color-scheme="slate"] .md-sidebar--secondary {
   border-radius: 6px;
   padding: 8px;
@@ -342,14 +342,14 @@ th, td { border: 1px solid #4B0082; }
 }
 
 /* Light mode left nav */
-[data-md-color-scheme="default"] .md-sidebar {
+[data-md-color-scheme="default"] .md-sidebar--primary {
   background-color: rgba(255, 255, 255, 0.95);
   border: 1px solid #4B0082;
   box-shadow: 0 0 8px rgba(75, 0, 130, 0.4);
 }
 
 /* Dark mode left nav */
-[data-md-color-scheme="slate"] .md-sidebar {
+[data-md-color-scheme="slate"] .md-sidebar--primary {
   background-color: rgba(5, 5, 5, 0.95);
   border: 1px solid #9B30FF;
   box-shadow: 0 0 12px rgba(155, 48, 255, 0.6);
@@ -375,17 +375,17 @@ th, td { border: 1px solid #4B0082; }
   100% { background-position: 0 4px; }
 }
 
-[data-md-color-scheme="default"] .md-sidebar,
+[data-md-color-scheme="default"] .md-sidebar--primary,
 [data-md-color-scheme="default"] .md-sidebar--secondary,
-[data-md-color-scheme="slate"] .md-sidebar,
+[data-md-color-scheme="slate"] .md-sidebar--primary,
 [data-md-color-scheme="slate"] .md-sidebar--secondary {
   position: relative;
   overflow: hidden;
 }
 
-[data-md-color-scheme="default"] .md-sidebar::before,
+[data-md-color-scheme="default"] .md-sidebar--primary::before,
 [data-md-color-scheme="default"] .md-sidebar--secondary::before,
-[data-md-color-scheme="slate"] .md-sidebar::before,
+[data-md-color-scheme="slate"] .md-sidebar--primary::before,
 [data-md-color-scheme="slate"] .md-sidebar--secondary::before {
   content: "";
   position: absolute;
@@ -403,7 +403,7 @@ th, td { border: 1px solid #4B0082; }
   z-index: 3;
 }
 
-[data-md-color-scheme="slate"] .md-sidebar::before,
+[data-md-color-scheme="slate"] .md-sidebar--primary::before,
 [data-md-color-scheme="slate"] .md-sidebar--secondary::before {
   background-image: linear-gradient(
     rgba(155,48,255,0.05) 50%,
