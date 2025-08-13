@@ -143,5 +143,6 @@ th, td {
                0 0 10px rgba(155, 48, 255, 0.6),
                0 0 20px rgba(155, 48, 255, 0.4);
 }
+.md-main { background-color: var(--md-default-bg-color); }
 
 
