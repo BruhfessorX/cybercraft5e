@@ -67,6 +67,11 @@ nav:
           - Armor: gear-items/armor.md
           - Cybernetics: gear-items/cybernetics.md
           - Devices & Gear: gear-items/devices-and-gear.md
+      - Spells:
+          - Overview: player-options/spells/overview.md
+          - Technomancy: player-options/spells/technomancy.md
+          - Voidcraft: player-options/spells/voidcraft.md
+          - Urban Utility: player-options/spells/urban-utility.md
 
   - Rules:
       - Core Rules: rules/core-rules.md
