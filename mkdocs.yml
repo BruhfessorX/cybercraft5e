@@ -8,20 +8,20 @@ theme:
   name: material
   palette:
     - scheme: default
-      primary: "#4B0082"   # Indigo purple
-      accent: "#9B30FF"    # Bright violet
+      primary: deep purple   # name, not hex
+      accent: purple
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - scheme: slate
-      primary: "#4B0082"
-      accent: "#9B30FF"
+      primary: deep purple
+      accent: purple
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
+
 extra_css:
   - styles/extra.css
-
 
 
 nav:
