@@ -27,6 +27,13 @@ extra_css:
 nav:
   - Home: index.md
   - Player Options:
+      - Races:
+          - Races Overview: player-options/races.md
+          - Humans: player-options/races/humans.md
+          - Vampyrus: player-options/races/vampyrus.md
+          - Umbraliths: player-options/races/umbraliths.md
+          - Anomalie: player-options/races/anomalie.md
+          - Synthetics: player-options/races/synthetics.md
       - Classes:
           - Classes Overview: player-options/classes.md
           - Fleshshaper: player-options/classes/fleshshaper.md
@@ -35,13 +42,6 @@ nav:
           - Veilbreaker: player-options/classes/veilbreaker.md
           - Voidrunner: player-options/classes/voidrunner.md
           - Warjack: player-options/classes/warjack.md
-      - Races:
-          - Races Overview: player-options/races.md
-          - Humans: player-options/races/humans.md
-          - Vampyrus: player-options/races/vampyrus.md
-          - Umbraliths: player-options/races/umbraliths.md
-          - Anomalie: player-options/races/anomalie.md
-          - Synthetics: player-options/races/synthetics.md
       - Backgrounds: player-options/backgrounds.md
       - Feats: player-options/feats.md
       - Gear & Items:
