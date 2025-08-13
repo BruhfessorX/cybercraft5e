@@ -1,78 +1,48 @@
-:root {
-  --md-primary-fg-color: #9c27b0; /* Neon Purple */
-  --md-accent-fg-color: #ff4081;  /* Neon Pink */
+/* Dark background and bright text */
+.md-main {
+  background-color: #0A0A0A;
+  color: #E0E0E0;
 }
 
-/* Make headers glow slightly */
-h1, h2, h3, h4 {
-  text-shadow: 0 0 5px rgba(255, 64, 129, 0.6);
+/* Headers in neon purple */
+h1, h2, h3, h4, h5, h6 {
+  color: #9B30FF;
+  text-shadow: 0 0 8px rgba(155, 48, 255, 0.7);
 }
 
-/* Cyberpunk link colors */
+/* Links glow on hover */
 a {
-  color: #ff80ab;
+  color: #BB86FC;
+  transition: all 0.2s ease-in-out;
 }
 a:hover {
-  color: #ff4081;
-  text-shadow: 0 0 5px rgba(255, 64, 129, 0.8);
+  color: #FFFFFF;
+  text-shadow: 0 0 8px rgba(155, 48, 255, 0.9);
 }
 
-/* Code blocks */
-code, pre {
-  background: rgba(20, 0, 40, 0.8);
-  color: #ff80ab;
-  border-radius: 4px;
+/* Table styling */
+table {
+  background-color: #111;
+  border: 1px solid #4B0082;
+}
+th, td {
+  border: 1px solid #4B0082;
 }
 
-/* Make header logo fit nicely */
-.md-header__button.md-logo img {
-  height: 60px; /* Adjust height as needed */
-  width: auto;
+/* Code blocks neon border */
+.highlight {
+  border: 1px solid #9B30FF;
+  box-shadow: 0 0 8px rgba(155, 48, 255, 0.5);
 }
 
-/* Footer customization */
-.md-footer {
-  background-color: #12001f; /* dark purple */
-  border-top: 2px solid #ff4081; /* neon pink */
+/* Sidebar background */
+.md-sidebar {
+  background-color: #050505;
 }
 
-.md-footer-meta {
-  text-align: center;
-  font-size: 0.85rem;
-  color: #ff80ab;
+/* Top nav bar dark with purple border */
+.md-header {
+  background-color: #050505;
+  border-bottom: 2px solid #9B30FF;
 }
 
-.md-footer-meta a {
-  color: #ff80ab;
-  text-decoration: none;
-}
-.md-footer-meta a:hover {
-  color: #ff4081;
-  text-shadow: 0 0 5px rgba(255, 64, 129, 0.8);
-}
-
-/* Last updated text */
-.md-source-file__fact {
-  color: #ff80ab;
-  font-style: italic;
-}
-
-/* Homepage quick nav list */
-.md-content ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.md-content ul li {
-  margin-bottom: 0.4em;
-}
-
-.md-content ul li a {
-  color: #ff80ab;
-  text-decoration: none;
-}
-
-.md-content ul li a:hover {
-  color: #ff4081;
-  text-shadow: 0 0 5px rgba(255, 64, 129, 0.8);
-}

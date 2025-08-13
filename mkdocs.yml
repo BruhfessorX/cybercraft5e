@@ -12,18 +12,20 @@ theme:
     - navigation.instant
   logo: 
   palette:
-    - scheme: slate
-      primary: purple
-      accent: pink
+    - scheme: default
+      primary: "#4B0082"   # Indigo purple
+      accent: "#9B30FF"    # Bright violet
       toggle:
         icon: material/weather-night
-        name: Switch to light mode
-    - scheme: default
-      primary: deep purple
-      accent: pink
-      toggle:
-        icon: material/white-balance-sunny
         name: Switch to dark mode
+    - scheme: slate
+      primary: "#4B0082"
+      accent: "#9B30FF"
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+extra_css:
+  - styles/extra.css
 
   font:
     text: Roboto
