@@ -144,5 +144,33 @@ th, td {
                0 0 20px rgba(155, 48, 255, 0.4);
 }
 .md-main { background-color: var(--md-default-bg-color); }
+/* Light mode header colors for better visibility */
+[data-md-color-scheme="default"] h1,
+[data-md-color-scheme="default"] h2,
+[data-md-color-scheme="default"] h3,
+[data-md-color-scheme="default"] h4,
+[data-md-color-scheme="default"] h5,
+[data-md-color-scheme="default"] h6 {
+  color: #4B0082; /* Indigo purple for readability */
+  text-shadow: none; /* Remove neon glow in light mode */
+}
+
+/* Light mode TOC link colors */
+[data-md-color-scheme="default"] .md-nav__link {
+  color: #4B0082;
+}
+
+[data-md-color-scheme="default"] .md-nav__link:hover {
+  color: #9B30FF;
+  background-color: rgba(155, 48, 255, 0.1);
+}
+
+/* Light mode active link highlight */
+[data-md-color-scheme="default"] .md-nav__link--active {
+  font-weight: bold;
+  color: #9B30FF;
+  background-color: rgba(155, 48, 255, 0.15);
+  border-left: 3px solid #9B30FF;
+}
 
 
