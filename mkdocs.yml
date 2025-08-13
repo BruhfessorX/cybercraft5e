@@ -24,9 +24,6 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
-extra_css:
-  - styles/extra.css
-
   font:
     text: Roboto
     code: Fira Code
@@ -39,9 +36,10 @@ extra_css:
     - search.highlight
     - content.code.copy
     - content.tabs.link
-
+    
 extra_css:
-  - stylesheets/extra.css
+  - styles/extra.css
+
 
 nav:
   - Home: index.md
