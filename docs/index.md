@@ -13,6 +13,7 @@
   - [Backgrounds](player-options/backgrounds.md)
   - [Feats](player-options/feats.md)
   - [Gear & Items](player-options/gear-items.md)
+  - [Spells](player-options/spells/overview.md)
 - [Game Master Tools](game-master/setting-overview.md)
   - [Setting Overview](game-master/setting-overview.md)
   - [Factions](game-master/factions.md)
