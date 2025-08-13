@@ -172,5 +172,27 @@ th, td {
   background-color: rgba(155, 48, 255, 0.15);
   border-left: 3px solid #9B30FF;
 }
+/* Dark mode right-hand Table of Contents visibility fix */
+[data-md-color-scheme="slate"] .md-sidebar--secondary {
+  background-color: #050505; /* Match your sidebar */
+}
+
+[data-md-color-scheme="slate"] .md-sidebar--secondary .md-nav__link {
+  color: #BB86FC; /* Soft neon purple */
+}
+
+[data-md-color-scheme="slate"] .md-sidebar--secondary .md-nav__link:hover {
+  color: #FFFFFF;
+  text-shadow: 0 0 8px rgba(155, 48, 255, 0.9);
+}
+
+/* Active TOC entry glow */
+[data-md-color-scheme="slate"] .md-sidebar--secondary .md-nav__link--active {
+  font-weight: bold;
+  color: #BB86FC;
+  border-left: 3px solid #9B30FF;
+  background-color: rgba(155, 48, 255, 0.15);
+  text-shadow: 0 0 6px rgba(155, 48, 255, 0.8);
+}
 
 
