@@ -139,3 +139,42 @@ th, td {
   color: #9B30FF;
   border-left: 3px solid #9B30FF;
 }
+/* === FIX: Proper sidebar box styling without clipping === */
+
+/* Primary (left) sidebar container */
+.md-sidebar--primary {
+  background-color: rgba(5, 5, 5, 0.95);
+  border: 1px solid #9B30FF;
+  box-shadow: 0 0 12px rgba(155, 48, 255, 0.6);
+  border-radius: 6px;
+  padding: 8px;
+}
+[data-md-color-scheme="default"] .md-sidebar--primary {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid #4B0082;
+  box-shadow: 0 0 8px rgba(75, 0, 130, 0.4);
+}
+
+/* Secondary (right/TOC) sidebar container */
+.md-sidebar--secondary {
+  background-color: rgba(5, 5, 5, 0.95);
+  border: 1px solid #9B30FF;
+  box-shadow: 0 0 12px rgba(155, 48, 255, 0.6);
+  border-radius: 6px;
+  padding: 8px;
+}
+[data-md-color-scheme="default"] .md-sidebar--secondary {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid #4B0082;
+  box-shadow: 0 0 8px rgba(75, 0, 130, 0.4);
+}
+
+/* Keep link colors visible */
+.md-sidebar--primary .md-nav__link,
+.md-sidebar--secondary .md-nav__link {
+  color: #BB86FC;
+}
+[data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link,
+[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link {
+  color: #4B0082;
+}
