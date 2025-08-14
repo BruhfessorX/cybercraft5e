@@ -7,10 +7,11 @@
   --md-primary-fg-color--dark: #2E004F;    /* darker accent of primary */
   --md-accent-fg-color: #9B30FF;           /* accent violet */
 
-  /* Softer light mode background with purple-gray tint */
-  --md-default-bg-color: #F2F0F5;
-  --md-code-bg-color: #E8E6F0;
-  --md-footer-bg-color: #F2F0F5;
+  /* Darker, easier-on-the-eyes light mode background */
+  --md-default-bg-color: #1E1A26;  /* deep muted purple-gray */
+  --md-code-bg-color: #2A2433;     /* slightly lighter for code blocks */
+  --md-footer-bg-color: #1E1A26;
+  --md-default-fg-color: #E6E0F0;  /* readable text color */
 }
 
 /* Dark scheme (material calls this "slate") */
@@ -25,41 +26,36 @@
   --md-footer-bg-color: #0A0A0A;
 }
 
-/* Main content background */
-.md-main { background-color: var(--md-default-bg-color); color: #E0E0E0; }
+/* Dark background and bright text */
+.md-main {
+  background-color: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+}
 
-/* Headers in neon purple (dark mode) */
-[data-md-color-scheme="slate"] h1,
-[data-md-color-scheme="slate"] h2,
-[data-md-color-scheme="slate"] h3,
-[data-md-color-scheme="slate"] h4,
-[data-md-color-scheme="slate"] h5,
-[data-md-color-scheme="slate"] h6 {
+/* Headers in neon purple */
+h1, h2, h3, h4, h5, h6 {
   color: #9B30FF;
   text-shadow: 0 0 8px rgba(155, 48, 255, 0.7);
 }
 
-/* Headers in indigo purple (light mode, no glow) */
-[data-md-color-scheme="default"] h1,
-[data-md-color-scheme="default"] h2,
-[data-md-color-scheme="default"] h3,
-[data-md-color-scheme="default"] h4,
-[data-md-color-scheme="default"] h5,
-[data-md-color-scheme="default"] h6 {
-  color: #4B0082;
-  text-shadow: none;
+/* Links glow on hover */
+a {
+  color: #BB86FC;
+  transition: all 0.2s ease-in-out;
 }
-
-/* Links */
-a { color: #BB86FC; transition: all 0.2s ease-in-out; }
 a:hover {
   color: #FFFFFF;
   text-shadow: 0 0 8px rgba(155, 48, 255, 0.9);
 }
 
-/* Tables */
-table { background-color: #111; border: 1px solid #4B0082; }
-th, td { border: 1px solid #4B0082; }
+/* Table styling */
+table {
+  background-color: #111;
+  border: 1px solid #4B0082;
+}
+th, td {
+  border: 1px solid #4B0082;
+}
 
 /* Code blocks neon border */
 .highlight {
@@ -67,12 +63,13 @@ th, td { border: 1px solid #4B0082; }
   box-shadow: 0 0 8px rgba(155, 48, 255, 0.5);
 }
 
-/* Sidebar backgrounds */
-[data-md-color-scheme="slate"] .md-sidebar { background-color: #050505; }
-[data-md-color-scheme="default"] .md-sidebar { background-color: rgba(255, 255, 255, 0.9); }
+/* Sidebar background */
+.md-sidebar {
+  background-color: transparent;
+}
 
-/* Top nav bar dark with purple border (dark mode only) */
-[data-md-color-scheme="slate"] .md-header {
+/* Top nav bar dark with purple border */
+.md-header {
   background-color: #050505;
   border-bottom: 2px solid #9B30FF;
 }
@@ -84,13 +81,33 @@ th, td { border: 1px solid #4B0082; }
   text-shadow: 0 0 8px rgba(155, 48, 255, 0.9);
 }
 
-/* Sidebar hover effect */
+/* Sidebar link hover glow */
 .md-nav__item .md-nav__link:hover {
   background-color: rgba(155, 48, 255, 0.1);
   text-shadow: 0 0 6px rgba(155, 48, 255, 0.8);
 }
 
-/* Glow for active links */
+/* Neon pulse on main content headings */
+.md-typeset h1:hover,
+.md-typeset h2:hover,
+.md-typeset h3:hover,
+.md-typeset h4:hover {
+  text-shadow: 0 0 5px rgba(155, 48, 255, 0.8),
+               0 0 10px rgba(155, 48, 255, 0.6),
+               0 0 20px rgba(155, 48, 255, 0.4);
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+/* Neon glow for links */
+.md-typeset a:hover {
+  color: #bb86fc;
+  text-shadow: 0 0 5px rgba(155, 48, 255, 0.8),
+               0 0 10px rgba(155, 48, 255, 0.6),
+               0 0 20px rgba(155, 48, 255, 0.4);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Neon glow + dark background for active sidebar link */
 .md-nav__link--active {
   color: #bb86fc !important;
   font-weight: bold;
@@ -102,7 +119,17 @@ th, td { border: 1px solid #4B0082; }
                0 0 20px rgba(155, 48, 255, 0.4);
 }
 
-/* Top nav active link */
+/* Optional: subtle glow on hover in sidebar */
+.md-nav__link:hover {
+  color: #bb86fc !important;
+  background-color: rgba(40, 20, 60, 0.6);
+  border-radius: 4px;
+  text-shadow: 0 0 5px rgba(155, 48, 255, 0.8),
+               0 0 10px rgba(155, 48, 255, 0.6),
+               0 0 20px rgba(155, 48, 255, 0.4);
+}
+
+/* Active top nav link */
 .md-tabs__link--active {
   color: #bb86fc !important;
   font-weight: bold;
@@ -113,6 +140,8 @@ th, td { border: 1px solid #4B0082; }
                0 0 10px rgba(155, 48, 255, 0.6),
                0 0 20px rgba(155, 48, 255, 0.4);
 }
+
+/* Hover effect for top nav links */
 .md-tabs__link:hover {
   color: #bb86fc !important;
   background-color: rgba(40, 20, 60, 0.6);
@@ -122,53 +151,34 @@ th, td { border: 1px solid #4B0082; }
                0 0 20px rgba(155, 48, 255, 0.4);
 }
 
-/* ===== Sidebar & TOC styling ===== */
-
-/* Left sidebar glow */
-.md-sidebar {
-  border: 1px solid #9B30FF;
+/* ===== Left Sidebar Styling (Light & Dark) ===== */
+[data-md-color-scheme="default"] .md-sidebar--primary {
+  background-color: rgba(30, 26, 38, 0.95);
+  border-right: 1px solid #4B0082;
+  box-shadow: 0 0 8px rgba(75, 0, 130, 0.4);
+}
+[data-md-color-scheme="slate"] .md-sidebar--primary {
+  background-color: rgba(5, 5, 5, 0.95);
+  border-right: 1px solid #9B30FF;
   box-shadow: 0 0 12px rgba(155, 48, 255, 0.6);
-  border-radius: 6px;
 }
 
-/* Right-hand Table of Contents panel */
-.md-sidebar--secondary {
+/* ===== TOC Sidebar Styling ===== */
+[data-md-color-scheme="default"] .md-sidebar--secondary {
+  background-color: rgba(30, 26, 38, 0.95);
+  border: 1px solid #4B0082;
+  box-shadow: 0 0 8px rgba(75, 0, 130, 0.4);
+  border-radius: 6px;
+  padding: 8px;
+  position: sticky;
+  top: 80px;
+}
+[data-md-color-scheme="slate"] .md-sidebar--secondary {
+  background-color: rgba(5, 5, 5, 0.95);
   border: 1px solid #9B30FF;
   box-shadow: 0 0 12px rgba(155, 48, 255, 0.6);
   border-radius: 6px;
   padding: 8px;
   position: sticky;
   top: 80px;
-}
-
-/* Light mode TOC links */
-[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link {
-  color: #4B0082;
-}
-[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link:hover {
-  color: #9B30FF;
-  text-shadow: 0 0 5px rgba(155, 48, 255, 0.6);
-}
-[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link--active {
-  font-weight: bold;
-  color: #9B30FF;
-  border-left: 3px solid #9B30FF;
-  background-color: rgba(155, 48, 255, 0.1);
-  text-shadow: 0 0 4px rgba(155, 48, 255, 0.7);
-}
-
-/* Dark mode TOC links */
-[data-md-color-scheme="slate"] .md-sidebar--secondary .md-nav__link {
-  color: #BB86FC;
-}
-[data-md-color-scheme="slate"] .md-sidebar--secondary .md-nav__link:hover {
-  color: #FFFFFF;
-  text-shadow: 0 0 8px rgba(155, 48, 255, 0.9);
-}
-[data-md-color-scheme="slate"] .md-sidebar--secondary .md-nav__link--active {
-  font-weight: bold;
-  color: #BB86FC;
-  border-left: 3px solid #9B30FF;
-  background-color: rgba(155, 48, 255, 0.15);
-  text-shadow: 0 0 6px rgba(155, 48, 255, 0.8);
 }
