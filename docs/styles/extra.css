@@ -178,3 +178,55 @@ th, td {
 [data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link {
   color: #4B0082;
 }
+/* === FORCE SIDEBAR PANEL VISIBILITY & GLOW FIX === */
+
+/* Left Sidebar (primary nav) */
+.md-sidebar--primary nav.md-nav {
+  background-color: rgba(5, 5, 5, 0.95) !important;
+  border: 1px solid #9B30FF !important;
+  box-shadow: 0 0 12px rgba(155, 48, 255, 0.6) !important;
+  border-radius: 6px !important;
+  padding: 8px !important;
+}
+[data-md-color-scheme="default"] .md-sidebar--primary nav.md-nav {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid #4B0082 !important;
+  box-shadow: 0 0 8px rgba(75, 0, 130, 0.4) !important;
+}
+
+/* Right Sidebar (TOC nav) */
+.md-sidebar--secondary nav.md-nav {
+  background-color: rgba(5, 5, 5, 0.95) !important;
+  border: 1px solid #9B30FF !important;
+  box-shadow: 0 0 12px rgba(155, 48, 255, 0.6) !important;
+  border-radius: 6px !important;
+  padding: 8px !important;
+}
+[data-md-color-scheme="default"] .md-sidebar--secondary nav.md-nav {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid #4B0082 !important;
+  box-shadow: 0 0 8px rgba(75, 0, 130, 0.4) !important;
+}
+
+/* Sidebar link colors (both modes) */
+.md-sidebar--primary .md-nav__link,
+.md-sidebar--secondary .md-nav__link {
+  color: #BB86FC !important;
+}
+[data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link,
+[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link {
+  color: #4B0082 !important;
+}
+
+/* Sidebar header titles (glow) */
+.md-sidebar--primary .md-nav__title,
+.md-sidebar--secondary .md-nav__title {
+  color: #BB86FC !important;
+  text-shadow: 0 0 8px rgba(155, 48, 255, 0.7) !important;
+  font-weight: bold !important;
+}
+[data-md-color-scheme="default"] .md-sidebar--primary .md-nav__title,
+[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__title {
+  color: #4B0082 !important;
+  text-shadow: 0 0 6px rgba(75, 0, 130, 0.6) !important;
+}
