@@ -230,3 +230,44 @@ th, td {
   color: #4B0082 !important;
   text-shadow: 0 0 6px rgba(75, 0, 130, 0.6) !important;
 }
+/* ==== Custom Scrollbar Styling for Sidebars ==== */
+
+/* Apply to both sidebars */
+.md-sidebar--primary, .md-sidebar--secondary {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #9B30FF rgba(5, 5, 5, 0.9);
+}
+
+/* Chrome/Edge/Safari */
+.md-sidebar--primary::-webkit-scrollbar,
+.md-sidebar--secondary::-webkit-scrollbar {
+  width: 6px;
+}
+
+.md-sidebar--primary::-webkit-scrollbar-track,
+.md-sidebar--secondary::-webkit-scrollbar-track {
+  background: rgba(5, 5, 5, 0.9);
+  border-radius: 3px;
+}
+
+.md-sidebar--primary::-webkit-scrollbar-thumb,
+.md-sidebar--secondary::-webkit-scrollbar-thumb {
+  background-color: #9B30FF;
+  border-radius: 3px;
+}
+
+/* Light mode scrollbars */
+[data-md-color-scheme="default"] .md-sidebar--primary,
+[data-md-color-scheme="default"] .md-sidebar--secondary {
+  scrollbar-color: #4B0082 rgba(240, 240, 240, 0.9);
+}
+
+[data-md-color-scheme="default"] .md-sidebar--primary::-webkit-scrollbar-track,
+[data-md-color-scheme="default"] .md-sidebar--secondary::-webkit-scrollbar-track {
+  background: rgba(240, 240, 240, 0.9);
+}
+
+[data-md-color-scheme="default"] .md-sidebar--primary::-webkit-scrollbar-thumb,
+[data-md-color-scheme="default"] .md-sidebar--secondary::-webkit-scrollbar-thumb {
+  background-color: #4B0082;
+}
