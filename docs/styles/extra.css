@@ -1,42 +1,56 @@
 /* ----- Material color variables: use custom purple/black ----- */
 
-/* Light scheme */
+/* Light scheme (material calls this "default") */
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color: #4B0082;
-  --md-primary-fg-color--light: #7A29CC;
-  --md-primary-fg-color--dark: #2E004F;
-  --md-accent-fg-color: #9B30FF;
-
-  --md-default-bg-color: #0A0A0A;
-  --md-code-bg-color: #111318;
-  --md-footer-bg-color: #0A0A0A;
+  --md-primary-fg-color: #4B0082;          /* main indigo-purple */
+  --md-primary-fg-color--light: #7A29CC;   /* lighter accent of primary */
+  --md-primary-fg-color--dark: #2E004F;    /* darker accent of primary */
+  --md-accent-fg-color: #9B30FF;           /* accent violet */
+  --md-default-bg-color: #FFFFFF;
+  --md-code-bg-color: #F7F7F7;
+  --md-footer-bg-color: #FFFFFF;
 }
 
-/* Dark scheme */
+/* Dark scheme (material calls this "slate") */
 [data-md-color-scheme="slate"] {
   --md-primary-fg-color: #4B0082;
   --md-primary-fg-color--light: #7A29CC;
   --md-primary-fg-color--dark: #2E004F;
   --md-accent-fg-color: #9B30FF;
-
   --md-default-bg-color: #0A0A0A;
   --md-code-bg-color: #111318;
   --md-footer-bg-color: #0A0A0A;
 }
 
-/* Main background */
+/* ---------------- General Styles ---------------- */
 .md-main {
-  background-color: #0A0A0A;
+  background-color: var(--md-default-bg-color);
   color: #E0E0E0;
 }
 
-/* Headers in neon purple */
-h1, h2, h3, h4, h5, h6 {
+/* Headers in neon purple (dark mode) */
+[data-md-color-scheme="slate"] h1,
+[data-md-color-scheme="slate"] h2,
+[data-md-color-scheme="slate"] h3,
+[data-md-color-scheme="slate"] h4,
+[data-md-color-scheme="slate"] h5,
+[data-md-color-scheme="slate"] h6 {
   color: #9B30FF;
   text-shadow: 0 0 8px rgba(155, 48, 255, 0.7);
 }
 
-/* Links */
+/* Headers in readable purple (light mode) */
+[data-md-color-scheme="default"] h1,
+[data-md-color-scheme="default"] h2,
+[data-md-color-scheme="default"] h3,
+[data-md-color-scheme="default"] h4,
+[data-md-color-scheme="default"] h5,
+[data-md-color-scheme="default"] h6 {
+  color: #4B0082;
+  text-shadow: none;
+}
+
+/* Links glow on hover */
 a {
   color: #BB86FC;
   transition: all 0.2s ease-in-out;
@@ -46,7 +60,7 @@ a:hover {
   text-shadow: 0 0 8px rgba(155, 48, 255, 0.9);
 }
 
-/* Tables */
+/* Table styling */
 table {
   background-color: #111;
   border: 1px solid #4B0082;
@@ -55,235 +69,71 @@ th, td {
   border: 1px solid #4B0082;
 }
 
-/* Code blocks */
+/* Code blocks neon border */
 .highlight {
   border: 1px solid #9B30FF;
   box-shadow: 0 0 8px rgba(155, 48, 255, 0.5);
 }
 
-/* Top nav bar */
-.md-header {
-  background-color: #050505;
-  border-bottom: 2px solid #9B30FF;
+/* ---------------- Sidebar Styling ---------------- */
+
+/* Dark mode left + right sidebar */
+[data-md-color-scheme="slate"] .md-sidebar--primary,
+[data-md-color-scheme="slate"] .md-sidebar--secondary {
+  background-color: rgba(5, 5, 5, 0.95);
+  border: 1px solid #9B30FF;
+  box-shadow: 0 0 12px rgba(155, 48, 255, 0.6);
+  border-radius: 6px;
 }
 
-/* Left sidebar (primary navigation) */
-.md-sidebar--primary {
-  background-color: rgba(5, 5, 5, 0.95);
-  border-right: 1px solid #9B30FF;
-  box-shadow: 0 0 8px rgba(155, 48, 255, 0.4);
-}
-[data-md-color-scheme="default"] .md-sidebar--primary {
-  background-color: rgba(255, 255, 255, 0.95);
-  border-right: 1px solid #4B0082;
+/* Light mode left + right sidebar */
+[data-md-color-scheme="default"] .md-sidebar--primary,
+[data-md-color-scheme="default"] .md-sidebar--secondary {
+  background-color: rgba(245, 242, 250, 0.95);
+  border: 1px solid #4B0082;
   box-shadow: 0 0 8px rgba(75, 0, 130, 0.4);
+  border-radius: 6px;
 }
-.md-sidebar--primary .md-nav__link {
+
+/* Sidebar links */
+.md-nav__item .md-nav__link {
+  transition: all 0.2s ease-in-out;
+}
+[data-md-color-scheme="slate"] .md-nav__item .md-nav__link {
   color: #BB86FC;
 }
-[data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link {
+[data-md-color-scheme="default"] .md-nav__item .md-nav__link {
   color: #4B0082;
 }
-.md-sidebar--primary .md-nav__link:hover {
+
+/* Hover effects */
+.md-nav__item .md-nav__link:hover {
   background-color: rgba(155, 48, 255, 0.1);
   text-shadow: 0 0 6px rgba(155, 48, 255, 0.8);
 }
-.md-sidebar--primary .md-nav__link--active {
+[data-md-color-scheme="default"] .md-nav__item .md-nav__link:hover {
+  color: #9B30FF;
+}
+
+/* Active link glow */
+.md-nav__item .md-nav__link--active {
   font-weight: bold;
-  color: #BB86FC;
   border-left: 3px solid #9B30FF;
   background-color: rgba(155, 48, 255, 0.15);
   text-shadow: 0 0 6px rgba(155, 48, 255, 0.8);
 }
-[data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link--active {
-  color: #9B30FF;
-  border-left: 3px solid #9B30FF;
-}
 
-/* Right sidebar (Table of Contents) */
-.md-sidebar--secondary {
-  background-color: rgba(5, 5, 5, 0.95);
-  border: 1px solid #9B30FF;
-  box-shadow: 0 0 12px rgba(155, 48, 255, 0.6);
-  border-radius: 6px;
-  padding: 8px;
-  position: sticky;
-  top: 80px;
-}
-[data-md-color-scheme="default"] .md-sidebar--secondary {
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid #4B0082;
-  box-shadow: 0 0 8px rgba(75, 0, 130, 0.4);
-}
-.md-sidebar--secondary .md-nav__link {
-  color: #BB86FC;
-}
-[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link {
-  color: #4B0082;
-}
-.md-sidebar--secondary .md-nav__link:hover {
-  color: #FFFFFF;
-  text-shadow: 0 0 8px rgba(155, 48, 255, 0.9);
-}
-[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link:hover {
-  color: #9B30FF;
-}
-.md-sidebar--secondary .md-nav__link--active {
-  font-weight: bold;
-  color: #BB86FC;
-  border-left: 3px solid #9B30FF;
-  background-color: rgba(155, 48, 255, 0.15);
-  text-shadow: 0 0 6px rgba(155, 48, 255, 0.8);
-}
-[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link--active {
-  color: #9B30FF;
-  border-left: 3px solid #9B30FF;
-}
-/* === FIX: Proper sidebar box styling without clipping === */
-
-/* Primary (left) sidebar container */
-.md-sidebar--primary {
-  background-color: rgba(5, 5, 5, 0.95);
-  border: 1px solid #9B30FF;
-  box-shadow: 0 0 12px rgba(155, 48, 255, 0.6);
-  border-radius: 6px;
-  padding: 8px;
-}
-[data-md-color-scheme="default"] .md-sidebar--primary {
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid #4B0082;
-  box-shadow: 0 0 8px rgba(75, 0, 130, 0.4);
-}
-
-/* Secondary (right/TOC) sidebar container */
-.md-sidebar--secondary {
-  background-color: rgba(5, 5, 5, 0.95);
-  border: 1px solid #9B30FF;
-  box-shadow: 0 0 12px rgba(155, 48, 255, 0.6);
-  border-radius: 6px;
-  padding: 8px;
-}
-[data-md-color-scheme="default"] .md-sidebar--secondary {
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid #4B0082;
-  box-shadow: 0 0 8px rgba(75, 0, 130, 0.4);
-}
-
-/* Keep link colors visible */
-.md-sidebar--primary .md-nav__link,
-.md-sidebar--secondary .md-nav__link {
-  color: #BB86FC;
-}
-[data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link,
-[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link {
-  color: #4B0082;
-}
-/* === FORCE SIDEBAR PANEL VISIBILITY & GLOW FIX === */
-
-/* Left Sidebar (primary nav) */
-.md-sidebar--primary nav.md-nav {
-  background-color: rgba(5, 5, 5, 0.95) !important;
-  border: 1px solid #9B30FF !important;
-  box-shadow: 0 0 12px rgba(155, 48, 255, 0.6) !important;
-  border-radius: 6px !important;
-  padding: 8px !important;
-}
-[data-md-color-scheme="default"] .md-sidebar--primary nav.md-nav {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  border: 1px solid #4B0082 !important;
-  box-shadow: 0 0 8px rgba(75, 0, 130, 0.4) !important;
-}
-
-/* Right Sidebar (TOC nav) */
-.md-sidebar--secondary nav.md-nav {
-  background-color: rgba(5, 5, 5, 0.95) !important;
-  border: 1px solid #9B30FF !important;
-  box-shadow: 0 0 12px rgba(155, 48, 255, 0.6) !important;
-  border-radius: 6px !important;
-  padding: 8px !important;
-}
-[data-md-color-scheme="default"] .md-sidebar--secondary nav.md-nav {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  border: 1px solid #4B0082 !important;
-  box-shadow: 0 0 8px rgba(75, 0, 130, 0.4) !important;
-}
-
-/* Sidebar link colors (both modes) */
-.md-sidebar--primary .md-nav__link,
-.md-sidebar--secondary .md-nav__link {
-  color: #BB86FC !important;
-}
-[data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link,
-[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link {
-  color: #4B0082 !important;
-}
-
-/* Sidebar header titles (glow) */
-.md-sidebar--primary .md-nav__title,
-.md-sidebar--secondary .md-nav__title {
-  color: #BB86FC !important;
-  text-shadow: 0 0 8px rgba(155, 48, 255, 0.7) !important;
-  font-weight: bold !important;
-}
-[data-md-color-scheme="default"] .md-sidebar--primary .md-nav__title,
-[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__title {
-  color: #4B0082 !important;
-  text-shadow: 0 0 6px rgba(75, 0, 130, 0.6) !important;
-}
-/* ==== Custom Scrollbar Styling for Sidebars ==== */
-
-/* Apply to both sidebars */
-.md-sidebar--primary, .md-sidebar--secondary {
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: #9B30FF rgba(5, 5, 5, 0.9);
-}
-
-/* Chrome/Edge/Safari */
+/* ---------------- Scrollbar Styling ---------------- */
 .md-sidebar--primary::-webkit-scrollbar,
 .md-sidebar--secondary::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
-
-.md-sidebar--primary::-webkit-scrollbar-track,
-.md-sidebar--secondary::-webkit-scrollbar-track {
-  background: rgba(5, 5, 5, 0.9);
-  border-radius: 3px;
-}
-
 .md-sidebar--primary::-webkit-scrollbar-thumb,
 .md-sidebar--secondary::-webkit-scrollbar-thumb {
-  background-color: #9B30FF;
-  border-radius: 3px;
+  background-color: rgba(155, 48, 255, 0.6);
+  border-radius: 4px;
 }
-
-/* Light mode scrollbars */
-[data-md-color-scheme="default"] .md-sidebar--primary,
-[data-md-color-scheme="default"] .md-sidebar--secondary {
-  scrollbar-color: #4B0082 rgba(240, 240, 240, 0.9);
-}
-
-[data-md-color-scheme="default"] .md-sidebar--primary::-webkit-scrollbar-track,
-[data-md-color-scheme="default"] .md-sidebar--secondary::-webkit-scrollbar-track {
-  background: rgba(240, 240, 240, 0.9);
-}
-
-[data-md-color-scheme="default"] .md-sidebar--primary::-webkit-scrollbar-thumb,
-[data-md-color-scheme="default"] .md-sidebar--secondary::-webkit-scrollbar-thumb {
-  background-color: #4B0082;
-}
-/* Light mode sidebar background fix */
-[data-md-color-scheme="default"] .md-sidebar--primary,
-[data-md-color-scheme="default"] .md-sidebar--secondary {
-  background-color: rgba(245, 242, 250, 0.95); /* soft light-purple gray */
-}
-
-/* Keep nav link colors and hover the same */
-[data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link,
-[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link {
-  color: #4B0082;
-}
-
-[data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link:hover,
-[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link:hover {
-  color: #9B30FF;
+.md-sidebar--primary::-webkit-scrollbar-track,
+.md-sidebar--secondary::-webkit-scrollbar-track {
+  background-color: transparent;
 }
