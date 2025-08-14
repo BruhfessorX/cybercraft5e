@@ -6,9 +6,11 @@
   --md-primary-fg-color--light: #7A29CC;   /* lighter accent of primary */
   --md-primary-fg-color--dark: #2E004F;    /* darker accent of primary */
   --md-accent-fg-color: #9B30FF;           /* accent violet */
-  --md-default-bg-color: #FFFFFF;
-  --md-code-bg-color: #F7F7F7;
-  --md-footer-bg-color: #FFFFFF;
+
+  /* Softer light mode background with purple-gray tint */
+  --md-default-bg-color: #F2F0F5;
+  --md-code-bg-color: #E8E6F0;
+  --md-footer-bg-color: #F2F0F5;
 }
 
 /* Dark scheme (material calls this "slate") */
@@ -17,16 +19,14 @@
   --md-primary-fg-color--light: #7A29CC;
   --md-primary-fg-color--dark: #2E004F;
   --md-accent-fg-color: #9B30FF;
+
   --md-default-bg-color: #0A0A0A;
   --md-code-bg-color: #111318;
   --md-footer-bg-color: #0A0A0A;
 }
 
-/* ---------------- General Styles ---------------- */
-.md-main {
-  background-color: var(--md-default-bg-color);
-  color: #E0E0E0;
-}
+/* Main content background */
+.md-main { background-color: var(--md-default-bg-color); color: #E0E0E0; }
 
 /* Headers in neon purple (dark mode) */
 [data-md-color-scheme="slate"] h1,
@@ -39,7 +39,7 @@
   text-shadow: 0 0 8px rgba(155, 48, 255, 0.7);
 }
 
-/* Headers in readable purple (light mode) */
+/* Headers in indigo purple (light mode, no glow) */
 [data-md-color-scheme="default"] h1,
 [data-md-color-scheme="default"] h2,
 [data-md-color-scheme="default"] h3,
@@ -50,24 +50,16 @@
   text-shadow: none;
 }
 
-/* Links glow on hover */
-a {
-  color: #BB86FC;
-  transition: all 0.2s ease-in-out;
-}
+/* Links */
+a { color: #BB86FC; transition: all 0.2s ease-in-out; }
 a:hover {
   color: #FFFFFF;
   text-shadow: 0 0 8px rgba(155, 48, 255, 0.9);
 }
 
-/* Table styling */
-table {
-  background-color: #111;
-  border: 1px solid #4B0082;
-}
-th, td {
-  border: 1px solid #4B0082;
-}
+/* Tables */
+table { background-color: #111; border: 1px solid #4B0082; }
+th, td { border: 1px solid #4B0082; }
 
 /* Code blocks neon border */
 .highlight {
@@ -75,65 +67,108 @@ th, td {
   box-shadow: 0 0 8px rgba(155, 48, 255, 0.5);
 }
 
-/* ---------------- Sidebar Styling ---------------- */
+/* Sidebar backgrounds */
+[data-md-color-scheme="slate"] .md-sidebar { background-color: #050505; }
+[data-md-color-scheme="default"] .md-sidebar { background-color: rgba(255, 255, 255, 0.9); }
 
-/* Dark mode left + right sidebar */
-[data-md-color-scheme="slate"] .md-sidebar--primary,
-[data-md-color-scheme="slate"] .md-sidebar--secondary {
-  background-color: rgba(5, 5, 5, 0.95);
+/* Top nav bar dark with purple border (dark mode only) */
+[data-md-color-scheme="slate"] .md-header {
+  background-color: #050505;
+  border-bottom: 2px solid #9B30FF;
+}
+
+/* Sidebar active link glow */
+.md-nav__item .md-nav__link--active {
+  background-color: rgba(155, 48, 255, 0.15);
+  border-left: 3px solid #9B30FF;
+  text-shadow: 0 0 8px rgba(155, 48, 255, 0.9);
+}
+
+/* Sidebar hover effect */
+.md-nav__item .md-nav__link:hover {
+  background-color: rgba(155, 48, 255, 0.1);
+  text-shadow: 0 0 6px rgba(155, 48, 255, 0.8);
+}
+
+/* Glow for active links */
+.md-nav__link--active {
+  color: #bb86fc !important;
+  font-weight: bold;
+  background-color: rgba(20, 20, 30, 0.85);
+  border-radius: 4px;
+  padding: 4px 8px;
+  text-shadow: 0 0 5px rgba(155, 48, 255, 0.8),
+               0 0 10px rgba(155, 48, 255, 0.6),
+               0 0 20px rgba(155, 48, 255, 0.4);
+}
+
+/* Top nav active link */
+.md-tabs__link--active {
+  color: #bb86fc !important;
+  font-weight: bold;
+  background-color: rgba(20, 20, 30, 0.85);
+  border-radius: 4px;
+  padding: 6px 10px;
+  text-shadow: 0 0 5px rgba(155, 48, 255, 0.8),
+               0 0 10px rgba(155, 48, 255, 0.6),
+               0 0 20px rgba(155, 48, 255, 0.4);
+}
+.md-tabs__link:hover {
+  color: #bb86fc !important;
+  background-color: rgba(40, 20, 60, 0.6);
+  border-radius: 4px;
+  text-shadow: 0 0 5px rgba(155, 48, 255, 0.8),
+               0 0 10px rgba(155, 48, 255, 0.6),
+               0 0 20px rgba(155, 48, 255, 0.4);
+}
+
+/* ===== Sidebar & TOC styling ===== */
+
+/* Left sidebar glow */
+.md-sidebar {
   border: 1px solid #9B30FF;
   box-shadow: 0 0 12px rgba(155, 48, 255, 0.6);
   border-radius: 6px;
 }
 
-/* Light mode left + right sidebar */
-[data-md-color-scheme="default"] .md-sidebar--primary,
-[data-md-color-scheme="default"] .md-sidebar--secondary {
-  background-color: rgba(245, 242, 250, 0.95);
-  border: 1px solid #4B0082;
-  box-shadow: 0 0 8px rgba(75, 0, 130, 0.4);
+/* Right-hand Table of Contents panel */
+.md-sidebar--secondary {
+  border: 1px solid #9B30FF;
+  box-shadow: 0 0 12px rgba(155, 48, 255, 0.6);
   border-radius: 6px;
+  padding: 8px;
+  position: sticky;
+  top: 80px;
 }
 
-/* Sidebar links */
-.md-nav__item .md-nav__link {
-  transition: all 0.2s ease-in-out;
-}
-[data-md-color-scheme="slate"] .md-nav__item .md-nav__link {
-  color: #BB86FC;
-}
-[data-md-color-scheme="default"] .md-nav__item .md-nav__link {
+/* Light mode TOC links */
+[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link {
   color: #4B0082;
 }
-
-/* Hover effects */
-.md-nav__item .md-nav__link:hover {
-  background-color: rgba(155, 48, 255, 0.1);
-  text-shadow: 0 0 6px rgba(155, 48, 255, 0.8);
-}
-[data-md-color-scheme="default"] .md-nav__item .md-nav__link:hover {
+[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link:hover {
   color: #9B30FF;
+  text-shadow: 0 0 5px rgba(155, 48, 255, 0.6);
+}
+[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link--active {
+  font-weight: bold;
+  color: #9B30FF;
+  border-left: 3px solid #9B30FF;
+  background-color: rgba(155, 48, 255, 0.1);
+  text-shadow: 0 0 4px rgba(155, 48, 255, 0.7);
 }
 
-/* Active link glow */
-.md-nav__item .md-nav__link--active {
+/* Dark mode TOC links */
+[data-md-color-scheme="slate"] .md-sidebar--secondary .md-nav__link {
+  color: #BB86FC;
+}
+[data-md-color-scheme="slate"] .md-sidebar--secondary .md-nav__link:hover {
+  color: #FFFFFF;
+  text-shadow: 0 0 8px rgba(155, 48, 255, 0.9);
+}
+[data-md-color-scheme="slate"] .md-sidebar--secondary .md-nav__link--active {
   font-weight: bold;
+  color: #BB86FC;
   border-left: 3px solid #9B30FF;
   background-color: rgba(155, 48, 255, 0.15);
   text-shadow: 0 0 6px rgba(155, 48, 255, 0.8);
-}
-
-/* ---------------- Scrollbar Styling ---------------- */
-.md-sidebar--primary::-webkit-scrollbar,
-.md-sidebar--secondary::-webkit-scrollbar {
-  width: 8px;
-}
-.md-sidebar--primary::-webkit-scrollbar-thumb,
-.md-sidebar--secondary::-webkit-scrollbar-thumb {
-  background-color: rgba(155, 48, 255, 0.6);
-  border-radius: 4px;
-}
-.md-sidebar--primary::-webkit-scrollbar-track,
-.md-sidebar--secondary::-webkit-scrollbar-track {
-  background-color: transparent;
 }
