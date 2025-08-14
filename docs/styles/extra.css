@@ -271,3 +271,19 @@ th, td {
 [data-md-color-scheme="default"] .md-sidebar--secondary::-webkit-scrollbar-thumb {
   background-color: #4B0082;
 }
+/* Light mode sidebar background fix */
+[data-md-color-scheme="default"] .md-sidebar--primary,
+[data-md-color-scheme="default"] .md-sidebar--secondary {
+  background-color: rgba(245, 242, 250, 0.95); /* soft light-purple gray */
+}
+
+/* Keep nav link colors and hover the same */
+[data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link,
+[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link {
+  color: #4B0082;
+}
+
+[data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link:hover,
+[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link:hover {
+  color: #9B30FF;
+}
