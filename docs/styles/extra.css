@@ -182,34 +182,42 @@ th, td {
   position: sticky;
   top: 80px;
 }
-/* Intermittent glitch effect for titles */
-h1, h2, h3, h4, h5, h6 {
-  animation: glitch 0.8s ease-in-out infinite;
-  animation-delay: var(--glitch-delay);
-  animation-play-state: paused;
-  display: inline-block;
+/* Base glitch animation */
+@keyframes glitch {
+  0%, 95%, 100% {
+    text-shadow: 0 0 8px rgba(155, 48, 255, 0.7);
+    transform: none;
+  }
+  96% {
+    text-shadow: -2px -2px #4B0082, 2px 2px #BB86FC;
+    transform: skew(-2deg);
+  }
+  97% {
+    text-shadow: 2px 2px #BB86FC, -2px -2px #4B0082;
+    transform: skew(2deg);
+  }
+  98% {
+    text-shadow: -1px 0px #4B0082, 1px 0px #BB86FC;
+    transform: none;
+  }
+  99% {
+    text-shadow: 0px 1px #BB86FC, 0px -1px #4B0082;
+    transform: skew(-1deg);
+  }
 }
 
-/* Random delays so each heading glitches at different times */
-h1 { --glitch-delay: 0s; animation-iteration-count: infinite; }
-h2 { --glitch-delay: 2.5s; }
-h3 { --glitch-delay: 4s; }
-h4 { --glitch-delay: 5.5s; }
-h5 { --glitch-delay: 7s; }
-h6 { --glitch-delay: 8.5s; }
+/* Apply neon + glitch */
+h1, h2, h3, h4, h5, h6 {
+  position: relative;
+  color: #9B30FF;
+  text-shadow: 0 0 8px rgba(155, 48, 255, 0.7);
+  animation: glitch 4s infinite steps(1, end);
+}
 
-/* Use JS to unpause glitch briefly every few seconds */
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
-  headings.forEach(h => {
-    const delay = parseFloat(getComputedStyle(h).getPropertyValue("--glitch-delay")) * 1000;
-    setTimeout(() => {
-      setInterval(() => {
-        h.style.animationPlayState = "running";
-        setTimeout(() => h.style.animationPlayState = "paused", 800); // glitch lasts 0.8s
-      }, 6000 + Math.random() * 2000); // glitch every 6–8s
-    }, delay);
-  });
-});
-</script>
+/* Staggered animation delays for a more organic effect */
+h1 { animation-delay: 0s; }
+h2 { animation-delay: 1s; }
+h3 { animation-delay: 2s; }
+h4 { animation-delay: 3s; }
+h5 { animation-delay: 1.5s; }
+h6 { animation-delay: 2.5s; }
