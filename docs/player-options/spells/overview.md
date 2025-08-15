@@ -35,10 +35,10 @@ A practical blend of magic and streetwise ingenuity, optimized for megacity surv
 
 ## Spell Components in a Cyberpunk World
 
-In Cybercraft 5e:
-- **Verbal (V):** Spoken code sequences, voice commands, chants, or signal tones.
-- **Somatic (S):** Gestures, AR interface swipes, device manipulations.
-- **Material (M):** May be replaced by devices, focus rigs, or cybernetic modules.
+In Cybercraft 5e:  
+- **Verbal (V):** Spoken code sequences, voice commands, chants, or signal tones.  
+- **Somatic (S):** Gestures, AR interface swipes, device manipulations.  
+- **Material (M):** May be replaced by devices, focus rigs, or cybernetic modules.  
 
 Casters can use a **cybernetic casting focus** instead of a traditional arcane focus or component pouch.
 

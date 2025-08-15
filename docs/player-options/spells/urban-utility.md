@@ -1,66 +1,66 @@
 # Urban Utility Spells
 
 ## Ghostpath
-*3rd-level Transmutation, Urban Utility*
-- **Casting Time:** 1 bonus action
-- **Range:** Self
-- **Components:** V
-- **Duration:** Concentration, up to 1 minute
+*3rd-level Transmutation, Urban Utility*  
+- **Casting Time:** 1 bonus action  
+- **Range:** Self  
+- **Components:** V  
+- **Duration:** Concentration, up to 1 minute  
 
-You partially phase out of sync with reality. While under this effect, you can:
-- Move through objects and openings as if they were difficult terrain.
-- Ignore difficult terrain.
-- Have advantage on Dexterity (Stealth) checks.
+You partially phase out of sync with reality. While under this effect, you can:  
+- Move through objects and openings as if they were difficult terrain.  
+- Ignore difficult terrain.  
+- Have advantage on Dexterity (Stealth) checks.  
 
 ---
 
 ## Neon Beacon
-*1st-level Evocation, Urban Utility*
-- **Casting Time:** 1 action
-- **Range:** 500 feet
-- **Components:** V, S
-- **Duration:** Concentration, up to 1 hour
+*1st-level Evocation, Urban Utility*  
+- **Casting Time:** 1 action  
+- **Range:** 500 feet  
+- **Components:** V, S  
+- **Duration:** Concentration, up to 1 hour  
 
-You create a hovering neon hologram visible only to creatures you designate when casting the spell.
+You create a hovering neon hologram visible only to creatures you designate when casting the spell.  
 
 ---
 
 ## Signal Scramble
-*2nd-level Abjuration, Urban Utility*
-- **Casting Time:** 1 action
-- **Range:** 60 feet
-- **Components:** V, S
-- **Duration:** Concentration, up to 10 minutes
+*2nd-level Abjuration, Urban Utility*  
+- **Casting Time:** 1 action  
+- **Range:** 60 feet  
+- **Components:** V, S  
+- **Duration:** Concentration, up to 10 minutes  
 
 You generate a disruptive digital field. All communication devices and basic sensors in range are scrambled, preventing tracking, scanning, or remote activation.
 
 ---
 
 ## Kinetic Grapple
-*2nd-level Transmutation, Urban Utility*
-- **Casting Time:** 1 bonus action
-- **Range:** 30 feet
-- **Components:** V, S
-- **Duration:** Concentration, up to 1 minute
+*2nd-level Transmutation, Urban Utility*  
+- **Casting Time:** 1 bonus action  
+- **Range:** 30 feet  
+- **Components:** V, S  
+- **Duration:** Concentration, up to 1 minute  
 
 You conjure a tethered kinetic line to pull yourself toward a surface or pull an unattended object toward you.
 
 ---
 
 ## Crowd Mirage
-*3rd-level Illusion, Urban Utility*
-- **Casting Time:** 1 action
-- **Range:** 60 feet
-- **Components:** V, S
-- **Duration:** Concentration, up to 10 minutes
+*3rd-level Illusion, Urban Utility*  
+- **Casting Time:** 1 action  
+- **Range:** 60 feet  
+- **Components:** V, S  
+- **Duration:** Concentration, up to 10 minutes  
 
 You conjure the illusion of a bustling crowd or chaos in a 30-foot area, granting heavy obscurement and providing advantage on Stealth checks to hide in the area.
 
 ---
 
 ### Streetlight Surge
-*Cantrip, Urban-Utility*
-- **Casting Time:** 1 action  
+*Cantrip, Urban-Utility*  
+- **Casting Time:** 1 action   
 - **Range:** 30 feet  
 - **Components:** V, S  
 - **Duration:** Concentration, up to 1 minute  
@@ -70,7 +70,7 @@ You manipulate local lighting systems. You can cause lights to flare brightly, i
 ---
 
 ### Crowd Control Ping
-*2nd-level Evocation, Urban-Utility*
+*2nd-level Evocation, Urban-Utility*  
 - **Casting Time:** 1 action  
 - **Range:** 60 feet  
 - **Components:** V, S  
@@ -81,7 +81,7 @@ You emit a subsonic pulse in a 20-foot radius. Creatures must succeed on a Const
 ---
 
 ### Urban Mirage
-*3rd-level Illusion, Urban-Utility*
+*3rd-level Illusion, Urban-Utility*  
 - **Casting Time:** 1 action  
 - **Range:** 30 feet  
 - **Components:** V, S  
@@ -92,7 +92,7 @@ You create an illusory urban scene—crowds, vehicles, market stalls—that can 
 ---
 
 ### Transit Hijack
-*5th-level Enchantment, Urban-Utility*
+*5th-level Enchantment, Urban-Utility*  
 - **Casting Time:** 1 action  
 - **Range:** 60 feet  
 - **Components:** V, S  
@@ -103,7 +103,7 @@ You seize control of one vehicle, drone, or automated transit system within rang
 ---
 
 ### Citywide Signal Scramble
-*7th-level Abjuration, Urban-Utility*
+*7th-level Abjuration, Urban-Utility*  
 - **Casting Time:** 1 action  
 - **Range:** 1 mile  
 - **Components:** V, S  

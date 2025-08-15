@@ -1,7 +1,7 @@
 # Technomancy Spells
 
 ## Neural Spike
-*Cantrip, Technomancy*
+*Cantrip, Technomancy*  
 - **Casting Time:** 1 action  
 - **Range:** 30 feet  
 - **Components:** V  
@@ -14,51 +14,51 @@ You overload a target’s cybernetic or neural systems with raw, disruptive code
 ---
 
 ## Code Veil
-*2nd-level Illusion, Technomancy*
-- **Casting Time:** 1 action
-- **Range:** Self
-- **Components:** V, S
-- **Duration:** Concentration, up to 10 minutes
+*2nd-level Illusion, Technomancy*  
+- **Casting Time:** 1 action  
+- **Range:** Self  
+- **Components:** V, S  
+- **Duration:** Concentration, up to 10 minutes  
 
 A projected holographic disguise overlays your body. You can appear as any humanoid or Synthetic of similar size, bypassing basic biometric scans. While disguised, you have advantage on Charisma (Deception) checks to impersonate the chosen identity.
 
 ---
 
 ## Data Surge
-*3rd-level Evocation, Technomancy*
-- **Casting Time:** 1 action
-- **Range:** 60 feet
-- **Components:** V, S
-- **Duration:** Instantaneous
+*3rd-level Evocation, Technomancy*  
+- **Casting Time:** 1 action  
+- **Range:** 60 feet  
+- **Components:** V, S  
+- **Duration:** Instantaneous  
 
 You release a flood of corrupted code into a target's systems. Choose one creature or object with integrated tech. On a failed Constitution save, it takes 5d8 lightning damage and is stunned until the start of your next turn.
 
 ---
 
 ## Firewall Pulse
-*2nd-level Abjuration, Technomancy*
-- **Casting Time:** 1 reaction (triggered when you are targeted by a digital intrusion or ranged tech-based attack)
-- **Range:** Self (10-foot radius)
-- **Components:** V, S
-- **Duration:** 1 round
+*2nd-level Abjuration, Technomancy*  
+- **Casting Time:** 1 reaction (triggered when you are targeted by a digital intrusion or ranged tech-based attack)  
+- **Range:** Self (10-foot radius)  
+- **Components:** V, S  
+- **Duration:** 1 round  
 
 A burst of defensive code radiates from you, granting you and allies within range advantage on saving throws against tech or hacking effects, and imposing disadvantage on ranged attacks from drones or cybernetics.
 
 ---
 
 ## Drone Swarm
-*4th-level Conjuration, Technomancy*
-- **Casting Time:** 1 action
-- **Range:** 30 feet
-- **Components:** V, S
-- **Duration:** Concentration, up to 1 minute
+*4th-level Conjuration, Technomancy*  
+- **Casting Time:** 1 action  
+- **Range:** 30 feet  
+- **Components:** V, S  
+- **Duration:** Concentration, up to 1 minute  
 
 You conjure a cloud of micro-drones that harry and distract. The swarm occupies a 10-foot cube, counts as difficult terrain, and deals 3d8 piercing damage to any creature starting its turn inside.
 
 ---
 
 ### Spark Pulse
-*Cantrip, Technomancy*
+*Cantrip, Technomancy*  
 - **Casting Time:** 1 action  
 - **Range:** 30 feet  
 - **Components:** V, S  
@@ -70,7 +70,7 @@ Make a ranged spell attack; on a hit, the target takes 1d8 lightning damage and 
 ---
 
 ### Neuro-Snare
-*2nd-level Enchantment, Technomancy*
+*2nd-level Enchantment, Technomancy*  
 - **Casting Time:** 1 bonus action  
 - **Range:** 30 feet  
 - **Components:** V  
@@ -81,7 +81,7 @@ You send a disruptive neural signal to a target creature. They must succeed on a
 ---
 
 ### Data Ghost
-*3rd-level Illusion, Technomancy*
+*3rd-level Illusion, Technomancy*  
 - **Casting Time:** 1 action  
 - **Range:** Self  
 - **Components:** V, S  
@@ -92,7 +92,7 @@ You create a false digital presence that masks your identity in the net. For the
 ---
 
 ### Circuit Overload
-*5th-level Evocation, Technomancy*
+*5th-level Evocation, Technomancy*  
 - **Casting Time:** 1 action  
 - **Range:** 60 feet  
 - **Components:** V, S  
@@ -103,7 +103,7 @@ You send a surge of destructive current into a device, vehicle, or cybernetic sy
 ---
 
 ### Neural Overclock
-*7th-level Transmutation, Technomancy*
+*7th-level Transmutation, Technomancy*  
 - **Casting Time:** 1 action  
 - **Range:** Touch  
 - **Components:** V, S  
