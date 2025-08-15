@@ -182,3 +182,29 @@ th, td {
   position: sticky;
   top: 80px;
 }
+/* ===== Keyframes for glitch + CRT tear ===== */
+@keyframes glitch {
+  0%   { text-shadow: 1px 0 #ff0066, -1px 0 #00fff9; transform: none; }
+  15%  { text-shadow: -1px 0 #ff0066, 1px 0 #00fff9; transform: none; }
+  30%  { text-shadow: 1px 0 #9B30FF, -1px 0 #00fff9; transform: none; }
+  45%  { text-shadow: -1px 0 #9B30FF, 1px 0 #00fff9; transform: none; }
+  50%  { text-shadow: 3px 0 #ff0066, -3px 0 #00fff9; transform: skewX(10deg) translateX(-2px); } /* Hard glitch burst + tear */
+  55%  { text-shadow: -3px 0 #9B30FF, 3px 0 #00fff9; transform: skewX(-10deg) translateX(2px); } /* Hard glitch burst + tear */
+  70%  { text-shadow: 1px 0 #ff0066, -1px 0 #00fff9; transform: none; }
+  85%  { text-shadow: -1px 0 #ff0066, 1px 0 #00fff9; transform: none; }
+  100% { text-shadow: none; transform: none; }
+}
+
+/* ===== Apply glitch to all headings ===== */
+h1, h2, h3, h4, h5, h6 {
+  animation: glitch 1.5s infinite;
+  display: inline-block; /* Needed for transform effects */
+}
+
+/* Randomized durations/delays so each heading is out of sync */
+h1 { animation-duration: 1.6s; animation-delay: 0s; }
+h2 { animation-duration: 1.4s; animation-delay: 0.2s; }
+h3 { animation-duration: 1.7s; animation-delay: 0.4s; }
+h4 { animation-duration: 1.5s; animation-delay: 0.3s; }
+h5 { animation-duration: 1.8s; animation-delay: 0.5s; }
+h6 { animation-duration: 1.6s; animation-delay: 0.1s; }
