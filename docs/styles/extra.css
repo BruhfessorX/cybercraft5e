@@ -221,3 +221,93 @@ h3 { animation-delay: 2s; }
 h4 { animation-delay: 3s; }
 h5 { animation-delay: 1.5s; }
 h6 { animation-delay: 2.5s; }
+
+
+/* =========================
+   CYBERPUNK EFFECTS PACK
+   ========================= */
+
+/* 1. Neon Text Flicker on Hover */
+a, .md-nav__link {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+a:hover, .md-nav__link:hover {
+  animation: neonFlicker 1.5s infinite alternate;
+}
+@keyframes neonFlicker {
+  0%, 100% { text-shadow: 0 0 6px #9B30FF, 0 0 12px #9B30FF; color: #BB86FC; }
+  50% { text-shadow: 0 0 3px #9B30FF, 0 0 8px #BB86FC; color: #FFFFFF; }
+}
+
+/* 2. Scanline Overlay (Retro CRT) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 2px,
+    transparent 3px
+  );
+  z-index: 9999;
+  animation: scanlineScroll 8s linear infinite;
+}
+@keyframes scanlineScroll {
+  from { background-position: 0 0; }
+  to { background-position: 0 100%; }
+}
+
+/* 3. Color Aberration on Image Hover */
+img:hover {
+  filter: drop-shadow(-2px 0 red) drop-shadow(2px 0 cyan);
+  transition: filter 0.3s ease;
+}
+
+/* 4. Slow Gradient Background Pulse */
+body {
+  background: radial-gradient(circle at center, #0A0A0A 0%, #050505 100%);
+  animation: bgPulse 20s ease-in-out infinite alternate;
+}
+@keyframes bgPulse {
+  0% { background: radial-gradient(circle at center, #0A0A0A 0%, #050505 100%); }
+  100% { background: radial-gradient(circle at center, #100020 0%, #050505 100%); }
+}
+
+/* 5. Data Glitch Divider Lines */
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(155, 48, 255, 0) 0%,
+    rgba(155, 48, 255, 0.8) 50%,
+    rgba(155, 48, 255, 0) 100%
+  );
+  animation: glitchLine 4s infinite;
+}
+@keyframes glitchLine {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.4; }
+}
+
+/* 6. Section Header Glow Sweep */
+h1, h2, h3 {
+  position: relative;
+  overflow: hidden;
+}
+h1::after, h2::after, h3::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: sweep 10s infinite;
+}
+@keyframes sweep {
+  0% { left: -100%; }
+  10% { left: 100%; }
+  100% { left: 100%; }
+}
