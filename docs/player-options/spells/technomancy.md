@@ -2,10 +2,10 @@
 
 ## Neural Spike
 *Cantrip, Technomancy*
-- **Casting Time:** 1 action
-- **Range:** 30 feet
-- **Components:** V
-- **Duration:** Instantaneous
+- **Casting Time:** 1 action  
+- **Range:** 30 feet  
+- **Components:** V  
+- **Duration:** Instantaneous  
 
 You overload a target’s cybernetic or neural systems with raw, disruptive code. The target must succeed on a Constitution saving throw or take 1d8 lightning damage and lose the ability to take reactions until the start of your next turn.
 
