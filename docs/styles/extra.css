@@ -182,29 +182,34 @@ th, td {
   position: sticky;
   top: 80px;
 }
-/* ===== Keyframes for glitch + CRT tear ===== */
-@keyframes glitch {
-  0%   { text-shadow: 1px 0 #ff0066, -1px 0 #00fff9; transform: none; }
-  15%  { text-shadow: -1px 0 #ff0066, 1px 0 #00fff9; transform: none; }
-  30%  { text-shadow: 1px 0 #9B30FF, -1px 0 #00fff9; transform: none; }
-  45%  { text-shadow: -1px 0 #9B30FF, 1px 0 #00fff9; transform: none; }
-  50%  { text-shadow: 3px 0 #ff0066, -3px 0 #00fff9; transform: skewX(10deg) translateX(-2px); } /* Hard glitch burst + tear */
-  55%  { text-shadow: -3px 0 #9B30FF, 3px 0 #00fff9; transform: skewX(-10deg) translateX(2px); } /* Hard glitch burst + tear */
-  70%  { text-shadow: 1px 0 #ff0066, -1px 0 #00fff9; transform: none; }
-  85%  { text-shadow: -1px 0 #ff0066, 1px 0 #00fff9; transform: none; }
-  100% { text-shadow: none; transform: none; }
-}
-
-/* ===== Apply glitch to all headings ===== */
+/* Intermittent glitch effect for titles */
 h1, h2, h3, h4, h5, h6 {
-  animation: glitch 1.5s infinite;
-  display: inline-block; /* Needed for transform effects */
+  animation: glitch 0.8s ease-in-out infinite;
+  animation-delay: var(--glitch-delay);
+  animation-play-state: paused;
+  display: inline-block;
 }
 
-/* Randomized durations/delays so each heading is out of sync */
-h1 { animation-duration: 1.6s; animation-delay: 0s; }
-h2 { animation-duration: 1.4s; animation-delay: 0.2s; }
-h3 { animation-duration: 1.7s; animation-delay: 0.4s; }
-h4 { animation-duration: 1.5s; animation-delay: 0.3s; }
-h5 { animation-duration: 1.8s; animation-delay: 0.5s; }
-h6 { animation-duration: 1.6s; animation-delay: 0.1s; }
+/* Random delays so each heading glitches at different times */
+h1 { --glitch-delay: 0s; animation-iteration-count: infinite; }
+h2 { --glitch-delay: 2.5s; }
+h3 { --glitch-delay: 4s; }
+h4 { --glitch-delay: 5.5s; }
+h5 { --glitch-delay: 7s; }
+h6 { --glitch-delay: 8.5s; }
+
+/* Use JS to unpause glitch briefly every few seconds */
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+  headings.forEach(h => {
+    const delay = parseFloat(getComputedStyle(h).getPropertyValue("--glitch-delay")) * 1000;
+    setTimeout(() => {
+      setInterval(() => {
+        h.style.animationPlayState = "running";
+        setTimeout(() => h.style.animationPlayState = "paused", 800); // glitch lasts 0.8s
+      }, 6000 + Math.random() * 2000); // glitch every 6–8s
+    }, delay);
+  });
+});
+</script>
