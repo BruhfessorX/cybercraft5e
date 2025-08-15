@@ -20,13 +20,13 @@ Shanty towns, industrial ruins, and black-market ports.
 The crown jewel of corporate dominance, a forest of glass-and-chrome skyscrapers lit in endless advertisements.  
 - **Vibe:** Clinical, opulent, tightly controlled.  
 - **Security:** AI drones, biometric scanners, and invisible firewalls.  
-- **Hooks:** Data heist in a CEO’s penthouse; infiltration during a high-profile gala; sabotage hidden in a corporate merger.
-- **Faction Presence:** OmniCore Conglomerate (major), Virex Security (major), Ghostlink Syndicate (minor infiltration).
-- **Danger Rating:** ★★☆☆☆ — High security, but relatively safe for those with clearance.
-- **Notable NPCs:**
-  - **Director Kael Draven** — OmniCore exec obsessed with containing Veil breaches.
-  - **Alina Voss** — Corporate fixer with dirt on multiple megacorps.
-- **GM Notes:** Ideal for espionage, social intrigue, and high-tech theft.
+- **Hooks:** Data heist in a CEO’s penthouse; infiltration during a high-profile gala; sabotage hidden in a corporate merger.  
+- **Faction Presence:** OmniCore Conglomerate (major), Virex Security (major), Ghostlink Syndicate (minor infiltration).  
+- **Danger Rating:** ★★☆☆☆ — High security, but relatively safe for those with clearance.  
+- **Notable NPCs:**  
+  - **Director Kael Draven** — OmniCore exec obsessed with containing Veil breaches.  
+  - **Alina Voss** — Corporate fixer with dirt on multiple megacorps.  
+- **GM Notes:** Ideal for espionage, social intrigue, and high-tech theft.  
 
 
 ---
