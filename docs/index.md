@@ -1,6 +1,6 @@
 # Welcome to Cybercraft 5e
 
-"The world ended long ago, but no one bothered to tell the survivors."
+*"The world ended long ago, but no one bothered to tell the survivors."*
 
 Beneath the neon haze of Echo City, the earth remembers. Centuries ago, mankind pierced too deep and broke the Veil, unleashing a flood of nightmares into the waking world. Nuclear fire followed, not as salvation but as panic — nations burning themselves away in a futile attempt to cauterize the wound. The old world crumbled into ash and silence.
 
