@@ -1,6 +1,22 @@
 # Setting Overview
 
-**Cybercraft** takes place in **Echo City** — a sprawling, neon-drenched megacity built atop the bones of ancient ruins where the **Veil** between realities runs dangerously thin.
+21st Century Collapse: Climate failure and corporate monopolies caused resource wars, ecological devastation, and political collapse. Deep-drilling beneath modern-day Echo City uncovered ancient ruins inscribed with alien glyphs. This broke the Veil, a metaphysical barrier holding back eldritch forces.
+
+Nuclear Retaliation (c. 2080s): In panic, remaining superpowers launched nuclear strikes, hoping to seal or destroy the breach. Instead, devastation spread, wiping out most of Earth’s population and destabilizing ecosystems permanently.
+
+Rise of New Powers (2100–2200):
+
+Corporations fortified themselves into Towers, adapting Veil-energy into cybernetics, weapons, and biotech.
+
+Cultist Oligarchies emerged, worshiping and bargaining with entities beyond the Veil, consolidating influence over desperate survivors.
+
+Street Sectors became self-organized enclaves of scavengers, gangs, and fractured communities.
+
+Veil Zones formed where energy leaks warped reality, creating hazards, monsters, and opportunities for power.
+
+Current Era (2231): Echo City sprawls across Lavara’s scarred landscape, built atop the original breach. It is divided into Corporate Towers, Street Sectors, and Veil Zones. The Veil continues to expand in subtle ways, promising both ruin and ascension to those who dare to exploit it.
+
+---
 
 ## Key Facts
 - **Urban Divisions:** Echo City is split into towering **Corporate Towers**, chaotic **Street Sectors**, and unstable **Veil Zones** where reality frays.  
