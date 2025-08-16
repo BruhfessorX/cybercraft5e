@@ -28,6 +28,11 @@ You can see in dim light within 60 feet as if it were bright light, and in darkn
 
 ---
 
+### **Creature of the Night**
+You have advantage on natural attacks and stealth checks while in shadows but suffer disadvantage on saves while in sunlight.
+
+---
+
 ### **Blood Dependency**
 You must feed on blood to sustain your supernatural abilities. If you go more than 7 days without feeding, you gain one level of exhaustion that cannot be removed until you feed.
 
@@ -79,7 +84,7 @@ At creation, choose one Vampyrus bloodline. Each grants additional features.
 ### **Dhampir**
 *Half-blood adaptability.*  
 - **Hybrid Nature:** Choose one Vampyrus trait from any other bloodline, and one Human racial trait (subject to GM approval).  
-- **Balanced Blood:** You can count as either humanoid or undead (choose when you finish a long rest).
+- **Balanced Blood:** You count as both humanoid and undead.
 
 ---
 
