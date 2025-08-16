@@ -22,9 +22,9 @@
 `> Packet Trace Start...`  
 **[DATA NODE: VANTH-CORE]**  
 
-*"—not an accident. The anomaly spreads through *code.* Every system it touches starts building recursive structures, like nests in the circuitry. One of our firewalls started humming. Actual sound, through the metal. Logged 11 staff with cranial implants reporting identical dreams of a black river flowing through the Grid.  
+"—not an accident. The anomaly spreads through *code.* Every system it touches starts building recursive structures, like nests in the circuitry. One of our firewalls started humming. Actual sound, through the metal. Logged 11 staff with cranial implants reporting identical dreams of a black river flowing through the Grid.  
 
-*Consensus voted to wipe the servers. Consensus failed. Something voted *back.*"*  
+Consensus voted to wipe the servers. Consensus failed. Something voted *back.*"  
 
 `> Packet Collapse. Trace Lost.`  
 
@@ -35,11 +35,11 @@
 `> Unauthorized Access Detected…`  
 **[NODE TRACE: PHOEBE-13]**  
 
-*"Signal degradation accelerating. Not a virus. Not malware. Something else. Every time we patch it, the system produces *new holes* we didn’t leave. Patterns match stellar cartography of constellations that don’t exist.*   
+"Signal degradation accelerating. Not a virus. Not malware. Something else. Every time we patch it, the system produces *new holes* we didn’t leave. Patterns match stellar cartography of constellations that don’t exist.   
 
-*Team lead says to wipe it. Can’t. Every time we attempt deletion, half the command staff black out. Nosebleeds. Seizures. Some just… vanish.*  
+Team lead says to wipe it. Can’t. Every time we attempt deletion, half the command staff black out. Nosebleeds. Seizures. Some just… vanish.  
 
-*This isn’t a breach. It’s a door."*  
+This isn’t a breach. It’s a door."  
 
 `> Transmission Ends.`  
 
