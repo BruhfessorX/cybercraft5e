@@ -35,7 +35,14 @@ The crown jewel of corporate dominance, a forest of glass-and-chrome skyscrapers
 A chaotic industrial stretch where the lights never fully work and the air tastes like iron.  
 - **Vibe:** Working-class grit, gangs running “security,” and black-market stalls.  
 - **Security:** Local enforcers on payroll; gang muscle.  
-- **Hooks:** Escort a smuggler through gang turf; shut down an illegal cybernetics chop-shop; protect a witness before they vanish.
+- **Hooks:** Escort a smuggler through gang turf; shut down an illegal cybernetics chop-shop; protect a witness before they vanish.  
+- **Faction Presence:** Rust Serpents gang (major), Synth Unions (minor), Veilbreakers (scattered cells).  
+- **Danger Rating:** ★★★☆☆ — Gritty streets, gang turf wars, and volatile labor strikes.  
+- **Notable NPCs:**  
+  - **Karn “Ironjaw” Vey** — Rust Serpents leader, cybernetic jaw and bad temper.  
+  - **Lysa Marr** — Union organizer trying to keep the peace.  
+- **GM Notes:** Good for escort missions, gang negotiations, or violent street action.  
+
 
 ---
 
@@ -43,7 +50,14 @@ A chaotic industrial stretch where the lights never fully work and the air taste
 A cracked rift in the megacity’s foundation, where the Veil’s energy bleeds into the streets.  
 - **Vibe:** Half-ruined, half-rebuilt; reality bends in strange ways.  
 - **Security:** None reliable — only desperate cults and scavenger crews.  
-- **Hooks:** Hunt down an escaped Veil creature; salvage tech twisted by eldritch power; rescue someone lost to a temporal fold.
+- **Hooks:** Hunt down an escaped Veil creature; salvage tech twisted by eldritch power; rescue someone lost to a temporal fold.  
+- **Faction Presence:** Cult of the Glass Eye (major), scavenger crews (minor), Black Ledger mercenaries (freelance).  
+- **Danger Rating:** ★★★★☆ — Unstable reality, eldritch hazards, and fanatic cultists.  
+- **Notable NPCs:**  
+  - **Prophet Vire** — Cult leader who claims to speak to “what waits beyond.”  
+  - **Gerrik Holt** — Veteran scavenger with maps to unstable zones.  
+- **GM Notes:** Best for horror-tinged expeditions, artifact retrieval, or survival under supernatural pressure.  
+
 
 ---
 
@@ -51,7 +65,14 @@ A cracked rift in the megacity’s foundation, where the Veil’s energy bleeds 
 An underground bazaar sprawling beneath the city, lit by flickering neon strips and shrouded in smoke from a hundred cooking stalls.  
 - **Vibe:** Loud, vibrant, dangerous; a place where you can buy *anything*.  
 - **Security:** Market guards turn a blind eye if paid well enough.  
-- **Hooks:** Recover a stolen prototype hidden in the market; broker a meeting between rival factions; escape after a deal goes bad.
+- **Hooks:** Recover a stolen prototype hidden in the market; broker a meeting between rival factions; escape after a deal goes bad.  
+- **Faction Presence:** Veilbreakers (minor), cybernetic smugglers (major), data pirates (major).  
+- **Danger Rating:** ★★★☆☆ — Crowded, lawless, and perfect for ambushes.  
+- **Notable NPCs:**  
+  - **“Mistress Chrome”** — Smuggler queen who trades in restricted cyberware.  
+  - **Jax Code** — Data broker with a reputation for selling dangerous secrets.  
+- **GM Notes:** Great for shady deals, informant meetings, or chaotic escapes.  
+
 
 ---
 
@@ -59,5 +80,11 @@ An underground bazaar sprawling beneath the city, lit by flickering neon strips 
 A residential block built into the side of an abandoned water-processing megafacility.  
 - **Vibe:** Damp, claustrophobic, eerily quiet except for the hum of machinery.  
 - **Security:** Minimal — locals rely on secrecy and familiarity.  
-- **Hooks:** Investigate disappearances linked to the old filtration tunnels; stop a cult’s ritual in the flooded lower floors; hide from corporate hunters.
+- **Hooks:** Investigate disappearances linked to the old filtration tunnels; stop a cult’s ritual in the flooded lower floors; hide from corporate hunters.  
+- **Faction Presence:** Cult remnants (minor), fugitive gangs (minor), independent citizens.  
+- **Danger Rating:** ★★★☆☆ — Quiet but hiding dangerous secrets.  
+- **Notable NPCs:**  
+  - **Verrin “Whisper” Dusk** — Ex-Veil cultist now in hiding.  
+  - **Tavro Mett** — Mechanic who keeps the Heights’ old systems running.  
+- **GM Notes:** Works for stealth missions, investigations, or hidden cult confrontations.  
 
