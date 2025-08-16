@@ -1,5 +1,13 @@
 # Welcome to Cybercraft 5e
 
+"The world ended long ago, but no one bothered to tell the survivors."
+
+Beneath the neon haze of Echo City, the earth remembers. Centuries ago, mankind pierced too deep and broke the Veil, unleashing a flood of nightmares into the waking world. Nuclear fire followed, not as salvation but as panic — nations burning themselves away in a futile attempt to cauterize the wound. The old world crumbled into ash and silence.
+
+From that silence rose the new order: Corporate Towers, steel citadels where wealth and power rewrite the laws of nature; cultist cabals, whispering oaths to things that dwell beyond reason; and the streets, where survival itself became currency. The Veil never closed. It lingers still, bleeding into Lavara, warping flesh, corrupting minds, and granting forbidden gifts.
+
+Now, in the year 2231, the spires of Echo City climb skyward while the depths below rot and writhe. Some see opportunity, others see damnation. All feel the pull of the Veil. In this city of neon and shadow, the only question left is how much of yourself you’ll trade away before the Veil claims the rest.
+
 <small>Last updated: {{ git_revision_date_localized }}</small>
 
 ---
