@@ -22,11 +22,11 @@
 **To:** All Regional Enforcers  
 **Timestamp:** 2209.01.04  
 
-*"Effective immediately, all unauthorized excavation projects in Veil Zones are to be terminated. Recent breaches in Lower Sector 3 have revealed structures predating the city itself. These ruins are not to be documented, cataloged, or discussed outside Iron Crown channels.  
+*"Effective immediately, all unauthorized excavation projects in Veil Zones are to be terminated. Recent breaches in Lower Sector 3 have revealed structures predating the city itself. These ruins are not to be documented, cataloged, or discussed outside Iron Crown channels.*  
 
-Archaeological theft is theft from the Corporation. And theft from the Corporation is death.  
+*Archaeological theft is theft from the Corporation. And theft from the Corporation is death.*  
 
-Failure to comply will trigger Clause 88: Asset Dissolution."*  
+*Failure to comply will trigger Clause 88: Asset Dissolution."*  
 
 ---
 
@@ -36,9 +36,9 @@ Failure to comply will trigger Clause 88: Asset Dissolution."*
 **To:** All Division Supervisors  
 **Timestamp:** 2174.10.21
 
-*"Reports confirm unauthorized unions forming among augmentation workers. They whisper of Veil immunity, claiming their implants ‘sing’ when anomalies bloom.  
+*"Reports confirm unauthorized unions forming among augmentation workers. They whisper of Veil immunity, claiming their implants ‘sing’ when anomalies bloom.*  
 
-All personnel are reminded: patents extend to flesh as well as steel. The concept of *ownership* is not limited to devices. Should you hear talk of ‘bodies that belong to no one,’ notify Internal Oversight immediately.  
+*All personnel are reminded: patents extend to flesh as well as steel. The concept of *ownership* is not limited to devices. Should you hear talk of ‘bodies that belong to no one,’ notify Internal Oversight immediately.*  
 
-Remember: A worker is an asset. A free worker is a liability."*  
+*Remember: A worker is an asset. A free worker is a liability."*  
 
