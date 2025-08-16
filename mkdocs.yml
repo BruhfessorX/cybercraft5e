@@ -73,6 +73,14 @@ nav:
       - Quick Reference: resources/quick-reference.md
       - Character Sheet: resources/character-sheet.md
       - Legal: resources/legal.md
+  - Tales from the Veil:
+      - Overview: tales-from-the-veil/overview
+      - Journal Entries: tales-from-the-veil/journal-entries.md
+      - Whispers of the Street: tales-from-the-veil/whispers-street.md
+      - Fragments from the Net: tales-from-the-veil/fragments-net.md
+      - Corporate Memos: tales-from-the-veil/corporate-memos.md
+      - Cult Scriptures: tales-from-the-veil/cult-scriptures.md
+
       
 nav_descriptions:
   player-options/races/humans.md: "Adaptable, resilient, and endlessly diverse."
