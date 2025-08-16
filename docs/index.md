@@ -8,6 +8,8 @@ From that silence rose the new order: Corporate Towers, steel citadels where wea
 
 Now, in the year 2231, the spires of Echo City climb skyward while the depths below rot and writhe. Some see opportunity, others see damnation. All feel the pull of the Veil. In this city of neon and shadow, the only question left is how much of yourself you’ll trade away before the Veil claims the rest.
 
+Here you'll find everything you need to create characters, run games, and explore the neon-lit, shadow-infested streets of **Echo City**.
+
 <small>Last updated: {{ git_revision_date_localized }}</small>
 
 ---
@@ -32,20 +34,6 @@ Now, in the year 2231, the spires of Echo City climb skyward while the depths be
   - [Character Sheet](resources/character-sheet.md)
   - [Quick Reference](resources/quick-reference.md)
   - [Legal](resources/legal.md)
-
----
-
-# Cybercraft 5e
-
-Welcome to **Cybercraft 5e**, a cyberpunk-eldritch setting for the 5e rules system.
-
-Here you'll find everything you need to create characters, run games, and explore the neon-lit, shadow-infested streets of **Echo City**.
-
-## Quick Links
-- [Player Options](player-options/races.md)
-- [Rules](rules/core-rules.md)
-- [Game Master Tools](game-master/setting-overview.md)
-- [Gear & Items](player-options/gear-items.md)
 
 ---
 
