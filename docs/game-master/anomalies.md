@@ -24,19 +24,19 @@ Anomalies are fractures where the Veil leaks into reality. They are the scars of
 
 Anomalies vary in scale, danger, and stability. Use these tiers to scale encounters and story impact:  
 
-- **Minor Anomalies**  
+**Minor Anomalies**  
   - Usually small (1–2 city blocks).  
   - Primarily atmospheric or mildly hazardous.  
   - **Effect Examples:** Shadows detach, clocks stutter, gravity shifts slightly, mild Sanity checks (DC 10–12).  
   - Duration: 1d6 hours or until disrupted.  
 
-- **Major Anomalies**  
+**Major Anomalies**  
   - Spread across whole districts or industrial sectors.  
   - Cause serious environmental hazards and spawn entities.  
   - **Effect Examples:** Time loops trap victims, streets fold endlessly, corrupted creatures emerge, Sanity checks (DC 14–16).  
   - Duration: 1d6 days, often studied or quarantined by factions.  
 
-- **Cataclysmic Anomalies**  
+**Cataclysmic Anomalies**  
   - Tear reality wide open, altering the city permanently.  
   - Impossible geometries consume skyscrapers, whole districts vanish into the Veil, or titanic entities walk openly.  
   - **Effect Examples:** Rift storms, multi-entity invasions, permanent corruption zones, Sanity checks (DC 18–20+).  
