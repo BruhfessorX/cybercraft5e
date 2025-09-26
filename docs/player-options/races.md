@@ -35,5 +35,5 @@ In Echo City:
 - Vampyrus control the underworld and hidden courts.  
 - Umbraliths keep to the shadowed edges, feared for their connection to the Void.  
 - Anomalie are unpredictable, often viewed with suspicion or awe.  
-- Synthetics serve as both tools of the megacorps and free-thinking individuals. 
+- Synthetics serve as both tools of the megacorps and free-thinking individuals.  
 - Lycans fill many niches, apex predator being their strongest.
