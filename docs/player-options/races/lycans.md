@@ -104,5 +104,13 @@ The **Chromeclaws** are the next step in the Lycan evolution — beasts that emb
 ---
 
 **“The pack called me impure. Said I traded blood for wire. Maybe they’re right — but when the hunt begins, who tears through steel faster?”**  
-— *Vex, Chromeclaw alpha*
+— *Vex, Chromeclaw alpha*  
+
+---
+
+## In the World  
+- **Packs & Territory:** Organized into blood-bound packs, Lycans claim ruins, tunnels, and abandoned infrastructure as sacred ground.  
+- **Appearance:** Muscular frames, feral eyes that shimmer under Veillight, and faint traces of fur or clawed digits even in human form.  
+- **Role in Society:** Feared by the public, exploited by corps, and revered by some cults as the Veil’s chosen hunters.  
+
 
