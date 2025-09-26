@@ -20,11 +20,11 @@ Whether you are a street-born Human, an immortal predator among the Vampyrus, a 
 ---
 
 ## Choosing a Race
-When selecting your race, consider:
+When selecting your race, consider:  
 - **Origin:** Where were you born or created?  
 - **Faction Ties:** Does your race give you allies or enemies?  
 - **Appearance:** What features set you apart from others?  
-- **Abilities:** How will your racial traits shape your playstyle?
+- **Abilities:** How will your racial traits shape your playstyle?  
 
 ---
 
@@ -36,4 +36,4 @@ In Echo City:
 - Umbraliths keep to the shadowed edges, feared for their connection to the Void.  
 - Anomalie are unpredictable, often viewed with suspicion or awe.  
 - Synthetics serve as both tools of the megacorps and free-thinking individuals.  
-- Lycans fill many niches, apex predator being their strongest.
+- Lycans fill many niches, apex predator being their strongest.  
