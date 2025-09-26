@@ -15,6 +15,7 @@ Whether you are a street-born Human, an immortal predator among the Vampyrus, a 
 - **[Umbraliths](umbraliths.md)** — Void-born entities infused with eldritch darkness, walking the line between reality and the abyss.  
 - **[Anomalie](anomalie.md)** — Living anomalies that defy natural law, embodying strange and unpredictable powers.  
 - **[Synthetics](synthetics.md)** — Intelligent machines, from nanomorph infiltrators to quantum phantoms, shaped by megacorp design or rebellion.
+- **[Lycans](lycans.md)** - Genetic callbacks to humanities feral nature associated to the veil.
 
 ---
 
@@ -35,3 +36,4 @@ In Echo City:
 - Umbraliths keep to the shadowed edges, feared for their connection to the Void.  
 - Anomalie are unpredictable, often viewed with suspicion or awe.  
 - Synthetics serve as both tools of the megacorps and free-thinking individuals.
+- Lycans fill many niches, apex predator being their strongest.
