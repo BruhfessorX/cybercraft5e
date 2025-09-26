@@ -31,11 +31,11 @@ Your Synthetic character has the following racial traits.
 
 ---
 
-### **Integrated Systems**
-Choose one at creation:
-- **Tool Suite:** Gain proficiency with one set of artisan’s tools or tech tools.
-- **Data Link:** Interface with electronic systems within 5 feet without an external device.
-- **Subdermal Armor:** +1 AC when not wearing heavy armor.
+### **Integrated Systems**  
+Choose one at creation:  
+- **Tool Suite:** Gain proficiency with one set of artisan’s tools or tech tools.  
+- **Data Link:** Interface with electronic systems within 5 feet without an external device.  
+- **Subdermal Armor:** +1 AC when not wearing heavy armor.  
 
 ---
 

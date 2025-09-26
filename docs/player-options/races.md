@@ -29,7 +29,7 @@ When selecting your race, consider:
 ---
 
 ## Role in the World
-Races in Letheris are more than stat bonuses — they are political identities.  
+Races in Lavara are more than stat bonuses — they are political identities.  
 In Echo City:
 - Humans dominate population numbers but not necessarily power.  
 - Vampyrus control the underworld and hidden courts.  

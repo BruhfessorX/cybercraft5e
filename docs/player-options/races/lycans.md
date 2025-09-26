@@ -1,5 +1,9 @@
 # Lycan
+*There is a call to the blood for the beast within - it wants to answer.*  
 
+---
+
+## Overview  
 The **Lycan** are remnants of humanity twisted by the Veil’s corruption — feral beings whose blood resonates with predatory instincts and void-tainted power. Once human, their evolution began when the first Veil breaches tore through genetic boundaries, fusing instinct with the supernatural. They are not beholden to the moon, but to the pulse of the city and the rhythm of the Veil itself — the *Hunger Code* that drives them.
 
 Their existence is one of control and release: to master the beast is to walk between two worlds — man and monster, logic and instinct.
@@ -11,9 +15,24 @@ Their existence is one of control and release: to master the beast is to walk be
 - **Size:** Medium  
 - **Speed:** 35 ft.  
 - **Darkvision:** 60 ft.  
-- **Bestial Resilience:** When you take damage that would reduce you to 0 HP, you can instead drop to 1 HP (once per long rest).  
-- **Scent of the Hunt:** You gain proficiency in Perception (smell-based) checks and Survival checks related to tracking.  
-- **Hybrid Form:** As a bonus action, you can assume a partially feral state for 1 minute. You gain advantage on Strength checks and saving throws, and your unarmed strikes deal 1d6 slashing damage. This ability recharges after a long rest.  
+
+---
+
+
+### Bestial Resilience  
+When you take damage that would reduce you to 0 HP, you can instead drop to 1 HP (once per long rest).  
+
+---
+
+
+### Scent of the Hunt  
+You gain proficiency in Perception (smell-based) checks and Survival checks related to tracking.  
+
+---
+
+
+### Hybrid Form  
+As a bonus action, you can assume a partially feral state for 1 minute. You gain advantage on Strength checks and saving throws, and your unarmed strikes deal 1d6 slashing damage. This ability recharges after a long rest.  
 
 ---
 
