@@ -15,7 +15,7 @@ Weapons are divided into **Melee** and **Ranged**, organized by tier.
 ## **Tier 2 (Uncommon)**
 | Name | Damage | Properties | Description |
 |------|--------|------------|-------------|
-| Silenced SMG | 1d8 piercing | Range 60/180 ft, automatic | Compact, automatic weapon for stealth ops. |
+| Silenced SMG | 1d8 piercing | Range 60/180 ft. Reload (15) | Compact, automatic weapon for stealth ops. |
 | Photon Edge *(Faction: Neon Ascendancy, Rep 4+)* | 1d8 slashing + 1d6 fire | Finesse, light, ignores nonmagical armor | Advanced melee weapon forged with plasma edge. |
 | Obsidian Fang *(Faction: Voidborn Syndicate, Rep 4+)* | 1d8 slashing + 1d6 necrotic | Finesse, light, Con save or disadvantage on next attack | Blade infused with void energy. |
 | Chrome Fang Blade *(Faction: Red Chrome Rebellion, Rep 4+)* | 1d10 slashing (1d12 versatile) | Bonus 1d4 vs surprised targets | High-grade melee weapon designed for ambush strikes. |
