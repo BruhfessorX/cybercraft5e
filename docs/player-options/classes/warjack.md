@@ -94,7 +94,7 @@ At 3rd level, choose your cybernetic specialization:
 
 ### Path of the Ironclad
 *The wall that will not fall.*  
-- **3rd Level – Reinforced Plating:** Gain +1 AC while wearing armor.  
+- **3rd Level – Reinforced Plating:** Gain +1 AC while not wearing armor.  
 - **6th Level – Bulwark Protocol:** Spend 2 ODP to gain resistance to all damage until the start of your next turn.  
 - **10th Level – Shielded Advance:** Allies within 10 ft. gain +2 AC while you’re conscious.  
 - **14th Level – Indomitable Core:** Once per long rest, drop to 1 HP instead of 0.  
