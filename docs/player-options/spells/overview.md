@@ -5,7 +5,7 @@ In **Cybercraft 5e**, spellcasting represents a mix of **technological mastery**
 ---
 
 ## Spellcasting Basics
-Cybercraft 5e uses the same **spell slots** and **casting levels** as standard 5e, with the following key differences:
+Cybercraft 5e uses the same **casting levels** as standard 5e but we get rid of spell slots in favor of other ways to put restrictions in place and with the following key differences:
 
 - **Flavor & Source:** Spells are categorized into **Technomancy**, **Voidcraft**, and **Urban Utility**.
 - **Tech vs Magic:** Some spells require functioning technology (e.g., Technomancy), while others draw purely on anomalous energy (Voidcraft).
