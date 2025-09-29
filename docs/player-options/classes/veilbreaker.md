@@ -69,7 +69,7 @@ Void Points are the Veilbreaker’s fuel for eldritch powers.
 ## Class Abilities
 
 ### Eldritch Strike
-At 1st level, when you hit with a melee weapon attack, you can spend 1 VP to deal an extra 1d8 psychic or necrotic damage.
+At 1st level, when you hit with a weapon attack, you can spend 1 VP to deal an extra 1d8 psychic or necrotic damage.
 
 ---
 
@@ -124,7 +124,7 @@ At 3rd level, choose your void discipline:
 ---
 
 ### Void Infusion
-At 5th level, you can spend 2 VP to add 2d8 necrotic or psychic damage to all melee attacks for 1 minute.
+At 5th level, you can spend 2 VP to add 2d8 necrotic or psychic damage to all weapon attacks for 1 minute.
 
 ---
 
