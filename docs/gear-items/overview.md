@@ -19,7 +19,7 @@ Affordable, mass-produced gear that’s easy to find and requires no special con
 | Item | Type | Description |
 |------|------|-------------|
 | Combat Knife | Melee Weapon | Deals 1d6 slashing damage. Can be thrown (range 20/60 ft). Light property. |
-| Street Pistol | Ranged Weapon | Deals 1d6 piercing damage. Reload (6 shots). Range 30/90 ft. |
+| Street Pistol | Ranged Weapon | Deals 1d6 piercing damage. Reload (10). Range 30/90 ft. |
 | Light Armor Vest | Armor | AC 11 + Dex modifier. Disadvantage on Stealth checks. |
 | Standard Commlink | Gear | Allows encrypted communication within 1 mile. Can connect to local data grids. |
 | Medkit (Basic) | Gear | Restores 1d8 + 2 HP and stabilizes one dying creature. One use. |

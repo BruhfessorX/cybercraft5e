@@ -8,7 +8,7 @@ Weapons are divided into **Melee** and **Ranged**, organized by tier.
 | Name | Damage | Properties | Description |
 |------|--------|------------|-------------|
 | Combat Knife | 1d6 slashing | Light, finesse | Basic close-combat blade. |
-| Street Pistol | 1d6 piercing | Light, range 30/90 ft | Low-caliber sidearm with minimal stopping power. |
+| Street Pistol | 1d6 piercing | Light, range 30/90 ft, Reload (10) | Low-caliber sidearm with minimal stopping power. |
 
 ---
 
