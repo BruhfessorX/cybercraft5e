@@ -40,43 +40,48 @@ You can speak, read, and write Common and Deep Speech.
 
 ---
 
-## Templates
-At creation, choose one Umbralith template. Each grants additional features.
+## Voidform
+At creation, choose one Voidform. Each grants additional features. Genesis traits unlock once a certain number of Corruption points are gained, noted on the ability.
 
 ---
 
 ### **Reaper**
 *Harvester of souls.*  
 - **Soul Feast:** When a creature you can see dies within 30 feet of you, you may use your reaction to capture its essence, gaining temporary hit points equal to your proficiency bonus + your Constitution modifier.  
-- **Spirit Whisper:** You can cast *speak with dead* once per long rest without material components.
+- **Spirit Whisper:** You can cast *speak with dead* once per long rest without material components.  
+- **Genesis Trait - Soul Rend (Corruption 4+):** When you deal damage to a creature below half its maximum HP, you can choose to siphon part of its essence. You regain hit points equal to half your proficiency bonus (rounded up). You can use this feature a number of times equal to your proficiency bonus per long rest.
 
 ---
 
 ### **Abyssal Sentinel**
 *Guardian of the deep Void.*  
 - **Void-Forged Endurance:** You have advantage on saving throws against extreme environmental effects, such as high pressure, vacuum, or magical darkness.  
-- **Titan Strength:** You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.
+- **Titan Strength:** You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.  
+- **Genesis Trait - Pressure Shield (Corruption 5+):** When you take damage from an attack, you can create a brief pulse of Void density around yourself, reducing that damage by an amount equal to your Constitution modifier. You can use this ability a number of times equal to your proficiency bonus per long rest.
 
 ---
 
 ### **Echo Revenant**
 *Warriors bound to past echoes.*  
 - **Spectral Ally:** Once per long rest, you can summon a spectral echo of a past warrior for 1 minute. It fights as an allied creature with AC 14, HP equal to 5 × your proficiency bonus, and deals 1d8 + your proficiency bonus force damage on a hit.  
-- **Echoed Skills:** Choose one skill. You gain proficiency in that skill, representing inherited knowledge from your echo.
+- **Echoed Skills:** Choose one skill. You gain proficiency in that skill, representing inherited knowledge from your echo.  
+- **Genesis Trait - Memory Pulse (Corruption 5+):** As a bonus action, you can channel the echo of your past selves. For 1 minute, you add your Charisma modifier to all saving throws. Once used, you can’t use this feature again until you finish a long rest.
 
 ---
 
 ### **Voidforger**
 *Artisans of the infinite dark.*  
 - **Voidcraft:** You gain proficiency with smith’s tools.  
-- **Infused Arms:** Once per long rest, you can infuse a weapon or piece of armor with Void energy for 1 hour. The item becomes magical and deals an extra 1d4 necrotic damage (weapons) or grants +1 AC (armor).
+- **Infused Arms:** Once per long rest, you can infuse a weapon or piece of armor with Void energy for 1 hour. The item becomes magical and deals an extra 1d4 necrotic damage (weapons) or grants +1 AC (armor).  
+- **Genesis Trait - Resonant Armament (Corruption 4+):** Your crafted weapons hum with latent Void power. Once per turn when you hit with a weapon you created or modified, you can deal an additional 1d4 force damage. At level 11, this increases to 1d6.  
 
 ---
 
 ### **Ebonweaver**
 *Molders of living shadow.*  
 - **Shadowmold:** As an action, you can create a simple object or weapon from solid shadow. It lasts for 1 minute or until you dismiss it. Weapons created this way count as magical for overcoming resistance.  
-- **Veil of Night:** Once per long rest, you can cast *darkness* without expending a spell slot. You can see through this darkness.
+- **Veil of Night:** Once per long rest, you can cast *darkness* without expending a spell slot. You can see through this darkness.  
+- **Genesis Trait - Living Shade (Corruption 4+):** You command your shadow as a sentient extension of yourself. As a bonus action, you can cause your shadow to move independently up to 15 feet away. It can manipulate small objects, open doors, or perform minor tasks. Lasts 10 minutes, usable once per long rest.
 
 ---
 

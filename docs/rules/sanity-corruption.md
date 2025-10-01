@@ -14,10 +14,10 @@ When a character witnesses an eldritch anomaly, horrific act, or experiences som
 - Failure results in **Sanity damage** (temporary or permanent effects).
 
 **Common Triggers:**  
-- Witnessing a reality-warping anomaly.
-- Prolonged interaction with corrupted creatures.
-- Experiencing sudden reality shifts or impossible geometry.
-- Hearing voices or messages from beyond the Veil.
+- Witnessing a reality-warping anomaly.  
+- Prolonged interaction with corrupted creatures.  
+- Experiencing sudden reality shifts or impossible geometry.  
+- Hearing voices or messages from beyond the Veil.  
 
 ---
 
@@ -44,10 +44,10 @@ Sanity damage is tracked separately from hit points.
 Corruption represents the creeping influence of the Void and eldritch forces on the body and soul. Unlike Sanity, corruption does not heal naturally.
 
 **Gaining Corruption Points:**  
-- Using certain Void-based powers, relics, or cyberware.
-- Failing Sanity checks by **5 or more**.
-- Exposure to high-tier anomalies.
-- Making pacts with Void entities.
+- Using certain Void-based powers, relics, or cyberware.  
+- Failing Sanity checks by **5 or more**.  
+- Exposure to high-tier anomalies.  
+- Making pacts with Void entities.  
 
 **Thresholds:**  
 - **5 Points:** Minor Mutation – Subtle physical or mental changes.  
