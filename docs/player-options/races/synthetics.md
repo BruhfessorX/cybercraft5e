@@ -56,7 +56,7 @@ You can speak, read, and write Common and one additional language of your choice
 ---
 
 ## Templates
-At creation, choose one Synthetic template. Each grants additional features.
+At creation, choose one Synthetic template. Each grants additional features.  Singularity trait.
 
 ---
 

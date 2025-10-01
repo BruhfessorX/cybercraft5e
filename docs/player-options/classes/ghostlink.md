@@ -24,24 +24,24 @@ Ghostlinks are covert operatives who blend advanced stealth technology, hacking,
 
 ### Starting Equipment
 You start with the following equipment, in addition to the equipment granted by your background:  
-- (a) light pistol or (b) silenced blade  
-- (a) light armor or (b) stealth suit  
+- (a) light weapon or (b) combat knife    
+- (a) light armor or (b) medium armor  
 - Hacking tools  
 - 30 credits  
 
 ---
 
-## Ghost Energy Points (GEP)
-Ghost Energy Points power the Ghostlink’s stealth tech and phasing abilities.  
+## Protocol Points (PP)
+Protocol Points power the Ghostlink’s stealth tech and phasing abilities.  
 - **Starts at 3 at level 1**, scaling to 25 by level 20.  
-- **Regains on short or long rest**.  
+- **Regains on long rest**.  
 - Can be used for cloaking, teleportation, or special attacks.
 
 ---
 
 ## Level Progression
 
-| Level | Features | GEP |
+| Level | Features | PP |
 |-------|----------|-----|
 | 1     | Ghostlink Strike, Cloak | 3 |
 | 2     | Phase Step | 4 |
@@ -74,12 +74,12 @@ At 1st level, when you attack a creature that is surprised or unaware of you, de
 ---
 
 ### Cloak
-At 1st level, as a bonus action, spend 1 GEP to become invisible until the start of your next turn or until you attack.
+At 1st level, as a bonus action, spend 1 PP to become invisible until the start of your next turn or until you attack.
 
 ---
 
 ### Phase Step
-At 2nd level, as a bonus action, spend 1 GEP to teleport up to 10 ft. to an unoccupied space you can see.
+At 2nd level, as a bonus action, spend 1 PP to teleport up to 10 ft. to an unoccupied space you can see.
 
 ---
 
@@ -95,8 +95,8 @@ At 3rd level, choose your specialization:
 
 ### Path of the Phantom Blade
 *Strike fast. Leave nothing behind.*  
-- **3rd Level – Silent Execution:** Spend 1 GEP to deal an extra 1d8 damage on a melee attack against a surprised enemy.  
-- **6th Level – Death Lunge:** Spend 2 GEP to move up to 20 ft. and attack as a bonus action.  
+- **3rd Level – Silent Execution:** Spend 1 PP to deal an extra 1d8 damage on a melee attack against a surprised enemy.  
+- **6th Level – Death Lunge:** Spend 2 PP to move up to 20 ft. and attack as a bonus action.  
 - **10th Level – Bleed Out:** Melee attacks against unaware enemies cause them to take 1d6 damage at the start of their turn for 3 rounds.  
 - **14th Level – Lethal Precision:** Once per turn, add your proficiency bonus to damage rolls.  
 - **18th Level – Master Assassin:** When you crit, roll an additional weapon damage die.
@@ -105,9 +105,9 @@ At 3rd level, choose your specialization:
 
 ### Path of the Data Wraith
 *The deadliest weapon is control of the system.*  
-- **3rd Level – Viral Code:** Spend 1 GEP to disable a device for 1 round.  
-- **6th Level – Backdoor Access:** Spend 2 GEP to bypass any non-magical lock instantly.  
-- **10th Level – Remote Hijack:** Spend 3 GEP to take control of a mechanical device for 1 minute.  
+- **3rd Level – Viral Code:** Spend 1 PP to disable a device for 1 round.  
+- **6th Level – Backdoor Access:** Spend 2 PP to bypass any non-magical lock instantly.  
+- **10th Level – Remote Hijack:** Spend 3 PP to take control of a mechanical device for 1 minute.  
 - **14th Level – Digital Erasure:** Once per long rest, delete all trace of your presence from systems in a building or area.  
 - **18th Level – Network Crash:** Once per long rest, disable all devices in a 60-ft. radius for 1 minute.
 
@@ -115,9 +115,9 @@ At 3rd level, choose your specialization:
 
 ### Path of the Void Stalker
 *The shortest path is through the walls.*  
-- **3rd Level – Blink Slash:** Spend 1 GEP to teleport up to 10 ft. and make a melee attack.  
-- **6th Level – Phase Dodge:** Spend 2 GEP to become incorporeal until the start of your next turn, avoiding all physical attacks.  
-- **10th Level – Void Strike:** Spend 3 GEP to make an attack that ignores armor and resistances.  
+- **3rd Level – Blink Slash:** Spend 1 PP to teleport up to 10 ft. and make a melee attack.  
+- **6th Level – Phase Dodge:** Spend 2 PP to become incorporeal until the start of your next turn, avoiding all physical attacks.  
+- **10th Level – Void Strike:** Spend 3 PP to make an attack that ignores armor and resistances.  
 - **14th Level – Rapid Shift:** Phase Step’s distance increases to 30 ft.  
 - **18th Level – Total Phase:** Once per long rest, become intangible for 1 minute, moving through walls and ignoring all terrain.
 
@@ -159,7 +159,7 @@ At 17th level, you cannot be detected by magical or technological means unless y
 ---
 
 ### Apex Ghostlink
-At 20th level, you can maintain invisibility indefinitely when not attacking or casting a program.
+At 20th level, you can maintain invisibility indefinitely.
 
 ---
 
