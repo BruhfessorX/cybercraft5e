@@ -1,0 +1,8 @@
+More Items
+More Spells
+Check consistency
+Give items proper tags like Light/Heavy and such.
+Redo starting class items.
+Make a cleric like spellcasting class.
+Make a gun based class.
+Relook at racial archetypes to bring them in line with the new Lycan powercreep.
