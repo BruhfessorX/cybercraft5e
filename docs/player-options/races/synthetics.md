@@ -78,7 +78,7 @@ Your body is composed of countless nanobots.
 
 - **Morphic Form:** As an action, reshape yourself to mimic the appearance of a creature of your size you have seen, including clothing and gear (visual only). This disguise lasts until you change form or are incapacitated.
 - **Adaptive Tools:** As a bonus action you can form simple tools or weapons from your body (counts as non-magical, disappears if dropped). You may only have one such item at a time.  
-- **Singularity Trait - Prime Mimicry (Absorb 3 rare or 2 very rare items):** Your nanites evolve through feeding off the data of other objects, this enhances your other traits. Morphic Form now allows you to mimic a creature of up to 1 size category larger or smaller and you gain any special movement or vision abilities the creature had. Adaptive Tools now allows you to create up to 2 items at the same time, further more 1 item may mimic the properties of a rare item and 1 may mimic the properties of a very rare item.  
+- **Singularity Trait - Prime Mimicry (Absorb 4 rare or 2 very rare items):** Your nanites evolve through feeding off the data of other objects, this enhances your other traits. Morphic Form now allows you to mimic a creature of up to 1 size category larger or smaller and you gain any special movement or vision abilities the creature had. Adaptive Tools now allows you to create up to 2 items at the same time, further more 1 item may mimic the properties of a rare item and 1 may mimic the properties of a very rare item.  
 
 ---
 
