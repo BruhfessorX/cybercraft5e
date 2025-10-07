@@ -53,40 +53,50 @@ At creation, choose one Vampyrus bloodline. Each grants additional features. Asc
 
 ---
 
-### **Daywalker**
+### **Daywalker**  
+
 *Balanced between light and dark.*  
+
 - **Sun’s Resilience:** You take no penalties for operating in sunlight.  
 - **Enhanced Regeneration:** Once per long rest, you can use your bonus action to regain hit points equal to 1d8 + your Constitution modifier. This healing increases to 2d8 at level 10 and 3d8 at level 18.  
 - **Ascendant Trait - Dawnblood Vitality (Constitution 20+):** When you finish a short rest in daylight, you regain an additional 1d6 hit points and reduce your corruption by 1 (if applicable). The first time you drop below half your hit points each day, you gain temporary hit points equal to your level.  
 
 ---
 
-### **Feral**
+### **Feral**  
+
 *Primal fury unleashed.*  
+
 - **Bestial Strength:** You have advantage on Strength (Athletics) checks made to grapple or shove.  
 - **Predatory Instincts:** You have advantage on Wisdom (Perception) checks that rely on hearing or smell.  
 - **Ascendant Trait - Blood Frenzy (Strength 20+):** When you reduce a creature to 0 HP, you may use your bonus action to move up to half your speed and make one melee attack. Once per long rest.  
 
 ---
 
-### **Pureblood**
+### **Pureblood**  
+
 *Nobility draped in shadows.*  
+
 - **Charm of Nobility:** You can cast *charm person* once per long rest without expending a spell slot (Charisma is your casting ability).  
 - **Elegant Presence:** You gain proficiency in Persuasion. If already proficient, double your proficiency bonus for Persuasion checks.  
 - **Ascendant Trait – Sovereign Will (Charisma 20+):** Once per long rest, as an action, you exude an aura of command for 1 minute. Hostile creatures within 30 feet must make a Charisma saving throw (DC = 8 + your Charisma modifier + proficiency bonus) or become charmed or frightened (your choice) for the duration.  
 
 ---
 
-### **Psychic**
+### **Psychic**  
+
 *Mind and blood intertwined.*  
+
 - **Telepathy:** You can communicate telepathically with any creature you can see within 30 feet.  
 - **Psychic Shielding:** You have advantage on saving throws against effects that would read or control your mind.  
 - **Ascendant Trait – Mind Flare (Intelligence 20+):** Once per long rest, you can unleash a psychic pulse in a 15-foot radius. All creatures of your choice must make an Intelligence saving throw (DC = 8 + your proficiency bonus + Intelligence modifier) or take 2d8 psychic damage and be stunned until the start of your next turn.  
 
 ---
 
-### **Dhampir**
+### **Dhampir**  
+
 *Half-blood adaptability.*  
+
 - **Hybrid Nature:** Choose one Vampyrus trait from any other bloodline, and one Human racial trait (subject to GM approval).  
 - **Balanced Blood:** You count as both humanoid and undead.  
 - **Ascendant Trait – Adaptive Evolution (Constitution or Charisma 20+):** Once per long rest, as a bonus action, you can temporarily gain one bloodline ability from another Vampyrus archetype for 1 minute.
