@@ -74,7 +74,7 @@ At creation, choose one Classification. Each grants additional features. Resonan
 
 - **Mental Intrusion:** Once per long rest, you may force a creature within 30 feet to make a Wisdom saving throw (DC = 8 + proficiency bonus + Charisma modifier) or become charmed or frightened (your choice) until the end of your next turn.  
 - **Mental Shielding:** You have advantage on saving throws against being charmed.  
-- **Resonance Trait - Mindfract Array (Corruption 5+, Charisma 20+):** You can concentrate on two spells, effects, or devices simultaneously. On your turn you may choose to have an additional Action, 2 Bonus Actions, or 1 additional Bonus Action and Reaction, you may use this feature a number of times equal to your proficiency bonus per long rest.  
+- **Resonance Trait - Mindfract Array (Corruption 5+, Charisma 20+):** You can concentrate on two spells, effects, or devices simultaneously. On your turn you may choose to have either an additional Action, 2 Bonus Actions, or 1 additional Bonus Action and Reaction, you may use this feature a number of times equal to your proficiency bonus per long rest.  
 
 ---
 
