@@ -89,7 +89,7 @@ At creation, choose one Vampyrus bloodline. Each grants additional features. Asc
 *Half-blood adaptability.*  
 - **Hybrid Nature:** Choose one Vampyrus trait from any other bloodline, and one Human racial trait (subject to GM approval).  
 - **Balanced Blood:** You count as both humanoid and undead.  
-- **Ascendant Trait – Adaptive Evolution (Constitution or Charisma 20+):** Once per long rest, as a bonus action, you can temporarily gain one active bloodline ability from another Vampyrus archetype for 1 minute.
+- **Ascendant Trait – Adaptive Evolution (Constitution or Charisma 20+):** Once per long rest, as a bonus action, you can temporarily gain one bloodline ability from another Vampyrus archetype for 1 minute.
 
 ---
 
