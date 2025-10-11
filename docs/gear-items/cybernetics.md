@@ -4,6 +4,13 @@ Cybernetic augmentations grant unique enhancements, some requiring attunement or
 
 ---
 
+## Installation Rules
+- Installing a cybernetic implant requires **4–24 hours** of downtime and a **DC 12–18 Medicine or Technology check**, depending on tier.  
+- A character can normally benefit from **up to 2 augmentations per tier** before risking **Corruption** or **System Instability**.  
+- **Faction Cybernetics** may require a **Reputation Threshold** and **attunement**; failure to meet faction loyalty requirements may cause rejection or malfunction.  
+
+---
+
 ## **Tier 1 (Common)**
 | Name | Effect | Description |
 |------|--------|-------------|
@@ -21,7 +28,7 @@ Cybernetic augmentations grant unique enhancements, some requiring attunement or
 ## **Tier 2 (Uncommon)**
 | Name | Effect | Description |
 |------|--------|-------------|
-| Neural Interface Link | Neural connection to systems | Direct mind-to-machine interface. |
+| Neural Interface Link | Allows direct neural connection to compatible systems. +1 to Technology and Hacking checks. | Direct mind-to-machine interface. |
 | Neural Uplink Visor *(Faction: Neon Ascendancy, Rep 4+)* | +2 Investigation & Technology; record/replay 60 sec | Attunement required. |
 | Nightglass Eyes *(Faction: Voidborn Syndicate, Rep 4+)* | Darkvision 60 ft (incl. magical), Perception adv in dim light | Attunement required. |
 | Subdermal Shockweave | 1/day discharge 2d8 lightning in 10 ft radius (DC 13 Dex save half) | Street-level defensive modification. |
@@ -35,7 +42,7 @@ Cybernetic augmentations grant unique enhancements, some requiring attunement or
 ## **Tier 3 (Rare)**
 | Name | Effect | Description |
 |------|--------|-------------|
-| Augmented Reflex Package | +2 Initiative, reaction speed boost | Enhances combat responsiveness. |
+| Augmented Reflex Package | +2 to Initiative and Dexterity saving throws; advantage on Reaction-based checks (e.g., opportunity attacks). | Enhances combat responsiveness. |
 | Echelon Spine *(Faction: Aegis Protocol, Rep 6+)* | Immune to paralysis and prone; auto-stabilize when dying | Integrated spinal actuator. |
 | Pulseheart Generator | +1 Dex and +1 Con (max 20); emits faint hum | Replaces organic heart with kinetic core. |
 | Ghostlink Drive *(Faction: Neon Ascendancy, Rep 6+)* | Bonus action: resist nonmagical damage 1/long rest | Experimental hybrid bio-code implant. |
@@ -50,7 +57,7 @@ Cybernetic augmentations grant unique enhancements, some requiring attunement or
 ## **Tier 4 (Very Rare)**
 | Name | Effect | Description |
 |------|--------|-------------|
-| Synthetic Combat Frame | Reinforces skeletal/muscle structure for combat | Increased carrying capacity and melee damage. |
+| Synthetic Combat Frame | Replaces skeletal/muscle structure. +2 Strength and Constitution (max 22). Advantage on Strength saves and checks. | Increased carrying capacity and melee damage. |
 | Seraphim Arm *(Faction: Glass Covenant, Rep 7+)* | +2 Str, 1/day +3d8 radiant melee strike | Attunement required. |
 | Hemocore Reactor *(Faction: Crimson Dominion, Rep 7+)* | 1/day full heal & resist all damage for 1 min after kill | Attunement required. |
 | Chronos Neural Lattice | Gain an extra reaction each round; 1/day cast *Haste* on self | Temporal reinforcement of synaptic flow. |
@@ -66,7 +73,7 @@ Cybernetic augmentations grant unique enhancements, some requiring attunement or
 | Name | Effect | Description |
 |------|--------|-------------|
 | Halo Crown *(Faction: Glass Covenant, Rep 9+)* | Immunity to charm, fear, possession; cast *Mass Heal* 1/day | Attunement required. |
-| Throne of Blood *(Faction: Crimson Dominion, Rep 9+)* | Immune to exhaustion; regen 5 HP/round; Blood Ascendancy 1/day | Attunement required. |
+| Throne of Blood *(Faction: Crimson Dominion, Rep 9+)* | Immune to exhaustion; regeneration 5 HP/round; 1/day enter Blood Ascendancy for 1 min (+2 AC, advantage on all attacks, +10 ft speed) | Attunement required. Cybernetic Exo-rig.|
 | Veil Ascendant Core *(Faction: Voidborn Syndicate, Rep 9+)* | 1/day shift into ethereal state for 1 minute (*Etherealness*) | Pure void energy grafted into the nervous system. |
 | Godhand Array *(Faction: Neon Ascendancy, Rep 10+)* | Control digital or construct creatures within 30 ft (DC 18 Wis) 1/day | Forbidden prototype combining code and soul. |
 | Apex Chassis System | +2 Str, +2 Con (max 22), AC +1 if unarmored | Full-body cybernetic shell built for post-human soldiers. |
@@ -74,8 +81,4 @@ Cybernetic augmentations grant unique enhancements, some requiring attunement or
 
 ---
 
-## Installation Rules
-- Installing a cybernetic implant requires **4–24 hours** of downtime and a **DC 12–18 Medicine or Technology check**, depending on tier.  
-- A character can normally benefit from **up to 2 augmentations per tier** before risking **Corruption** or **System Instability**.  
-- **Faction Cybernetics** may require a **Reputation Threshold** and **attunement**; failure to meet faction loyalty requirements may cause rejection or malfunction.  
 

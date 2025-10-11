@@ -17,7 +17,7 @@ Your Anomalie character has the following racial traits.
 
 **Age.** Anomalies do not age in a traditional sense. Some are timeless, while others are transient phenomena that fade after decades or centuries.
 
-**Size.** Anomalies range widely in form, but for game purposes, your size is **Medium**.
+**Size.** Anomalies range widely in form, your size can be **Small, Medium or Large**.
 
 **Speed.** Your base walking speed is **30 feet**.
 
@@ -55,7 +55,7 @@ At creation, choose one Classification. Each grants additional features. Resonan
 
 - **Elemental Affinity:** Choose acid, cold, fire, lightning, or thunder damage. You gain resistance to the chosen damage type.  
 - **Primal Surge:** Once per long rest, when you hit with an attack, you may deal an additional 1d6 damage of your chosen type.  
-- **Resonance Trait - Elemental Veneration (Corruption 4+, Any stat 19+):** You can now use your Primal Surge ability a number of times equal to your corruption per long rest and its damage increases by 1d6 for every 4 corruption points you have. Choose Necrotic of Radiant, half your damage is now that type.  
+- **Resonance Trait - Elemental Veneration (Corruption 4+, Any stat 19+):** You can now use your Primal Surge ability a number of times equal to your corruption per long rest and its damage increases by 1d6 for every 4 corruption points you have. Choose Necrotic or Radiant, half your damage is now that type.  
 ---
 
 ### **Phantasma (P)**  
