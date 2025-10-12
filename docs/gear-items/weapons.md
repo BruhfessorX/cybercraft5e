@@ -59,7 +59,7 @@ Elite or experimental weaponry from the upper echelon of corporate or cult desig
 | **Graviton Maul** | Melee | 2d10 bludgeoning | Heavy, Two-Handed | Generates local gravity surges. **Special:** On critical, knock target prone and 10 ft away. |
 | **Pulse Sniper** | Ranged | 3d8 radiant | Reload (2), Range 200/800 | Emits laser-pulse shots. **Special:** No disadvantage at long range. |
 | **Singularity Launcher** | Ranged | 4d8 force (10 ft radius) | Heavy, Reload (1) | Fires compressed gravity spheres. **Special:** Targets pulled 10 ft toward center on failed DC 16 Strength save. |
-| **Seraph-Edge Monoblade** *(Faction: Glass Covenant, Rep 7+)* | Melee | 1d12 slashing | Finesse, Versatile (2d6) | A masterwork monofilament weapon infused with Veil-reactive glass filaments that shimmer with prismatic light. Used exclusively by Glass Covenant enforcers. **Special:** Scores a critical hit on **18–20**. On a critical hit, deal an additional **2d8 radiant damage**, and the target must succeed on a DC 15 Constitution saving throw or be **blinded** until the end of their next turn. Attunement required. |
+| **Seraph-Edge Monoblade** *(Faction: Glass Covenant, Rep 7+)* | Melee | 1d12 slashing | Finesse, Versatile (1d14) | A masterwork monofilament weapon infused with Veil-reactive glass filaments that shimmer with prismatic light. Used exclusively by Glass Covenant enforcers. **Special:** Scores a critical hit on **18–20**. On a critical hit, deal an additional **2d8 radiant damage**, and the target must succeed on a DC 15 Constitution saving throw or be **blinded** until the end of their next turn. Attunement required. |  
 
 ---
 
