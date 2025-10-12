@@ -18,21 +18,18 @@ Their existence is one of control and release: to master the beast is to walk be
 
 ---
 
-
 ### Bestial Resilience  
 When you take damage that would reduce you to 0 HP, you can instead drop to 1 HP (once per long rest).  
 
 ---
-
 
 ### Scent of the Hunt  
 You gain proficiency in Perception (smell-based) checks and Survival checks related to tracking.  
 
 ---
 
-
 ### Hybrid Form  
-As a bonus action, you can assume a partially feral state for 1 minute. You gain advantage on Strength checks and saving throws, and your unarmed strikes deal 1d6 slashing damage. This ability recharges after a long rest.  
+As a bonus action, you can assume a partially feral state for 1 minute. You gain advantage on Strength and Constitution checks and saving throws, and your unarmed strikes deal 1d6 slashing damage. Additionally you gain a bonus to your speed equal to your Dexterity modifier x5. You can use this ability a number of times per long rest equal to your Constitution modifier.  
 
 ---
 
