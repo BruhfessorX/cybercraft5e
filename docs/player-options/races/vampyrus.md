@@ -33,8 +33,13 @@ You have advantage on natural attacks and stealth checks while in shadows but su
 
 ---
 
+### **Blood Fugue**
+When you feed you gain a +1 to ac and +1 to all rolls for 1 minute. It takes a full round to feed in which you and your target must be willing or immobilized.  
+
+---
+
 ### **Blood Dependency**
-You must feed on blood to sustain your supernatural abilities. If you go more than 7 days without feeding, you gain one level of exhaustion that cannot be removed until you feed.
+You must feed on blood to sustain your supernatural abilities. If you go more than 7 days without feeding, you gain one level of exhaustion that cannot be removed until you feed and lose access to any Ascendant Trait you have.  
 
 ---
 
@@ -59,7 +64,7 @@ At creation, choose one Vampyrus bloodline. Each grants additional features. Asc
 
 - **Sun’s Resilience:** You take no penalties for operating in sunlight.  
 - **Enhanced Regeneration:** Once per long rest, you can use your bonus action to regain hit points equal to 1d8 + your Constitution modifier. This healing increases to 2d8 at level 10 and 3d8 at level 18.  
-- **Ascendant Trait - Dawnblood Vitality (Constitution 20+):** When you finish a short rest in daylight, you regain an additional 1d6 hit points and reduce your corruption by 2 (if applicable). The first time you drop below half your hit points each day, you gain temporary hit points equal to your level plus proficiency bonus.  
+- **Ascendant Trait - Dawnblood Vitality (Constitution 20+):** When you finish a short or long rest in daylight, you regain an additional 2d6 hit points and reduce your corruption by 2 (if applicable). The first time you drop below half your hit points each day, you gain temporary hit points equal to your level plus proficiency bonus.  
 
 ---
 
@@ -69,7 +74,7 @@ At creation, choose one Vampyrus bloodline. Each grants additional features. Asc
 
 - **Bestial Strength:** You have advantage on Strength (Athletics) checks made to grapple or shove.  
 - **Predatory Instincts:** You have advantage on Wisdom (Perception) checks that rely on hearing or smell.  
-- **Ascendant Trait - Blood Frenzy (Strength 20+):** When you reduce a creature to 0 HP, you may use your bonus action to move up to half your speed and make one melee attack.   
+- **Ascendant Trait - Blood Frenzy (Strength 20+):** When you reduce a creature to 0 HP, as a free action, you may move up to half your speed and make one melee attack.   
 
 ---
 
