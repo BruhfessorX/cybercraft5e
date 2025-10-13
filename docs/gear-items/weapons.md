@@ -12,7 +12,8 @@ Affordable, mass-produced weapons that anyone can get their hands on.
 | **Pipe Rifle** | Ranged | 1d8 piercing | Simple, Two-Handed, Reload (1), Range 80/240 | Crude, unreliable rifle pieced together from scrap. |
 | **Brass Knuckles** | Melee | 1d4 bludgeoning | Simple | Compact melee weapon for brawlers and street fighters. |
 | **Shock Baton** | Melee | 1d6 bludgeoning + 1d4 lightning | Martial | Police-grade stun weapon. **Special:** Once per short rest, force target to make DC 12 Con save or be stunned 1 round. |
-| **Mono Razor** | Melee | 1d6 slashing | Exotic, Light, Finesse | Razor-sharp mono-edge favored by street gangs. |
+| **Mono Razor** | Melee | 1d6 slashing | Martial, Light, Finesse | Razor-sharp mono-edge favored by street gangs. |
+| **Combat Pistol** | Ranged | 1d8 piercing | Martial, Light, Reload (6), Range 50/130 | High-caliber sidearm mainly used by corpo enforcers. |
 
 ---
 
