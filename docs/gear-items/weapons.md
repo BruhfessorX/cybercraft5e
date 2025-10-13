@@ -14,6 +14,7 @@ Affordable, mass-produced weapons that anyone can get their hands on.
 | **Shock Baton** | Melee | 1d6 bludgeoning + 1d4 lightning | Martial | Police-grade stun weapon. **Special:** Once per short rest, force target to make DC 12 Con save or be stunned 1 round. |
 | **Mono Razor** | Melee | 1d6 slashing | Martial, Light, Finesse | Razor-sharp mono-edge favored by street gangs. |
 | **Combat Pistol** | Ranged | 1d8 piercing | Martial, Light, Reload (6), Range 50/130 | High-caliber sidearm mainly used by corpo enforcers. |
+| **Sniper Rifle** | Ranged | 1d10 piercing | Heavy, Reload (5), Range 100/300 | A basic rifle for long distance shots. |
 
 ---
 
@@ -22,9 +23,10 @@ Mid-tier weapons built for mercenaries, assassins, and faction soldiers.
 
 | Name | Type | Damage | Properties | Description |
 |------|------|--------|-------------|-------------|
+| **Corpo Sniper Rifle** | Ranged | 1d12 piercing | Heavy, Reload (5), Range 150/400 | A well manufactured rifle for corpo assassins. |
 | **Silenced SMG** | Ranged | 1d8 piercing | Simple, Automatic (Burst 3), Range 60/180 | Compact automatic weapon used in stealth ops. |
 | **Sawed-Off Shotgun** | Ranged | 2d8 piercing | Simple, Reload (2), Range 15/45, Scatter | Devastating close-range weapon. |
-| **Mono-Edge Machete** | Melee | 1d8 slashing | Simple, Light, Versatile (1d10) | Carbon-filament blade that cuts through most armor. |
+| **Mono-Edge Machete** | Melee | 1d8 slashing | Martial, Light, Versatile (1d10) | Carbon-filament blade that cuts through most armor. |
 | **Smart Pistol** | Ranged | 1d8 piercing | Martial, Light, Reload (10), Range 50/150, Smart Targeting | Auto-aiming pistol linked to neural interfaces. Advantage once/turn when linked to Neural Interface. |
 | **Dual Vibroknives** *(Faction: Neon Ascendancy, Rep 4+)* | Melee | 1d6 slashing | Martial, Light, Finesse | Ultrosonic knives humming with deadly vibration. **Special:** Once per short rest, if both knives hit in the same round, make one additional attack with them. |
 | **Obsidian Fang** *(Faction: Voidborn Syndicate, Rep 4+)* | Melee | 1d8 slashing + 1d6 necrotic | Martial, Light, Finesse | Blade of crystallized void matter. **Special:** On critical hit, regain 1d4 HP. |
