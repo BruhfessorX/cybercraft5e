@@ -14,8 +14,8 @@ Warjacks are cybernetic soldiers built for frontline combat. They leverage cutti
 **Hit Points at 1st Level:** 12 + your Constitution modifier  
 **Hit Points at Higher Levels:** 1d12 (or 7) + your Constitution modifier per Warjack level after 1st  
 
-**Armor Proficiencies:** Light armor, medium armor, heavy armor, shields  
-**Weapon Proficiencies:** Simple and martial weapons  
+**Armor Proficiencies:** Light armor, Medium armor, Heavy armor, Shields  
+**Weapon Proficiencies:** Simple weapons, Martial weapons, Light weapons, Heavy weapons  
 **Tool Proficiencies:** None  
 **Saving Throws:** Strength, Constitution  
 **Skills:** Choose two from Athletics, Intimidation, Perception, Survival, Technology  
@@ -24,8 +24,8 @@ Warjacks are cybernetic soldiers built for frontline combat. They leverage cutti
 
 ### Starting Equipment
 You start with the following equipment, in addition to the equipment granted by your background:  
-- (a) martial weapon and shield or (b) two martial weapons  
-- (a) chainmail or (b) combat armor  
+- (a) tier 1 martial weapon and shield or (b) two tier 1 martial weapons  
+- (a) tier 1 medium armor or (b) tier 1 heavy armor  
 - 50 credits  
 
 ---

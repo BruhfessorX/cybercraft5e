@@ -14,8 +14,8 @@ Fleshshapers wield biotech and body modification to reshape themselves and other
 **Hit Points at 1st Level:** 8 + your Constitution modifier  
 **Hit Points at Higher Levels:** 1d8 (or 5) + your Constitution modifier per Fleshshaper level after 1st  
 
-**Armor Proficiencies:** Light armor, medium armor  
-**Weapon Proficiencies:** Simple weapons, natural weapons (special)  
+**Armor Proficiencies:** Light armor, Medium armor  
+**Weapon Proficiencies:** Simple weapons, Natural weapons (special)  
 **Tool Proficiencies:** Biotech kit  
 **Saving Throws:** Constitution, Wisdom  
 **Skills:** Choose two from Animal Handling, Insight, Intimidation, Medicine, Nature, Survival, Technology  
@@ -25,7 +25,7 @@ Fleshshapers wield biotech and body modification to reshape themselves and other
 ### Starting Equipment
 You start with the following equipment, in addition to the equipment granted by your background:  
 - (a) simple weapon or (b) biotech scalpel (counts as a dagger)  
-- (a) light armor or (b) armored coat  
+- (a) light armor or (b) medium armor    
 - Biotech kit  
 - 30 credits  
 

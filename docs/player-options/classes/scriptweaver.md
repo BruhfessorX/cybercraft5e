@@ -24,8 +24,8 @@ Scriptweavers blend arcane principles with advanced programming, rewriting the d
 
 ### Starting Equipment
 You start with the following equipment, in addition to the equipment granted by your background:  
-- (a) simple weapon or (b) light pistol  
-- (a) light armor or (b) armored coat  
+- (a) tier 1 simple weapon or (b) tier 1 cybernetic  
+- (a) tier 1 light armor or (b) armored coat  
 - Programmer’s kit  
 - 30 credits  
 

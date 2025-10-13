@@ -29,13 +29,16 @@ Faction-exclusive items are marked with **(Faction)** tags and require Reputatio
 
 | Property | Description |
 |-----------|-------------|
+| **Simple** | The kind of weapon anyone can pick up and use. |
+| **Martial** | Weapons that require a bit more training to not cut or shoot your foot off. |
+| **Exotic** | Specialized weapons that require specialized training to use. |
 | **Finesse** | Use Dexterity or Strength for attack and damage rolls. |
 | **Light** | Can be dual-wielded. |
 | **Versatile** | Can be wielded one- or two-handed. |
 | **Automatic (Burst X)** | Fires multiple shots per attack roll. |
 | **Reload (X)** | Must reload after firing X times. |
 | **Attunement** | Requires bonding or synchronization to function. |
-| **Heavy** | Disadvantage for Small creatures. |
+| **Heavy** | Disadvantage for Small and Medium creatures. |
 | **Scatter** | Affects all creatures in a 10-ft cone. |
 | **Two-Handed** | Requires both hands to wield effectively. |
 | **Range (X/Y)** | Lists normal and long range distances. |

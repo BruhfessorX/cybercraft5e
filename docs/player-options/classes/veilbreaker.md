@@ -14,8 +14,8 @@ Veilbreakers are warriors who’ve pierced the thin membrane between the physica
 **Hit Points at 1st Level:** 10 + your Constitution modifier  
 **Hit Points at Higher Levels:** 1d10 (or 6) + your Constitution modifier per Veilbreaker level after 1st  
 
-**Armor Proficiencies:** Light armor, medium armor, shields  
-**Weapon Proficiencies:** Simple and martial weapons  
+**Armor Proficiencies:** Light armor, Medium armor, Heavy armor  
+**Weapon Proficiencies:** Simple weapons, Martial weapons, Heavy weapons  
 **Tool Proficiencies:** None  
 **Saving Throws:** Strength, Charisma  
 **Skills:** Choose two from Athletics, Intimidation, Perception, Insight, Survival, Technology  
@@ -24,8 +24,8 @@ Veilbreakers are warriors who’ve pierced the thin membrane between the physica
 
 ### Starting Equipment
 You start with the following equipment, in addition to the equipment granted by your background:  
-- (a) martial weapon and shield or (b) two martial weapons  
-- (a) light armor or (b) medium armor  
+- (a) tier 1 martial weapon and shield or (b) two tier 1 martial weapons  
+- (a) tier 1 medium armor or (b) tier 1 heavy armor  
 - 50 credits  
 
 ---

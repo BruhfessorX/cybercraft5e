@@ -8,6 +8,7 @@ Includes non-weapon, non-armor, and non-cybernetic equipment.
 | Name | Effect | Description |
 |------|--------|-------------|
 | Standard Commlink | Basic encrypted comms | Standard issue. |
+| Armored Coat | +1 AC | A trench coat with armor lining. Can be worn over regular armor. |
 | Medkit (Basic) | Restores 1d8 + 2 HP and stabilizes one dying creature. One use. | Field medicine kit. |
 | Lockpick Set | Grants advantage on Dexterity (Thieves’ Tools) checks to open mechanical locks. | Manual toolset. |
 
@@ -19,6 +20,7 @@ Includes non-weapon, non-armor, and non-cybernetic equipment.
 | Lockbreaker Kit | Grants +2 bonus to Technology checks to bypass electronic locks. | Electronic intrusion tool. |
 | Holo-Cloak | Grants advantage on Stealth checks in crowds or dim light. Activates for 1 minute, 3 uses per day. | Infiltration aid. |
 | Medkit (Advanced) | Restores 2d8 + 4 HP, cures minor infections or bleeding. One use. | Improved medical tools. |
+| Cathedral Visor *(Faction: Glass Covenant, Rep 4+)* | +2 Insight & Perception | Advantage vs charm/fear, attunement | Enhanced spiritual defense system. |
 
 ---
 

@@ -14,8 +14,8 @@ Voidrunners are masters of stealth, sabotage, and sudden strikes, using both cut
 **Hit Points at 1st Level:** 8 + your Constitution modifier  
 **Hit Points at Higher Levels:** 1d8 (or 5) + your Constitution modifier per Voidrunner level after 1st  
 
-**Armor Proficiencies:** Light armor  
-**Weapon Proficiencies:** Simple weapons, martial finesse weapons, pistols, submachine guns  
+**Armor Proficiencies:** Light armor, Medium armor  
+**Weapon Proficiencies:** Simple weapons, Martial weapons, Exotic weapons  
 **Tool Proficiencies:** Disguise kit, thieves’ tools  
 **Saving Throws:** Dexterity, Intelligence  
 **Skills:** Choose three from Acrobatics, Athletics, Deception, Insight, Investigation, Perception, Sleight of Hand, Stealth, Technology  
@@ -24,8 +24,8 @@ Voidrunners are masters of stealth, sabotage, and sudden strikes, using both cut
 
 ### Starting Equipment
 You start with the following equipment, in addition to the equipment granted by your background:  
-- (a) finesse melee weapon or (b) pistol  
-- (a) light armor or (b) armored coat  
+- (a) tier 1 martial weapon or (b) tier 1 cybernetic  
+- (a) tier 1 light armor or (b) tier 1 medium armor  
 - Disguise kit or thieves’ tools  
 - 30 credits  
 
