@@ -15,7 +15,7 @@ Ghostlinks are covert operatives who blend advanced stealth technology, hacking,
 **Hit Points at Higher Levels:** 1d8 (or 5) + your Constitution modifier per Ghostlink level after 1st  
 
 **Armor Proficiencies:** Light armor  
-**Weapon Proficiencies:** Simple weapons, Light weapons, Exotic weapons  
+**Weapon Proficiencies:** Simple weapons, Martial weapons, Exotic weapons  
 **Tool Proficiencies:** Hacking tools, disguise kit  
 **Saving Throws:** Dexterity, Intelligence  
 **Skills:** Choose three from Acrobatics, Deception, Insight, Investigation, Perception, Sleight of Hand, Stealth, Technology  
