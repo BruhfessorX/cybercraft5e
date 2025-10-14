@@ -24,8 +24,8 @@ Ghostlinks are covert operatives who blend advanced stealth technology, hacking,
 
 ### Starting Equipment
 You start with the following equipment, in addition to the equipment granted by your background:  
-- (a) martial weapon or (b) light pistol   
-- (a) light armor or (b) armored coat  
+- (a) tier 1 martial weapon or (b) tier 1 cybernetic     
+- (a) tier 1 light armor or (b) armored coat  
 - Hacking tools  
 - 30 credits  
 
