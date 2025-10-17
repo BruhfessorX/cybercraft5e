@@ -11,7 +11,7 @@ Cybernetic augmentations grant unique enhancements, some requiring attunement or
 
 ---
 
-## **Tier 1 (Common)**
+## **Tier 1 (Common)** — 50–200 credits
 | Name | Effect | Description |
 |------|--------|-------------|
 | Dermal Plating | +1 AC (does not stack with armor) | Basic subdermal reinforcement; common among mercs. |
@@ -25,7 +25,7 @@ Cybernetic augmentations grant unique enhancements, some requiring attunement or
 
 ---
 
-## **Tier 2 (Uncommon)**
+## **Tier 2 (Uncommon)** — 200–750 credits
 | Name | Effect | Description |
 |------|--------|-------------|
 | Neural Interface Link | Allows direct neural connection to compatible systems. +1 to Technology and Hacking checks. | Direct mind-to-machine interface. |
@@ -39,7 +39,7 @@ Cybernetic augmentations grant unique enhancements, some requiring attunement or
 
 ---
 
-## **Tier 3 (Rare)**
+## **Tier 3 (Rare)** — 750–2,000 credits
 | Name | Effect | Description |
 |------|--------|-------------|
 | Augmented Reflex Package | +2 to Initiative and Dexterity saving throws; advantage on Reaction-based checks (e.g., opportunity attacks). | Enhances combat responsiveness. |
@@ -54,7 +54,7 @@ Cybernetic augmentations grant unique enhancements, some requiring attunement or
 
 ---
 
-## **Tier 4 (Very Rare)**
+## **Tier 4 (Very Rare)** — 2,000–10,000 credits
 | Name | Effect | Description |
 |------|--------|-------------|
 | Synthetic Combat Frame | Replaces skeletal/muscle structure. +2 Strength and Constitution (max 22). Advantage on Strength saves and checks. | Increased carrying capacity and melee damage. |
@@ -69,7 +69,7 @@ Cybernetic augmentations grant unique enhancements, some requiring attunement or
 
 ---
 
-## **Tier 5 (Legendary)**
+## **Tier 5 (Legendary)** — 10,000+ credits
 | Name | Effect | Description |
 |------|--------|-------------|
 | Halo Crown *(Faction: Glass Covenant, Rep 9+)* | Immunity to charm, fear, possession; cast *Mass Heal* 1/day | Attunement required. |

@@ -4,7 +4,7 @@ Armor provides AC bonuses and sometimes special properties. Organized by tier.
 
 ---
 
-## **Tier 1 (Common)**
+## **Tier 1 (Common)** — 50–200 credits
 | Name | AC | Properties | Description |
 |------|----|------------|-------------|
 | Street Riot Shield | +2 | Medium | Reinforced polycarb shield used by city security. |
@@ -19,7 +19,7 @@ Armor provides AC bonuses and sometimes special properties. Organized by tier.
 
 ---
 
-## **Tier 2 (Uncommon)**
+## **Tier 2 (Uncommon)** — 200–750 credits
 | Name | AC | Properties | Description |
 |------|----|------------|-------------|
 | Tactical Riot Barrier | +2 | Medium | Deployed by corp peacekeepers; grants advantage on checks to resist being pushed or knocked prone. |
@@ -36,7 +36,7 @@ Armor provides AC bonuses and sometimes special properties. Organized by tier.
 
 ---
 
-## **Tier 3 (Rare)**
+## **Tier 3 (Rare)** — 750–2,000 credits
 | Name | AC | Properties | Description |
 |------|----|------------|-------------|
 | Compart Hardlight Buckler | +3 | Light, Attunement | Wrist-mounted projector creates a translucent hardlight shield. |
@@ -49,7 +49,7 @@ Armor provides AC bonuses and sometimes special properties. Organized by tier.
 
 ---
 
-## **Tier 4 (Very Rare)**
+## **Tier 4 (Very Rare)** — 2,000–10,000 credits
 | Name | AC | Properties | Description |
 |------|----|------------|-------------|
 | Void-Infused Armor | 15 + Dex (max +4) | Light, Grants resistance to necrotic and psychic damage. | Crafted with void-treated alloys. |
@@ -60,7 +60,7 @@ Armor provides AC bonuses and sometimes special properties. Organized by tier.
 
 ---
 
-## **Tier 5 (Legendary)**
+## **Tier 5 (Legendary)** — 10,000+ credits
 | Name | AC | Properties | Description |
 |------|----|------------|-------------|
 | Aegis of the Veil | +5 | Shield, Provides a flat 5 Damage Reduction against all damage types. | Legendary shield. |

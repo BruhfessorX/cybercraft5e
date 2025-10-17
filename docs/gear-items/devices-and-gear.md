@@ -4,7 +4,7 @@ Includes non-weapon, non-armor, and non-cybernetic equipment.
 
 ---
 
-## **Tier 1 (Common)**
+## **Tier 1 (Common)** — 50–200 credits
 | Name | Effect | Description |
 |------|--------|-------------|
 | Standard Commlink | Basic encrypted comms | Standard issue. |
@@ -27,7 +27,7 @@ Includes non-weapon, non-armor, and non-cybernetic equipment.
 
 ---
 
-## **Tier 2 (Uncommon)**
+## **Tier 2 (Uncommon)** — 200–750 credits
 | Name | Effect | Description |
 |------|--------|-------------|
 | Lockbreaker Kit | Grants +2 bonus to Technology checks to bypass electronic locks. | Electronic intrusion tool. |
@@ -49,7 +49,7 @@ Includes non-weapon, non-armor, and non-cybernetic equipment.
 
 ---
 
-## **Tier 3 (Rare)**
+## **Tier 3 (Rare)** — 750–2,000 credits
 | Name | Effect | Description |
 |------|--------|-------------|
 | Neural Hacking Rig | +2 bonus to Technology checks and allows remote intrusion of systems within 60 ft. | Full hacking station. |
@@ -70,7 +70,7 @@ Includes non-weapon, non-armor, and non-cybernetic equipment.
 
 ---
 
-## **Tier 4 (Very Rare)**
+## **Tier 4 (Very Rare)** — 2,000–10,000 credits
 | Name | Effect | Description |
 |------|--------|-------------|
 | Temporal Disruptor | Once per long rest, slow time in a 20 ft radius. All creatures except the user must make a DC 15 Dexterity save or be affected as per Slow for 1 minute. | Short-duration temporal field. |
@@ -91,7 +91,7 @@ Includes non-weapon, non-armor, and non-cybernetic equipment.
 
 ---
 
-## **Tier 5 (Legendary)**
+## **Tier 5 (Legendary)** — 10,000+ credits
 | Name | Effect | Description |
 |------|--------|-------------|
 | Veilheart Core *(Faction: Crimson Dominion, Rep 9+)* | 1/day: release Veil storm (60 ft), all creatures DC 18 Wis save or gain 2 Corruption and take 6d8 psychic damage. | Living Veil engine bound in glass. |
