@@ -98,7 +98,7 @@ DM's and players can work together to create custom vehicles appropriate for the
 
 ---
 
-# **Vehicle Catalogue**
+## **Vehicle Catalogue**
 
 Vehicle Tiers are priced differently from the regular item tiers.
 
