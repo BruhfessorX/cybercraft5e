@@ -11,7 +11,8 @@ Faction-exclusive items are marked with **(Faction)** tags and require Reputatio
 - [Weapons](weapons.md) — All melee, ranged, and special weapons.
 - [Armor](armor.md) — Protective gear from basic vests to legendary void-infused suits.
 - [Cybernetics](cybernetics.md) — Augmentations and implants that enhance physical or mental capabilities.
-- [Devices & Misc Gear](devices.md) — Non-weapon, non-armor gear including tools, cloaks, drones, and medical kits.
+- [Devices & Misc Gear](devices.md) — Non-weapon, non-armor gear including tools, cloaks, drones, and medical kits.  
+- [Vehicles](vehicles.md) - Vehicle rules, customization and listings.
 
 ---
 

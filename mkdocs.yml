@@ -51,6 +51,7 @@ nav:
           - Armor: gear-items/armor.md
           - Cybernetics: gear-items/cybernetics.md
           - Devices & Gear: gear-items/devices-and-gear.md
+          - Vehicles: gear-items/vehicles.md
       - Spells:
           - Overview: player-options/spells/overview.md
           - Technomancy: player-options/spells/technomancy.md
