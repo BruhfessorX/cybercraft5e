@@ -68,19 +68,33 @@ If the vehicle is heavily augmented or digital in nature, **Intelligence (Techno
 Vehicles can be customized like cyberware. A vehicle can normally hold **1 upgrade per tier** unless otherwise noted.
 
 | Upgrade | Effect | Tier |
-|----------|---------|
+|----------|---------|---------|
 | **Armor Plating** | +2 AC, reduces speed by 10 ft. | Tier 1 |
 | **Turbo Engine** | Increases Speed by 20 ft. | Tier 1 |
+| **Reinforced Frame** | +25 vehicle HP. Grants advantage on checks to resist collisions. | Tier 1 |
+| **Reactive Tires** | Ignore difficult terrain; advantage on Handling in wet or unstable areas. | Tier 1 |
 | **Smart HUD** | Advantage on Perception while driving. | Tier 2 |
+| **Mag-Lock Brakes** | Once per short rest, instantly stop the vehicle from moving or being pushed. | Tier 2 |
+| **Thermal Shroud** | Grants disadvantage to thermal sensors and heat-seeking weapons. | Tier 2 |
+| **Auto-Targeting Rig** | Mounted weapons gain +1 to attack rolls. | Tier 2 |
 | **EMP Shielding** | Resistance to lightning and tech disruption effects. | Tier 3 |
 | **Autonomous Control** | Allows remote or AI-assisted operation. | Tier 3 |
+| **Signal Scrambler** | Advantage on saves or checks to avoid tracking, jamming, or hacking. | Tier 3 |
+| **Veil-Infused Reactor** | Restores 10 HP per round while inside a Veil Zone. Emits faint eldritch light. | Tier 3 |
+| **Adaptive Camouflage Array** | Once per long rest, become invisible for up to 1 minute while stationary. | Tier 3 |
+| **Null Core Engine** | Speed +40 ft, but driver must pass DC 15 Sanity save after 1 hour of use or gain 1 Corruption. | Tier 4 |
+| **Anomaly Pulse Emitter** | Once per long rest, unleash a 30-ft EMP burst that deals 3d8 lightning to mechanical creatures. | Tier 4 |
+| **Phase Drive System** | Vehicle can briefly become incorporeal, passing through solid objects for 1 turn (Recharge 6). | Tier 5 |
+| **Sentient Core AI** | Grants the vehicle its own Intelligence 14, Wisdom 12, Charisma 10. May disobey reckless orders. | Tier 5 |
+
 
 ---
 
 ## **Design Philosophy**
 
 Every vehicle reflects its owner — from the corporate enforcers of the Glass Covenant to the rusted street racers of the Undergrid.  
-Whether a hovercycle slicing through neon rain or a Void-powered crawler braving the wastes, these machines are as much identity as they are transport.
+Whether a hovercycle slicing through neon rain or a Void-powered crawler braving the wastes, these machines are as much identity as they are transport.  
+DM's and players can work together to create custom vehicles appropriate for their tier.
 
 ---
 
@@ -111,7 +125,6 @@ Tuned, reinforced, and popular among freelancers and faction runners.
 | **Strix Pursuit Bike** | Motorcycle | 100 ft | 15 | 50 | +3 | 1 | Gains +2 AC while moving over 60 ft per round. |
 | **Urban Ghost Sedan** | Armored Car | 70 ft | 15 | 60 | +1 | 4 | Noise-suppressed; disadvantage on enemy Perception to detect it. |
 | **Black Fang Hauler** | Cargo Truck | 60 ft | 16 | 90 | +1 | 2+Cargo | Can deploy 10 ft of smoke cover as a bonus action (3/day). |
-| **Cerberus Recon Drone** | Aerial Drone | 80 ft | 14 | 40 | +2 | 0 | Controlled via commlink; equipped with a short-range stun emitter (1d6 lightning). |
 | **Horizon Scout Crawler** | All-Terrain | 55 ft | 16 | 70 | +1 | 3 | Immune to difficult terrain penalties; advantage on stability saves. |
 
 ---
