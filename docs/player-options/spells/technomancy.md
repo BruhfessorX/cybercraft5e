@@ -109,4 +109,109 @@ You send a surge of destructive current into a device, vehicle, or cybernetic sy
 - **Components:** V, S  
 - **Duration:** Concentration, up to 1 minute  
 
-You supercharge a willing creature’s nervous system. The target’s speed is doubled, they gain +2 AC, and have advantage on Dexterity saving throws. At the end of each of their turns, they take 2d6 psychic damage due to system strain.
+You supercharge a willing creature’s nervous system. The target’s speed is doubled, they gain +2 AC, and have advantage on Dexterity saving throws. At the end of each of their turns, they take 2d6 psychic damage due to system strain.  
+
+---
+
+### Data Spike
+*Cantrip, Technomancy*  
+- **Casting Time:** 1 action  
+- **Range:** 60 feet  
+- **Components:** V, S  
+- **Duration:** Instantaneous  
+
+You overload a target’s digital systems or cybernetics with a pulse of malicious code. The target must succeed on a **Dexterity saving throw** or take **1d8 lightning damage** and have disadvantage on its next attack roll.  
+
+ **At Higher Levels:** The damage increases by 1d8 at levels 5, 11, and 17.
+
+---
+
+### Neural Tether
+*1st-level Enchantment, Technomancy*  
+- **Casting Time:** 1 bonus action  
+- **Range:** 30 feet  
+- **Components:** V, S  
+- **Duration:** Concentration, up to 10 minutes  
+
+You link your neural signature to another willing creature’s cybernetic system. While tethered, you share sensory data and gain advantage on **Perception** checks and saving throws against being blinded or deafened. If the tethered creature takes damage, you may choose to take half of it instead.  
+
+---
+
+### Digital Mirage
+*2nd-level Illusion, Technomancy*  
+- **Casting Time:** 1 action  
+- **Range:** 30 feet  
+- **Components:** V, S, M (a cracked data chip)  
+- **Duration:** Concentration, up to 1 minute  
+
+You project a convincing holographic duplicate of yourself. The mirage mimics your actions but cannot deal damage or speak. Creatures can make an **Intelligence (Investigation)** check against your spell save DC to discern the illusion.   
+
+---
+
+### Overclock
+*3rd-level Transmutation, Technomancy*  
+- **Casting Time:** 1 bonus action  
+- **Range:** Self  
+- **Components:** V, S  
+- **Duration:** Concentration, up to 1 minute  
+
+You push your cybernetic systems beyond safe limits. Until the spell ends, your movement speed increases by **10 feet**, you gain advantage on **Dexterity saving throws**, and your melee attacks deal **+2 damage**. When the spell ends, make a **DC 15 Constitution saving throw** or take **2d8 lightning damage** as feedback burns through your system.  
+
+---
+
+### Signal Scrambler
+*3rd-level Abjuration, Technomancy*  
+- **Casting Time:** 1 action  
+- **Range:** 20-foot radius centered on self  
+- **Components:** V, S  
+- **Duration:** Concentration, up to 10 minutes  
+
+An interference field blocks transmissions and remote signals. Drones, cameras, and tracking systems within range are disabled, and creatures cannot be targeted by wireless effects or Technomancy spells originating outside the field.  
+
+---
+
+### Adaptive Firewall
+*4th-level Abjuration, Technomancy*  
+- **Casting Time:** 1 reaction, when you are targeted by a spell or hacking effect  
+- **Range:** Self  
+- **Components:** V, S  
+- **Duration:** 1 minute  
+
+A shimmering wall of hexagonal light manifests around you. Gain resistance to the triggering spell’s damage type, and if the effect was digital or Technomantic, it fails automatically.  
+
+---
+
+### Neuroburst
+*5th-level Evocation, Technomancy*  
+- **Casting Time:** 1 action  
+- **Range:** 30 feet  
+- **Components:** V, S  
+- **Duration:** Instantaneous  
+
+You overload neural networks in a 15-foot cone with a blinding surge of electric feedback. Creatures in the area take **8d6 lightning damage** and must succeed on a **Constitution saving throw** or be **stunned** until the end of their next turn.  
+
+---
+
+### Code Genesis
+*6th-level Conjuration, Technomancy*  
+- **Casting Time:** 1 action  
+- **Range:** 30 feet  
+- **Components:** V, S, M (an obsolete processor core worth 500 credits)  
+- **Duration:** Concentration, up to 10 minutes  
+
+You manifest a temporary **AI construct** into a visible holographic form. It acts on your initiative, obeying your verbal commands, and uses the statistics of a **Specter** with immunity to nonmagical damage. When reduced to 0 HP, the construct dissolves into cascading code.  
+
+---
+
+### Reality Override
+*7th-level Transmutation, Technomancy*  
+- **Casting Time:** 1 action  
+- **Range:** 60 feet  
+- **Components:** V, S  
+- **Duration:** Concentration, up to 1 minute  
+
+You hack the quantum underpinnings of matter itself. Choose one of the following effects for the duration:  
+- **Invert Gravity:** Reverse gravity in a 20-foot-radius sphere.  
+- **Phase Shift:** Allow one creature or object to become intangible until the end of its next turn.  
+- **Code Rewrite:** Force a creature to reroll one saving throw or attack roll per turn, taking the new result.  
+
