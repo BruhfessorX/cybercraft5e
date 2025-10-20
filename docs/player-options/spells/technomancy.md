@@ -197,9 +197,9 @@ You overload neural networks in a 15-foot cone with a blinding surge of electric
 - **Casting Time:** 1 action  
 - **Range:** 30 feet  
 - **Components:** V, S, M (an obsolete processor core worth 500 credits)  
-- **Duration:** Concentration, up to 10 minutes  
+- **Duration:** Concentration, up to 1 minute  
 
-You manifest a temporary **AI construct** into a visible holographic form. It acts on your initiative, obeying your verbal commands, and uses the statistics of a **Specter** with immunity to nonmagical damage. When reduced to 0 HP, the construct dissolves into cascading code.  
+You manifest a temporary **AI construct** into a visible holographic form. It acts on your initiative, obeying your verbal commands, and uses the statistics of a **Rift Wraith** at half its normal HP value. When reduced to 0 HP, the construct dissolves into cascading code.  
 
 ---
 

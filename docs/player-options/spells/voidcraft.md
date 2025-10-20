@@ -172,7 +172,7 @@ You open a thin mirror-black portal linking two points within 1 mile. The gate a
 - **Components:** V, S, M (a reflective surface)  
 - **Duration:** Concentration, up to 1 minute  
 
-Target one creature. An inverted reflection of them crawls from the mirror’s surface, mimicking their movements with hostility. The duplicate uses the target’s statistics but has 1 hit point and acts immediately after them. When slain, it collapses into dark static.
+Target one creature. An inverted reflection of them crawls from the mirror’s surface, mimicking their movements with hostility. The duplicate uses the target’s statistics but has 1 hit point and acts immediately after them. When slain, it collapses into dark static and the caster gains 2 corruption points.
 
 ---
 
@@ -194,7 +194,7 @@ You erase light and sound in a 20-foot radius sphere. All creatures inside are b
 - **Components:** V, S  
 - **Duration:** 10 minutes  
 
-You call forth the shade of a recently dead creature. You can ask three questions before it dissolves. Each question costs you 1 sanity damage. The echo cannot lie but may answer cryptically, filtered through fragmented perception.  
+You call forth the shade of a recently dead creature. You can ask up to three questions before it dissolves. Each question costs you 1 sanity damage. The echo cannot lie but may answer cryptically, filtered through fragmented perception.  
 
 ---
 
