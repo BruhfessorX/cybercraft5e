@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Cybercraft 5e — Character Sheet</title>
 
-<!-- Google font (fallbacks present) -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-  /* Page base */
   :root{
     --bg:#060608;
     --panel:#0f0f12;
@@ -19,183 +17,45 @@
     --glass: rgba(255,255,255,0.02);
     --accent-glow: 0 0 18px rgba(155,48,255,0.28), inset 0 0 12px rgba(155,48,255,0.03);
   }
-  html,body{
-    height:100%;
-    margin:0;
-    background: radial-gradient(1200px 700px at 10% 10%, rgba(155,48,255,0.03), transparent),
-                linear-gradient(180deg,#050506 0%, var(--bg) 40%);
-    color:var(--muted);
-    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-  }
-  .container{
-    max-width:1100px;
-    margin:26px auto;
-    padding:28px;
-  }
-
-  /* Header */
-  .titlebar{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    margin-bottom:18px;
-  }
-  .logo {
-    width:56px;
-    height:56px;
-    background:linear-gradient(135deg,var(--neon) 0%, #5b0fbf 100%);
-    border-radius:10px;
-    box-shadow: var(--accent-glow);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:"Orbitron";
-    font-weight:700;
-    color:#050005;
-    letter-spacing:1px;
-  }
-  .title-text{
-    display:flex;
-    flex-direction:column;
-  }
-  .title-text h1{
-    margin:0;
-    font-family:"Orbitron", monospace;
-    font-size:20px;
-    color:var(--neon);
-    text-shadow:0 0 10px rgba(155,48,255,0.25);
-  }
+  html,body{ height:100%; margin:0; background: radial-gradient(1200px 700px at 10% 10%, rgba(155,48,255,0.03), transparent), linear-gradient(180deg,#050506 0%, var(--bg) 40%); color:var(--muted); font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  .container{ max-width:1100px; margin:26px auto; padding:28px; }
+  .titlebar{ display:flex; align-items:center; gap:18px; margin-bottom:18px; }
+  .logo { width:56px; height:56px; background:linear-gradient(135deg,var(--neon) 0%, #5b0fbf 100%); border-radius:10px; box-shadow: var(--accent-glow); display:flex; align-items:center; justify-content:center; font-family:"Orbitron"; font-weight:700; color:#050005; letter-spacing:1px; }
+  .title-text{ display:flex; flex-direction:column; }
+  .title-text h1{ margin:0; font-family:"Orbitron", monospace; font-size:20px; color:var(--neon); text-shadow:0 0 10px rgba(155,48,255,0.25); }
   .title-text p{ margin:0; font-size:12px; color:#9aa0b5; }
-
-  /* Tab controls */
-  .tabs{
-    display:flex;
-    gap:8px;
-    margin-bottom:16px;
-  }
-  .tab{
-    padding:10px 14px;
-    border-radius:8px;
-    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0));
-    border:1px solid rgba(155,48,255,0.06);
-    color:var(--muted);
-    cursor:pointer;
-    transition: all 220ms ease;
-    box-shadow: none;
-    font-weight:600;
-    font-size:13px;
-  }
-  .tab.active{
-    background: linear-gradient(180deg, rgba(155,48,255,0.07), rgba(155,48,255,0.02));
-    color: white;
-    box-shadow: var(--accent-glow);
-    border: 1px solid rgba(155,48,255,0.25);
-    transform: translateY(-2px);
-  }
-
-  /* panel */
-  .panel{
-    background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.004));
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,0.03);
-    padding:18px;
-    box-shadow: 0 6px 30px rgba(0,0,0,0.6);
-    display:block;
-  }
+  .tabs{ display:flex; gap:8px; margin-bottom:16px; }
+  .tab{ padding:10px 14px; border-radius:8px; background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0)); border:1px solid rgba(155,48,255,0.06); color:var(--muted); cursor:pointer; transition: all 220ms ease; box-shadow: none; font-weight:600; font-size:13px; }
+  .tab.active{ background: linear-gradient(180deg, rgba(155,48,255,0.07), rgba(155,48,255,0.02)); color: white; box-shadow: var(--accent-glow); border: 1px solid rgba(155,48,255,0.25); transform: translateY(-2px); }
+  .panel{ background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.004)); border-radius:12px; border:1px solid rgba(255,255,255,0.03); padding:18px; box-shadow: 0 6px 30px rgba(0,0,0,0.6); display:block; }
   .panel-grid{ display:grid; grid-template-columns: 1fr 360px; gap:18px; }
-
-  /* left column */
-  .card{
-    background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.006));
-    border: 1px solid rgba(155,48,255,0.06);
-    border-radius:10px;
-    padding:12px;
-  }
+  .card{ background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.006)); border: 1px solid rgba(155,48,255,0.06); border-radius:10px; padding:12px; }
   .card h3{ margin:0 0 8px 0; color:var(--neon); font-family:"Orbitron"; font-size:14px; }
   .row { display:flex; gap:8px; align-items:center; margin-bottom:8px; }
   label{ font-size:12px; color:#bfc4d6; min-width:120px; }
-  input[type="text"], input[type="number"], select, textarea {
-    width:100%;
-    padding:8px 10px;
-    background:var(--glass);
-    border-radius:6px;
-    border:1px solid rgba(155,48,255,0.06);
-    color:var(--muted);
-    outline:none;
-    transition: box-shadow 160ms;
-    font-size:13px;
-  }
-  input:focus, textarea:focus, select:focus{
-    box-shadow: var(--accent-glow);
-    border-color: var(--neon);
-    background: rgba(255,255,255,0.015);
-    color: #fff;
-  }
+  input[type="text"], input[type="number"], select, textarea { width:100%; padding:8px 10px; background:var(--glass); border-radius:6px; border:1px solid rgba(155,48,255,0.06); color:var(--muted); outline:none; transition: box-shadow 160ms; font-size:13px; }
+  input:focus, textarea:focus, select:focus{ box-shadow: var(--accent-glow); border-color: var(--neon); background: rgba(255,255,255,0.015); color: #fff; }
   textarea { min-height:84px; resize:vertical; }
-
-  /* attribute boxes */
   .attributes { display:flex; gap:8px; }
-  .attr-box {
-    width:72px;
-    background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(255,255,255,0.01));
-    border-radius:8px;
-    padding:8px;
-    text-align:center;
-    border:1px solid rgba(155,48,255,0.06);
-  }
+  .attr-box { width:72px; background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(255,255,255,0.01)); border-radius:8px; padding:8px; text-align:center; border:1px solid rgba(155,48,255,0.06); }
   .attr-box .score { font-size:18px; color:white; font-weight:700; }
   .attr-box .label { font-size:11px; color:#bfc4d6; margin-top:4px; }
-
-  /* small utilities */
   .small-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; }
   .btnbar{ display:flex; gap:8px; justify-content:flex-end; margin-top:10px; }
-  button {
-    background:transparent;
-    border:1px solid rgba(155,48,255,0.12);
-    color:var(--muted);
-    padding:8px 10px;
-    border-radius:8px;
-    cursor:pointer;
-    transition:all 160ms;
-    font-weight:600;
-  }
-  button.primary{
-    background: linear-gradient(90deg,var(--neon), #5b0fbf);
-    color:#fff;
-    box-shadow: var(--accent-glow);
-    border: none;
-  }
+  button { background:transparent; border:1px solid rgba(155,48,255,0.12); color:var(--muted); padding:8px 10px; border-radius:8px; cursor:pointer; transition:all 160ms; font-weight:600; }
+  button.primary{ background: linear-gradient(90deg,var(--neon), #5b0fbf); color:#fff; box-shadow: var(--accent-glow); border: none; }
   button:hover{ transform: translateY(-2px); }
   .muted { color:#9aa0b5; font-size:12px; }
-
-  /* glitch effect on heading */
-  .glitch {
-    position:relative;
-    display:inline-block;
-  }
-  .glitch:before, .glitch:after{
-    content:attr(data-text);
-    position:absolute;
-    left:0; top:0;
-    clip: rect(0, 9999px, 0, 0);
-    opacity:0.9;
-  }
+  .glitch { position:relative; display:inline-block; }
+  .glitch:before, .glitch:after{ content:attr(data-text); position:absolute; left:0; top:0; clip: rect(0, 9999px, 0, 0); opacity:0.9; }
   .glitch:before { transform: translate(-0.6px, -0.6px); color:#fff; mix-blend-mode:screen; }
   .glitch:after { transform: translate(0.6px, 0.6px); color:rgba(155,48,255,0.6); mix-blend-mode:screen; }
-
-  /* responsive */
-  @media (max-width:980px){
-    .panel-grid{ grid-template-columns: 1fr; }
-  }
-  /* print styles */
-  @media print{
-    body{ background:white; color:black; }
-    .titlebar, .tabs, .btnbar{ display:none; }
-    .panel{ box-shadow:none; border:none; }
-    input,textarea{ border:1px solid #aaa; color:black; background:white; }
-  }
+  .skill-row{ display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+  .skill-row label{ min-width:140px; }
+  .checkbox-inline{ display:flex; align-items:center; gap:6px; color:#bfc4d6; font-size:13px; }
+  .skill-bonus{ min-width:46px; text-align:right; font-weight:700; color:#fff; }
+  @media (max-width:980px){ .panel-grid{ grid-template-columns: 1fr; } }
+  @media print{ body{ background:white; color:black; } .titlebar, .tabs, .btnbar{ display:none; } .panel{ box-shadow:none; border:none; } input,textarea{ border:1px solid #aaa; color:black; background:white; } }
 </style>
 </head>
 <body>
@@ -217,8 +77,9 @@
 
     <div class="tabs" role="tablist">
       <div class="tab active" data-tab="core">Core</div>
-      <div class="tab" data-tab="cyber">Cyberware</div>
-      <div class="tab" data-tab="notes">Notes & Spells</div>
+      <div class="tab" data-tab="skills">Skills</div>
+      <div class="tab" data-tab="cyber">Cyberware & Spells</div>
+      <div class="tab" data-tab="gear">Gear / Vehicle / Notes</div>
     </div>
 
     <div class="panel">
@@ -233,7 +94,7 @@
               <div class="row"><label>Player</label><input id="player" type="text"></div>
               <div class="row"><label>Race</label><input id="race" type="text"></div>
               <div class="row"><label>Class</label><input id="class" type="text"></div>
-              <div class="row"><label>Level</label><input id="level" type="number" min="1"></div>
+              <div class="row"><label>Level</label><input id="level" type="number" min="1" value="1"></div>
               <div class="row"><label>Background</label><input id="background" type="text"></div>
               <div class="row"><label>Faction</label><input id="faction" type="text"></div>
               <div class="row"><label>Alignment</label><input id="alignment" type="text"></div>
@@ -261,28 +122,133 @@
                 <div><label>Current HP</label><input id="hp_cur" type="number"></div>
                 <div><label>Temp HP</label><input id="hp_temp" type="number"></div>
                 <div><label>Hit Dice</label><input id="hit_dice" type="text"></div>
-                <div><label>Proficiency</label><input id="prof" type="text"></div>
-              </div>
-            </div>
-
-            <div class="card" style="margin-top:12px;">
-              <h3 class="glitch" data-text="Skills">Skills</h3>
-              <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:8px;">
-                <div><label>Athletics</label><input id="skill_athletics" type="text"></div>
-                <div><label>Acrobatics</label><input id="skill_acrobatics" type="text"></div>
-                <div><label>Sleight of Hand</label><input id="skill_sleight" type="text"></div>
-                <div><label>Stealth</label><input id="skill_stealth" type="text"></div>
-                <div><label>Arcana</label><input id="skill_arcana" type="text"></div>
-                <div><label>Investigation</label><input id="skill_investigation" type="text"></div>
-                <div><label>Technology</label><input id="skill_technology" type="text"></div>
-                <div><label>Perception</label><input id="skill_perception" type="text"></div>
-                <div><label>Persuasion</label><input id="skill_persuasion" type="text"></div>
-                <div><label>Intimidation</label><input id="skill_intimidation" type="text"></div>
+                <div><label>Proficiency</label><input id="prof_display" type="text" readonly></div>
               </div>
             </div>
           </div>
 
-          <!-- CYBER TAB -->
+          <!-- SKILLS TAB -->
+          <div class="tab-panel" id="tab-skills" style="display:none;">
+            <div class="card">
+              <h3 class="glitch" data-text="Skills">Skills & Proficiencies</h3>
+              <p class="muted">Check <em>Prof</em> for proficiency (adds proficiency bonus). Check <em>Expertise</em> to double proficiency.</p>
+
+              <div style="margin-top:8px;">
+                <!-- Strength -->
+                <div class="skill-row"><label>Strength — Athletics</label>
+                  <div class="checkbox-inline"><input id="prof_athletics" type="checkbox"> <span>Prof</span></div>
+                  <div class="checkbox-inline"><input id="exp_athletics" type="checkbox"> <span>Expertise</span></div>
+                  <div class="skill-bonus" id="bonus_athletics">+0</div>
+                </div>
+
+                <!-- Dexterity -->
+                <div class="skill-row"><label>Dexterity — Acrobatics</label>
+                  <div class="checkbox-inline"><input id="prof_acrobatics" type="checkbox"> <span>Prof</span></div>
+                  <div class="checkbox-inline"><input id="exp_acrobatics" type="checkbox"> <span>Expertise</span></div>
+                  <div class="skill-bonus" id="bonus_acrobatics">+0</div>
+                </div>
+                <div class="skill-row"><label>Dexterity — Sleight of Hand</label>
+                  <div class="checkbox-inline"><input id="prof_sleight" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_sleight" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_sleight">+0</div>
+                </div>
+                <div class="skill-row"><label>Dexterity — Stealth</label>
+                  <div class="checkbox-inline"><input id="prof_stealth" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_stealth" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_stealth">+0</div>
+                </div>
+                <div class="skill-row"><label>Dexterity — Driving</label>
+                  <div class="checkbox-inline"><input id="prof_driving" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_driving" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_driving">+0</div>
+                </div>
+
+                <!-- Intelligence -->
+                <div class="skill-row"><label>Intelligence — Arcana</label>
+                  <div class="checkbox-inline"><input id="prof_arcana" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_arcana" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_arcana">+0</div>
+                </div>
+                <div class="skill-row"><label>Intelligence — History</label>
+                  <div class="checkbox-inline"><input id="prof_history" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_history" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_history">+0</div>
+                </div>
+                <div class="skill-row"><label>Intelligence — Investigation</label>
+                  <div class="checkbox-inline"><input id="prof_investigation" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_investigation" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_investigation">+0</div>
+                </div>
+                <div class="skill-row"><label>Intelligence — Nature</label>
+                  <div class="checkbox-inline"><input id="prof_nature" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_nature" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_nature">+0</div>
+                </div>
+                <div class="skill-row"><label>Intelligence — Religion</label>
+                  <div class="checkbox-inline"><input id="prof_religion" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_religion" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_religion">+0</div>
+                </div>
+                <div class="skill-row"><label>Intelligence — Technology</label>
+                  <div class="checkbox-inline"><input id="prof_technology" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_technology" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_technology">+0</div>
+                </div>
+
+                <!-- Wisdom -->
+                <div class="skill-row"><label>Wisdom — Animal Handling</label>
+                  <div class="checkbox-inline"><input id="prof_animal" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_animal" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_animal">+0</div>
+                </div>
+                <div class="skill-row"><label>Wisdom — Insight</label>
+                  <div class="checkbox-inline"><input id="prof_insight" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_insight" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_insight">+0</div>
+                </div>
+                <div class="skill-row"><label>Wisdom — Medicine</label>
+                  <div class="checkbox-inline"><input id="prof_medicine" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_medicine" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_medicine">+0</div>
+                </div>
+                <div class="skill-row"><label>Wisdom — Perception</label>
+                  <div class="checkbox-inline"><input id="prof_perception" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_perception" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_perception">+0</div>
+                </div>
+                <div class="skill-row"><label>Wisdom — Survival</label>
+                  <div class="checkbox-inline"><input id="prof_survival" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_survival" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_survival">+0</div>
+                </div>
+
+                <!-- Charisma -->
+                <div class="skill-row"><label>Charisma — Deception</label>
+                  <div class="checkbox-inline"><input id="prof_deception" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_deception" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_deception">+0</div>
+                </div>
+                <div class="skill-row"><label>Charisma — Intimidation</label>
+                  <div class="checkbox-inline"><input id="prof_intimidation" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_intimidation" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_intimidation">+0</div>
+                </div>
+                <div class="skill-row"><label>Charisma — Performance</label>
+                  <div class="checkbox-inline"><input id="prof_performance" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_performance" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_performance">+0</div>
+                </div>
+                <div class="skill-row"><label>Charisma — Persuasion</label>
+                  <div class="checkbox-inline"><input id="prof_persuasion" type="checkbox"></div>
+                  <div class="checkbox-inline"><input id="exp_persuasion" type="checkbox"></div>
+                  <div class="skill-bonus" id="bonus_persuasion">+0</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- CYBER + SPELLS TAB -->
           <div class="tab-panel" id="tab-cyber" style="display:none;">
             <div class="card">
               <h3 class="glitch" data-text="Cybernetics & Augments">Cybernetics & Augments</h3>
@@ -299,35 +265,8 @@
             </div>
 
             <div class="card" style="margin-top:12px;">
-              <h3 class="glitch" data-text="Sanity & Corruption">Sanity & Corruption</h3>
-              <div class="row"><label>Sanity (cur / max)</label><input id="sanity" type="text" placeholder="12 / 20"></div>
-              <div class="row"><label>Corruption (cur / max)</label><input id="corruption" type="text" placeholder="0 / 20"></div>
-              <div style="margin-top:8px;"><label>Effects / Scars</label><textarea id="sanity_notes" placeholder="List psychological scars, mutations, notes..."></textarea></div>
-            </div>
-
-            <div class="card" style="margin-top:12px;">
-              <h3 class="glitch" data-text="Faction Reputation">Faction Reputation</h3>
-              <div>
-                <div class="row"><label>Faction 1</label><input id="faction_name_1" /><label style="min-width:40px;">Rep</label><input id="faction_rep_1" style="width:70px;" /><label style="min-width:40px;">Rank</label><input id="faction_rank_1" style="width:70px;" /></div>
-                <div class="row"><label>Faction 2</label><input id="faction_name_2" /><label style="min-width:40px;">Rep</label><input id="faction_rep_2" style="width:70px;" /><label style="min-width:40px;">Rank</label><input id="faction_rank_2" style="width:70px;" /></div>
-                <div class="row"><label>Faction 3</label><input id="faction_name_3" /><label style="min-width:40px;">Rep</label><input id="faction_rep_3" style="width:70px;" /><label style="min-width:40px;">Rank</label><input id="faction_rank_3" style="width:70px;" /></div>
-                <div class="row"><label>Faction 4</label><input id="faction_name_4" /><label style="min-width:40px;">Rep</label><input id="faction_rep_4" style="width:70px;" /><label style="min-width:40px;">Rank</label><input id="faction_rank_4" style="width:70px;" /></div>
-              </div>
-            </div>
-
-            <div class="card" style="margin-top:12px;">
-              <h3 class="glitch" data-text="Gear & Credits">Gear & Credits</h3>
-              <div class="row"><label>Credits</label><input id="credits" type="number" /></div>
-              <div style="margin-top:8px;"><label>Armor</label><input id="armor" /></div>
-              <div style="margin-top:8px;"><label>Weapons (list)</label><textarea id="weapons_list" placeholder="Weapon name — damage — properties"></textarea></div>
-              <div style="margin-top:8px;"><label>Inventory / Notes</label><textarea id="inventory"></textarea></div>
-            </div>
-          </div>
-
-          <!-- NOTES TAB -->
-          <div class="tab-panel" id="tab-notes" style="display:none;">
-            <div class="card">
               <h3 class="glitch" data-text="Spells & Abilities">Spells & Abilities</h3>
+              <p class="muted">Add spell name and level or ability description.</p>
               <div style="display:grid; gap:8px;">
                 <input id="spell_1" placeholder="Spell / Power 1" />
                 <input id="spell_2" placeholder="Spell / Power 2" />
@@ -340,6 +279,24 @@
                 <input id="spell_9" placeholder="Spell / Power 9" />
                 <input id="spell_10" placeholder="Spell / Power 10" />
               </div>
+            </div>
+
+            <div class="card" style="margin-top:12px;">
+              <h3 class="glitch" data-text="Sanity & Corruption">Sanity & Corruption</h3>
+              <div class="row"><label>Sanity (cur / max)</label><input id="sanity" type="text" placeholder="12 / 20"></div>
+              <div class="row"><label>Corruption (cur / max)</label><input id="corruption" type="text" placeholder="0 / 20"></div>
+              <div style="margin-top:8px;"><label>Effects / Scars</label><textarea id="sanity_notes" placeholder="List psychological scars, mutations, notes..."></textarea></div>
+            </div>
+          </div>
+
+          <!-- GEAR + VEHICLE + NOTES TAB -->
+          <div class="tab-panel" id="tab-gear" style="display:none;">
+            <div class="card">
+              <h3 class="glitch" data-text="Gear & Credits">Gear & Credits</h3>
+              <div class="row"><label>Credits</label><input id="credits" type="number" /></div>
+              <div style="margin-top:8px;"><label>Armor</label><input id="armor" /></div>
+              <div style="margin-top:8px;"><label>Weapons (list)</label><textarea id="weapons_list" placeholder="Weapon name — damage — properties"></textarea></div>
+              <div style="margin-top:8px;"><label>Inventory / Notes</label><textarea id="inventory"></textarea></div>
             </div>
 
             <div class="card" style="margin-top:12px;">
@@ -357,9 +314,10 @@
               <textarea id="notes" placeholder="Character notes, story hooks, personality, etc."></textarea>
             </div>
           </div>
+
         </div>
 
-        <!-- RIGHT: summary / quick -->
+        <!-- RIGHT: snapshot & quick -->
         <div>
           <div class="card">
             <h3 class="glitch" data-text="Snapshot">Snapshot</h3>
@@ -384,7 +342,7 @@
 
           <div class="card" style="margin-top:12px;">
             <h3 class="glitch" data-text="Help">Help</h3>
-            <p class="muted" style="font-size:13px; margin:0;">This sheet stores data locally in your browser (localStorage). To move it, use Export → Save the JSON file → Import on another browser or computer.</p>
+            <p class="muted" style="font-size:13px; margin:0;">Data is stored locally in your browser. Export/Import lets you move characters between machines. Print for a paper copy.</p>
           </div>
         </div>
       </div>
@@ -393,77 +351,175 @@
   </div>
 
 <script>
-  // -------------------------
-  // Simple tab system
-  // -------------------------
+  // Tab handling
   const tabs = document.querySelectorAll('.tab');
-  const panels = {
+  const panelMap = {
     core: document.getElementById('tab-core'),
+    skills: document.getElementById('tab-skills'),
     cyber: document.getElementById('tab-cyber'),
-    notes: document.getElementById('tab-notes')
+    gear: document.getElementById('tab-gear')
   };
   tabs.forEach(t => {
     t.addEventListener('click', () => {
       tabs.forEach(x=>x.classList.remove('active'));
       t.classList.add('active');
-      // show panel
-      Object.values(panels).forEach(p=>p.style.display='none');
-      panels[t.dataset.tab].style.display = 'block';
-      // small glitch transition
-      panels[t.dataset.tab].style.animation = 'glitchIn 260ms';
-      setTimeout(()=> panels[t.dataset.tab].style.animation = '', 300);
+      Object.values(panelMap).forEach(p=>p.style.display='none');
+      panelMap[t.dataset.tab].style.display='block';
     });
   });
 
-  // -------------------------
-  // Fields list (all field ids)
-  // -------------------------
-  const fieldIds = [
+  // Fields and skill ids
+  const basicFields = [
     'name','player','race','class','level','background','faction','alignment',
     'attr_STR','attr_DEX','attr_CON','attr_INT','attr_WIS','attr_CHA',
-    'ac','init','speed','hp_max','hp_cur','hp_temp','hit_dice','prof',
-    'skill_athletics','skill_acrobatics','skill_sleight','skill_stealth','skill_arcana','skill_investigation','skill_technology','skill_perception','skill_persuasion','skill_intimidation',
+    'ac','init','speed','hp_max','hp_cur','hp_temp','hit_dice'
+  ];
+
+  // Skills list (skill id => ability)
+  const SKILLS = {
+    athletics: 'STR',
+    acrobatics: 'DEX',
+    sleight: 'DEX',
+    stealth: 'DEX',
+    driving: 'DEX',
+    arcana: 'INT',
+    history: 'INT',
+    investigation: 'INT',
+    nature: 'INT',
+    religion: 'INT',
+    technology: 'INT',
+    animal: 'WIS',
+    insight: 'WIS',
+    medicine: 'WIS',
+    perception: 'WIS',
+    survival: 'WIS',
+    deception: 'CHA',
+    intimidation: 'CHA',
+    performance: 'CHA',
+    persuasion: 'CHA'
+  };
+
+  // Add cyber/spell/gear fields to list for saving
+  const otherFields = [
+    'prof_display','credits','armor','weapons_list','inventory',
     'cyber_slot_1','cyber_slot_2','cyber_slot_3','cyber_slot_4','cyber_slot_5','cyber_slot_6','cyber_slot_7','cyber_slot_8',
     'sanity','corruption','sanity_notes',
     'faction_name_1','faction_rep_1','faction_rank_1','faction_name_2','faction_rep_2','faction_rank_2','faction_name_3','faction_rep_3','faction_rank_3','faction_name_4','faction_rep_4','faction_rank_4',
-    'credits','armor','weapons_list','inventory',
     'spell_1','spell_2','spell_3','spell_4','spell_5','spell_6','spell_7','spell_8','spell_9','spell_10',
-    'veh_name','veh_type','veh_speed','veh_ac','veh_hp','veh_upgrades',
-    'notes'
+    'veh_name','veh_type','veh_speed','veh_ac','veh_hp','veh_upgrades','notes'
   ];
 
-  const STORAGE_KEY = 'cybercraft_char_v1';
+  // skill proficiency & expertise checkbox ids
+  const skillCheckboxes = [];
+  Object.keys(SKILLS).forEach(s=>{
+    skillCheckboxes.push('prof_' + s);
+    skillCheckboxes.push('exp_' + s);
+  });
 
-  // Attempt to populate snapshot & load saved data
-  function loadFromStorage(){
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if(!raw) return;
-    try {
-      const data = JSON.parse(raw);
-      fieldIds.forEach(id=>{
-        if(data[id] !== undefined){
-          const el = document.getElementById(id);
-          if(el) el.value = data[id];
-        }
-      });
-      updateSnapshot();
-    } catch(e){
-      console.error('Load failed', e);
-    }
+  const STORAGE_KEY = 'cybercraft_char_v2';
+
+  // Utility: get ability mod
+  function abilityMod(score){
+    const s = parseInt(score) || 0;
+    return Math.floor((s - 10) / 2);
   }
 
-  // Save current form state to localStorage
-  function saveToStorage(){
+  // Proficiency by level (5e progression)
+  function proficiencyByLevel(lvl){
+    lvl = parseInt(lvl) || 1;
+    return Math.ceil(lvl / 4) + 1; // level 1 => 2, 5 => 3, 9 => 4, 13 => 5, 17 => 6
+  }
+
+  // Save/load helpers
+  function gatherAll(){
     const data = {};
-    fieldIds.forEach(id=>{
+    basicFields.concat(otherFields).forEach(id=>{
       const el = document.getElementById(id);
       data[id] = el ? el.value : '';
     });
+    // skill checkboxes
+    Object.keys(SKILLS).forEach(s=>{
+      const p = document.getElementById('prof_' + s); data['prof_' + s] = p ? p.checked : false;
+      const e = document.getElementById('exp_' + s); data['exp_' + s] = e ? e.checked : false;
+    });
+    return data;
+  }
+
+  function applyAll(data){
+    basicFields.concat(otherFields).forEach(id=>{
+      const el = document.getElementById(id);
+      if(el && data[id] !== undefined) el.value = data[id];
+    });
+    Object.keys(SKILLS).forEach(s=>{
+      const p = document.getElementById('prof_' + s); if(p) p.checked = !!data['prof_' + s];
+      const e = document.getElementById('exp_' + s); if(e) e.checked = !!data['exp_' + s];
+    });
+    updateAllCalculations();
+    updateSnapshot();
+  }
+
+  function saveToStorage(){
+    const data = gatherAll();
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     updateSnapshot();
   }
 
-  // Update quick snapshot
+  function loadFromStorage(){
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return;
+    try {
+      const parsed = JSON.parse(raw);
+      applyAll(parsed);
+    } catch(e){
+      console.error('Load error', e);
+    }
+  }
+
+  // Auto calculation
+  function updateAllCalculations(){
+    // ability mods
+    ['STR','DEX','CON','INT','WIS','CHA'].forEach(ab=>{
+      const val = document.getElementById('attr_' + ab).value;
+      const mod = abilityMod(val);
+      // find the attribute box display (we keep the input in the box), set title/aria
+      // also update any dependent display fields if needed
+    });
+
+    // proficiency
+    const level = parseInt(document.getElementById('level').value) || 1;
+    const prof = proficiencyByLevel(level);
+    const profDisplay = document.getElementById('prof_display');
+    if(profDisplay) profDisplay.value = '+' + prof;
+
+    // update skill bonuses
+    Object.keys(SKILLS).forEach(s=>{
+      const ability = SKILLS[s];
+      const score = parseInt(document.getElementById('attr_' + ability).value) || 0;
+      const abmod = abilityMod(score);
+      const profCheckbox = document.getElementById('prof_' + s);
+      const expCheckbox = document.getElementById('exp_' + s);
+      let bonus = abmod;
+      if(profCheckbox && profCheckbox.checked){
+        bonus += prof * (expCheckbox && expCheckbox.checked ? 2 : 1);
+      }
+      // Format +/-
+      const el = document.getElementById('bonus_' + s);
+      if(el) el.textContent = (bonus >= 0 ? '+' : '') + bonus;
+    });
+
+    // update other quick calculations (initiative from Dex if blank)
+    const initEl = document.getElementById('init');
+    if(initEl && (!initEl.value || initEl.value.trim() === '')){
+      const dex = parseInt(document.getElementById('attr_DEX').value) || 0;
+      const imod = abilityMod(dex);
+      initEl.value = (imod >= 0 ? '+' : '') + imod;
+    }
+
+    // auto fill snapshot HP/prof fields handled separately
+    saveToStorage();
+  }
+
+  // snapshot UI
   function updateSnapshot(){
     document.getElementById('snap_name').textContent = document.getElementById('name').value || '—';
     const cls = document.getElementById('class').value || '—';
@@ -473,22 +529,37 @@
     const hpmax = document.getElementById('hp_max').value || '0';
     document.getElementById('snap_hp').textContent = hpcur + ' / ' + hpmax;
     document.getElementById('snap_ac').textContent = document.getElementById('ac').value || '—';
-    document.getElementById('snap_sanity').textContent = (document.getElementById('sanity').value || '—') + ' / ' + (document.getElementById('corruption').value || '—');
+    const sanity = document.getElementById('sanity').value || '—';
+    const corr = document.getElementById('corruption').value || '—';
+    document.getElementById('snap_sanity').textContent = sanity + ' / ' + corr;
   }
 
-  // Attach listeners to auto-save
-  fieldIds.forEach(id=>{
-    const el = document.getElementById(id);
-    if(!el) return;
-    el.addEventListener('input', () => {
-      // minor debounce
-      if(window._saveTimer) clearTimeout(window._saveTimer);
-      window._saveTimer = setTimeout(()=>{ saveToStorage(); }, 350);
+  // Attach listeners for autosave and recalculation
+  function attachListeners(){
+    // basic fields -> save + recalc
+    basicFields.concat(otherFields).forEach(id=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.addEventListener('input', ()=>{ 
+        // small debounce
+        if(window._saveTimer) clearTimeout(window._saveTimer);
+        window._saveTimer = setTimeout(()=>{ updateAllCalculations(); }, 300);
+      });
     });
-  });
+    // skill prof/expertise checkboxes
+    Object.keys(SKILLS).forEach(s=>{
+      const p = document.getElementById('prof_' + s);
+      const e = document.getElementById('exp_' + s);
+      if(p) p.addEventListener('change', ()=>updateAllCalculations());
+      if(e) e.addEventListener('change', ()=>updateAllCalculations());
+    });
+    // level change affects prof
+    const lvlEl = document.getElementById('level');
+    if(lvlEl) lvlEl.addEventListener('input', ()=>updateAllCalculations());
+  }
 
-  // Buttons: export / import / clear / print
-  document.getElementById('export').addEventListener('click', () => {
+  // Export / Import
+  document.getElementById('export').addEventListener('click', ()=>{
     const raw = localStorage.getItem(STORAGE_KEY);
     if(!raw){ alert('No saved character data found.'); return; }
     const blob = new Blob([raw], {type:'application/json'});
@@ -497,14 +568,15 @@
     document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
   });
 
-  document.getElementById('importBtn').addEventListener('click', () => {
+  document.getElementById('importBtn').addEventListener('click', ()=>{
     const input = document.createElement('input'); input.type='file'; input.accept='.json,.cyber.json,application/json';
     input.onchange = (e) => {
       const f = e.target.files[0]; if(!f) return;
       const r = new FileReader();
       r.onload = () => {
         try {
-          JSON.parse(r.result); localStorage.setItem(STORAGE_KEY, r.result); loadFromStorage(); alert('Imported OK.');
+          const parsed = JSON.parse(r.result);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed)); applyAll(parsed); alert('Imported OK.');
         } catch(err){ alert('Import failed: file invalid.'); }
       };
       r.readAsText(f);
@@ -512,24 +584,23 @@
     input.click();
   });
 
-  document.getElementById('clear').addEventListener('click', () => {
-    if(confirm('Clear local sheet data? This cannot be undone.')){ localStorage.removeItem(STORAGE_KEY); fieldIds.forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; }); updateSnapshot(); }
-  });
+  document.getElementById('clear').addEventListener('click', ()=>{ if(confirm('Clear local sheet data? This cannot be undone.')){ localStorage.removeItem(STORAGE_KEY); location.reload(); } });
 
-  document.getElementById('print').addEventListener('click', () => window.print());
+  document.getElementById('print').addEventListener('click', ()=>window.print());
+  document.getElementById('downloadJSON').addEventListener('click', ()=>document.getElementById('export').click());
+  document.getElementById('loadJSON').addEventListener('click', ()=>document.getElementById('importBtn').click());
+  document.getElementById('clearLocal').addEventListener('click', ()=>document.getElementById('clear').click());
 
-  // Quick action buttons
-  document.getElementById('downloadJSON').addEventListener('click', () => document.getElementById('export').click());
-  document.getElementById('loadJSON').addEventListener('click', () => document.getElementById('importBtn').click());
-  document.getElementById('clearLocal').addEventListener('click', () => document.getElementById('clear').click());
-
-  // Save on unload
-  window.addEventListener('beforeunload', saveToStorage);
-
-  // initial load
+  // initial load/apply
+  attachListeners();
   loadFromStorage();
+  // ensure calculation runs once
+  setTimeout(()=>{ updateAllCalculations(); updateSnapshot(); }, 250);
 
-  // small animation keyframes inserted dynamically
+  // Save before unload
+  window.addEventListener('beforeunload', ()=>{ saveToStorage(); });
+
+  // small animation keyframes
   const style = document.createElement('style');
   style.innerHTML = `
     @keyframes glitchIn {
@@ -540,6 +611,5 @@
   document.head.appendChild(style);
 
 </script>
-
 </body>
 </html>
