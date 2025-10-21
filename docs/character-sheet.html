@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Cybercraft 5e — Character Sheet</title>
+
+<!-- Google font (fallbacks present) -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  /* Page base */
+  :root{
+    --bg:#060608;
+    --panel:#0f0f12;
+    --neon:#9B30FF;
+    --neon-weak: rgba(155,48,255,0.18);
+    --muted:#bfc4d6;
+    --glass: rgba(255,255,255,0.02);
+    --accent-glow: 0 0 18px rgba(155,48,255,0.28), inset 0 0 12px rgba(155,48,255,0.03);
+  }
+  html,body{
+    height:100%;
+    margin:0;
+    background: radial-gradient(1200px 700px at 10% 10%, rgba(155,48,255,0.03), transparent),
+                linear-gradient(180deg,#050506 0%, var(--bg) 40%);
+    color:var(--muted);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+  .container{
+    max-width:1100px;
+    margin:26px auto;
+    padding:28px;
+  }
+
+  /* Header */
+  .titlebar{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:18px;
+  }
+  .logo {
+    width:56px;
+    height:56px;
+    background:linear-gradient(135deg,var(--neon) 0%, #5b0fbf 100%);
+    border-radius:10px;
+    box-shadow: var(--accent-glow);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"Orbitron";
+    font-weight:700;
+    color:#050005;
+    letter-spacing:1px;
+  }
+  .title-text{
+    display:flex;
+    flex-direction:column;
+  }
+  .title-text h1{
+    margin:0;
+    font-family:"Orbitron", monospace;
+    font-size:20px;
+    color:var(--neon);
+    text-shadow:0 0 10px rgba(155,48,255,0.25);
+  }
+  .title-text p{ margin:0; font-size:12px; color:#9aa0b5; }
+
+  /* Tab controls */
+  .tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:16px;
+  }
+  .tab{
+    padding:10px 14px;
+    border-radius:8px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0));
+    border:1px solid rgba(155,48,255,0.06);
+    color:var(--muted);
+    cursor:pointer;
+    transition: all 220ms ease;
+    box-shadow: none;
+    font-weight:600;
+    font-size:13px;
+  }
+  .tab.active{
+    background: linear-gradient(180deg, rgba(155,48,255,0.07), rgba(155,48,255,0.02));
+    color: white;
+    box-shadow: var(--accent-glow);
+    border: 1px solid rgba(155,48,255,0.25);
+    transform: translateY(-2px);
+  }
+
+  /* panel */
+  .panel{
+    background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.004));
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.03);
+    padding:18px;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+    display:block;
+  }
+  .panel-grid{ display:grid; grid-template-columns: 1fr 360px; gap:18px; }
+
+  /* left column */
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.006));
+    border: 1px solid rgba(155,48,255,0.06);
+    border-radius:10px;
+    padding:12px;
+  }
+  .card h3{ margin:0 0 8px 0; color:var(--neon); font-family:"Orbitron"; font-size:14px; }
+  .row { display:flex; gap:8px; align-items:center; margin-bottom:8px; }
+  label{ font-size:12px; color:#bfc4d6; min-width:120px; }
+  input[type="text"], input[type="number"], select, textarea {
+    width:100%;
+    padding:8px 10px;
+    background:var(--glass);
+    border-radius:6px;
+    border:1px solid rgba(155,48,255,0.06);
+    color:var(--muted);
+    outline:none;
+    transition: box-shadow 160ms;
+    font-size:13px;
+  }
+  input:focus, textarea:focus, select:focus{
+    box-shadow: var(--accent-glow);
+    border-color: var(--neon);
+    background: rgba(255,255,255,0.015);
+    color: #fff;
+  }
+  textarea { min-height:84px; resize:vertical; }
+
+  /* attribute boxes */
+  .attributes { display:flex; gap:8px; }
+  .attr-box {
+    width:72px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(255,255,255,0.01));
+    border-radius:8px;
+    padding:8px;
+    text-align:center;
+    border:1px solid rgba(155,48,255,0.06);
+  }
+  .attr-box .score { font-size:18px; color:white; font-weight:700; }
+  .attr-box .label { font-size:11px; color:#bfc4d6; margin-top:4px; }
+
+  /* small utilities */
+  .small-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; }
+  .btnbar{ display:flex; gap:8px; justify-content:flex-end; margin-top:10px; }
+  button {
+    background:transparent;
+    border:1px solid rgba(155,48,255,0.12);
+    color:var(--muted);
+    padding:8px 10px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:all 160ms;
+    font-weight:600;
+  }
+  button.primary{
+    background: linear-gradient(90deg,var(--neon), #5b0fbf);
+    color:#fff;
+    box-shadow: var(--accent-glow);
+    border: none;
+  }
+  button:hover{ transform: translateY(-2px); }
+  .muted { color:#9aa0b5; font-size:12px; }
+
+  /* glitch effect on heading */
+  .glitch {
+    position:relative;
+    display:inline-block;
+  }
+  .glitch:before, .glitch:after{
+    content:attr(data-text);
+    position:absolute;
+    left:0; top:0;
+    clip: rect(0, 9999px, 0, 0);
+    opacity:0.9;
+  }
+  .glitch:before { transform: translate(-0.6px, -0.6px); color:#fff; mix-blend-mode:screen; }
+  .glitch:after { transform: translate(0.6px, 0.6px); color:rgba(155,48,255,0.6); mix-blend-mode:screen; }
+
+  /* responsive */
+  @media (max-width:980px){
+    .panel-grid{ grid-template-columns: 1fr; }
+  }
+  /* print styles */
+  @media print{
+    body{ background:white; color:black; }
+    .titlebar, .tabs, .btnbar{ display:none; }
+    .panel{ box-shadow:none; border:none; }
+    input,textarea{ border:1px solid #aaa; color:black; background:white; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="titlebar">
+      <div class="logo">CV</div>
+      <div class="title-text">
+        <h1>Cybercraft 5e</h1>
+        <p>Interactive Character Sheet — Echo City</p>
+      </div>
+
+      <div style="margin-left:auto; display:flex; gap:8px; align-items:center;">
+        <button id="export" title="Export to JSON">Export</button>
+        <button id="importBtn" title="Import JSON">Import</button>
+        <button id="clear" title="Clear local data">Clear</button>
+        <button id="print" class="primary" title="Print sheet">Print</button>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <div class="tab active" data-tab="core">Core</div>
+      <div class="tab" data-tab="cyber">Cyberware</div>
+      <div class="tab" data-tab="notes">Notes & Spells</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-grid">
+        <!-- LEFT: main form -->
+        <div>
+          <!-- CORE TAB -->
+          <div class="tab-panel" id="tab-core">
+            <div class="card">
+              <h3 class="glitch" data-text="Identity">Identity</h3>
+              <div class="row"><label>Character Name</label><input id="name" type="text"></div>
+              <div class="row"><label>Player</label><input id="player" type="text"></div>
+              <div class="row"><label>Race</label><input id="race" type="text"></div>
+              <div class="row"><label>Class</label><input id="class" type="text"></div>
+              <div class="row"><label>Level</label><input id="level" type="number" min="1"></div>
+              <div class="row"><label>Background</label><input id="background" type="text"></div>
+              <div class="row"><label>Faction</label><input id="faction" type="text"></div>
+              <div class="row"><label>Alignment</label><input id="alignment" type="text"></div>
+            </div>
+
+            <div class="card" style="margin-top:12px;">
+              <h3 class="glitch" data-text="Attributes">Attributes</h3>
+              <div class="attributes" style="margin-top:8px;">
+                <div class="attr-box"><div class="score"><input id="attr_STR" type="number" style="width:100%; text-align:center; background:transparent; border:none; color:white;" /></div><div class="label">STR</div></div>
+                <div class="attr-box"><div class="score"><input id="attr_DEX" type="number" style="width:100%; text-align:center; background:transparent; border:none; color:white;" /></div><div class="label">DEX</div></div>
+                <div class="attr-box"><div class="score"><input id="attr_CON" type="number" style="width:100%; text-align:center; background:transparent; border:none; color:white;" /></div><div class="label">CON</div></div>
+                <div class="attr-box"><div class="score"><input id="attr_INT" type="number" style="width:100%; text-align:center; background:transparent; border:none; color:white;" /></div><div class="label">INT</div></div>
+                <div class="attr-box"><div class="score"><input id="attr_WIS" type="number" style="width:100%; text-align:center; background:transparent; border:none; color:white;" /></div><div class="label">WIS</div></div>
+                <div class="attr-box"><div class="score"><input id="attr_CHA" type="number" style="width:100%; text-align:center; background:transparent; border:none; color:white;" /></div><div class="label">CHA</div></div>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:12px;">
+              <h3 class="glitch" data-text="Combat">Combat</h3>
+              <div class="small-grid">
+                <div><label>Armor Class</label><input id="ac" type="text"></div>
+                <div><label>Initiative</label><input id="init" type="text"></div>
+                <div><label>Speed</label><input id="speed" type="text"></div>
+                <div><label>Max HP</label><input id="hp_max" type="number"></div>
+                <div><label>Current HP</label><input id="hp_cur" type="number"></div>
+                <div><label>Temp HP</label><input id="hp_temp" type="number"></div>
+                <div><label>Hit Dice</label><input id="hit_dice" type="text"></div>
+                <div><label>Proficiency</label><input id="prof" type="text"></div>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:12px;">
+              <h3 class="glitch" data-text="Skills">Skills</h3>
+              <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:8px;">
+                <div><label>Athletics</label><input id="skill_athletics" type="text"></div>
+                <div><label>Acrobatics</label><input id="skill_acrobatics" type="text"></div>
+                <div><label>Sleight of Hand</label><input id="skill_sleight" type="text"></div>
+                <div><label>Stealth</label><input id="skill_stealth" type="text"></div>
+                <div><label>Arcana</label><input id="skill_arcana" type="text"></div>
+                <div><label>Investigation</label><input id="skill_investigation" type="text"></div>
+                <div><label>Technology</label><input id="skill_technology" type="text"></div>
+                <div><label>Perception</label><input id="skill_perception" type="text"></div>
+                <div><label>Persuasion</label><input id="skill_persuasion" type="text"></div>
+                <div><label>Intimidation</label><input id="skill_intimidation" type="text"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CYBER TAB -->
+          <div class="tab-panel" id="tab-cyber" style="display:none;">
+            <div class="card">
+              <h3 class="glitch" data-text="Cybernetics & Augments">Cybernetics & Augments</h3>
+              <div style="display:grid; gap:8px;">
+                <input id="cyber_slot_1" placeholder="Slot 1 — Example: Neural Link (attunement)" />
+                <input id="cyber_slot_2" placeholder="Slot 2" />
+                <input id="cyber_slot_3" placeholder="Slot 3" />
+                <input id="cyber_slot_4" placeholder="Slot 4" />
+                <input id="cyber_slot_5" placeholder="Slot 5" />
+                <input id="cyber_slot_6" placeholder="Slot 6" />
+                <input id="cyber_slot_7" placeholder="Slot 7" />
+                <input id="cyber_slot_8" placeholder="Slot 8" />
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:12px;">
+              <h3 class="glitch" data-text="Sanity & Corruption">Sanity & Corruption</h3>
+              <div class="row"><label>Sanity (cur / max)</label><input id="sanity" type="text" placeholder="12 / 20"></div>
+              <div class="row"><label>Corruption (cur / max)</label><input id="corruption" type="text" placeholder="0 / 20"></div>
+              <div style="margin-top:8px;"><label>Effects / Scars</label><textarea id="sanity_notes" placeholder="List psychological scars, mutations, notes..."></textarea></div>
+            </div>
+
+            <div class="card" style="margin-top:12px;">
+              <h3 class="glitch" data-text="Faction Reputation">Faction Reputation</h3>
+              <div>
+                <div class="row"><label>Faction 1</label><input id="faction_name_1" /><label style="min-width:40px;">Rep</label><input id="faction_rep_1" style="width:70px;" /><label style="min-width:40px;">Rank</label><input id="faction_rank_1" style="width:70px;" /></div>
+                <div class="row"><label>Faction 2</label><input id="faction_name_2" /><label style="min-width:40px;">Rep</label><input id="faction_rep_2" style="width:70px;" /><label style="min-width:40px;">Rank</label><input id="faction_rank_2" style="width:70px;" /></div>
+                <div class="row"><label>Faction 3</label><input id="faction_name_3" /><label style="min-width:40px;">Rep</label><input id="faction_rep_3" style="width:70px;" /><label style="min-width:40px;">Rank</label><input id="faction_rank_3" style="width:70px;" /></div>
+                <div class="row"><label>Faction 4</label><input id="faction_name_4" /><label style="min-width:40px;">Rep</label><input id="faction_rep_4" style="width:70px;" /><label style="min-width:40px;">Rank</label><input id="faction_rank_4" style="width:70px;" /></div>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:12px;">
+              <h3 class="glitch" data-text="Gear & Credits">Gear & Credits</h3>
+              <div class="row"><label>Credits</label><input id="credits" type="number" /></div>
+              <div style="margin-top:8px;"><label>Armor</label><input id="armor" /></div>
+              <div style="margin-top:8px;"><label>Weapons (list)</label><textarea id="weapons_list" placeholder="Weapon name — damage — properties"></textarea></div>
+              <div style="margin-top:8px;"><label>Inventory / Notes</label><textarea id="inventory"></textarea></div>
+            </div>
+          </div>
+
+          <!-- NOTES TAB -->
+          <div class="tab-panel" id="tab-notes" style="display:none;">
+            <div class="card">
+              <h3 class="glitch" data-text="Spells & Abilities">Spells & Abilities</h3>
+              <div style="display:grid; gap:8px;">
+                <input id="spell_1" placeholder="Spell / Power 1" />
+                <input id="spell_2" placeholder="Spell / Power 2" />
+                <input id="spell_3" placeholder="Spell / Power 3" />
+                <input id="spell_4" placeholder="Spell / Power 4" />
+                <input id="spell_5" placeholder="Spell / Power 5" />
+                <input id="spell_6" placeholder="Spell / Power 6" />
+                <input id="spell_7" placeholder="Spell / Power 7" />
+                <input id="spell_8" placeholder="Spell / Power 8" />
+                <input id="spell_9" placeholder="Spell / Power 9" />
+                <input id="spell_10" placeholder="Spell / Power 10" />
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:12px;">
+              <h3 class="glitch" data-text="Vehicle">Vehicle</h3>
+              <div class="row"><label>Name</label><input id="veh_name" /></div>
+              <div class="row"><label>Type</label><input id="veh_type" /></div>
+              <div class="row"><label>Speed</label><input id="veh_speed" /></div>
+              <div class="row"><label>AC</label><input id="veh_ac" /></div>
+              <div class="row"><label>HP</label><input id="veh_hp" /></div>
+              <div style="margin-top:8px;"><label>Upgrades</label><textarea id="veh_upgrades"></textarea></div>
+            </div>
+
+            <div class="card" style="margin-top:12px;">
+              <h3 class="glitch" data-text="Notes / Backstory">Notes / Backstory</h3>
+              <textarea id="notes" placeholder="Character notes, story hooks, personality, etc."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: summary / quick -->
+        <div>
+          <div class="card">
+            <h3 class="glitch" data-text="Snapshot">Snapshot</h3>
+            <div style="display:flex; gap:8px; flex-direction:column;">
+              <div class="row"><strong style="width:120px; color:#fff">Name</strong><div id="snap_name" class="muted">—</div></div>
+              <div class="row"><strong style="width:120px; color:#fff">Class / Level</strong><div id="snap_class" class="muted">—</div></div>
+              <div class="row"><strong style="width:120px; color:#fff">HP</strong><div id="snap_hp" class="muted">0 / 0</div></div>
+              <div class="row"><strong style="width:120px; color:#fff">AC</strong><div id="snap_ac" class="muted">—</div></div>
+              <div class="row"><strong style="width:120px; color:#fff">Sanity / Corr.</strong><div id="snap_sanity" class="muted">—</div></div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:12px;">
+            <h3 class="glitch" data-text="Quick Actions">Quick Actions</h3>
+            <div style="display:flex; gap:8px; flex-direction:column;">
+              <button id="downloadJSON">Download JSON</button>
+              <button id="loadJSON">Load JSON</button>
+              <button id="clearLocal">Clear Local</button>
+            </div>
+            <p class="muted" style="margin-top:10px;">Autosaves as you type. Use Export/Import to share between players or PCs.</p>
+          </div>
+
+          <div class="card" style="margin-top:12px;">
+            <h3 class="glitch" data-text="Help">Help</h3>
+            <p class="muted" style="font-size:13px; margin:0;">This sheet stores data locally in your browser (localStorage). To move it, use Export → Save the JSON file → Import on another browser or computer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+  // -------------------------
+  // Simple tab system
+  // -------------------------
+  const tabs = document.querySelectorAll('.tab');
+  const panels = {
+    core: document.getElementById('tab-core'),
+    cyber: document.getElementById('tab-cyber'),
+    notes: document.getElementById('tab-notes')
+  };
+  tabs.forEach(t => {
+    t.addEventListener('click', () => {
+      tabs.forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      // show panel
+      Object.values(panels).forEach(p=>p.style.display='none');
+      panels[t.dataset.tab].style.display = 'block';
+      // small glitch transition
+      panels[t.dataset.tab].style.animation = 'glitchIn 260ms';
+      setTimeout(()=> panels[t.dataset.tab].style.animation = '', 300);
+    });
+  });
+
+  // -------------------------
+  // Fields list (all field ids)
+  // -------------------------
+  const fieldIds = [
+    'name','player','race','class','level','background','faction','alignment',
+    'attr_STR','attr_DEX','attr_CON','attr_INT','attr_WIS','attr_CHA',
+    'ac','init','speed','hp_max','hp_cur','hp_temp','hit_dice','prof',
+    'skill_athletics','skill_acrobatics','skill_sleight','skill_stealth','skill_arcana','skill_investigation','skill_technology','skill_perception','skill_persuasion','skill_intimidation',
+    'cyber_slot_1','cyber_slot_2','cyber_slot_3','cyber_slot_4','cyber_slot_5','cyber_slot_6','cyber_slot_7','cyber_slot_8',
+    'sanity','corruption','sanity_notes',
+    'faction_name_1','faction_rep_1','faction_rank_1','faction_name_2','faction_rep_2','faction_rank_2','faction_name_3','faction_rep_3','faction_rank_3','faction_name_4','faction_rep_4','faction_rank_4',
+    'credits','armor','weapons_list','inventory',
+    'spell_1','spell_2','spell_3','spell_4','spell_5','spell_6','spell_7','spell_8','spell_9','spell_10',
+    'veh_name','veh_type','veh_speed','veh_ac','veh_hp','veh_upgrades',
+    'notes'
+  ];
+
+  const STORAGE_KEY = 'cybercraft_char_v1';
+
+  // Attempt to populate snapshot & load saved data
+  function loadFromStorage(){
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return;
+    try {
+      const data = JSON.parse(raw);
+      fieldIds.forEach(id=>{
+        if(data[id] !== undefined){
+          const el = document.getElementById(id);
+          if(el) el.value = data[id];
+        }
+      });
+      updateSnapshot();
+    } catch(e){
+      console.error('Load failed', e);
+    }
+  }
+
+  // Save current form state to localStorage
+  function saveToStorage(){
+    const data = {};
+    fieldIds.forEach(id=>{
+      const el = document.getElementById(id);
+      data[id] = el ? el.value : '';
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    updateSnapshot();
+  }
+
+  // Update quick snapshot
+  function updateSnapshot(){
+    document.getElementById('snap_name').textContent = document.getElementById('name').value || '—';
+    const cls = document.getElementById('class').value || '—';
+    const lvl = document.getElementById('level').value || '—';
+    document.getElementById('snap_class').textContent = cls + ' / ' + lvl;
+    const hpcur = document.getElementById('hp_cur').value || '0';
+    const hpmax = document.getElementById('hp_max').value || '0';
+    document.getElementById('snap_hp').textContent = hpcur + ' / ' + hpmax;
+    document.getElementById('snap_ac').textContent = document.getElementById('ac').value || '—';
+    document.getElementById('snap_sanity').textContent = (document.getElementById('sanity').value || '—') + ' / ' + (document.getElementById('corruption').value || '—');
+  }
+
+  // Attach listeners to auto-save
+  fieldIds.forEach(id=>{
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.addEventListener('input', () => {
+      // minor debounce
+      if(window._saveTimer) clearTimeout(window._saveTimer);
+      window._saveTimer = setTimeout(()=>{ saveToStorage(); }, 350);
+    });
+  });
+
+  // Buttons: export / import / clear / print
+  document.getElementById('export').addEventListener('click', () => {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw){ alert('No saved character data found.'); return; }
+    const blob = new Blob([raw], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = (document.getElementById('name').value || 'character') + '.cyber.json';
+    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  });
+
+  document.getElementById('importBtn').addEventListener('click', () => {
+    const input = document.createElement('input'); input.type='file'; input.accept='.json,.cyber.json,application/json';
+    input.onchange = (e) => {
+      const f = e.target.files[0]; if(!f) return;
+      const r = new FileReader();
+      r.onload = () => {
+        try {
+          JSON.parse(r.result); localStorage.setItem(STORAGE_KEY, r.result); loadFromStorage(); alert('Imported OK.');
+        } catch(err){ alert('Import failed: file invalid.'); }
+      };
+      r.readAsText(f);
+    };
+    input.click();
+  });
+
+  document.getElementById('clear').addEventListener('click', () => {
+    if(confirm('Clear local sheet data? This cannot be undone.')){ localStorage.removeItem(STORAGE_KEY); fieldIds.forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; }); updateSnapshot(); }
+  });
+
+  document.getElementById('print').addEventListener('click', () => window.print());
+
+  // Quick action buttons
+  document.getElementById('downloadJSON').addEventListener('click', () => document.getElementById('export').click());
+  document.getElementById('loadJSON').addEventListener('click', () => document.getElementById('importBtn').click());
+  document.getElementById('clearLocal').addEventListener('click', () => document.getElementById('clear').click());
+
+  // Save on unload
+  window.addEventListener('beforeunload', saveToStorage);
+
+  // initial load
+  loadFromStorage();
+
+  // small animation keyframes inserted dynamically
+  const style = document.createElement('style');
+  style.innerHTML = `
+    @keyframes glitchIn {
+      0%{ opacity:0; transform:translateY(6px) skewX(-6deg); filter:blur(4px) }
+      60%{ opacity:1; transform:translateY(-2px) skewX(1deg); filter:blur(0) }
+      100%{ opacity:1; transform:none }
+    }`;
+  document.head.appendChild(style);
+
+</script>
+
+</body>
+</html>
