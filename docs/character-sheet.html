@@ -98,8 +98,8 @@
 
     <div class="tabs" role="tablist">
       <div class="tab active" data-tab="core">Core</div>
-      <div class="tab" data-tab="cyber">Cyberware & Abilities</div>
-      <div class="tab" data-tab="spells">Spells & Abilities</div>
+      <div class="tab" data-tab="feats">Feats & Cyberware</div>
+      <div class="tab" data-tab="abilities">Abilities & Spells</div>
       <div class="tab" data-tab="eq">EQ & Notes</div>
     </div>
 
@@ -216,18 +216,30 @@
             </div>
           </div>
 
-          <!-- CYBERWARE & ABILITIES TAB -->
-          <div class="tab-panel" id="tab-cyber" style="display:none">
+          <!-- FEATS & CYBERWARE TAB -->
+          <div class="tab-panel" id="tab-feats" style="display:none">
             <div class="card">
-              <h3>Cybernetics</h3>
+              <h3>-- Feats --</h3>
               <div style="display:flex;gap:8px;margin-bottom:8px">
-                <input id="new_cyber_name" placeholder="Cyberware name (single line)"/>
+                <input id="new_feat_name" placeholder="Feat name"/>
+                <button id="addFeat">Add</button>
+              </div>
+              <div class="list-wrap" id="feats_list"></div>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+              <h3>-- Cyberware --</h3>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input id="new_cyber_name" placeholder="Cyberware name"/>
                 <button id="addCyber">Add</button>
               </div>
               <div class="list-wrap" id="cyber_list"></div>
             </div>
+          </div>
 
-            <div class="card" style="margin-top:12px">
+          <!-- ABILITIES & SPELLS TAB -->
+          <div class="tab-panel" id="tab-abilities" style="display:none">
+            <div class="card">
               <h3>Abilities</h3>
               <div style="display:flex;gap:8px;margin-bottom:8px">
                 <input id="new_ability_name" placeholder="Ability name"/>
@@ -235,11 +247,8 @@
               </div>
               <div class="list-wrap" id="abilities_list"></div>
             </div>
-          </div>
 
-          <!-- SPELLS TAB -->
-          <div class="tab-panel" id="tab-spells" style="display:none">
-            <div class="card">
+            <div class="card" style="margin-top:12px">
               <h3>Spells</h3>
               <div style="display:flex;gap:8px;margin-bottom:8px">
                 <input id="new_spell_name" placeholder="Spell name"/>
@@ -311,9 +320,9 @@
 
 <script>
 /* -------------------------
-   Data model & constants
+   Constants & helpers
    ------------------------- */
-const STORAGE_KEY = 'cybercraft_sheet_final_v1';
+const STORAGE_KEY = 'cybercraft_sheet_v_final';
 const SKILLS = {
   athletics:'STR', acrobatics:'DEX', sleight:'DEX', stealth:'DEX', driving:'DEX',
   arcana:'INT', history:'INT', investigation:'INT', nature:'INT', religion:'INT', technology:'INT',
@@ -322,6 +331,7 @@ const SKILLS = {
 };
 function abilityMod(score){ const s=parseInt(score)||0; return Math.floor((s-10)/2); }
 function proficiencyByLevel(lvl){ lvl = parseInt(lvl)||1; return Math.ceil(lvl/4)+1; }
+function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 /* -------------------------
    Tab handling
@@ -336,8 +346,9 @@ document.querySelectorAll('.tab').forEach(tab=>{
 });
 
 /* -------------------------
-   Dynamic lists: cyber, abilities, spells, equip, vehicles
+   Dynamic lists: Feats, Cyber, Abilities, Spells, Equip, Vehicles
    ------------------------- */
+/* Generic renderer */
 function renderList(containerId, items, templateFn){
   const wrap = document.getElementById(containerId);
   wrap.innerHTML = '';
@@ -348,29 +359,54 @@ function renderList(containerId, items, templateFn){
   });
 }
 
-/* Cyber */
-window._cyber = window._cyber||[];
+/* Feats */
+window._feats = window._feats || [];
+function renderFeats(){ renderList('feats_list', window._feats, (f,i)=>`
+  <div style="flex:1">
+    <input class="feat_name" data-i="${i}" value="${escapeHtml(f.name||'')}" placeholder="Feat name"/>
+    <textarea class="feat_desc" data-i="${i}" placeholder="Description">${escapeHtml(f.desc||'')}</textarea>
+  </div>
+  <div><button class="remove_feat" data-i="${i}">Remove</button></div>
+`); }
+document.getElementById('addFeat').addEventListener('click', ()=>{
+  const name = document.getElementById('new_feat_name').value.trim(); if(!name) return alert('Enter feat name');
+  window._feats.push({name:name,desc:''}); document.getElementById('new_feat_name').value=''; renderFeats(); saveToStorage();
+});
+document.getElementById('feats_list').addEventListener('click',(e)=>{
+  if(e.target.classList.contains('remove_feat')){ const i=parseInt(e.target.dataset.i); window._feats.splice(i,1); renderFeats(); saveToStorage(); }
+});
+document.getElementById('feats_list').addEventListener('input',(e)=>{
+  const cls=e.target.className; const i=parseInt(e.target.dataset.i);
+  if(cls.includes('feat_name')) window._feats[i].name = e.target.value;
+  if(cls.includes('feat_desc')) window._feats[i].desc = e.target.value;
+  saveToStorage();
+});
+
+/* Cyberware */
+window._cyber = window._cyber || [];
 function renderCyber(){ renderList('cyber_list', window._cyber, (c,i)=>`
   <div style="flex:1">
     <input class="cyber_name" data-i="${i}" value="${escapeHtml(c.name||'')}" placeholder="Cyberware name"/>
+    <textarea class="cyber_desc" data-i="${i}" placeholder="Description (optional)">${escapeHtml(c.desc||'')}</textarea>
   </div>
   <div><button class="remove_cyber" data-i="${i}">Remove</button></div>
 `); }
 document.getElementById('addCyber').addEventListener('click', ()=>{
-  const name = document.getElementById('new_cyber_name').value.trim();
-  if(!name) return alert('Enter cyberware name');
-  window._cyber.push({name:name});
-  document.getElementById('new_cyber_name').value=''; renderCyber(); saveToStorage();
+  const name=document.getElementById('new_cyber_name').value.trim(); if(!name) return alert('Enter cyberware name');
+  window._cyber.push({name:name,desc:''}); document.getElementById('new_cyber_name').value=''; renderCyber(); saveToStorage();
 });
 document.getElementById('cyber_list').addEventListener('click',(e)=>{
   if(e.target.classList.contains('remove_cyber')){ const i=parseInt(e.target.dataset.i); window._cyber.splice(i,1); renderCyber(); saveToStorage(); }
 });
 document.getElementById('cyber_list').addEventListener('input',(e)=>{
-  if(e.target.classList.contains('cyber_name')){ window._cyber[parseInt(e.target.dataset.i)].name = e.target.value; saveToStorage(); }
+  const cls=e.target.className; const i=parseInt(e.target.dataset.i);
+  if(cls.includes('cyber_name')) window._cyber[i].name = e.target.value;
+  if(cls.includes('cyber_desc')) window._cyber[i].desc = e.target.value;
+  saveToStorage();
 });
 
 /* Abilities */
-window._abilities = window._abilities||[];
+window._abilities = window._abilities || [];
 function renderAbilities(){ renderList('abilities_list', window._abilities, (a,i)=>`
   <div style="flex:1">
     <input class="ability_name" data-i="${i}" value="${escapeHtml(a.name||'')}" placeholder="Ability name"/>
@@ -379,23 +415,21 @@ function renderAbilities(){ renderList('abilities_list', window._abilities, (a,i
   <div><button class="remove_ability" data-i="${i}">Remove</button></div>
 `); }
 document.getElementById('addAbility').addEventListener('click', ()=>{
-  const name = document.getElementById('new_ability_name').value.trim();
-  if(!name) return alert('Enter ability name');
-  window._abilities.push({name:name,desc:''});
-  document.getElementById('new_ability_name').value=''; renderAbilities(); saveToStorage();
+  const name=document.getElementById('new_ability_name').value.trim(); if(!name) return alert('Enter ability name');
+  window._abilities.push({name:name,desc:''}); document.getElementById('new_ability_name').value=''; renderAbilities(); saveToStorage();
 });
 document.getElementById('abilities_list').addEventListener('click',(e)=>{
   if(e.target.classList.contains('remove_ability')){ const i=parseInt(e.target.dataset.i); window._abilities.splice(i,1); renderAbilities(); saveToStorage(); }
 });
 document.getElementById('abilities_list').addEventListener('input',(e)=>{
-  const cls = e.target.className; const i=parseInt(e.target.dataset.i);
+  const cls=e.target.className; const i=parseInt(e.target.dataset.i);
   if(cls.includes('ability_name')) window._abilities[i].name = e.target.value;
   if(cls.includes('ability_desc')) window._abilities[i].desc = e.target.value;
   saveToStorage();
 });
 
 /* Spells */
-window._spells = window._spells||[];
+window._spells = window._spells || [];
 function renderSpells(){ renderList('spells_list', window._spells, (s,i)=>`
   <div style="flex:1">
     <input class="spell_name" data-i="${i}" value="${escapeHtml(s.name||'')}" placeholder="Spell name"/>
@@ -408,10 +442,9 @@ function renderSpells(){ renderList('spells_list', window._spells, (s,i)=>`
   <div><button class="remove_spell" data-i="${i}">Remove</button></div>
 `); }
 document.getElementById('addSpell').addEventListener('click', ()=>{
-  const name = document.getElementById('new_spell_name').value.trim(); const level = document.getElementById('new_spell_level').value.trim();
+  const name=document.getElementById('new_spell_name').value.trim(); const lvl=document.getElementById('new_spell_level').value.trim();
   if(!name) return alert('Enter spell name');
-  window._spells.push({name:name, level:level, time:'', desc:''});
-  document.getElementById('new_spell_name').value=''; document.getElementById('new_spell_level').value=''; renderSpells(); saveToStorage();
+  window._spells.push({name:name,level:lvl,time:'',desc:''}); document.getElementById('new_spell_name').value=''; document.getElementById('new_spell_level').value=''; renderSpells(); saveToStorage();
 });
 document.getElementById('spells_list').addEventListener('click',(e)=>{
   if(e.target.classList.contains('remove_spell')){ const i=parseInt(e.target.dataset.i); window._spells.splice(i,1); renderSpells(); saveToStorage(); }
@@ -425,27 +458,26 @@ document.getElementById('spells_list').addEventListener('input',(e)=>{
   saveToStorage();
 });
 
-/* Equipment (single-line list) */
-window._equip = window._equip||[];
-function renderEquip(){ renderList('equip_list', window._equip, (e,i)=>`
+/* Equipment (single-line) */
+window._equip = window._equip || [];
+function renderEquip(){ renderList('equip_list', window._equip, (it,i)=>`
   <div style="flex:1">
-    <input class="equip_item" data-i="${i}" value="${escapeHtml(e||'')}" placeholder="Item name"/>
+    <input class="equip_item" data-i="${i}" value="${escapeHtml(it||'')}" placeholder="Item name"/>
   </div>
   <div><button class="remove_equip" data-i="${i}">Remove</button></div>
 `); }
 document.getElementById('addEquip').addEventListener('click', ()=>{
-  const name = document.getElementById('new_equip').value.trim(); if(!name) return alert('Enter item name');
-  window._equip.push(name); document.getElementById('new_equip').value=''; renderEquip(); saveToStorage();
+  const name=document.getElementById('new_equip').value.trim(); if(!name) return alert('Enter item'); window._equip.push(name); document.getElementById('new_equip').value=''; renderEquip(); saveToStorage();
 });
 document.getElementById('equip_list').addEventListener('click',(e)=>{
   if(e.target.classList.contains('remove_equip')){ const i=parseInt(e.target.dataset.i); window._equip.splice(i,1); renderEquip(); saveToStorage(); }
 });
 document.getElementById('equip_list').addEventListener('input',(e)=>{
-  if(e.target.classList.contains('equip_item')){ const i=parseInt(e.target.dataset.i); window._equip[i]=e.target.value; saveToStorage(); }
+  if(e.target.classList.contains('equip_item')){ const i=parseInt(e.target.dataset.i); window._equip[i] = e.target.value; saveToStorage(); }
 });
 
-/* Vehicles (structured) */
-window._vehicles = window._vehicles||[];
+/* Vehicles */
+window._vehicles = window._vehicles || [];
 function renderVehicles(){ renderList('vehicles_list', window._vehicles, (v,i)=>`
   <div style="flex:1">
     <input class="veh_name" data-i="${i}" value="${escapeHtml(v.name||'')}" placeholder="Vehicle name"/>
@@ -476,7 +508,7 @@ document.getElementById('vehicles_list').addEventListener('input',(e)=>{
 });
 
 /* -------------------------
-   Save / Load state
+   Save / Load
    ------------------------- */
 function gatherState(){
   const state = {};
@@ -485,24 +517,19 @@ function gatherState(){
     'attr_STR','attr_DEX','attr_CON','attr_INT','attr_WIS','attr_CHA',
     'save_prof_STR','save_prof_DEX','save_prof_CON','save_prof_INT','save_prof_WIS','save_prof_CHA',
     'ac','init','speed','prof_display','hp_max','hp_cur','hp_temp','hit_dice',
-    'sanity','corruption','sanity_notes','notes',
-    'cyber_slot_1','cyber_slot_2','cyber_slot_3','cyber_slot_4','cyber_slot_5','cyber_slot_6','cyber_slot_7','cyber_slot_8',
-    'credits','armor','weapons_list','inventory'
+    'sanity','corruption','sanity_notes','notes'
   ];
   ids.forEach(id=>{
     const el=document.getElementById(id); if(!el) return;
-    if(el.type==='checkbox') state[id]=el.checked; else state[id]=el.value;
+    state[id] = (el.type==='checkbox') ? el.checked : el.value;
   });
   Object.keys(SKILLS).forEach(s=>{
     const p=document.getElementById('prof_'+s), e=document.getElementById('exp_'+s);
-    state['prof_'+s] = p ? p.checked:false;
-    state['exp_'+s] = e ? e.checked:false;
+    state['prof_'+s] = p ? p.checked : false;
+    state['exp_'+s] = e ? e.checked : false;
   });
-  state.cyber = window._cyber||[];
-  state.abilities = window._abilities||[];
-  state.spells = window._spells||[];
-  state.equip = window._equip||[];
-  state.vehicles = window._vehicles||[];
+  state.feats = window._feats||[]; state.cyber = window._cyber||[]; state.abilities = window._abilities||[]; state.spells = window._spells||[];
+  state.equip = window._equip||[]; state.vehicles = window._vehicles||[];
   return state;
 }
 function applyState(state){
@@ -512,9 +539,7 @@ function applyState(state){
     'attr_STR','attr_DEX','attr_CON','attr_INT','attr_WIS','attr_CHA',
     'save_prof_STR','save_prof_DEX','save_prof_CON','save_prof_INT','save_prof_WIS','save_prof_CHA',
     'ac','init','speed','prof_display','hp_max','hp_cur','hp_temp','hit_dice',
-    'sanity','corruption','sanity_notes','notes',
-    'cyber_slot_1','cyber_slot_2','cyber_slot_3','cyber_slot_4','cyber_slot_5','cyber_slot_6','cyber_slot_7','cyber_slot_8',
-    'credits','armor','weapons_list','inventory'
+    'sanity','corruption','sanity_notes','notes'
   ];
   ids.forEach(id=>{
     const el=document.getElementById(id); if(!el || state[id]===undefined) return;
@@ -524,22 +549,21 @@ function applyState(state){
     const p=document.getElementById('prof_'+s); if(p) p.checked = !!state['prof_'+s];
     const e=document.getElementById('exp_'+s); if(e) e.checked = !!state['exp_'+s];
   });
-  window._cyber = state.cyber||[]; window._abilities = state.abilities||[]; window._spells = state.spells||[]; window._equip = state.equip||[]; window._vehicles = state.vehicles||[];
-  renderCyber(); renderAbilities(); renderSpells(); renderEquip(); renderVehicles();
+  window._feats = state.feats||[]; window._cyber = state.cyber||[]; window._abilities = state.abilities||[]; window._spells = state.spells||[]; window._equip = state.equip||[]; window._vehicles = state.vehicles||[];
+  renderFeats(); renderCyber(); renderAbilities(); renderSpells(); renderEquip(); renderVehicles();
   updateAllCalculations(); updateSnapshot();
 }
-function saveToStorage(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(gatherState())); }catch(e){console.error('Save failed',e);} }
-function loadFromStorage(){ try{ const raw=localStorage.getItem(STORAGE_KEY); if(!raw) return; applyState(JSON.parse(raw)); }catch(e){console.error('Load failed',e);} }
+function saveToStorage(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(gatherState())); }catch(e){console.error(e);} }
+function loadFromStorage(){ try{ const raw=localStorage.getItem(STORAGE_KEY); if(!raw) return; applyState(JSON.parse(raw)); }catch(e){console.error(e);} }
 
 /* -------------------------
-   Calculations: saves, skills, initiative
+   Calculations: saves, skills, init
    ------------------------- */
 function updateAllCalculations(){
   const level = parseInt(document.getElementById('level').value) || 1;
   const prof = proficiencyByLevel(level);
   document.getElementById('prof_display').value = (prof>=0?'+':'') + prof;
 
-  // saves
   ['STR','DEX','CON','INT','WIS','CHA'].forEach(ab=>{
     const score = parseInt(document.getElementById('attr_'+ab).value)||0;
     const mod = abilityMod(score);
@@ -548,7 +572,6 @@ function updateAllCalculations(){
     document.getElementById('save_bonus_'+ab).textContent = (total>=0?'+':'') + total;
   });
 
-  // skills
   Object.keys(SKILLS).forEach(s=>{
     const ab = SKILLS[s];
     const score = parseInt(document.getElementById('attr_'+ab).value)||0;
@@ -561,7 +584,7 @@ function updateAllCalculations(){
     if(el) el.textContent = (bonus>=0?'+':'') + bonus;
   });
 
-  // Initiative auto from DEX mod
+  // Initiative from DEX mod
   const dex = parseInt(document.getElementById('attr_DEX').value)||0;
   const imod = abilityMod(dex);
   document.getElementById('init').value = (imod>=0?'+':'') + imod;
@@ -571,7 +594,7 @@ function updateAllCalculations(){
 }
 
 /* -------------------------
-   Snapshot
+   Snapshot + listeners
    ------------------------- */
 function updateSnapshot(){
   document.getElementById('snap_name').textContent = document.getElementById('name').value || '—';
@@ -581,9 +604,6 @@ function updateSnapshot(){
   document.getElementById('snap_sanity').textContent = (document.getElementById('sanity').value||'—') + ' / ' + (document.getElementById('corruption').value||'—');
 }
 
-/* -------------------------
-   Attach listeners
-   ------------------------- */
 function attachListeners(){
   const watch = [
     'level','attr_STR','attr_DEX','attr_CON','attr_INT','attr_WIS','attr_CHA',
@@ -595,14 +615,11 @@ function attachListeners(){
     if(el.type==='checkbox') el.addEventListener('change', updateAllCalculations);
     else el.addEventListener('input', ()=>{ if(window._calcTimer) clearTimeout(window._calcTimer); window._calcTimer=setTimeout(()=>updateAllCalculations(),180);});
   });
-  // skill checkboxes
   Object.keys(SKILLS).forEach(s=>{
     const p=document.getElementById('prof_'+s); const e=document.getElementById('exp_'+s);
     if(p) p.addEventListener('change', updateAllCalculations);
     if(e) e.addEventListener('change', updateAllCalculations);
   });
-
-  // generic autosave for inputs/textarea
   document.querySelectorAll('input,textarea').forEach(el=>{
     el.addEventListener('input', ()=>{
       if(window._saveTimer) clearTimeout(window._saveTimer);
@@ -633,12 +650,11 @@ document.getElementById('loadJSON').addEventListener('click', ()=>document.getEl
 document.getElementById('clearLocal').addEventListener('click', ()=>document.getElementById('clear').click && document.getElementById('clear').click());
 
 /* -------------------------
-   Helpers & boot
+   Boot
    ------------------------- */
-function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-attachListeners(); loadFromStorage();
-if(!window._cyber) window._cyber=[]; if(!window._abilities) window._abilities=[]; if(!window._spells) window._spells=[]; if(!window._equip) window._equip=[]; if(!window._vehicles) window._vehicles=[];
-renderCyber(); renderAbilities(); renderSpells(); renderEquip(); renderVehicles();
+attachListeners();
+loadFromStorage();
+renderFeats(); renderCyber(); renderAbilities(); renderSpells(); renderEquip(); renderVehicles();
 setTimeout(()=>{ updateAllCalculations(); updateSnapshot(); },200);
 
 </script>
