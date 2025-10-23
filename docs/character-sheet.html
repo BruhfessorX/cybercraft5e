@@ -11,6 +11,7 @@
     --panel:#1a1a1c;
     --input:#262628;
     --neon:#9B30FF;
+    --neon-green:#00ff88;
     --muted:#c6cad2;
     --glass: rgba(255,255,255,0.02);
     --accent-glow: 0 0 20px rgba(155,48,255,0.22), inset 0 0 8px rgba(0,0,0,0.35);
@@ -78,30 +79,67 @@
     input,textarea{border:1px solid #aaa;color:black;background:white}
   }
 
-  /* Terminal overlay styles (neon green) */
-  #ci-terminal {
-    position: fixed;
-    top: 18px;
-    right: 18px;
-    width: 320px;
-    max-height: 420px;
-    background: rgba(2,6,4,0.95);
-    border: 1px solid rgba(0,255,153,0.14);
-    color: #9effc6;
-    font-family: monospace;
-    font-size: 13px;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,255,153,0.05);
-    z-index: 9999;
-    overflow-y: auto;
+  /* Neon dice button (small) */
+  .dice-btn {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:28px;
+    height:28px;
+    border-radius:6px;
+    background:linear-gradient(90deg, rgba(155,48,255,0.12), rgba(155,48,255,0.06));
+    border:1px solid rgba(155,48,255,0.18);
+    color:#fff;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow: 0 0 10px rgba(155,48,255,0.08);
   }
-  #ci-terminal h4 { margin:0 0 8px 0; color:#00ff88; text-align:center; font-weight:700; }
-  .ci-roll-line { margin-bottom:8px; padding:6px; background: linear-gradient(90deg, rgba(0,255,153,0.02), transparent); border-radius:6px; border:1px solid rgba(0,255,153,0.02); }
-  .ci-smallbtn { background:transparent; border:1px solid rgba(255,255,255,0.02); color:var(--muted); padding:6px 8px; border-radius:6px; cursor:pointer; }
-  .ci-dicebtn { background:linear-gradient(90deg,#00ff99,#66ffb3); border:none; padding:6px 8px; border-radius:6px; color:#002; cursor:pointer; }
-  .ci-input { padding:8px; border-radius:6px; background:#05100b; border:1px solid rgba(0,255,153,0.04); color:#9effc6; width:100%; }
-  .ci-section { margin-top:10px; }
+  .dice-btn:hover {
+    box-shadow: 0 0 18px rgba(155,48,255,0.24), inset 0 0 6px rgba(255,255,255,0.02);
+    transform:translateY(-1px);
+  }
+  .dice-btn-green {
+    background:linear-gradient(90deg, rgba(0,255,153,0.08), rgba(0,255,153,0.04));
+    border:1px solid rgba(0,255,153,0.14);
+    color:var(--neon-green);
+    box-shadow: 0 0 12px rgba(0,255,153,0.06);
+  }
+
+  /* Roll toast notifications (top-right) */
+  .roll-toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 320px;
+    z-index: 9999;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    pointer-events: none;
+  }
+  .roll-toast {
+    pointer-events: auto;
+    background: linear-gradient(180deg, rgba(2,4,3,0.96), rgba(4,10,8,0.98));
+    border: 1px solid rgba(155,48,255,0.08);
+    color: #e7f9f0;
+    padding:8px 10px;
+    border-radius:8px;
+    font-family:monospace;
+    font-size:13px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 18px rgba(155,48,255,0.06);
+  }
+  .roll-toast .title { color: var(--neon); font-weight:700; margin-bottom:4px; font-family:Orbitron; font-size:12px; }
+  .roll-toast .body { color:#dfffe8; font-size:13px; }
+
+  /* Attacks table styling */
+  .attacks-table { width:100%; border-collapse:collapse; margin-top:8px; }
+  .attacks-table th, .attacks-table td { padding:6px 8px; border-bottom:1px solid rgba(255,255,255,0.03); text-align:left; font-size:13px; }
+  .attacks-row input { background:#141415; color:var(--muted); border:1px solid rgba(255,255,255,0.02); padding:6px; border-radius:6px; }
+  .small-btn { padding:6px 8px; border-radius:6px; background:transparent; border:1px solid rgba(255,255,255,0.03); color:var(--muted); cursor:pointer; }
+
+  .ci-dice { width:34px; height:34px; border-radius:8px; background:linear-gradient(90deg,#00ff99,#66ffb3); color:#002; border:none; cursor:pointer; font-weight:700; }
+  .ci-dice:hover { transform:translateY(-2px); box-shadow: 0 8px 24px rgba(0,255,153,0.08); }
+
 </style>
 </head>
 <body>
@@ -160,63 +198,83 @@
                 <div class="attr-box">
                   <div><input id="attr_DEX" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
                   <div class="label">DEX</div>
-                  <div class="save-row"><input id="save_prof_DEX" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_DEX">+0</div></div>
+                  <div class="save-row">
+                    <input id="save_prof_DEX" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span>
+                    <button class="dice-btn" data-type="save" data-ability="DEX" title="Roll DEX Save">🎲</button>
+                    <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_DEX">+0</div>
+                  </div>
                 </div>
 
                 <div class="attr-box">
                   <div><input id="attr_CON" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
                   <div class="label">CON</div>
-                  <div class="save-row"><input id="save_prof_CON" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_CON">+0</div></div>
+                  <div class="save-row">
+                    <input id="save_prof_CON" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span>
+                    <button class="dice-btn" data-type="save" data-ability="CON" title="Roll CON Save">🎲</button>
+                    <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_CON">+0</div>
+                  </div>
                 </div>
 
                 <div class="attr-box">
                   <div><input id="attr_INT" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
                   <div class="label">INT</div>
-                  <div class="save-row"><input id="save_prof_INT" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_INT">+0</div></div>
+                  <div class="save-row">
+                    <input id="save_prof_INT" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span>
+                    <button class="dice-btn" data-type="save" data-ability="INT" title="Roll INT Save">🎲</button>
+                    <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_INT">+0</div>
+                  </div>
                 </div>
 
                 <div class="attr-box">
                   <div><input id="attr_WIS" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
                   <div class="label">WIS</div>
-                  <div class="save-row"><input id="save_prof_WIS" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_WIS">+0</div></div>
+                  <div class="save-row">
+                    <input id="save_prof_WIS" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span>
+                    <button class="dice-btn" data-type="save" data-ability="WIS" title="Roll WIS Save">🎲</button>
+                    <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_WIS">+0</div>
+                  </div>
                 </div>
 
                 <div class="attr-box">
                   <div><input id="attr_CHA" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
                   <div class="label">CHA</div>
-                  <div class="save-row"><input id="save_prof_CHA" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_CHA">+0</div></div>
+                  <div class="save-row">
+                    <input id="save_prof_CHA" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span>
+                    <button class="dice-btn" data-type="save" data-ability="CHA" title="Roll CHA Save">🎲</button>
+                    <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_CHA">+0</div>
+                  </div>
                 </div>
               </div>
             </div>
 
             <div class="card" style="margin-top:12px">
               <h3>Skills</h3>
-              <p class="muted">Check Prof / Expertise — bonuses auto-calc from ability mods and proficiency.</p>
+              <p class="muted">Check Prof / Expertise — bonuses auto-calc from ability mods and proficiency. Click the dice to roll.</p>
               <div style="margin-top:8px">
-                <div class="skill-row"><label>Athletics (STR)</label><div class="checkbox-inline"><input id="prof_athletics" type="checkbox">Prof</div><div class="checkbox-inline"><input id="exp_athletics" type="checkbox">Expertise</div><div class="skill-bonus" id="bonus_athletics">+0</div></div>
+                <div class="skill-row"><label>Athletics (STR)</label><button class="dice-btn" data-type="skill" data-skill="athletics" title="Roll Athletics">🎲</button><div class="checkbox-inline"><input id="prof_athletics" type="checkbox">Prof</div><div class="checkbox-inline"><input id="exp_athletics" type="checkbox">Expertise</div><div class="skill-bonus" id="bonus_athletics">+0</div></div>
 
-                <div class="skill-row"><label>Acrobatics (DEX)</label><div class="checkbox-inline"><input id="prof_acrobatics" type="checkbox">Prof</div><div class="checkbox-inline"><input id="exp_acrobatics" type="checkbox">Expertise</div><div class="skill-bonus" id="bonus_acrobatics">+0</div></div>
-                <div class="skill-row"><label>Sleight of Hand (DEX)</label><div class="checkbox-inline"><input id="prof_sleight" type="checkbox"></div><div class="checkbox-inline"><input id="exp_sleight" type="checkbox"></div><div class="skill-bonus" id="bonus_sleight">+0</div></div>
-                <div class="skill-row"><label>Stealth (DEX)</label><div class="checkbox-inline"><input id="prof_stealth" type="checkbox"></div><div class="checkbox-inline"><input id="exp_stealth" type="checkbox"></div><div class="skill-bonus" id="bonus_stealth">+0</div></div>
-                <div class="skill-row"><label>Driving (DEX)</label><div class="checkbox-inline"><input id="prof_driving" type="checkbox"></div><div class="checkbox-inline"><input id="exp_driving" type="checkbox"></div><div class="skill-bonus" id="bonus_driving">+0</div></div>
+                <div class="skill-row"><label>Acrobatics (DEX)</label><button class="dice-btn" data-type="skill" data-skill="acrobatics" title="Roll Acrobatics">🎲</button><div class="checkbox-inline"><input id="prof_acrobatics" type="checkbox">Prof</div><div class="checkbox-inline"><input id="exp_acrobatics" type="checkbox">Expertise</div><div class="skill-bonus" id="bonus_acrobatics">+0</div></div>
+                <div class="skill-row"><label>Sleight of Hand (DEX)</label><button class="dice-btn" data-type="skill" data-skill="sleight" title="Roll Sleight">🎲</button><div class="checkbox-inline"><input id="prof_sleight" type="checkbox"></div><div class="checkbox-inline"><input id="exp_sleight" type="checkbox"></div><div class="skill-bonus" id="bonus_sleight">+0</div></div>
+                <div class="skill-row"><label>Stealth (DEX)</label><button class="dice-btn" data-type="skill" data-skill="stealth" title="Roll Stealth">🎲</button><div class="checkbox-inline"><input id="prof_stealth" type="checkbox"></div><div class="checkbox-inline"><input id="exp_stealth" type="checkbox"></div><div class="skill-bonus" id="bonus_stealth">+0</div></div>
+                <div class="skill-row"><label>Driving (DEX)</label><button class="dice-btn" data-type="skill" data-skill="driving" title="Roll Driving">🎲</button><div class="checkbox-inline"><input id="prof_driving" type="checkbox"></div><div class="checkbox-inline"><input id="exp_driving" type="checkbox"></div><div class="skill-bonus" id="bonus_driving">+0</div></div>
 
-                <div class="skill-row"><label>Arcana (INT)</label><div class="checkbox-inline"><input id="prof_arcana" type="checkbox"></div><div class="checkbox-inline"><input id="exp_arcana" type="checkbox"></div><div class="skill-bonus" id="bonus_arcana">+0</div></div>
-                <div class="skill-row"><label>History (INT)</label><div class="checkbox-inline"><input id="prof_history" type="checkbox"></div><div class="checkbox-inline"><input id="exp_history" type="checkbox"></div><div class="skill-bonus" id="bonus_history">+0</div></div>
-                <div class="skill-row"><label>Investigation (INT)</label><div class="checkbox-inline"><input id="prof_investigation" type="checkbox"></div><div class="checkbox-inline"><input id="exp_investigation" type="checkbox"></div><div class="skill-bonus" id="bonus_investigation">+0</div></div>
-                <div class="skill-row"><label>Nature (INT)</label><div class="checkbox-inline"><input id="prof_nature" type="checkbox"></div><div class="checkbox-inline"><input id="exp_nature" type="checkbox"></div><div class="skill-bonus" id="bonus_nature">+0</div></div>
-                <div class="skill-row"><label>Religion (INT)</label><div class="checkbox-inline"><input id="prof_religion" type="checkbox"></div><div class="checkbox-inline"><input id="exp_religion" type="checkbox"></div><div class="skill-bonus" id="bonus_religion">+0</div></div>
-                <div class="skill-row"><label>Technology (INT)</label><div class="checkbox-inline"><input id="prof_technology" type="checkbox"></div><div class="checkbox-inline"><input id="exp_technology" type="checkbox"></div><div class="skill-bonus" id="bonus_technology">+0</div></div>
+                <div class="skill-row"><label>Arcana (INT)</label><button class="dice-btn" data-type="skill" data-skill="arcana" title="Roll Arcana">🎲</button><div class="checkbox-inline"><input id="prof_arcana" type="checkbox"></div><div class="checkbox-inline"><input id="exp_arcana" type="checkbox"></div><div class="skill-bonus" id="bonus_arcana">+0</div></div>
+                <div class="skill-row"><label>History (INT)</label><button class="dice-btn" data-type="skill" data-skill="history" title="Roll History">🎲</button><div class="checkbox-inline"><input id="prof_history" type="checkbox"></div><div class="checkbox-inline"><input id="exp_history" type="checkbox"></div><div class="skill-bonus" id="bonus_history">+0</div></div>
+                <div class="skill-row"><label>Investigation (INT)</label><button class="dice-btn" data-type="skill" data-skill="investigation" title="Roll Investigation">🎲</button><div class="checkbox-inline"><input id="prof_investigation" type="checkbox"></div><div class="checkbox-inline"><input id="exp_investigation" type="checkbox"></div><div class="skill-bonus" id="bonus_investigation">+0</div></div>
+                <div class="skill-row"><label>Nature (INT)</label><button class="dice-btn" data-type="skill" data-skill="nature" title="Roll Nature">🎲</button><div class="checkbox-inline"><input id="prof_nature" type="checkbox"></div><div class="checkbox-inline"><input id="exp_nature" type="checkbox"></div><div class="skill-bonus" id="bonus_nature">+0</div></div>
+                <div class="skill-row"><label>Religion (INT)</label><button class="dice-btn" data-type="skill" data-skill="religion" title="Roll Religion">🎲</button><div class="checkbox-inline"><input id="prof_religion" type="checkbox"></div><div class="checkbox-inline"><input id="exp_religion" type="checkbox"></div><div class="skill-bonus" id="bonus_religion">+0</div></div>
+                <div class="skill-row"><label>Technology (INT)</label><button class="dice-btn" data-type="skill" data-skill="technology" title="Roll Technology">🎲</button><div class="checkbox-inline"><input id="prof_technology" type="checkbox"></div><div class="checkbox-inline"><input id="exp_technology" type="checkbox"></div><div class="skill-bonus" id="bonus_technology">+0</div></div>
 
-                <div class="skill-row"><label>Animal Handling (WIS)</label><div class="checkbox-inline"><input id="prof_animal" type="checkbox"></div><div class="checkbox-inline"><input id="exp_animal" type="checkbox"></div><div class="skill-bonus" id="bonus_animal">+0</div></div>
-                <div class="skill-row"><label>Insight (WIS)</label><div class="checkbox-inline"><input id="prof_insight" type="checkbox"></div><div class="checkbox-inline"><input id="exp_insight" type="checkbox"></div><div class="skill-bonus" id="bonus_insight">+0</div></div>
-                <div class="skill-row"><label>Medicine (WIS)</label><div class="checkbox-inline"><input id="prof_medicine" type="checkbox"></div><div class="checkbox-inline"><input id="exp_medicine" type="checkbox"></div><div class="skill-bonus" id="bonus_medicine">+0</div></div>
-                <div class="skill-row"><label>Perception (WIS)</label><div class="checkbox-inline"><input id="prof_perception" type="checkbox"></div><div class="checkbox-inline"><input id="exp_perception" type="checkbox"></div><div class="skill-bonus" id="bonus_perception">+0</div></div>
-                <div class="skill-row"><label>Survival (WIS)</label><div class="checkbox-inline"><input id="prof_survival" type="checkbox"></div><div class="checkbox-inline"><input id="exp_survival" type="checkbox"></div><div class="skill-bonus" id="bonus_survival">+0</div></div>
+                <div class="skill-row"><label>Animal Handling (WIS)</label><button class="dice-btn" data-type="skill" data-skill="animal" title="Roll Animal Handling">🎲</button><div class="checkbox-inline"><input id="prof_animal" type="checkbox"></div><div class="checkbox-inline"><input id="exp_animal" type="checkbox"></div><div class="skill-bonus" id="bonus_animal">+0</div></div>
+                <div class="skill-row"><label>Insight (WIS)</label><button class="dice-btn" data-type="skill" data-skill="insight" title="Roll Insight">🎲</button><div class="checkbox-inline"><input id="prof_insight" type="checkbox"></div><div class="checkbox-inline"><input id="exp_insight" type="checkbox"></div><div class="skill-bonus" id="bonus_insight">+0</div></div>
+                <div class="skill-row"><label>Medicine (WIS)</label><button class="dice-btn" data-type="skill" data-skill="medicine" title="Roll Medicine">🎲</button><div class="checkbox-inline"><input id="prof_medicine" type="checkbox"></div><div class="checkbox-inline"><input id="exp_medicine" type="checkbox"></div><div class="skill-bonus" id="bonus_medicine">+0</div></div>
+                <div class="skill-row"><label>Perception (WIS)</label><button class="dice-btn" data-type="skill" data-skill="perception" title="Roll Perception">🎲</button><div class="checkbox-inline"><input id="prof_perception" type="checkbox"></div><div class="checkbox-inline"><input id="exp_perception" type="checkbox"></div><div class="skill-bonus" id="bonus_perception">+0</div></div>
+                <div class="skill-row"><label>Survival (WIS)</label><button class="dice-btn" data-type="skill" data-skill="survival" title="Roll Survival">🎲</button><div class="checkbox-inline"><input id="prof_survival" type="checkbox"></div><div class="checkbox-inline"><input id="exp_survival" type="checkbox"></div><div class="skill-bonus" id="bonus_survival">+0</div></div>
 
-                <div class="skill-row"><label>Deception (CHA)</label><div class="checkbox-inline"><input id="prof_deception" type="checkbox"></div><div class="checkbox-inline"><input id="exp_deception" type="checkbox"></div><div class="skill-bonus" id="bonus_deception">+0</div></div>
-                <div class="skill-row"><label>Intimidation (CHA)</label><div class="checkbox-inline"><input id="prof_intimidation" type="checkbox"></div><div class="checkbox-inline"><input id="exp_intimidation" type="checkbox"></div><div class="skill-bonus" id="bonus_intimidation">+0</div></div>
-                <div class="skill-row"><label>Performance (CHA)</label><div class="checkbox-inline"><input id="prof_performance" type="checkbox"></div><div class="checkbox-inline"><input id="exp_performance" type="checkbox"></div><div class="skill-bonus" id="bonus_performance">+0</div></div>
-                <div class="skill-row"><label>Persuasion (CHA)</label><div class="checkbox-inline"><input id="prof_persuasion" type="checkbox"></div><div class="checkbox-inline"><input id="exp_persuasion" type="checkbox"></div><div class="skill-bonus" id="bonus_persuasion">+0</div></div>
+                <div class="skill-row"><label>Deception (CHA)</label><button class="dice-btn" data-type="skill" data-skill="deception" title="Roll Deception">🎲</button><div class="checkbox-inline"><input id="prof_deception" type="checkbox"></div><div class="checkbox-inline"><input id="exp_deception" type="checkbox"></div><div class="skill-bonus" id="bonus_deception">+0</div></div>
+                <div class="skill-row"><label>Intimidation (CHA)</label><button class="dice-btn" data-type="skill" data-skill="intimidation" title="Roll Intimidation">🎲</button><div class="checkbox-inline"><input id="prof_intimidation" type="checkbox"></div><div class="checkbox-inline"><input id="exp_intimidation" type="checkbox"></div><div class="skill-bonus" id="bonus_intimidation">+0</div></div>
+                <div class="skill-row"><label>Performance (CHA)</label><button class="dice-btn" data-type="skill" data-skill="performance" title="Roll Performance">🎲</button><div class="checkbox-inline"><input id="prof_performance" type="checkbox"></div><div class="checkbox-inline"><input id="exp_performance" type="checkbox"></div><div class="skill-bonus" id="bonus_performance">+0</div></div>
+                <div class="skill-row"><label>Persuasion (CHA)</label><button class="dice-btn" data-type="skill" data-skill="persuasion" title="Roll Persuasion">🎲</button><div class="checkbox-inline"><input id="prof_persuasion" type="checkbox"></div><div class="checkbox-inline"><input id="exp_persuasion" type="checkbox"></div><div class="skill-bonus" id="bonus_persuasion">+0</div></div>
               </div>
             </div>
 
@@ -226,8 +284,6 @@
               <div class="row"><label>Corruption (cur / max)</label><input id="corruption" placeholder="0 / 20"></div>
               <div style="margin-top:8px"><label>Notes</label><textarea id="sanity_notes" placeholder="Sanity scars, mutations, notes..."></textarea></div>
             </div>
-
-            <!-- Combat & Quick card removed from here (moved to Combat tab) -->
 
           </div>
 
@@ -300,16 +356,16 @@
             </div>
           </div>
 
-          <!-- NEW: COMBAT INTERFACE TAB (moved old inputs here + roll UI) -->
+          <!-- COMBAT INTERFACE TAB -->
           <div class="tab-panel" id="tab-combat" style="display:none">
             <div class="card">
               <h3>Combat Interface</h3>
-              <p class="muted">Roll checks and attacks directly from your sheet. Results appear in the floating terminal overlay.</p>
+              <p class="muted">Roll checks and attacks directly from your sheet. Results appear as a transient neon notification.</p>
 
               <!-- Original Combat inputs moved here so IDs remain available to existing logic -->
               <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px">
                 <div class="row"><label>Armor Class</label><input id="ac" type="text"></div>
-                <div class="row"><label>Initiative</label><input id="init" type="text" readonly></div>
+                <div class="row"><label>Initiative</label><div style="display:flex;gap:8px;align-items:center"><input id="init" type="text" readonly><button class="dice-btn" data-type="initiative" title="Roll Initiative">🎲</button></div></div>
                 <div class="row"><label>Speed</label><input id="speed" type="text"></div>
                 <div class="row"><label>Proficiency</label><input id="prof_display" type="text" readonly></div>
                 <div class="row"><label>Max HP</label><input id="hp_max" type="number"></div>
@@ -319,26 +375,33 @@
               </div>
 
               <div style="margin-top:12px" class="ci-section">
-                <label style="display:block;font-weight:600;color:#9B30FF">Custom Roll</label>
+                <label style="display:block;font-weight:600;color:#9B30FF">Global Roll Mode</label>
                 <div style="display:flex;gap:8px;align-items:center;margin-top:6px">
-                  <input id="custom_roll" placeholder="e.g. 1d20+5 or 2d6+3" class="ci-input" />
-                  <select id="roll_mode" style="width:140px">
+                  <select id="global_roll_mode" style="width:180px">
                     <option value="normal">Normal</option>
                     <option value="advantage">Advantage</option>
                     <option value="disadvantage">Disadvantage</option>
                   </select>
-                  <button id="rollBtn" class="ci-dicebtn" title="Roll custom formula">Roll</button>
+                  <div style="color:#98a6a6;font-size:12px">This affects all check rolls (saves, skills, initiative, attacks) unless overridden.</div>
                 </div>
-                <div style="margin-top:8px;color:#98a6a6;font-size:12px">Variables supported: STR, DEX, CON, INT, WIS, CHA and PROF — they will be replaced with modifiers or proficiency value.</div>
               </div>
 
               <div style="margin-top:12px">
-                <label style="display:block;font-weight:600;color:#9B30FF">Roll History</label>
-                <div id="roll_history" style="background:rgba(255,255,255,0.01);border:1px solid rgba(155,48,255,0.08);border-radius:6px;padding:8px;max-height:180px;overflow:auto;font-family:monospace;font-size:13px"></div>
+                <label style="display:block;font-weight:600;color:#9B30FF">Attacks</label>
+                <div style="display:flex;gap:8px;margin-top:6px">
+                  <input id="new_attack_name" placeholder="Attack name" style="flex:2"/>
+                  <input id="new_attack_bonus" placeholder="Bonus (e.g. +5)" style="width:88px"/>
+                  <input id="new_attack_damage" placeholder="Damage (e.g. 2d6+3)" style="flex:1"/>
+                  <button id="addAttack" class="small-btn">Add</button>
+                </div>
+
+                <table class="attacks-table" id="attacks_table">
+                  <thead><tr><th>Name</th><th>Attack</th><th>Damage</th><th>Notes</th><th></th></tr></thead>
+                  <tbody id="attacks_tbody"></tbody>
+                </table>
               </div>
             </div>
 
-            <!-- Floating terminal overlay is implemented globally outside the panel -->
           </div>
 
         </div>
@@ -374,17 +437,15 @@
     </div>
   </div>
 
-  <!-- Terminal Overlay (top-right) -->
-  <div id="ci-terminal" aria-live="polite">
-    <h4>TERMINAL — ROLL FEED</h4>
-    <div id="ci-terminal-feed"></div>
-  </div>
+  <!-- Roll toast container (fades automatically) -->
+  <div class="roll-toast-container" id="roll_toast_container" aria-live="polite"></div>
 
 <script>
 /* -------------------------
    Constants & helpers
    ------------------------- */
 const STORAGE_KEY = 'cybercraft_sheet_v_final';
+const ATTACKS_KEY = 'cybercraft_attacks_v1';
 const SKILLS = {
   athletics:'STR', acrobatics:'DEX', sleight:'DEX', stealth:'DEX', driving:'DEX',
   arcana:'INT', history:'INT', investigation:'INT', nature:'INT', religion:'INT', technology:'INT',
@@ -408,7 +469,7 @@ document.querySelectorAll('.tab').forEach(tab=>{
 });
 
 /* -------------------------
-   Dynamic lists: Feats, Cyber, Abilities, Spells, Equip, Vehicles
+   Dynamic lists: Feats, Cyber, Abilities, Spells, Equip, Vehicles, Attacks
    ------------------------- */
 /* Generic renderer */
 function renderList(containerId, items, templateFn){
@@ -570,6 +631,59 @@ document.getElementById('vehicles_list').addEventListener('input',(e)=>{
 });
 
 /* -------------------------
+   Attacks management
+   ------------------------- */
+window._attacks = JSON.parse(localStorage.getItem(ATTACKS_KEY) || '[]');
+function renderAttacks(){
+  const tbody = document.getElementById('attacks_tbody');
+  tbody.innerHTML = '';
+  _attacks.forEach((a,i)=>{
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td><input class="att-name" data-i="${i}" value="${escapeHtml(a.name)}" style="width:140px"/></td>
+      <td><input class="att-bonus" data-i="${i}" value="${escapeHtml(a.bonus)}" style="width:72px"/> <button class="dice-btn-green" data-action="roll-attack" data-i="${i}" title="Roll attack">🎲</button></td>
+      <td><input class="att-damage" data-i="${i}" value="${escapeHtml(a.damage)}" style="width:140px"/> <button class="dice-btn" data-action="roll-damage" data-i="${i}" title="Roll damage">⚡</button></td>
+      <td><input class="att-notes" data-i="${i}" value="${escapeHtml(a.notes)}" style="width:120px"/></td>
+      <td><button class="small-btn remove-attack" data-i="${i}">Remove</button></td>`;
+    tbody.appendChild(tr);
+  });
+}
+document.getElementById('addAttack').addEventListener('click', ()=>{
+  const name = document.getElementById('new_attack_name').value.trim();
+  const bonus = document.getElementById('new_attack_bonus').value.trim();
+  const dmg = document.getElementById('new_attack_damage').value.trim();
+  if(!name) return alert('Enter attack name');
+  _attacks.push({name:name, bonus:bonus, damage:dmg, notes:''});
+  localStorage.setItem(ATTACKS_KEY, JSON.stringify(_attacks));
+  renderAttacks();
+  document.getElementById('new_attack_name').value=''; document.getElementById('new_attack_bonus').value=''; document.getElementById('new_attack_damage').value='';
+});
+document.getElementById('attacks_tbody').addEventListener('click', (e)=>{
+  if(e.target.classList.contains('remove-attack')){
+    const i = parseInt(e.target.dataset.i); _attacks.splice(i,1); localStorage.setItem(ATTACKS_KEY, JSON.stringify(_attacks)); renderAttacks();
+  }
+  if(e.target.dataset.action === 'roll-attack'){
+    const i = parseInt(e.target.dataset.i); const a = _attacks[i];
+    const bonus = parseInt(String(a.bonus).replace(/[^\d-]/g,'')) || 0;
+    rollAndNotify(`Attack — ${a.name}`, `1d20 + ${bonus}`, 'attack', {bonus});
+  }
+  if(e.target.dataset.action === 'roll-damage'){
+    const i = parseInt(e.target.dataset.i); const a = _attacks[i];
+    const dmg = a.damage || '';
+    if(!dmg) return alert('No damage formula set');
+    rollAndNotify(`Damage — ${a.name}`, dmg, 'damage', {});
+  }
+});
+document.getElementById('attacks_tbody').addEventListener('input',(e)=>{
+  const cls = e.target.className; const i = parseInt(e.target.dataset.i);
+  if(isNaN(i)) return;
+  if(cls.includes('att-name')) _attacks[i].name = e.target.value;
+  if(cls.includes('att-bonus')) _attacks[i].bonus = e.target.value;
+  if(cls.includes('att-damage')) _attacks[i].damage = e.target.value;
+  if(cls.includes('att-notes')) _attacks[i].notes = e.target.value;
+  localStorage.setItem(ATTACKS_KEY, JSON.stringify(_attacks));
+});
+
+/* -------------------------
    Save / Load
    ------------------------- */
 function gatherState(){
@@ -592,6 +706,7 @@ function gatherState(){
   });
   state.feats = window._feats||[]; state.cyber = window._cyber||[]; state.abilities = window._abilities||[]; state.spells = window._spells||[];
   state.equip = window._equip||[]; state.vehicles = window._vehicles||[];
+  // attacks persisted separately to avoid cluttering main save; keep for compatibility
   return state;
 }
 function applyState(state){
@@ -682,11 +797,28 @@ function attachListeners(){
     if(p) p.addEventListener('change', updateAllCalculations);
     if(e) e.addEventListener('change', updateAllCalculations);
   });
-  document.querySelectorAll('input,textarea').forEach(el=>{
+  document.querySelectorAll('input,textarea,select').forEach(el=>{
     el.addEventListener('input', ()=>{
       if(window._saveTimer) clearTimeout(window._saveTimer);
       window._saveTimer = setTimeout(()=>saveToStorage(),420);
     });
+  });
+
+  // Dice buttons global handler (saves, skills, initiative)
+  document.body.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.dice-btn');
+    if(btn){
+      const type = btn.dataset.type;
+      if(type === 'save'){
+        const ability = btn.dataset.ability;
+        handleSaveRoll(ability);
+      } else if(type === 'skill'){
+        const skill = btn.dataset.skill;
+        handleSkillRoll(skill);
+      } else if(type === 'initiative'){
+        handleInitiativeRoll();
+      }
+    }
   });
 }
 
@@ -706,25 +838,14 @@ document.getElementById('importBtn').addEventListener('click', ()=>{
   input.onchange=(e)=>{ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ try{ const parsed=JSON.parse(r.result); localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed)); applyState(parsed); alert('Import OK'); }catch(err){ alert('Import failed: invalid file'); } }; r.readAsText(f); }; input.click();
 });
 document.getElementById('print').addEventListener('click', ()=>window.print());
-document.getElementById('clear').addEventListener('click', ()=>{ if(confirm('Clear local sheet data? This cannot be undone.')){ localStorage.removeItem(STORAGE_KEY); location.reload(); } });
+document.getElementById('clear').addEventListener('click', ()=>{ if(confirm('Clear local sheet data? This cannot be undone.')){ localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(ATTACKS_KEY); location.reload(); } });
 document.getElementById('downloadJSON').addEventListener('click', ()=>document.getElementById('export').click && document.getElementById('export').click());
 document.getElementById('loadJSON').addEventListener('click', ()=>document.getElementById('importBtn').click && document.getElementById('importBtn').click());
 document.getElementById('clearLocal').addEventListener('click', ()=>document.getElementById('clear').click && document.getElementById('clear').click());
 
 /* -------------------------
-   Boot
+   Dice & roll helpers
    ------------------------- */
-attachListeners();
-loadFromStorage();
-renderFeats(); renderCyber(); renderAbilities(); renderSpells(); renderEquip(); renderVehicles();
-setTimeout(()=>{ updateAllCalculations(); updateSnapshot(); },200);
-
-/* -------------------------
-   Combat Interface logic (added)
-   - supports formulas like "2d6+3" and variables STR/DEX/... and PROF
-   - supports advantage/disadvantage and roll history
-   ------------------------- */
-
 function ci_getProfValue(){
   const profText = (document.getElementById('prof_display') && document.getElementById('prof_display').value) || '';
   const num = parseInt(profText.replace(/[^\d-]/g,'')); return isNaN(num) ? 0 : num;
@@ -735,7 +856,6 @@ function ci_getAbilityMod(abbrev){
   return Math.floor((val - 10) / 2);
 }
 function ci_replaceVars(expr){
-  // Replace STR, DEX, CON, INT, WIS, CHA with their mods
   expr = String(expr).toUpperCase();
   ['STR','DEX','CON','INT','WIS','CHA'].forEach(s=>{
     expr = expr.replace(new RegExp('\\b'+s+'\\b','g'), String(ci_getAbilityMod(s)));
@@ -745,14 +865,10 @@ function ci_replaceVars(expr){
 }
 function ci_rollDie(sides){ return Math.floor(Math.random()*sides)+1; }
 
-// Parse dice notation like 2d6 or d20; returns array of individual roll results and modifier
 function ci_parseAndRoll(formula){
-  // Normalize and replace variables
   let expr = ci_replaceVars(formula);
   expr = expr.replace(/\s+/g,'');
 
-  // Find dice groups and roll them
-  // Match patterns like NdS where N optional (e.g., d20 or 2d6)
   const diceRegex = /(\d*)d(\d+)/ig;
   let match;
   const rollGroups = [];
@@ -764,27 +880,22 @@ function ci_parseAndRoll(formula){
     rollGroups.push({notation:match[0], rolls, sides});
   }
 
-  // Replace each dice notation with the sum expression
   rollGroups.forEach(g=>{
     const replacement = '(' + g.rolls.join('+') + ')';
     expr = expr.replace(g.notation, replacement);
   });
 
-  // Now evaluate the arithmetic expression safely (allow only numbers and +-*/(). )
   const safe = expr.replace(/[^0-9+\-*/().]/g,'');
-  let total = 0;
+  let total = NaN;
   try { total = Math.floor(eval(safe)); } catch(e){ total = NaN; }
 
   return { total, groups: rollGroups, exprDisplay: expr, rawExpr: formula };
 }
 
 function ci_doRollWithMode(formula, mode){
-  // mode: 'normal' | 'advantage' | 'disadvantage'
   if(mode === 'normal'){
     return ci_parseAndRoll(formula);
   } else {
-    // advantage/disadvantage: only meaningful for a single d20 roll usually.
-    // We'll emulate by rolling the entire formula twice and picking higher/lower total.
     const r1 = ci_parseAndRoll(formula);
     const r2 = ci_parseAndRoll(formula);
     const picked = (mode === 'advantage') ? (r1.total >= r2.total ? r1 : r2) : (r1.total <= r2.total ? r1 : r2);
@@ -793,39 +904,88 @@ function ci_doRollWithMode(formula, mode){
   }
 }
 
-function ci_postRollToHistory(line){
-  const hist = document.getElementById('roll_history');
-  const term = document.getElementById('ci-terminal-feed');
-  const el = document.createElement('div');
-  el.className = 'ci-roll-line';
-  el.textContent = line;
-  hist.prepend(el);
-  const t = el.cloneNode(true);
-  term.prepend(t);
-  // limit sizes
-  while(hist.children.length > 80) hist.removeChild(hist.lastChild);
-  while(term.children.length > 200) term.removeChild(term.lastChild);
+/* -------------------------
+   Roll notification (toast)
+   ------------------------- */
+function showRollToast(title, body){
+  const container = document.getElementById('roll_toast_container');
+  const el = document.createElement('div'); el.className = 'roll-toast';
+  el.innerHTML = `<div class="title">${escapeHtml(title)}</div><div class="body">${escapeHtml(body)}</div>`;
+  container.prepend(el);
+  // auto fade and remove
+  el.style.opacity = '1';
+  setTimeout(()=>{ el.style.transition = 'opacity 0.6s'; el.style.opacity = '0'; }, 4200);
+  setTimeout(()=>{ try{ el.remove(); }catch(e){} }, 4900);
 }
 
-document.getElementById('rollBtn').addEventListener('click', ()=>{
-  const formula = document.getElementById('custom_roll').value.trim();
-  if(!formula){ alert('Enter a dice formula like 1d20+5'); return; }
-  const mode = document.getElementById('roll_mode').value || 'normal';
-  const res = ci_doRollWithMode(formula, mode);
+/* -------------------------
+   High-level roll + notify (used by buttons)
+   Accepts: label, formula, kind, meta
+   kind: 'skill'|'save'|'initiative'|'attack'|'damage'
+   meta may contain bonus etc.
+   ------------------------- */
+function rollAndNotify(label, formula, kind, meta){
+  const mode = document.getElementById('global_roll_mode') ? document.getElementById('global_roll_mode').value : 'normal';
+  const res = ci_doRollWithMode(String(formula), mode);
   if(isNaN(res.total)){
-    alert('Invalid or unparsable formula after variable replacement.');
-    return;
+    showRollToast(label, 'Invalid formula: ' + formula);
+    return res;
   }
   const groups = (res.groups || []).map(g=> `${g.notation}=[${g.rolls.join(',')}]`).join(' ');
-  const line = `[${new Date().toLocaleTimeString()}] ${res.rawExpr} => ${res.total} ${groups} ${res.detail? '('+res.detail+')':''}`;
-  ci_postRollToHistory(line);
-});
+  const detail = groups ? groups + (res.detail ? ' ' + res.detail : '') : (res.detail || '');
+  const body = `${res.rawExpr} => ${res.total}${detail? '   ' + detail : ''}`;
+  showRollToast(label, body);
+  // return for potential further use
+  return res;
+}
 
-/* export / import of terminal history (optional, available via console if needed)
-   Not auto-persisted to avoid clutter, but it's trivial to add localStorage if desired.
-*/
+/* -------------------------
+   Handlers for specific roll types
+   ------------------------- */
+function handleSaveRoll(ability){
+  const prof = document.getElementById('save_prof_' + ability) ? (document.getElementById('save_prof_' + ability).checked ? ci_getProfValue() : 0) : 0;
+  const mod = ci_getAbilityMod(ability);
+  const formula = `1d20 + ${mod} + ${prof}`;
+  rollAndNotify(`${ability} Save`, formula, 'save', {ability, mod, prof});
+}
 
-/* End of added Combat Interface logic */
+function handleSkillRoll(skill){
+  const ab = SKILLS[skill];
+  const abmod = ci_getAbilityMod(ab);
+  const profChecked = document.getElementById('prof_' + skill) ? document.getElementById('prof_' + skill).checked : false;
+  const expChecked = document.getElementById('exp_' + skill) ? document.getElementById('exp_' + skill).checked : false;
+  const prof = profChecked ? ci_getProfValue() * (expChecked ? 2 : 1) : 0;
+  const formula = `1d20 + ${abmod} + ${prof}`;
+  rollAndNotify(`${capitalize(skill)} (${ab})`, formula, 'skill', {skill, abmod, prof});
+}
+
+function handleInitiativeRoll(){
+  const dexMod = ci_getAbilityMod('DEX');
+  const formula = `1d20 + ${dexMod}`;
+  const res = rollAndNotify('Initiative', formula, 'initiative', {dexMod});
+  // set initiative field with the computed modifier (optional)
+  if(!isNaN(res.total)){
+    document.getElementById('init').value = (res.total>=0?'+':'') + res.total;
+    saveToStorage();
+  }
+}
+
+/* small helper */
+function capitalize(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+
+/* -------------------------
+   Attach attack dice buttons (they are handled by table click listener earlier),
+   and bind dice buttons for skill/save/initiative
+   ------------------------- */
+
+/* -------------------------
+   Boot
+   ------------------------- */
+attachListeners();
+loadFromStorage();
+renderFeats(); renderCyber(); renderAbilities(); renderSpells(); renderEquip(); renderVehicles();
+renderAttacks();
+setTimeout(()=>{ updateAllCalculations(); updateSnapshot(); },200);
 
 </script>
 </body>
