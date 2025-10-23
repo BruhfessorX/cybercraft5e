@@ -77,6 +77,31 @@
     .titlebar, .tabs, .btnbar{display:none}
     input,textarea{border:1px solid #aaa;color:black;background:white}
   }
+
+  /* Terminal overlay styles (neon green) */
+  #ci-terminal {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    width: 320px;
+    max-height: 420px;
+    background: rgba(2,6,4,0.95);
+    border: 1px solid rgba(0,255,153,0.14);
+    color: #9effc6;
+    font-family: monospace;
+    font-size: 13px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,255,153,0.05);
+    z-index: 9999;
+    overflow-y: auto;
+  }
+  #ci-terminal h4 { margin:0 0 8px 0; color:#00ff88; text-align:center; font-weight:700; }
+  .ci-roll-line { margin-bottom:8px; padding:6px; background: linear-gradient(90deg, rgba(0,255,153,0.02), transparent); border-radius:6px; border:1px solid rgba(0,255,153,0.02); }
+  .ci-smallbtn { background:transparent; border:1px solid rgba(255,255,255,0.02); color:var(--muted); padding:6px 8px; border-radius:6px; cursor:pointer; }
+  .ci-dicebtn { background:linear-gradient(90deg,#00ff99,#66ffb3); border:none; padding:6px 8px; border-radius:6px; color:#002; cursor:pointer; }
+  .ci-input { padding:8px; border-radius:6px; background:#05100b; border:1px solid rgba(0,255,153,0.04); color:#9effc6; width:100%; }
+  .ci-section { margin-top:10px; }
 </style>
 </head>
 <body>
@@ -101,6 +126,7 @@
       <div class="tab" data-tab="feats">Feats & Cyberware</div>
       <div class="tab" data-tab="abilities">Abilities & Spells</div>
       <div class="tab" data-tab="eq">EQ & Notes</div>
+      <div class="tab" data-tab="combat">Combat Interface</div>
     </div>
 
     <div class="panel">
@@ -201,19 +227,8 @@
               <div style="margin-top:8px"><label>Notes</label><textarea id="sanity_notes" placeholder="Sanity scars, mutations, notes..."></textarea></div>
             </div>
 
-            <div class="card" style="margin-top:12px">
-              <h3>Combat & Quick</h3>
-              <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">
-                <div class="row"><label>Armor Class</label><input id="ac" type="text"></div>
-                <div class="row"><label>Initiative</label><input id="init" type="text" readonly></div>
-                <div class="row"><label>Speed</label><input id="speed" type="text"></div>
-                <div class="row"><label>Proficiency</label><input id="prof_display" type="text" readonly></div>
-                <div class="row"><label>Max HP</label><input id="hp_max" type="number"></div>
-                <div class="row"><label>Current HP</label><input id="hp_cur" type="number"></div>
-                <div class="row"><label>Temp HP</label><input id="hp_temp" type="number"></div>
-                <div class="row"><label>Hit Dice</label><input id="hit_dice" type="text"></div>
-              </div>
-            </div>
+            <!-- Combat & Quick card removed from here (moved to Combat tab) -->
+
           </div>
 
           <!-- FEATS & CYBERWARE TAB -->
@@ -285,6 +300,47 @@
             </div>
           </div>
 
+          <!-- NEW: COMBAT INTERFACE TAB (moved old inputs here + roll UI) -->
+          <div class="tab-panel" id="tab-combat" style="display:none">
+            <div class="card">
+              <h3>Combat Interface</h3>
+              <p class="muted">Roll checks and attacks directly from your sheet. Results appear in the floating terminal overlay.</p>
+
+              <!-- Original Combat inputs moved here so IDs remain available to existing logic -->
+              <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px">
+                <div class="row"><label>Armor Class</label><input id="ac" type="text"></div>
+                <div class="row"><label>Initiative</label><input id="init" type="text" readonly></div>
+                <div class="row"><label>Speed</label><input id="speed" type="text"></div>
+                <div class="row"><label>Proficiency</label><input id="prof_display" type="text" readonly></div>
+                <div class="row"><label>Max HP</label><input id="hp_max" type="number"></div>
+                <div class="row"><label>Current HP</label><input id="hp_cur" type="number"></div>
+                <div class="row"><label>Temp HP</label><input id="hp_temp" type="number"></div>
+                <div class="row"><label>Hit Dice</label><input id="hit_dice" type="text"></div>
+              </div>
+
+              <div style="margin-top:12px" class="ci-section">
+                <label style="display:block;font-weight:600;color:#9B30FF">Custom Roll</label>
+                <div style="display:flex;gap:8px;align-items:center;margin-top:6px">
+                  <input id="custom_roll" placeholder="e.g. 1d20+5 or 2d6+3" class="ci-input" />
+                  <select id="roll_mode" style="width:140px">
+                    <option value="normal">Normal</option>
+                    <option value="advantage">Advantage</option>
+                    <option value="disadvantage">Disadvantage</option>
+                  </select>
+                  <button id="rollBtn" class="ci-dicebtn" title="Roll custom formula">Roll</button>
+                </div>
+                <div style="margin-top:8px;color:#98a6a6;font-size:12px">Variables supported: STR, DEX, CON, INT, WIS, CHA and PROF — they will be replaced with modifiers or proficiency value.</div>
+              </div>
+
+              <div style="margin-top:12px">
+                <label style="display:block;font-weight:600;color:#9B30FF">Roll History</label>
+                <div id="roll_history" style="background:rgba(255,255,255,0.01);border:1px solid rgba(155,48,255,0.08);border-radius:6px;padding:8px;max-height:180px;overflow:auto;font-family:monospace;font-size:13px"></div>
+              </div>
+            </div>
+
+            <!-- Floating terminal overlay is implemented globally outside the panel -->
+          </div>
+
         </div>
 
         <!-- RIGHT: snapshot & quick -->
@@ -316,6 +372,12 @@
 
       </div>
     </div>
+  </div>
+
+  <!-- Terminal Overlay (top-right) -->
+  <div id="ci-terminal" aria-live="polite">
+    <h4>TERMINAL — ROLL FEED</h4>
+    <div id="ci-terminal-feed"></div>
   </div>
 
 <script>
@@ -656,6 +718,114 @@ attachListeners();
 loadFromStorage();
 renderFeats(); renderCyber(); renderAbilities(); renderSpells(); renderEquip(); renderVehicles();
 setTimeout(()=>{ updateAllCalculations(); updateSnapshot(); },200);
+
+/* -------------------------
+   Combat Interface logic (added)
+   - supports formulas like "2d6+3" and variables STR/DEX/... and PROF
+   - supports advantage/disadvantage and roll history
+   ------------------------- */
+
+function ci_getProfValue(){
+  const profText = (document.getElementById('prof_display') && document.getElementById('prof_display').value) || '';
+  const num = parseInt(profText.replace(/[^\d-]/g,'')); return isNaN(num) ? 0 : num;
+}
+function ci_getAbilityMod(abbrev){
+  const el = document.getElementById('attr_' + abbrev);
+  const val = el ? parseInt(el.value) || 0 : 0;
+  return Math.floor((val - 10) / 2);
+}
+function ci_replaceVars(expr){
+  // Replace STR, DEX, CON, INT, WIS, CHA with their mods
+  expr = String(expr).toUpperCase();
+  ['STR','DEX','CON','INT','WIS','CHA'].forEach(s=>{
+    expr = expr.replace(new RegExp('\\b'+s+'\\b','g'), String(ci_getAbilityMod(s)));
+  });
+  expr = expr.replace(/\bPROF\b/g, String(ci_getProfValue()));
+  return expr;
+}
+function ci_rollDie(sides){ return Math.floor(Math.random()*sides)+1; }
+
+// Parse dice notation like 2d6 or d20; returns array of individual roll results and modifier
+function ci_parseAndRoll(formula){
+  // Normalize and replace variables
+  let expr = ci_replaceVars(formula);
+  expr = expr.replace(/\s+/g,'');
+
+  // Find dice groups and roll them
+  // Match patterns like NdS where N optional (e.g., d20 or 2d6)
+  const diceRegex = /(\d*)d(\d+)/ig;
+  let match;
+  const rollGroups = [];
+  while((match = diceRegex.exec(expr)) !== null){
+    const count = match[1] === '' ? 1 : parseInt(match[1]);
+    const sides = parseInt(match[2]);
+    const rolls = [];
+    for(let i=0;i<count;i++) rolls.push(ci_rollDie(sides));
+    rollGroups.push({notation:match[0], rolls, sides});
+  }
+
+  // Replace each dice notation with the sum expression
+  rollGroups.forEach(g=>{
+    const replacement = '(' + g.rolls.join('+') + ')';
+    expr = expr.replace(g.notation, replacement);
+  });
+
+  // Now evaluate the arithmetic expression safely (allow only numbers and +-*/(). )
+  const safe = expr.replace(/[^0-9+\-*/().]/g,'');
+  let total = 0;
+  try { total = Math.floor(eval(safe)); } catch(e){ total = NaN; }
+
+  return { total, groups: rollGroups, exprDisplay: expr, rawExpr: formula };
+}
+
+function ci_doRollWithMode(formula, mode){
+  // mode: 'normal' | 'advantage' | 'disadvantage'
+  if(mode === 'normal'){
+    return ci_parseAndRoll(formula);
+  } else {
+    // advantage/disadvantage: only meaningful for a single d20 roll usually.
+    // We'll emulate by rolling the entire formula twice and picking higher/lower total.
+    const r1 = ci_parseAndRoll(formula);
+    const r2 = ci_parseAndRoll(formula);
+    const picked = (mode === 'advantage') ? (r1.total >= r2.total ? r1 : r2) : (r1.total <= r2.total ? r1 : r2);
+    picked.detail = `r1:${r1.total} | r2:${r2.total}`;
+    return picked;
+  }
+}
+
+function ci_postRollToHistory(line){
+  const hist = document.getElementById('roll_history');
+  const term = document.getElementById('ci-terminal-feed');
+  const el = document.createElement('div');
+  el.className = 'ci-roll-line';
+  el.textContent = line;
+  hist.prepend(el);
+  const t = el.cloneNode(true);
+  term.prepend(t);
+  // limit sizes
+  while(hist.children.length > 80) hist.removeChild(hist.lastChild);
+  while(term.children.length > 200) term.removeChild(term.lastChild);
+}
+
+document.getElementById('rollBtn').addEventListener('click', ()=>{
+  const formula = document.getElementById('custom_roll').value.trim();
+  if(!formula){ alert('Enter a dice formula like 1d20+5'); return; }
+  const mode = document.getElementById('roll_mode').value || 'normal';
+  const res = ci_doRollWithMode(formula, mode);
+  if(isNaN(res.total)){
+    alert('Invalid or unparsable formula after variable replacement.');
+    return;
+  }
+  const groups = (res.groups || []).map(g=> `${g.notation}=[${g.rolls.join(',')}]`).join(' ');
+  const line = `[${new Date().toLocaleTimeString()}] ${res.rawExpr} => ${res.total} ${groups} ${res.detail? '('+res.detail+')':''}`;
+  ci_postRollToHistory(line);
+});
+
+/* export / import of terminal history (optional, available via console if needed)
+   Not auto-persisted to avoid clutter, but it's trivial to add localStorage if desired.
+*/
+
+/* End of added Combat Interface logic */
 
 </script>
 </body>
