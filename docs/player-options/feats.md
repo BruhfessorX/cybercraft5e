@@ -47,11 +47,12 @@ You’ve forged a bargain with an entity from the void.
 ---
 
 ## Chrome Juggernaut
-*Prerequisite: Constitution 13+*  
+*Prerequisite: Constitution 13+, Cybernetics 4+*  
 Your cybernetic body upgrades make you a walking tank.  
+- You gain a +1 AC while not wearing armor.  
 - Increase your Strength or Constitution score by 1, to a maximum of 20.  
 - Your carrying capacity doubles.  
-- You gain resistance to bludgeoning damage from nonmagical sources while you are not wearing heavy armor.  
+- You gain resistance to bludgeoning damage from nonmagical sources while you are not wearing armor.  
 
 ---
 
