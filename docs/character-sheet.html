@@ -6,86 +6,131 @@
 <title>Cybercraft 5e — Character Sheet</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-  :root {
+  :root{
     --bg:#0e0e10;
     --panel:#1a1a1c;
     --input:#262628;
-    --neon:#9B30FF; /* site neon violet */
+    --neon:#9B30FF;
     --muted:#c6cad2;
-    --accent-glow: 0 0 12px rgba(155,48,255,0.5);
+    --glass: rgba(255,255,255,0.02);
+    --accent-glow: 0 0 20px rgba(155,48,255,0.22), inset 0 0 8px rgba(0,0,0,0.35);
     --field-border: rgba(155,48,255,0.06);
+
+    /* Roll button cyan */
+    --roll-cyan: #00E5FF;
+    --roll-cyan-glow: 0 0 14px rgba(0,229,255,0.16), 0 0 34px rgba(0,229,255,0.06);
+    --roll-cyan-press: 0 0 20px rgba(0,229,255,0.22);
   }
-  html,body {
-    height:100%; margin:0; background:
-      radial-gradient(900px 400px at 10% 8%, rgba(155,48,255,0.02), transparent),
-      linear-gradient(180deg,#080809 0%,var(--bg) 50%);
-    color:var(--muted); font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-  }
-  .container { max-width:1120px; margin:28px auto; padding:22px; }
+  html,body{height:100%;margin:0;background:
+    radial-gradient(900px 400px at 10% 8%, rgba(155,48,255,0.02), transparent),
+    linear-gradient(180deg,#080809 0%,var(--bg) 50%); color:var(--muted);
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+  .container{max-width:1120px;margin:28px auto;padding:22px;}
+
   .titlebar{display:flex;align-items:center;gap:14px;margin-bottom:16px}
   .logo{width:56px;height:56px;background:linear-gradient(135deg,var(--neon), #5b0fbf);border-radius:10px;box-shadow:var(--accent-glow);display:flex;align-items:center;justify-content:center;font-family:Orbitron;color:#050005;font-weight:700}
-  .title-text h1{margin:0;font-family:Orbitron;color:var(--neon);font-size:20px}
+  .title-text h1{margin:0;font-family:Orbitron;color:var(--neon);font-size:20px;text-shadow:0 0 10px rgba(155,48,255,0.16)}
   .title-text p{margin:0;font-size:12px;color:#aeb5c3}
+
   .controls{margin-left:auto;display:flex;gap:8px;align-items:center}
 
   .tabs{display:flex;gap:8px;margin-bottom:14px}
-  .tab{padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.02);cursor:pointer}
-  .tab.active{background:rgba(155,48,255,0.18);color:#fff;box-shadow:var(--accent-glow);transform:translateY(-2px)}
+  .tab{padding:8px 12px;border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.02);cursor:pointer;color:var(--muted);font-weight:600}
+  .tab.active{background:linear-gradient(180deg, rgba(155,48,255,0.06), rgba(155,48,255,0.02));box-shadow:var(--accent-glow);color:white;border:1px solid rgba(155,48,255,0.25);transform:translateY(-2px)}
 
-  .panel{background:var(--panel);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.05)}
-  .card{background:rgba(255,255,255,0.02);border:1px solid var(--field-border);border-radius:10px;padding:12px;margin-bottom:12px}
-  .card h3{margin:0 0 8px;color:var(--neon);font-family:Orbitron;font-size:13px}
+  .panel{background:var(--panel);border-radius:12px;border:1px solid rgba(255,255,255,0.03);padding:16px;box-shadow:0 8px 40px rgba(0,0,0,0.6)}
+  .panel-grid{display:grid;grid-template-columns:1fr 360px;gap:16px}
+  @media (max-width:980px){.panel-grid{grid-template-columns:1fr}}
+
+  .card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006));border-radius:10px;padding:12px;border:1px solid var(--field-border)}
+  .card h3{margin:0 0 8px 0;color:var(--neon);font-family:Orbitron;font-size:13px}
   label{font-size:13px;color:#bfc5cf;min-width:120px}
-
-  input[type="text"], input[type="number"], select, textarea {
-    width:100%; padding:8px 10px; background:var(--input); border-radius:7px; border:1px solid rgba(0,0,0,0.3); color:var(--muted); outline:none; font-size:13px;
+  .row{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+  input[type="text"], input[type="number"], select, textarea{
+    width:100%;padding:8px 10px;background:var(--input);border-radius:7px;border:1px solid rgba(0,0,0,0.3);color:var(--muted);outline:none;font-size:13px;
   }
-  input:focus, textarea:focus, select:focus { box-shadow:var(--accent-glow); border-color:var(--neon); color:#fff; background:#1f1f20 }
+  input:focus, textarea:focus, select:focus{box-shadow:var(--accent-glow);border-color:var(--neon);color:#fff;background:#1f1f20}
   textarea{min-height:80px;resize:vertical}
 
-  .row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-  .row .small{width:120px}
-  .list-wrap{max-height:240px;overflow:auto;padding:6px;border-radius:8px;border:1px dashed rgba(155,48,255,0.04);background:rgba(255,255,255,0.005)}
-  .list-item{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+  .attributes{display:flex;gap:10px;flex-wrap:wrap}
+  .attr-box{width:82px;background:linear-gradient(180deg,rgba(0,0,0,0.12),transparent);border-radius:8px;padding:10px;text-align:center;border:1px solid var(--field-border)}
+  .attr-box .score{font-size:18px;color:#fff;font-weight:700}
+  .attr-box .label{font-size:12px;color:#c6cad2;margin-top:6px}
+  .save-row{font-size:12px;color:#c6cad2;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:8px}
+
+  .skill-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+  .skill-row label{min-width:160px;color:#c6cad2}
+  .checkbox-inline{display:flex;align-items:center;gap:6px;color:#bfc4cf;font-size:13px}
+  .skill-bonus{min-width:48px;text-align:right;font-weight:700;color:#fff}
+
+  .list-wrap{max-height:260px;overflow:auto;padding:6px;border-radius:8px;border:1px dashed rgba(155,48,255,0.04);background:rgba(255,255,255,0.005)}
+  .list-item{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
   .list-item input, .list-item textarea{background:#1a1b1d}
-  .btn { background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted);padding:8px 10px;border-radius:8px;cursor:pointer }
-  .btn.primary{background:linear-gradient(90deg,var(--neon),#5b0fbf);color:white;box-shadow:var(--accent-glow);border:none}
+  .list-item .remove{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:4px 8px;border-radius:6px;cursor:pointer}
 
-  /* Roll button (neon hex/d20 glyph) */
-  .roll-btn {
-    background:none;border:none;cursor:pointer;margin-left:8px;width:22px;height:22px;padding:2px;
+  .btnbar{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+  button{background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted);padding:8px 10px;border-radius:8px;cursor:pointer}
+  button.primary{background:linear-gradient(90deg,var(--neon),#5b0fbf);color:white;box-shadow:var(--accent-glow);border:none}
+  .muted{color:#9aa0b5;font-size:12px}
+
+  .snapshot .row{justify-content:space-between}
+  .snapshot strong{color:#fff}
+
+  /* Roll button */
+  .roll-btn{
+    width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg, rgba(0,0,0,0.16), rgba(255,255,255,0.01));display:inline-flex;align-items:center;justify-content:center;cursor:pointer;margin-left:8px;
+    box-shadow:var(--roll-cyan-glow);
+    transition:transform 0.12s ease, box-shadow 0.12s ease;
   }
-  .roll-btn svg {
-    width:18px;height:18px; stroke:var(--neon); fill:none; stroke-width:2; transition:transform .12s ease, filter .18s ease;
-    filter: drop-shadow(0 0 6px rgba(155,48,255,0.45));
+  .roll-btn:active{transform:translateY(1px) scale(0.99); box-shadow:var(--roll-cyan-press)}
+  .roll-btn svg{width:18px;height:18px;fill:none;stroke:var(--roll-cyan);stroke-width:1.8;opacity:0.98}
+
+  /* ripple pulse */
+  .pulse {
+    position:relative;
+    overflow:visible;
   }
-  .roll-btn:hover svg{ transform:scale(1.1); filter:drop-shadow(0 0 12px rgba(155,48,255,0.65)); }
-  .roll-btn:active svg{ animation:rollPulse .36s ease; }
-  @keyframes rollPulse {
-    0% { transform: scale(1); opacity:1; }
-    50% { transform: scale(1.35); opacity:0.75; }
-    100% { transform: scale(1); opacity:1; }
+  .pulse::after{
+    content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:0;height:0;border-radius:50%;
+    background: rgba(0,229,255,0.12); transition: width 0.5s ease, height 0.5s ease, opacity 0.5s ease;
+    z-index:-1;
+  }
+  .pulse.pulse-on::after{
+    width:140px;height:140px;opacity:0; transition: width 0.7s ease, height 0.7s ease, opacity 0.8s ease;
   }
 
-  /* Roll log floating panel */
-  .roll-history {
-    position:fixed; bottom:14px; right:14px; width:320px; max-height:46vh; overflow:auto;
-    background:rgba(12,12,14,0.95); border:1px solid rgba(155,48,255,0.22); border-radius:10px; padding:8px; z-index:2000;
-    box-shadow:0 6px 30px rgba(0,0,0,0.6);
+  /* Roll log (bottom-right) */
+  .roll-log{
+    position:fixed; right:18px; bottom:18px; width:320px; max-height:48vh; overflow:auto; border-radius:10px; padding:10px; background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
+    border:1px solid rgba(0,229,255,0.08); box-shadow:0 12px 40px rgba(0,0,0,0.6);
+    color:#dffaff; font-size:13px; z-index:9999; transition:transform 0.28s ease, opacity 0.28s ease;
   }
-  .roll-history h4 { margin:0 0 6px 0; color:var(--neon); font-family:Orbitron; font-size:12px; display:flex; align-items:center; gap:8px }
-  .roll-history .entry { font-size:13px; padding:6px 4px; border-bottom:1px dashed rgba(255,255,255,0.02); color:#e6e6e6 }
-  .roll-history .muted { color:#9aa0b5; font-size:12px }
+  .roll-log.collapsed{transform:translateY(18px) scale(0.98); opacity:0.02; pointer-events:none}
+  .roll-log h4{margin:0 0 8px 0; display:flex; align-items:center; gap:8px; color:var(--roll-cyan)}
+  .roll-entry{padding:8px;border-radius:8px;background:rgba(0,0,0,0.2); margin-bottom:8px; border-left:3px solid rgba(0,229,255,0.08)}
+  .roll-entry small{color:#bfefff;display:block;font-size:11px;margin-top:6px}
 
-  /* compact responsive tweaks */
+  /* Compact attack layout */
+  .attack-row{display:grid; grid-template-columns: 1fr 120px 48px; gap:8px; align-items:start}
+  .attack-row .attack-damage{grid-column:1/3; width:100%; min-height:48px; padding:8px; resize:vertical}
+  .attack-controls{display:flex;flex-direction:column;gap:6px}
+  .attack-controls .roll-damage{align-self:flex-end;}
+  .attack-remove{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:6px;border-radius:6px;cursor:pointer}
+
+  /* HP compact row */
+  .hp-compact{display:flex;gap:8px;align-items:center}
+  .hp-compact input{width:100%}
+
+  /* small responsive tweaks */
   @media (max-width:980px){
-    .container{padding:12px}
-    .tabs{flex-wrap:wrap}
+    .roll-log{right:10px;left:10px;width:auto;}
   }
-  @media print {
+
+  @media print{
     body{background:white;color:black}
-    .tabs, .controls, .roll-history{display:none}
+    .titlebar, .tabs, .btnbar{display:none}
+    input,textarea{border:1px solid #aaa;color:black;background:white}
   }
 </style>
 </head>
@@ -95,18 +140,18 @@
       <div class="logo">CV</div>
       <div class="title-text">
         <h1>Cybercraft 5e</h1>
-        <p>Interactive Character Sheet</p>
+        <p>Interactive Character Sheet — Echo City</p>
       </div>
 
       <div class="controls">
-        <button id="exportBtn" class="btn">Export</button>
-        <button id="importBtn" class="btn">Import</button>
-        <button id="clearBtn" class="btn">Clear</button>
-        <button id="printBtn" class="btn primary">Print</button>
+        <button id="export">Export</button>
+        <button id="importBtn">Import</button>
+        <button id="clear">Clear</button>
+        <button id="print" class="primary">Print</button>
       </div>
     </div>
 
-    <div class="tabs" role="tablist" aria-label="Tabs">
+    <div class="tabs" role="tablist">
       <div class="tab active" data-tab="core">Core</div>
       <div class="tab" data-tab="feats">Feats & Cyberware</div>
       <div class="tab" data-tab="abilities">Abilities & Spells</div>
@@ -115,718 +160,289 @@
     </div>
 
     <div class="panel">
-      <!-- CORE TAB -->
-      <div class="tab-panel" id="tab-core">
-        <div class="card">
-          <h3>Identity</h3>
-          <div class="row"><label class="small">Character Name</label><input id="name" type="text" placeholder="Character"></div>
-          <div class="row"><label class="small">Class</label><input id="class_text" type="text" placeholder="Class"></div>
-          <div class="row"><label class="small">Level</label><input id="level" type="number" min="1" value="1" style="width:80px"></div>
-        </div>
+      <div class="panel-grid">
 
-        <div class="card">
-          <h3>Webhook & Settings</h3>
-          <div class="row"><label class="small">Discord Webhook URL</label><input id="webhook_url" type="text" placeholder="https://discord.com/api/webhooks/..." /></div>
-          <div class="row"><label class="small">Enable Webhook</label>
-            <select id="webhook_enabled" style="width:120px">
-              <option value="no">No</option>
-              <option value="yes">Yes</option>
-            </select>
-            <div style="margin-left:auto;color:#9aa0b5;font-size:12px">Posts rolls to webhook when enabled</div>
-          </div>
-        </div>
+        <!-- LEFT MAIN -->
+        <div>
+          <!-- CORE TAB -->
+          <div class="tab-panel" id="tab-core">
+            <div class="card">
+              <h3>Identity</h3>
+              <div class="row"><label>Character Name</label><input id="name" type="text"></div>
+              <div class="row"><label>Player</label><input id="player" type="text"></div>
+              <div class="row"><label>Race</label><input id="race" type="text"></div>
+              <div class="row"><label>Class</label><input id="class_text" type="text"></div>
+              <div class="row"><label>Level</label><input id="level" type="number" min="1" value="1"></div>
+              <div class="row"><label>Background</label><input id="background" type="text"></div>
+              <div class="row"><label>Faction</label><input id="faction" type="text"></div>
+              <div class="row"><label>Alignment</label><input id="alignment" type="text"></div>
+            </div>
 
-        <div class="card">
-          <h3>Skills (click icon to roll)</h3>
-          <div class="list-wrap" id="skills_wrap">
-            <div class="list-item row">
-              <div style="flex:1"><strong>Perception</strong> <span id="skill_perception_display" class="muted">+0</span></div>
-              <div style="display:flex;align-items:center">
-                <input id="skill_perception" type="text" value="+0" style="width:84px">
-                <button class="roll-btn" data-roll="Perception" title="Roll Perception">
-                  <svg viewBox="0 0 24 24"><polygon points="12,2 22,9 18,22 6,22 2,9"/></svg>
-                </button>
+            <div class="card" style="margin-top:12px">
+              <h3>Attributes & Saving Throws</h3>
+              <div style="display:flex;gap:12px;flex-wrap:wrap">
+                <div class="attr-box">
+                  <div><input id="attr_STR" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
+                  <div class="label">STR</div>
+                  <div class="save-row"><input id="save_prof_STR" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_STR">+0</div></div>
+                </div>
+
+                <div class="attr-box">
+                  <div><input id="attr_DEX" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
+                  <div class="label">DEX</div>
+                  <div class="save-row"><input id="save_prof_DEX" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_DEX">+0</div></div>
+                </div>
+
+                <div class="attr-box">
+                  <div><input id="attr_CON" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
+                  <div class="label">CON</div>
+                  <div class="save-row"><input id="save_prof_CON" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_CON">+0</div></div>
+                </div>
+
+                <div class="attr-box">
+                  <div><input id="attr_INT" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
+                  <div class="label">INT</div>
+                  <div class="save-row"><input id="save_prof_INT" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_INT">+0</div></div>
+                </div>
+
+                <div class="attr-box">
+                  <div><input id="attr_WIS" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
+                  <div class="label">WIS</div>
+                  <div class="save-row"><input id="save_prof_WIS" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_WIS">+0</div></div>
+                </div>
+
+                <div class="attr-box">
+                  <div><input id="attr_CHA" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
+                  <div class="label">CHA</div>
+                  <div class="save-row"><input id="save_prof_CHA" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_CHA">+0</div></div>
+                </div>
               </div>
             </div>
 
-            <div class="list-item row">
-              <div style="flex:1"><strong>Stealth</strong> <span id="skill_stealth_display" class="muted">+0</span></div>
-              <div style="display:flex;align-items:center">
-                <input id="skill_stealth" type="text" value="+0" style="width:84px">
-                <button class="roll-btn" data-roll="Stealth" title="Roll Stealth">
-                  <svg viewBox="0 0 24 24"><polygon points="12,2 22,9 18,22 6,22 2,9"/></svg>
-                </button>
+            <div class="card" style="margin-top:12px">
+              <h3>Skills</h3>
+              <p class="muted">Check Prof / Expertise — bonuses auto-calc from ability mods and proficiency.</p>
+              <div style="margin-top:8px">
+                <div class="skill-row"><label>Athletics (STR)</label><div class="checkbox-inline"><input id="prof_athletics" type="checkbox">Prof</div><div class="checkbox-inline"><input id="exp_athletics" type="checkbox">Expertise</div><div class="skill-bonus" id="bonus_athletics">+0</div></div>
+
+                <div class="skill-row"><label>Acrobatics (DEX)</label><div class="checkbox-inline"><input id="prof_acrobatics" type="checkbox">Prof</div><div class="checkbox-inline"><input id="exp_acrobatics" type="checkbox">Expertise</div><div class="skill-bonus" id="bonus_acrobatics">+0</div></div>
+                <div class="skill-row"><label>Sleight of Hand (DEX)</label><div class="checkbox-inline"><input id="prof_sleight" type="checkbox"></div><div class="checkbox-inline"><input id="exp_sleight" type="checkbox"></div><div class="skill-bonus" id="bonus_sleight">+0</div></div>
+                <div class="skill-row"><label>Stealth (DEX)</label><div class="checkbox-inline"><input id="prof_stealth" type="checkbox"></div><div class="checkbox-inline"><input id="exp_stealth" type="checkbox"></div><div class="skill-bonus" id="bonus_stealth">+0</div></div>
+                <div class="skill-row"><label>Driving (DEX)</label><div class="checkbox-inline"><input id="prof_driving" type="checkbox"></div><div class="checkbox-inline"><input id="exp_driving" type="checkbox"></div><div class="skill-bonus" id="bonus_driving">+0</div></div>
+
+                <div class="skill-row"><label>Arcana (INT)</label><div class="checkbox-inline"><input id="prof_arcana" type="checkbox"></div><div class="checkbox-inline"><input id="exp_arcana" type="checkbox"></div><div class="skill-bonus" id="bonus_arcana">+0</div></div>
+                <div class="skill-row"><label>History (INT)</label><div class="checkbox-inline"><input id="prof_history" type="checkbox"></div><div class="checkbox-inline"><input id="exp_history" type="checkbox"></div><div class="skill-bonus" id="bonus_history">+0</div></div>
+                <div class="skill-row"><label>Investigation (INT)</label><div class="checkbox-inline"><input id="prof_investigation" type="checkbox"></div><div class="checkbox-inline"><input id="exp_investigation" type="checkbox"></div><div class="skill-bonus" id="bonus_investigation">+0</div></div>
+                <div class="skill-row"><label>Nature (INT)</label><div class="checkbox-inline"><input id="prof_nature" type="checkbox"></div><div class="checkbox-inline"><input id="exp_nature" type="checkbox"></div><div class="skill-bonus" id="bonus_nature">+0</div></div>
+                <div class="skill-row"><label>Religion (INT)</label><div class="checkbox-inline"><input id="prof_religion" type="checkbox"></div><div class="checkbox-inline"><input id="exp_religion" type="checkbox"></div><div class="skill-bonus" id="bonus_religion">+0</div></div>
+                <div class="skill-row"><label>Technology (INT)</label><div class="checkbox-inline"><input id="prof_technology" type="checkbox"></div><div class="checkbox-inline"><input id="exp_technology" type="checkbox"></div><div class="skill-bonus" id="bonus_technology">+0</div></div>
+
+                <div class="skill-row"><label>Animal Handling (WIS)</label><div class="checkbox-inline"><input id="prof_animal" type="checkbox"></div><div class="checkbox-inline"><input id="exp_animal" type="checkbox"></div><div class="skill-bonus" id="bonus_animal">+0</div></div>
+                <div class="skill-row"><label>Insight (WIS)</label><div class="checkbox-inline"><input id="prof_insight" type="checkbox"></div><div class="checkbox-inline"><input id="exp_insight" type="checkbox"></div><div class="skill-bonus" id="bonus_insight">+0</div></div>
+                <div class="skill-row"><label>Medicine (WIS)</label><div class="checkbox-inline"><input id="prof_medicine" type="checkbox"></div><div class="checkbox-inline"><input id="exp_medicine" type="checkbox"></div><div class="skill-bonus" id="bonus_medicine">+0</div></div>
+                <div class="skill-row"><label>Perception (WIS)</label><div class="checkbox-inline"><input id="prof_perception" type="checkbox"></div><div class="checkbox-inline"><input id="exp_perception" type="checkbox"></div><div class="skill-bonus" id="bonus_perception">+0</div></div>
+                <div class="skill-row"><label>Survival (WIS)</label><div class="checkbox-inline"><input id="prof_survival" type="checkbox"></div><div class="checkbox-inline"><input id="exp_survival" type="checkbox"></div><div class="skill-bonus" id="bonus_survival">+0</div></div>
+
+                <div class="skill-row"><label>Deception (CHA)</label><div class="checkbox-inline"><input id="prof_deception" type="checkbox"></div><div class="checkbox-inline"><input id="exp_deception" type="checkbox"></div><div class="skill-bonus" id="bonus_deception">+0</div></div>
+                <div class="skill-row"><label>Intimidation (CHA)</label><div class="checkbox-inline"><input id="prof_intimidation" type="checkbox"></div><div class="checkbox-inline"><input id="exp_intimidation" type="checkbox"></div><div class="skill-bonus" id="bonus_intimidation">+0</div></div>
+                <div class="skill-row"><label>Performance (CHA)</label><div class="checkbox-inline"><input id="prof_performance" type="checkbox"></div><div class="checkbox-inline"><input id="exp_performance" type="checkbox"></div><div class="skill-bonus" id="bonus_performance">+0</div></div>
+                <div class="skill-row"><label>Persuasion (CHA)</label><div class="checkbox-inline"><input id="prof_persuasion" type="checkbox"></div><div class="checkbox-inline"><input id="exp_persuasion" type="checkbox"></div><div class="skill-bonus" id="bonus_persuasion">+0</div></div>
               </div>
             </div>
 
-            <!-- More skills can be added by the user / prefilled in future -->
+            <div class="card" style="margin-top:12px">
+              <h3>Sanity & Corruption</h3>
+              <div class="row"><label>Sanity (cur / max)</label><input id="sanity" placeholder="12 / 20"></div>
+              <div class="row"><label>Corruption (cur / max)</label><input id="corruption" placeholder="0 / 20"></div>
+              <div style="margin-top:8px"><label>Notes</label><textarea id="sanity_notes" placeholder="Sanity scars, mutations, notes..."></textarea></div>
+            </div>
+
+          </div>
+
+          <!-- FEATS & CYBERWARE TAB -->
+          <div class="tab-panel" id="tab-feats" style="display:none">
+            <div class="card">
+              <h3>-- Feats --</h3>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input id="new_feat_name" placeholder="Feat name"/>
+                <button id="addFeat">Add</button>
+              </div>
+              <div class="list-wrap" id="feats_list"></div>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+              <h3>-- Cyberware --</h3>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input id="new_cyber_name" placeholder="Cyberware name"/>
+                <button id="addCyber">Add</button>
+              </div>
+              <div class="list-wrap" id="cyber_list"></div>
+            </div>
+          </div>
+
+          <!-- ABILITIES & SPELLS TAB -->
+          <div class="tab-panel" id="tab-abilities" style="display:none">
+            <div class="card">
+              <h3>Abilities</h3>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input id="new_ability_name" placeholder="Ability name"/>
+                <button id="addAbility">Add</button>
+              </div>
+              <div class="list-wrap" id="abilities_list"></div>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+              <h3>Spells</h3>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input id="new_spell_name" placeholder="Spell name"/>
+                <input id="new_spell_level" style="width:70px" placeholder="Lvl"/>
+                <button id="addSpell">Add</button>
+              </div>
+              <div class="list-wrap" id="spells_list"></div>
+            </div>
+          </div>
+
+          <!-- EQ & NOTES TAB -->
+          <div class="tab-panel" id="tab-eq" style="display:none">
+            <div class="card">
+              <h3>Equipment</h3>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input id="new_equip" placeholder="Item name (single-line)"/>
+                <button id="addEquip">Add</button>
+              </div>
+              <div class="list-wrap" id="equip_list"></div>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+              <h3>Vehicles</h3>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input id="new_vehicle_name" placeholder="Vehicle name"/>
+                <button id="addVehicle">Add</button>
+              </div>
+              <div class="list-wrap" id="vehicles_list"></div>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+              <h3>Notes</h3>
+              <textarea id="notes" placeholder="General notes, campaign hooks, NPCs..."></textarea>
+            </div>
+          </div>
+
+          <!-- COMBAT INTERFACE TAB (last) -->
+          <div class="tab-panel" id="tab-combat" style="display:none">
+            <div class="card">
+              <h3>Combat Interface</h3>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div>
+                  <div class="row"><label>Armor Class</label><input id="ac" type="text"></div>
+                  <div class="row"><label>Initiative</label><input id="init" type="text" readonly></div>
+                  <div class="row"><label>Speed</label><input id="speed" type="text"></div>
+                </div>
+
+                <div>
+                  <div class="row"><label>Proficiency</label><input id="prof_display" type="text" readonly></div>
+
+                  <div style="margin-top:8px">
+                    <label>HP</label>
+                    <div class="hp-compact">
+                      <input id="hp_max" placeholder="Max HP" type="number">
+                      <input id="hp_cur" placeholder="Current HP" type="number">
+                      <input id="hp_temp" placeholder="Temp HP" type="number">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top:12px; display:flex; gap:12px;">
+                <div style="flex:1">
+                  <label>Resistances</label>
+                  <textarea id="resistances" placeholder="e.g. fire, psychic — comma-separated"></textarea>
+                </div>
+                <div style="flex:1">
+                  <label>Immunities / Vulnerabilities</label>
+                  <textarea id="immunities" placeholder="Immunities / Vulnerabilities"></textarea>
+                </div>
+              </div>
+
+              <div style="margin-top:12px">
+                <h4 style="margin:6px 0;color:#cfeeff;font-family:Orbitron;font-size:12px">Saving Throws</h4>
+                <div id="saves_container">
+                  <!-- Save rows injected here by JS -->
+                </div>
+              </div>
+
+            </div>
+
+            <div class="card" style="margin-top:12px">
+              <h3>Attacks</h3>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input id="new_attack_name" placeholder="Attack name"/>
+                <input id="new_attack_bonus" style="width:80px" placeholder="+Atk"/>
+                <button id="addAttack">Add</button>
+              </div>
+              <div id="attacks_list" class="list-wrap"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- RIGHT: snapshot & quick -->
+        <div>
+          <div class="card snapshot">
+            <h3>Snapshot</h3>
+            <div class="row"><strong>Name</strong><div id="snap_name" class="muted">—</div></div>
+            <div class="row"><strong>Class / Level</strong><div id="snap_class" class="muted">—</div></div>
+            <div class="row"><strong>HP</strong><div id="snap_hp" class="muted">0 / 0</div></div>
+            <div class="row"><strong>AC</strong><div id="snap_ac" class="muted">—</div></div>
+            <div class="row"><strong>Sanity / Corr.</strong><div id="snap_sanity" class="muted">—</div></div>
+          </div>
+
+          <div class="card" style="margin-top:12px">
+            <h3>Quick Actions</h3>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <button id="downloadJSON">Download JSON</button>
+              <button id="loadJSON">Load JSON</button>
+              <button id="clearLocal">Clear Local</button>
+            </div>
+            <p class="muted" style="margin-top:10px">Autosaves as you type. Export to move or backup characters.</p>
+          </div>
+
+          <div class="card" style="margin-top:12px">
+            <h3>Help</h3>
+            <p class="muted" style="font-size:13px;margin:0">This sheet stores data locally in your browser. Use Export/Import to transfer characters.</p>
           </div>
         </div>
+
       </div>
-
-      <!-- FEATS & CYBERWARE -->
-      <div class="tab-panel" id="tab-feats" style="display:none">
-        <div class="card">
-          <h3>Feats</h3>
-          <div style="display:flex;gap:8px;margin-bottom:8px">
-            <input id="new_feat_name" placeholder="Feat name" />
-            <button id="addFeat" class="btn">Add</button>
-          </div>
-          <div id="feats_list" class="list-wrap"></div>
-        </div>
-
-        <div class="card">
-          <h3>Cyberware</h3>
-          <div style="display:flex;gap:8px;margin-bottom:8px">
-            <input id="new_cyber_name" placeholder="Cyberware name" />
-            <button id="addCyber" class="btn">Add</button>
-          </div>
-          <div id="cyber_list" class="list-wrap"></div>
-        </div>
-      </div>
-
-      <!-- ABILITIES & SPELLS -->
-      <div class="tab-panel" id="tab-abilities" style="display:none">
-        <div class="card">
-          <h3>Abilities</h3>
-          <div style="display:flex;gap:8px;margin-bottom:8px">
-            <input id="new_ability_name" placeholder="Ability name" />
-            <button id="addAbility" class="btn">Add</button>
-          </div>
-          <div id="abilities_list" class="list-wrap"></div>
-        </div>
-
-        <div class="card">
-          <h3>Spells</h3>
-          <div style="display:flex;gap:8px;margin-bottom:8px">
-            <input id="new_spell_name" placeholder="Spell name" />
-            <input id="new_spell_level" placeholder="Lv" style="width:68px" />
-            <button id="addSpell" class="btn">Add</button>
-          </div>
-          <div id="spells_list" class="list-wrap"></div>
-        </div>
-      </div>
-
-      <!-- EQ & NOTES -->
-      <div class="tab-panel" id="tab-eq" style="display:none">
-        <div class="card">
-          <h3>Equipment</h3>
-          <div style="display:flex;gap:8px;margin-bottom:8px">
-            <input id="new_equip" placeholder="Item (single-line)" />
-            <button id="addEquip" class="btn">Add</button>
-          </div>
-          <div id="equip_list" class="list-wrap"></div>
-        </div>
-
-        <div class="card">
-          <h3>Vehicles</h3>
-          <div style="display:flex;gap:8px;margin-bottom:8px">
-            <input id="new_vehicle_name" placeholder="Vehicle name" />
-            <button id="addVehicle" class="btn">Add</button>
-          </div>
-          <div id="vehicles_list" class="list-wrap"></div>
-        </div>
-
-        <div class="card">
-          <h3>Notes</h3>
-          <textarea id="notes" placeholder="Campaign notes..."></textarea>
-        </div>
-      </div>
-
-      <!-- COMBAT INTERFACE -->
-      <div class="tab-panel" id="tab-combat" style="display:none">
-        <div class="card">
-          <h3>Saving Throws</h3>
-          <div class="list-wrap" style="display:flex;gap:8px;flex-wrap:wrap">
-            <div class="row" style="width:48%;min-width:260px;">
-              <div style="flex:1"><strong>STR</strong> <span id="save_STR">+0</span></div>
-              <div style="display:flex;align-items:center">
-                <button class="roll-btn" data-roll="STR Save"><svg viewBox="0 0 24 24"><polygon points="12,2 22,9 18,22 6,22 2,9"/></svg></button>
-              </div>
-            </div>
-
-            <div class="row" style="width:48%;min-width:260px;">
-              <div style="flex:1"><strong>DEX</strong> <span id="save_DEX">+0</span></div>
-              <div style="display:flex;align-items:center">
-                <button class="roll-btn" data-roll="DEX Save"><svg viewBox="0 0 24 24"><polygon points="12,2 22,9 18,22 6,22 2,9"/></svg></button>
-              </div>
-            </div>
-
-            <div class="row" style="width:48%;min-width:260px;">
-              <div style="flex:1"><strong>CON</strong> <span id="save_CON">+0</span></div>
-              <div style="display:flex;align-items:center">
-                <button class="roll-btn" data-roll="CON Save"><svg viewBox="0 0 24 24"><polygon points="12,2 22,9 18,22 6,22 2,9"/></svg></button>
-              </div>
-            </div>
-
-            <div class="row" style="width:48%;min-width:260px;">
-              <div style="flex:1"><strong>INT</strong> <span id="save_INT">+0</span></div>
-              <div style="display:flex;align-items:center">
-                <button class="roll-btn" data-roll="INT Save"><svg viewBox="0 0 24 24"><polygon points="12,2 22,9 18,22 6,22 2,9"/></svg></button>
-              </div>
-            </div>
-
-            <div class="row" style="width:48%;min-width:260px;">
-              <div style="flex:1"><strong>WIS</strong> <span id="save_WIS">+0</span></div>
-              <div style="display:flex;align-items:center">
-                <button class="roll-btn" data-roll="WIS Save"><svg viewBox="0 0 24 24"><polygon points="12,2 22,9 18,22 6,22 2,9"/></svg></button>
-              </div>
-            </div>
-
-            <div class="row" style="width:48%;min-width:260px;">
-              <div style="flex:1"><strong>CHA</strong> <span id="save_CHA">+0</span></div>
-              <div style="display:flex;align-items:center">
-                <button class="roll-btn" data-roll="CHA Save"><svg viewBox="0 0 24 24"><polygon points="12,2 22,9 18,22 6,22 2,9"/></svg></button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Attacks</h3>
-          <div id="attacks_list" class="list-wrap"></div>
-
-          <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
-            <input id="new_attack_name" placeholder="Attack Name" style="flex:1" />
-            <input id="new_attack_bonus" placeholder="+Hit" style="width:80px" />
-            <input id="new_attack_dmg" placeholder="Damage e.g. 1d8+3" style="width:140px" />
-            <button id="addAttack" class="btn">Add</button>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Defenses & HP</h3>
-          <div class="row"><label class="small">Armor Class (AC)</label><input id="ac" type="text" placeholder="AC"></div>
-          <div class="row"><label class="small">Speed</label><input id="speed" type="text" placeholder="Speed"></div>
-          <div class="row" style="align-items:center">
-            <label class="small">HP</label>
-            <input id="hp_cur" placeholder="Current" style="width:90px" />
-            <input id="hp_max" placeholder="Max" style="width:90px" />
-            <input id="hp_temp" placeholder="Temp" style="width:90px" />
-          </div>
-          <div class="row" style="align-items:center">
-            <label class="small">Initiative</label>
-            <input id="init" type="text" readonly style="width:90px" />
-            <button class="roll-btn" data-roll="Initiative" title="Roll Initiative"><svg viewBox="0 0 24 24"><polygon points="12,2 22,9 18,22 6,22 2,9"/></svg></button>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
-  <!-- Roll History (floating) -->
-  <div class="roll-history" id="roll_history">
-    <h4>
-      <svg viewBox="0 0 24 24" width="14" height="14" style="stroke:var(--neon);fill:none;stroke-width:2">
-        <polygon points="12,2 22,9 18,22 6,22 2,9"/>
-      </svg>
-      Roll Log
-      <button id="clear_roll_log" class="btn" style="margin-left:auto">Clear</button>
-    </h4>
-    <div id="roll_log"></div>
+  <!-- Roll log overlay -->
+  <div id="rollLog" class="roll-log collapsed" aria-live="polite">
+    <h4><svg width="14" height="14" viewBox="0 0 24 24" style="margin-right:6px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" stroke="none" fill="#00E5FF" /></svg>Roll Log <button id="toggleLog" style="margin-left:auto;background:transparent;border:none;color:#bfefff">▾</button></h4>
+    <div id="roll_entries"></div>
+    <div style="display:flex;gap:8px;margin-top:8px;justify-content:flex-end">
+      <button id="clearRolls">Clear</button>
+    </div>
   </div>
 
 <script>
 /* -------------------------
-   Helper & storage keys
+   Constants & helpers
    ------------------------- */
-const STORAGE_KEY = 'cybercraft_sheet_v_final';
-const WEBHOOK_KEY = 'cybercraft_webhook_url';
-const WEBHOOK_ENABLE_KEY = 'cybercraft_webhook_enabled';
-
-/* dice roller: supports NdM+K and simple constants */
-function rollDiceFormula(expr){
-  expr = (expr||'').trim();
-  // simple full-expression evaluator for dice like "1d8+3" or "2d6+1d4+2"
-  // split by + and - while preserving signs
-  // support basic tokens like "NdM" and integers
-  try {
-    let tokens = expr.replace(/\s+/g,'').match(/[+-]?[^+-]+/g);
-    if(!tokens) return {total:0, detail: expr};
-    let total=0, details=[];
-    for(const t of tokens){
-      let sign = 1;
-      let token = t;
-      if(t[0] === '+'){ sign = 1; token = t.slice(1); }
-      else if(t[0] === '-'){ sign = -1; token = t.slice(1); }
-      const m = token.match(/^(\d*)d(\d+)$/i);
-      if(m){
-        const num = parseInt(m[1])||1;
-        const sides = parseInt(m[2]);
-        let sum=0;
-        let rolls=[];
-        for(let i=0;i<num;i++){
-          const r = Math.floor(Math.random()*sides)+1;
-          rolls.push(r);
-          sum += r;
-        }
-        total += sign * sum;
-        details.push((sign===-1?'-':'') + token + ' [' + rolls.join(',') + ']');
-      } else {
-        const val = parseInt(token)||0;
-        total += sign * val;
-        details.push((sign===-1?'-':'') + token);
-      }
-    }
-    return { total, detail: details.join(' + ').replace(/\+\s*-/g,'- ') };
-  } catch(e){
-    return { total:0, detail:expr };
-  }
-}
-
-/* simple d20 roll for checks (1d20 + modifier) */
-function rollCheck(mod){
-  const die = Math.floor(Math.random()*20)+1;
-  return { die, total: die + (parseInt(mod)||0) };
-}
-
-/* -------------------------
-   Roll log + webhook posting
-   ------------------------- */
-function addRollLogLine(text, muted){
-  const log = document.getElementById('roll_log');
-  const el = document.createElement('div');
-  el.className = 'entry';
-  if(muted) el.classList.add('muted');
-  el.innerHTML = text;
-  log.prepend(el);
-}
-
-/* webhook send */
-async function postToWebhook(payload){
-  const url = (localStorage.getItem(WEBHOOK_KEY) || '').trim();
-  const enabled = (localStorage.getItem(WEBHOOK_ENABLE_KEY) || 'no') === 'yes';
-  if(!enabled || !url) return {ok:false, msg:'webhook disabled or missing'};
-  try {
-    // Discord webhook compatible JSON (simple embed like)
-    const body = JSON.stringify({
-      username: payload.username || 'Cybercraft Bot',
-      embeds: [{
-        title: payload.title,
-        description: payload.description,
-        color: 0x9B30FF
-      }]
-    });
-    const res = await fetch(url, { method:'POST', body, headers: {'Content-Type':'application/json'} });
-    if(!res.ok) throw new Error('HTTP ' + res.status);
-    return {ok:true};
-  } catch(err){
-    return {ok:false, msg: err.message};
-  }
-}
-
-/* send roll (log + optional webhook) */
-async function sendRoll(name, formulaDisplay, result){
-  const char = document.getElementById('name').value || 'Unknown';
-  const text = `<strong>${escapeHtml(name)}</strong> • <em>${escapeHtml(formulaDisplay)}</em> → <span style="color:var(--neon)">[${result}]</span>`;
-  addRollLogLine(`${escapeHtml(char)} — ${text}`);
-  // webhook payload
-  const payload = {
-    username: 'Cybercraft Rolls',
-    title: `${char} • ${name}`,
-    description: `**${formulaDisplay}** → **${result}**`
-  };
-  const resp = await postToWebhook(payload);
-  if(resp.ok){
-    addRollLogLine(`<span class="muted">Webhook posted ✓</span>`, true);
-  } else if(resp.msg && resp.msg !== 'webhook disabled or missing'){
-    addRollLogLine(`<span class="muted">Webhook error: ${escapeHtml(resp.msg)}</span>`, true);
-  }
-}
-
-/* -------------------------
-   Event wiring: roll buttons, attacks, skills, saves, initiative
-   ------------------------- */
-document.addEventListener('click', async (e) => {
-  const btn = e.target.closest('.roll-btn');
-  if(!btn) return;
-  const rollName = btn.dataset.roll || 'Roll';
-  // handle specialized roll naming conventions
-  if(/Initiative/i.test(rollName)){
-    // initiative: use dex mod if set in Init input or compute from 'init_mod' input
-    const initModInput = document.getElementById('init_mod');
-    let mod = 0;
-    if(initModInput) mod = parseInt(initModInput.value)||0;
-    const res = rollCheck(mod);
-    await sendRoll('Initiative', `1d20 + ${mod}`, res.total);
-    document.getElementById('init').value = (res.total >= 0 ? '+' : '') + res.total;
-    return;
-  }
-
-  // Attack or Damage: if the button's data-roll ends with 'Damage' we try to resolve the damage formula
-  if(/Damage$/i.test(rollName)){
-    // find the corresponding input (we expect the attack name included)
-    const attackLabel = rollName.replace(/\s*Damage$/i,'').trim();
-    // try to find matching attack in list
-    const items = Array.from(document.querySelectorAll('#attacks_list .list-item'));
-    for(const it of items){
-      const label = (it.querySelector('.atk_name')||{textContent:''}).textContent.trim();
-      if(label === attackLabel){
-        const dmgInput = it.querySelector('.atk_dmg');
-        const formula = dmgInput ? dmgInput.value.trim() : '';
-        const out = rollDiceFormula(formula || '0');
-        await sendRoll(attackLabel + ' — Damage', formula || '0', out.total);
-        return;
-      }
-    }
-    // fallback: just post 1d6
-    const r = rollDiceFormula('1d6');
-    await sendRoll(rollName, '1d6', r.total);
-    return;
-  }
-
-  // Attack rolls (To Hit)
-  if(/Attack$/i.test(rollName)){
-    const attackLabel = rollName.replace(/\s*Attack$/i,'').trim();
-    const items = Array.from(document.querySelectorAll('#attacks_list .list-item'));
-    for(const it of items){
-      const label = (it.querySelector('.atk_name')||{textContent:''}).textContent.trim();
-      if(label === attackLabel){
-        const bonusInput = it.querySelector('.atk_bonus');
-        const mod = parseInt(bonusInput ? bonusInput.value.replace('+','') : 0) || 0;
-        const res = rollCheck(mod);
-        await sendRoll(attackLabel + ' — Attack', `1d20 + ${mod}`, res.total);
-        return;
-      }
-    }
-    const r = rollCheck(0);
-    await sendRoll(rollName, '1d20 + 0', r.total);
-    return;
-  }
-
-  // Saves & Skills etc: perform d20 + bonus if possible
-  const simpleMatch = rollName.match(/(.+?)\s*$/);
-  const name = simpleMatch ? simpleMatch[1] : rollName;
-  // attempt to find an input named for the bonus
-  // look for elements with id like save_<AB> or skill_<name> or inputs nearby
-  let mod = 0;
-  // check save inputs by id mapping
-  const saveId = 'save_' + name.replace(/\s+/g,'_');
-  const saveEl = document.getElementById(saveId);
-  if(saveEl && saveEl.textContent){
-    mod = parseInt(saveEl.textContent.replace('+','')) || 0;
-    const res = rollCheck(mod);
-    await sendRoll(name, `1d20 + ${mod}`, res.total);
-    return;
-  }
-  // fallback: look for input with id equal to lowercased name (skill_perception etc)
-  const lookupId = name.toLowerCase().replace(/\s+/g,'_');
-  const skillEl = document.getElementById(lookupId);
-  if(skillEl && skillEl.value){
-    // try to parse +N
-    const parsed = parseInt((skillEl.value||'').replace(/\D/g,'')) || 0;
-    const res = rollCheck(parsed);
-    await sendRoll(name, `1d20 + ${parsed}`, res.total);
-    return;
-  }
-  // final fallback: 1d20 only
-  const r = rollCheck(0);
-  await sendRoll(name, '1d20', r.total);
-});
-
-/* -------------------------
-   Attacks list add/remove rendering
-   ------------------------- */
-function renderAttacks(){
-  const wrap = document.getElementById('attacks_list');
-  wrap.innerHTML = '';
-  const arr = (window._attacks || []);
-  arr.forEach((a,idx) => {
-    const item = document.createElement('div');
-    item.className = 'list-item';
-    item.innerHTML = `
-      <div style="flex:1">
-        <div style="display:flex;gap:8px;align-items:center">
-          <div style="width:160px"><strong class="atk_name">${escapeHtml(a.name)}</strong></div>
-          <input class="atk_bonus" value="${escapeHtml(a.bonus)}" style="width:70px" />
-          <button class="roll-btn" data-roll="${escapeHtml(a.name)} Attack" title="Roll Attack"><svg viewBox="0 0 24 24"><polygon points="12,2 22,9 18,22 6,22 2,9"/></svg></button>
-          <input class="atk_dmg" value="${escapeHtml(a.dmg)}" style="width:140px" />
-          <button class="roll-btn" data-roll="${escapeHtml(a.name)} Damage" title="Roll Damage"><svg viewBox="0 0 24 24"><polygon points="12,2 22,9 18,22 6,22 2,9"/></svg></button>
-        </div>
-      </div>
-      <div><button class="btn" data-remove-attack="${idx}">Remove</button></div>
-    `;
-    wrap.appendChild(item);
-  });
-}
-
-document.getElementById('addAttack').addEventListener('click', () => {
-  const n = document.getElementById('new_attack_name').value.trim();
-  const b = document.getElementById('new_attack_bonus').value.trim();
-  const d = document.getElementById('new_attack_dmg').value.trim();
-  if(!n) return alert('Enter attack name');
-  window._attacks = window._attacks || [];
-  window._attacks.push({ name: n, bonus: b, dmg: d });
-  renderAttacks();
-  saveToStorage();
-  document.getElementById('new_attack_name').value = '';
-  document.getElementById('new_attack_bonus').value = '';
-  document.getElementById('new_attack_dmg').value = '';
-});
-
-/* remove attack handler */
-document.getElementById('attacks_list').addEventListener('click', (e) => {
-  const btn = e.target.closest('[data-remove-attack]');
-  if(!btn) return;
-  const idx = parseInt(btn.getAttribute('data-remove-attack'));
-  if(!isNaN(idx) && window._attacks && window._attacks[idx]){
-    window._attacks.splice(idx,1);
-    renderAttacks();
-    saveToStorage();
-  }
-});
-
-/* -------------------------
-   Feats, Cyber, Abilities, Spells, Equip, Vehicles
-   Generic lists (simple)
-   ------------------------- */
-function renderList(containerId, arr, renderItem){
-  const wrap = document.getElementById(containerId);
-  wrap.innerHTML = '';
-  (arr||[]).forEach((it,i)=>{
-    const div = document.createElement('div');
-    div.className = 'list-item';
-    div.innerHTML = renderItem(it,i);
-    wrap.appendChild(div);
-  });
-}
-
-/* feats */
-window._feats = window._feats || [];
-function renderFeats(){ renderList('feats_list', window._feats, (f,i)=>`
-  <div style="flex:1">
-    <input class="feat_name" data-i="${i}" value="${escapeHtml(f.name||'')}" placeholder="Feat name"/>
-    <textarea class="feat_desc" data-i="${i}" placeholder="Description">${escapeHtml(f.desc||'')}</textarea>
-  </div>
-  <div><button class="btn" data-remove-feat="${i}">Remove</button></div>
-`); }
-document.getElementById('addFeat').addEventListener('click', ()=>{
-  const name = document.getElementById('new_feat_name').value.trim(); if(!name) return alert('Enter feat name');
-  window._feats.push({name:name,desc:''}); document.getElementById('new_feat_name').value=''; renderFeats(); saveToStorage();
-});
-document.getElementById('feats_list').addEventListener('click',(e)=>{
-  const btn = e.target.closest('[data-remove-feat]'); if(!btn) return;
-  const i = parseInt(btn.getAttribute('data-remove-feat')); window._feats.splice(i,1); renderFeats(); saveToStorage();
-});
-
-/* cyberware */
-window._cyber = window._cyber || [];
-function renderCyber(){ renderList('cyber_list', window._cyber, (c,i)=>`
-  <div style="flex:1">
-    <input class="cyber_name" data-i="${i}" value="${escapeHtml(c.name||'')}" placeholder="Cyberware name"/>
-    <textarea class="cyber_desc" data-i="${i}" placeholder="Description">${escapeHtml(c.desc||'')}</textarea>
-  </div>
-  <div><button class="btn" data-remove-cyber="${i}">Remove</button></div>
-`); }
-document.getElementById('addCyber').addEventListener('click', ()=>{
-  const name = document.getElementById('new_cyber_name').value.trim(); if(!name) return alert('Enter cyberware name');
-  window._cyber.push({name:name,desc:''}); document.getElementById('new_cyber_name').value=''; renderCyber(); saveToStorage();
-});
-document.getElementById('cyber_list').addEventListener('click',(e)=>{
-  const btn = e.target.closest('[data-remove-cyber]'); if(!btn) return;
-  const i = parseInt(btn.getAttribute('data-remove-cyber')); window._cyber.splice(i,1); renderCyber(); saveToStorage();
-});
-
-/* abilities */
-window._abilities = window._abilities || [];
-function renderAbilities(){ renderList('abilities_list', window._abilities, (a,i)=>`
-  <div style="flex:1">
-    <input class="ability_name" data-i="${i}" value="${escapeHtml(a.name||'')}" placeholder="Ability name"/>
-    <textarea class="ability_desc" data-i="${i}" placeholder="Description">${escapeHtml(a.desc||'')}</textarea>
-  </div>
-  <div><button class="btn" data-remove-ability="${i}">Remove</button></div>
-`); }
-document.getElementById('addAbility').addEventListener('click', ()=>{
-  const name = document.getElementById('new_ability_name').value.trim(); if(!name) return alert('Enter ability name');
-  window._abilities.push({name:name,desc:''}); document.getElementById('new_ability_name').value=''; renderAbilities(); saveToStorage();
-});
-document.getElementById('abilities_list').addEventListener('click',(e)=>{
-  const btn = e.target.closest('[data-remove-ability]'); if(!btn) return;
-  const i = parseInt(btn.getAttribute('data-remove-ability')); window._abilities.splice(i,1); renderAbilities(); saveToStorage();
-});
-
-/* spells */
-window._spells = window._spells || [];
-function renderSpells(){ renderList('spells_list', window._spells, (s,i)=>`
-  <div style="flex:1">
-    <input class="spell_name" data-i="${i}" value="${escapeHtml(s.name||'')}" placeholder="Spell name"/>
-    <input class="spell_level" data-i="${i}" value="${escapeHtml(s.level||'')}" style="width:68px"/>
-    <textarea class="spell_desc" data-i="${i}" placeholder="Details">${escapeHtml(s.desc||'')}</textarea>
-  </div>
-  <div><button class="btn" data-remove-spell="${i}">Remove</button></div>
-`); }
-document.getElementById('addSpell').addEventListener('click', ()=>{
-  const name = document.getElementById('new_spell_name').value.trim(); const lvl = document.getElementById('new_spell_level').value.trim();
-  if(!name) return alert('Enter spell name'); window._spells.push({name:name,level:lvl,desc:''}); document.getElementById('new_spell_name').value=''; document.getElementById('new_spell_level').value=''; renderSpells(); saveToStorage();
-});
-document.getElementById('spells_list').addEventListener('click',(e)=>{
-  const btn = e.target.closest('[data-remove-spell]'); if(!btn) return;
-  const i = parseInt(btn.getAttribute('data-remove-spell')); window._spells.splice(i,1); renderSpells(); saveToStorage();
-});
-
-/* equip */
-window._equip = window._equip || [];
-function renderEquip(){ renderList('equip_list', window._equip, (it,i)=>`
-  <div style="flex:1"><input class="equip_item" data-i="${i}" value="${escapeHtml(it||'')}" placeholder="Item name"/></div>
-  <div><button class="btn" data-remove-equip="${i}">Remove</button></div>
-`); }
-document.getElementById('addEquip').addEventListener('click', ()=>{
-  const name = document.getElementById('new_equip').value.trim(); if(!name) return alert('Enter item'); window._equip.push(name); document.getElementById('new_equip').value=''; renderEquip(); saveToStorage();
-});
-document.getElementById('equip_list').addEventListener('click',(e)=>{
-  const btn = e.target.closest('[data-remove-equip]'); if(!btn) return;
-  const i = parseInt(btn.getAttribute('data-remove-equip')); window._equip.splice(i,1); renderEquip(); saveToStorage();
-});
-
-/* vehicles */
-window._vehicles = window._vehicles || [];
-function renderVehicles(){ renderList('vehicles_list', window._vehicles, (v,i)=>`
-  <div style="flex:1">
-    <input class="veh_name" data-i="${i}" value="${escapeHtml(v.name||'')}" placeholder="Vehicle name"/>
-    <input class="veh_type" data-i="${i}" value="${escapeHtml(v.type||'')}" placeholder="Type" style="width:120px"/>
-    <input class="veh_speed" data-i="${i}" value="${escapeHtml(v.speed||'')}" placeholder="Speed" style="width:80px"/>
-    <textarea class="veh_desc" data-i="${i}" placeholder="Notes">${escapeHtml(v.desc||'')}</textarea>
-  </div>
-  <div><button class="btn" data-remove-vehicle="${i}">Remove</button></div>
-`); }
-document.getElementById('addVehicle').addEventListener('click', ()=>{
-  const name = document.getElementById('new_vehicle_name').value.trim(); if(!name) return alert('Enter vehicle name');
-  window._vehicles.push({name:name,type:'',speed:'',desc:''}); document.getElementById('new_vehicle_name').value=''; renderVehicles(); saveToStorage();
-});
-document.getElementById('vehicles_list').addEventListener('click',(e)=>{
-  const btn = e.target.closest('[data-remove-vehicle]'); if(!btn) return;
-  const i = parseInt(btn.getAttribute('data-remove-vehicle')); window._vehicles.splice(i,1); renderVehicles(); saveToStorage();
-});
-
-/* -------------------------
-   Export / Import / Clear / Print
-   ------------------------- */
-document.getElementById('exportBtn').addEventListener('click', () => {
-  const raw = JSON.stringify(gatherState());
-  const blob = new Blob([raw], {type:'application/json'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href = url; a.download = (document.getElementById('name').value || 'character') + '.cyber.json';
-  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-});
-document.getElementById('importBtn').addEventListener('click', () => {
-  const input = document.createElement('input'); input.type='file'; input.accept='.json';
-  input.onchange = (e) => {
-    const f = e.target.files[0]; if(!f) return;
-    const r = new FileReader(); r.onload = () => {
-      try { const parsed = JSON.parse(r.result); applyState(parsed); saveToStorage(); alert('Import OK'); } catch(err){ alert('Import failed: invalid file'); }
-    }; r.readAsText(f);
-  }; input.click();
-});
-document.getElementById('clearBtn').addEventListener('click', () => { if(confirm('Clear local sheet data? This cannot be undone.')){ localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(WEBHOOK_KEY); localStorage.removeItem(WEBHOOK_ENABLE_KEY); location.reload(); }});
-document.getElementById('printBtn').addEventListener('click', ()=>window.print());
-
-/* clear roll log */
-document.getElementById('clear_roll_log').addEventListener('click', ()=>{ document.getElementById('roll_log').innerHTML = ''; });
-
-/* -------------------------
-   Save / load state
-   ------------------------- */
-function gatherState(){
-  const state = {
-    name: document.getElementById('name').value || '',
-    class_text: document.getElementById('class_text').value || '',
-    level: document.getElementById('level').value || '1',
-    webhook_url: document.getElementById('webhook_url').value || '',
-    webhook_enabled: document.getElementById('webhook_enabled').value || 'no',
-    skills: {
-      perception: document.getElementById('skill_perception').value || '+0',
-      stealth: document.getElementById('skill_stealth').value || '+0'
-    },
-    saves: {
-      STR: document.getElementById('save_STR').textContent || '+0',
-      DEX: document.getElementById('save_DEX').textContent || '+0',
-      CON: document.getElementById('save_CON').textContent || '+0',
-      INT: document.getElementById('save_INT').textContent || '+0',
-      WIS: document.getElementById('save_WIS').textContent || '+0',
-      CHA: document.getElementById('save_CHA').textContent || '+0'
-    },
-    attacks: window._attacks || [],
-    feats: window._feats || [],
-    cyber: window._cyber || [],
-    abilities: window._abilities || [],
-    spells: window._spells || [],
-    equip: window._equip || [],
-    vehicles: window._vehicles || [],
-    ac: document.getElementById('ac').value || '',
-    speed: document.getElementById('speed').value || '',
-    hp_cur: document.getElementById('hp_cur').value || '',
-    hp_max: document.getElementById('hp_max').value || '',
-    hp_temp: document.getElementById('hp_temp').value || ''
-  };
-  return state;
-}
-
-function applyState(state){
-  if(!state) return;
-  document.getElementById('name').value = state.name || '';
-  document.getElementById('class_text').value = state.class_text || '';
-  document.getElementById('level').value = state.level || '1';
-  document.getElementById('webhook_url').value = state.webhook_url || '';
-  document.getElementById('webhook_enabled').value = state.webhook_enabled || 'no';
-  document.getElementById('skill_perception').value = (state.skills && state.skills.perception) || '+0';
-  document.getElementById('skill_perception_display').textContent = (state.skills && state.skills.perception) || '+0';
-  document.getElementById('skill_stealth').value = (state.skills && state.skills.stealth) || '+0';
-  document.getElementById('skill_stealth_display').textContent = (state.skills && state.skills.stealth) || '+0';
-
-  if(state.saves){
-    document.getElementById('save_STR').textContent = state.saves.STR || '+0';
-    document.getElementById('save_DEX').textContent = state.saves.DEX || '+0';
-    document.getElementById('save_CON').textContent = state.saves.CON || '+0';
-    document.getElementById('save_INT').textContent = state.saves.INT || '+0';
-    document.getElementById('save_WIS').textContent = state.saves.WIS || '+0';
-    document.getElementById('save_CHA').textContent = state.saves.CHA || '+0';
-  }
-
-  window._attacks = state.attacks || [];
-  window._feats = state.feats || [];
-  window._cyber = state.cyber || [];
-  window._abilities = state.abilities || [];
-  window._spells = state.spells || [];
-  window._equip = state.equip || [];
-  window._vehicles = state.vehicles || [];
-  renderAttacks(); renderFeats(); renderCyber(); renderAbilities(); renderSpells(); renderEquip(); renderVehicles();
-
-  document.getElementById('ac').value = state.ac || '';
-  document.getElementById('speed').value = state.speed || '';
-  document.getElementById('hp_cur').value = state.hp_cur || '';
-  document.getElementById('hp_max').value = state.hp_max || '';
-  document.getElementById('hp_temp').value = state.hp_temp || '';
-}
-
-/* Save to localStorage automatically */
-function saveToStorage(){
-  try {
-    const state = gatherState();
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    localStorage.setItem(WEBHOOK_KEY, document.getElementById('webhook_url').value || '');
-    localStorage.setItem(WEBHOOK_ENABLE_KEY, document.getElementById('webhook_enabled').value || 'no');
-  } catch(e){ console.error(e); }
-}
-
-function loadFromStorage(){
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if(!raw) return;
-    const parsed = JSON.parse(raw);
-    applyState(parsed);
-    // webhook values possibly saved separately
-    const wurl = localStorage.getItem(WEBHOOK_KEY) || '';
-    const wenabled = localStorage.getItem(WEBHOOK_ENABLE_KEY) || 'no';
-    if(wurl) document.getElementById('webhook_url').value = wurl;
-    if(wenabled) document.getElementById('webhook_enabled').value = wenabled;
-  } catch(e){ console.error(e); }
-}
-
-/* autosave listeners */
-document.querySelectorAll('input,textarea,select').forEach(el=>{
-  el.addEventListener('input', ()=>{ if(window._saveTimer) clearTimeout(window._saveTimer); window._saveTimer = setTimeout(()=>saveToStorage(), 450); });
-});
+const STORAGE_KEY = 'cybercraft_sheet_v_final2';
+const SKILLS = {
+  athletics:'STR', acrobatics:'DEX', sleight:'DEX', stealth:'DEX', driving:'DEX',
+  arcana:'INT', history:'INT', investigation:'INT', nature:'INT', religion:'INT', technology:'INT',
+  animal:'WIS', insight:'WIS', medicine:'WIS', perception:'WIS', survival:'WIS',
+  deception:'CHA', intimidation:'CHA', performance:'CHA', persuasion:'CHA'
+};
+function abilityMod(score){ const s=parseInt(score)||0; return Math.floor((s-10)/2); }
+function proficiencyByLevel(lvl){ lvl = parseInt(lvl)||1; return Math.ceil(lvl/4)+1; }
+function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function nowTimestamp(){ return new Date().toLocaleTimeString(); }
 
 /* -------------------------
    Tab handling
@@ -836,50 +452,599 @@ document.querySelectorAll('.tab').forEach(tab=>{
     document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
     tab.classList.add('active');
     document.querySelectorAll('.tab-panel').forEach(p=>p.style.display='none');
-    const id = 'tab-' + tab.dataset.tab;
-    const el = document.getElementById(id);
-    if(el) el.style.display = 'block';
+    document.getElementById('tab-' + tab.dataset.tab).style.display = 'block';
   });
 });
 
 /* -------------------------
-   Utilities
+   Dynamic lists: Feats, Cyber, Abilities, Spells, Equip, Vehicles (unchanged)
    ------------------------- */
-function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+/* Generic renderer */
+function renderList(containerId, items, templateFn){
+  const wrap = document.getElementById(containerId);
+  wrap.innerHTML = '';
+  items.forEach((it,i)=>{
+    const el = document.createElement('div'); el.className='list-item';
+    el.innerHTML = templateFn(it,i);
+    wrap.appendChild(el);
+  });
+}
 
-/* -------------------------
-   Boot: load state and wire lists
-   ------------------------- */
-loadFromStorage();
-renderAttacks(); renderFeats(); renderCyber(); renderAbilities(); renderSpells(); renderEquip(); renderVehicles();
-
-/* attach remove handlers for lists that use delegation */
-document.addEventListener('click', (e) => {
-  // feats/cyber/abilities/spells/equip/vehicles remove delegated earlier using dataset selectors
-  const removeFeat = e.target.closest('[data-remove-feat]');
-  if(removeFeat){ const i = parseInt(removeFeat.getAttribute('data-remove-feat')); if(!isNaN(i)){ window._feats.splice(i,1); renderFeats(); saveToStorage(); } }
-  const removeCyber = e.target.closest('[data-remove-cyber]');
-  if(removeCyber){ const i = parseInt(removeCyber.getAttribute('data-remove-cyber')); if(!isNaN(i)){ window._cyber.splice(i,1); renderCyber(); saveToStorage(); } }
-  const removeAbility = e.target.closest('[data-remove-ability]');
-  if(removeAbility){ const i = parseInt(removeAbility.getAttribute('data-remove-ability')); if(!isNaN(i)){ window._abilities.splice(i,1); renderAbilities(); saveToStorage(); } }
-  const removeSpell = e.target.closest('[data-remove-spell]');
-  if(removeSpell){ const i = parseInt(removeSpell.getAttribute('data-remove-spell')); if(!isNaN(i)){ window._spells.splice(i,1); renderSpells(); saveToStorage(); } }
-  const removeEquip = e.target.closest('[data-remove-equip]');
-  if(removeEquip){ const i = parseInt(removeEquip.getAttribute('data-remove-equip')); if(!isNaN(i)){ window._equip.splice(i,1); renderEquip(); saveToStorage(); } }
-  const removeVehicle = e.target.closest('[data-remove-vehicle]');
-  if(removeVehicle){ const i = parseInt(removeVehicle.getAttribute('data-remove-vehicle')); if(!isNaN(i)){ window._vehicles.splice(i,1); renderVehicles(); saveToStorage(); } }
+/* Feats */
+window._feats = window._feats || [];
+function renderFeats(){ renderList('feats_list', window._feats, (f,i)=>
+  `<div style="flex:1">
+    <input class="feat_name" data-i="${i}" value="${escapeHtml(f.name||'')}" placeholder="Feat name"/>
+    <textarea class="feat_desc" data-i="${i}" placeholder="Description">${escapeHtml(f.desc||'')}</textarea>
+  </div>
+  <div><button class="remove_feat" data-i="${i}">Remove</button></div>`
+); }
+document.getElementById('addFeat').addEventListener('click', ()=>{
+  const name = document.getElementById('new_feat_name').value.trim(); if(!name) return alert('Enter feat name');
+  window._feats.push({name:name,desc:''}); document.getElementById('new_feat_name').value=''; renderFeats(); saveToStorage();
+});
+document.getElementById('feats_list').addEventListener('click',(e)=>{
+  if(e.target.classList.contains('remove_feat')){ const i=parseInt(e.target.dataset.i); window._feats.splice(i,1); renderFeats(); saveToStorage(); }
+});
+document.getElementById('feats_list').addEventListener('input',(e)=>{
+  const cls=e.target.className; const i=parseInt(e.target.dataset.i);
+  if(cls.includes('feat_name')) window._feats[i].name = e.target.value;
+  if(cls.includes('feat_desc')) window._feats[i].desc = e.target.value;
+  saveToStorage();
 });
 
-/* Keep inputs synced to display areas (simple binding for skill displays) */
-document.getElementById('skill_perception').addEventListener('input', (e)=>{ document.getElementById('skill_perception_display').textContent = e.target.value; saveToStorage(); });
-document.getElementById('skill_stealth').addEventListener('input', (e)=>{ document.getElementById('skill_stealth_display').textContent = e.target.value; saveToStorage(); });
+/* Cyberware */
+window._cyber = window._cyber || [];
+function renderCyber(){ renderList('cyber_list', window._cyber, (c,i)=>
+  `<div style="flex:1">
+    <input class="cyber_name" data-i="${i}" value="${escapeHtml(c.name||'')}" placeholder="Cyberware name"/>
+    <textarea class="cyber_desc" data-i="${i}" placeholder="Description (optional)">${escapeHtml(c.desc||'')}</textarea>
+  </div>
+  <div><button class="remove_cyber" data-i="${i}">Remove</button></div>`
+); }
+document.getElementById('addCyber').addEventListener('click', ()=>{
+  const name=document.getElementById('new_cyber_name').value.trim(); if(!name) return alert('Enter cyberware name');
+  window._cyber.push({name:name,desc:''}); document.getElementById('new_cyber_name').value=''; renderCyber(); saveToStorage();
+});
+document.getElementById('cyber_list').addEventListener('click',(e)=>{
+  if(e.target.classList.contains('remove_cyber')){ const i=parseInt(e.target.dataset.i); window._cyber.splice(i,1); renderCyber(); saveToStorage(); }
+});
+document.getElementById('cyber_list').addEventListener('input',(e)=>{
+  const cls=e.target.className; const i=parseInt(e.target.dataset.i);
+  if(cls.includes('cyber_name')) window._cyber[i].name = e.target.value;
+  if(cls.includes('cyber_desc')) window._cyber[i].desc = e.target.value;
+  saveToStorage();
+});
 
-/* Save webhook fields separately too */
-document.getElementById('webhook_url').addEventListener('input', ()=>{ localStorage.setItem(WEBHOOK_KEY, document.getElementById('webhook_url').value || ''); });
-document.getElementById('webhook_enabled').addEventListener('change', ()=>{ localStorage.setItem(WEBHOOK_ENABLE_KEY, document.getElementById('webhook_enabled').value || 'no'); });
+/* Abilities */
+window._abilities = window._abilities || [];
+function renderAbilities(){ renderList('abilities_list', window._abilities, (a,i)=>
+  `<div style="flex:1">
+    <input class="ability_name" data-i="${i}" value="${escapeHtml(a.name||'')}" placeholder="Ability name"/>
+    <textarea class="ability_desc" data-i="${i}" placeholder="Description">${escapeHtml(a.desc||'')}</textarea>
+  </div>
+  <div><button class="remove_ability" data-i="${i}">Remove</button></div>`
+); }
+document.getElementById('addAbility').addEventListener('click', ()=>{
+  const name=document.getElementById('new_ability_name').value.trim(); if(!name) return alert('Enter ability name');
+  window._abilities.push({name:name,desc:''}); document.getElementById('new_ability_name').value=''; renderAbilities(); saveToStorage();
+});
+document.getElementById('abilities_list').addEventListener('click',(e)=>{
+  if(e.target.classList.contains('remove_ability')){ const i=parseInt(e.target.dataset.i); window._abilities.splice(i,1); renderAbilities(); saveToStorage(); }
+});
+document.getElementById('abilities_list').addEventListener('input',(e)=>{
+  const cls=e.target.className; const i=parseInt(e.target.dataset.i);
+  if(cls.includes('ability_name')) window._abilities[i].name = e.target.value;
+  if(cls.includes('ability_desc')) window._abilities[i].desc = e.target.value;
+  saveToStorage();
+});
 
-/* small periodic save guard */
-setInterval(saveToStorage, 5000);
+/* Spells */
+window._spells = window._spells || [];
+function renderSpells(){ renderList('spells_list', window._spells, (s,i)=>
+  `<div style="flex:1">
+    <input class="spell_name" data-i="${i}" value="${escapeHtml(s.name||'')}" placeholder="Spell name"/>
+    <div style="display:flex;gap:8px;margin-top:6px">
+      <input class="spell_level" data-i="${i}" style="width:70px" value="${escapeHtml(s.level||'')}" placeholder="Level"/>
+      <input class="spell_time" data-i="${i}" style="flex:1" value="${escapeHtml(s.time||'')}" placeholder="Casting time / Range / Duration"/>
+    </div>
+    <textarea class="spell_desc" data-i="${i}" placeholder="Details">${escapeHtml(s.desc||'')}</textarea>
+  </div>
+  <div><button class="remove_spell" data-i="${i}">Remove</button></div>`
+); }
+document.getElementById('addSpell').addEventListener('click', ()=>{
+  const name=document.getElementById('new_spell_name').value.trim(); const lvl=document.getElementById('new_spell_level').value.trim();
+  if(!name) return alert('Enter spell name');
+  window._spells.push({name:name,level:lvl,time:'',desc:''}); document.getElementById('new_spell_name').value=''; document.getElementById('new_spell_level').value=''; renderSpells(); saveToStorage();
+});
+document.getElementById('spells_list').addEventListener('click',(e)=>{
+  if(e.target.classList.contains('remove_spell')){ const i=parseInt(e.target.dataset.i); window._spells.splice(i,1); renderSpells(); saveToStorage(); }
+});
+document.getElementById('spells_list').addEventListener('input',(e)=>{
+  const cls=e.target.className; const i=parseInt(e.target.dataset.i);
+  if(cls.includes('spell_name')) window._spells[i].name = e.target.value;
+  if(cls.includes('spell_level')) window._spells[i].level = e.target.value;
+  if(cls.includes('spell_time')) window._spells[i].time = e.target.value;
+  if(cls.includes('spell_desc')) window._spells[i].desc = e.target.value;
+  saveToStorage();
+});
+
+/* Equipment (single-line) */
+window._equip = window._equip || [];
+function renderEquip(){ renderList('equip_list', window._equip, (it,i)=>
+  `<div style="flex:1">
+    <input class="equip_item" data-i="${i}" value="${escapeHtml(it||'')}" placeholder="Item name"/>
+  </div>
+  <div><button class="remove_equip" data-i="${i}">Remove</button></div>`
+); }
+document.getElementById('addEquip').addEventListener('click', ()=>{
+  const name=document.getElementById('new_equip').value.trim(); if(!name) return alert('Enter item'); window._equip.push(name); document.getElementById('new_equip').value=''; renderEquip(); saveToStorage();
+});
+document.getElementById('equip_list').addEventListener('click',(e)=>{
+  if(e.target.classList.contains('remove_equip')){ const i=parseInt(e.target.dataset.i); window._equip.splice(i,1); renderEquip(); saveToStorage(); }
+});
+document.getElementById('equip_list').addEventListener('input',(e)=>{
+  if(e.target.classList.contains('equip_item')){ const i=parseInt(e.target.dataset.i); window._equip[i] = e.target.value; saveToStorage(); }
+});
+
+/* Vehicles */
+window._vehicles = window._vehicles || [];
+function renderVehicles(){ renderList('vehicles_list', window._vehicles, (v,i)=>
+  `<div style="flex:1">
+    <input class="veh_name" data-i="${i}" value="${escapeHtml(v.name||'')}" placeholder="Vehicle name"/>
+    <div style="display:flex;gap:8px;margin-top:6px">
+      <input class="veh_type" data-i="${i}" style="width:120px" value="${escapeHtml(v.type||'')}" placeholder="Type"/>
+      <input class="veh_speed" data-i="${i}" style="width:100px" value="${escapeHtml(v.speed||'')}" placeholder="Speed"/>
+      <input class="veh_ac" data-i="${i}" style="width:80px" value="${escapeHtml(v.ac||'')}" placeholder="AC"/>
+    </div>
+    <textarea class="veh_desc" data-i="${i}" placeholder="Upgrades / Notes">${escapeHtml(v.desc||'')}</textarea>
+  </div>
+  <div><button class="remove_vehicle" data-i="${i}">Remove</button></div>`
+); }
+document.getElementById('addVehicle').addEventListener('click', ()=>{
+  const name=document.getElementById('new_vehicle_name').value.trim(); if(!name) return alert('Enter vehicle name');
+  window._vehicles.push({name:name,type:'',speed:'',ac:'',desc:''}); document.getElementById('new_vehicle_name').value=''; renderVehicles(); saveToStorage();
+});
+document.getElementById('vehicles_list').addEventListener('click',(e)=>{
+  if(e.target.classList.contains('remove_vehicle')){ const i=parseInt(e.target.dataset.i); window._vehicles.splice(i,1); renderVehicles(); saveToStorage(); }
+});
+document.getElementById('vehicles_list').addEventListener('input',(e)=>{
+  const cls=e.target.className; const i=parseInt(e.target.dataset.i);
+  if(cls.includes('veh_name')) window._vehicles[i].name = e.target.value;
+  if(cls.includes('veh_type')) window._vehicles[i].type = e.target.value;
+  if(cls.includes('veh_speed')) window._vehicles[i].speed = e.target.value;
+  if(cls.includes('veh_ac')) window._vehicles[i].ac = e.target.value;
+  if(cls.includes('veh_desc')) window._vehicles[i].desc = e.target.value;
+  saveToStorage();
+});
+
+/* -------------------------
+   Save / Load
+   ------------------------- */
+function gatherState(){
+  const state = {};
+  const ids = [
+    'name','player','race','class_text','level','background','faction','alignment',
+    'attr_STR','attr_DEX','attr_CON','attr_INT','attr_WIS','attr_CHA',
+    'save_prof_STR','save_prof_DEX','save_prof_CON','save_prof_INT','save_prof_WIS','save_prof_CHA',
+    'ac','init','speed','prof_display','hp_max','hp_cur','hp_temp','hit_dice',
+    'sanity','corruption','sanity_notes','notes','resistances','immunities'
+  ];
+  ids.forEach(id=>{
+    const el=document.getElementById(id); if(!el) return;
+    state[id] = (el.type==='checkbox') ? el.checked : el.value;
+  });
+  Object.keys(SKILLS).forEach(s=>{
+    const p=document.getElementById('prof_'+s), e=document.getElementById('exp_'+s);
+    state['prof_'+s] = p ? p.checked : false;
+    state['exp_'+s] = e ? e.checked : false;
+  });
+  state.feats = window._feats||[]; state.cyber = window._cyber||[]; state.abilities = window._abilities||[]; state.spells = window._spells||[];
+  state.equip = window._equip||[]; state.vehicles = window._vehicles||[];
+  state.attacks = window._attacks||[];
+  return state;
+}
+function applyState(state){
+  if(!state) return;
+  const ids = [
+    'name','player','race','class_text','level','background','faction','alignment',
+    'attr_STR','attr_DEX','attr_CON','attr_INT','attr_WIS','attr_CHA',
+    'save_prof_STR','save_prof_DEX','save_prof_CON','save_prof_INT','save_prof_WIS','save_prof_CHA',
+    'ac','init','speed','prof_display','hp_max','hp_cur','hp_temp','hit_dice',
+    'sanity','corruption','sanity_notes','notes','resistances','immunities'
+  ];
+  ids.forEach(id=>{
+    const el=document.getElementById(id); if(!el || state[id]===undefined) return;
+    if(el.type==='checkbox') el.checked = !!state[id]; else el.value = state[id];
+  });
+  Object.keys(SKILLS).forEach(s=>{
+    const p=document.getElementById('prof_'+s); if(p) p.checked = !!state['prof_'+s];
+    const e=document.getElementById('exp_'+s); if(e) e.checked = !!state['exp_'+s];
+  });
+  window._feats = state.feats||[]; window._cyber = state.cyber||[]; window._abilities = state.abilities||[]; window._spells = state.spells||[]; window._equip = state.equip||[]; window._vehicles = state.vehicles||[];
+  window._attacks = state.attacks||[];
+  renderFeats(); renderCyber(); renderAbilities(); renderSpells(); renderEquip(); renderVehicles();
+  renderAttacks();
+  updateAllCalculations(); updateSnapshot();
+}
+function saveToStorage(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(gatherState())); }catch(e){console.error(e);} }
+function loadFromStorage(){ try{ const raw=localStorage.getItem(STORAGE_KEY); if(!raw) return; applyState(JSON.parse(raw)); }catch(e){console.error(e);} }
+
+/* -------------------------
+   Calculations: saves, skills, init
+   ------------------------- */
+function updateAllCalculations(){
+  const level = parseInt(document.getElementById('level').value) || 1;
+  const prof = proficiencyByLevel(level);
+  document.getElementById('prof_display').value = (prof>=0?'+':'') + prof;
+
+  ['STR','DEX','CON','INT','WIS','CHA'].forEach(ab=>{
+    const score = parseInt(document.getElementById('attr_'+ab).value)||0;
+    const mod = abilityMod(score);
+    const profCheck = document.getElementById('save_prof_'+ab).checked;
+    const total = mod + (profCheck ? prof : 0);
+    document.getElementById('save_bonus_'+ab).textContent = (total>=0?'+':'') + total;
+  });
+
+  Object.keys(SKILLS).forEach(s=>{
+    const ab = SKILLS[s];
+    const score = parseInt(document.getElementById('attr_'+ab).value)||0;
+    const abmod = abilityMod(score);
+    const profCheck = document.getElementById('prof_'+s) ? document.getElementById('prof_'+s).checked : false;
+    const expCheck = document.getElementById('exp_'+s) ? document.getElementById('exp_'+s).checked : false;
+    let bonus = abmod;
+    if(profCheck) bonus += prof * (expCheck ? 2 : 1);
+    const el = document.getElementById('bonus_'+s);
+    if(el) el.textContent = (bonus>=0?'+':'') + bonus;
+  });
+
+  // Initiative from DEX mod
+  const dex = parseInt(document.getElementById('attr_DEX').value)||0;
+  const imod = abilityMod(dex);
+  document.getElementById('init').value = (imod>=0?'+':'') + imod;
+
+  saveToStorage();
+  updateSnapshot();
+}
+
+/* -------------------------
+   Snapshot + listeners
+   ------------------------- */
+function updateSnapshot(){
+  document.getElementById('snap_name').textContent = document.getElementById('name').value || '—';
+  document.getElementById('snap_class').textContent = (document.getElementById('class_text').value||'—') + ' / ' + (document.getElementById('level').value||'—');
+  document.getElementById('snap_hp').textContent = (document.getElementById('hp_cur').value||'0') + ' / ' + (document.getElementById('hp_max').value||'0');
+  document.getElementById('snap_ac').textContent = document.getElementById('ac').value || '—';
+  document.getElementById('snap_sanity').textContent = (document.getElementById('sanity').value||'—') + ' / ' + (document.getElementById('corruption').value||'—');
+}
+
+/* -------------------------
+   Attacks: add / render / remove
+   ------------------------- */
+window._attacks = window._attacks || [];
+
+function renderAttacks(){
+  const wrap = document.getElementById('attacks_list');
+  wrap.innerHTML = '';
+  window._attacks.forEach((atk,i)=>{
+    const div = document.createElement('div'); div.className='list-item';
+    div.innerHTML = `
+      <div style="flex:1">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+          <input class="attack_name" data-i="${i}" value="${escapeHtml(atk.name||'')}" placeholder="Attack name"/>
+          <input class="attack_bonus" data-i="${i}" style="width:80px" value="${escapeHtml(atk.bonus||'')}" placeholder="+Atk"/>
+          <button class="roll-atk roll-btn pulse" data-i="${i}" title="Roll Attack" style="margin-left:auto">
+            ${d20SVG()}
+          </button>
+        </div>
+        <textarea class="attack_damage attack-damage" data-i="${i}" placeholder="Damage (one line per damage type). e.g. '1d8 + 3 slashing'">${escapeHtml(atk.damage||'')}</textarea>
+      </div>
+      <div class="attack-controls">
+        <button class="roll-dmg roll-btn pulse" data-i="${i}" title="Roll Damage">${d20SVG()}</button>
+        <button class="attack-remove" data-i="${i}">Remove</button>
+      </div>
+    `;
+    wrap.appendChild(div);
+  });
+}
+
+/* Add attack */
+document.getElementById('addAttack').addEventListener('click', ()=>{
+  const name = document.getElementById('new_attack_name').value.trim();
+  const bonus = document.getElementById('new_attack_bonus').value.trim();
+  if(!name) return alert('Enter attack name');
+  window._attacks.push({name:name, bonus:bonus, damage:''});
+  document.getElementById('new_attack_name').value=''; document.getElementById('new_attack_bonus').value='';
+  renderAttacks(); saveToStorage();
+});
+
+/* Attack list events */
+document.getElementById('attacks_list').addEventListener('click',(e)=>{
+  if(e.target.classList.contains('attack-remove')){ const i=parseInt(e.target.dataset.i); window._attacks.splice(i,1); renderAttacks(); saveToStorage(); }
+  if(e.target.closest('.roll-atk')){ const i=parseInt(e.target.closest('.roll-atk').dataset.i); handleAttackRoll(i, e.target.closest('.roll-atk')); }
+  if(e.target.closest('.roll-dmg')){ const i=parseInt(e.target.closest('.roll-dmg').dataset.i); handleDamageRoll(i, e.target.closest('.roll-dmg')); }
+});
+document.getElementById('attacks_list').addEventListener('input',(e)=>{
+  if(e.target.classList.contains('attack_name')){ const i=parseInt(e.target.dataset.i); window._attacks[i].name = e.target.value; saveToStorage(); }
+  if(e.target.classList.contains('attack_bonus')){ const i=parseInt(e.target.dataset.i); window._attacks[i].bonus = e.target.value; saveToStorage(); }
+  if(e.target.classList.contains('attack_damage')){ const i=parseInt(e.target.dataset.i); window._attacks[i].damage = e.target.value; saveToStorage(); }
+});
+
+/* -------------------------
+   Saves UI (streamlined)
+   ------------------------- */
+const SAVE_ORDER = ['STR','DEX','CON','INT','WIS','CHA'];
+function renderSavesUI(){
+  const container = document.getElementById('saves_container');
+  container.innerHTML = '';
+  SAVE_ORDER.forEach(ab=>{
+    const row = document.createElement('div');
+    row.style.display='flex';
+    row.style.alignItems='center';
+    row.style.gap='8px';
+    row.style.marginBottom='6px';
+    const label = document.createElement('div'); label.style.minWidth='120px'; label.style.color='#c6cad2';
+    label.textContent = `${ab} Save`;
+    const bonus = document.createElement('div'); bonus.id = 'save_display_'+ab; bonus.style.fontWeight='700'; bonus.style.minWidth='48px'; bonus.style.color='#fff';
+    bonus.textContent = document.getElementById('save_bonus_'+ab).textContent || '+0';
+    const btn = document.createElement('button'); btn.className='roll-btn pulse'; btn.title = `Roll ${ab} save`; btn.innerHTML = d20SVG();
+    btn.dataset.save = ab;
+    row.appendChild(label); row.appendChild(bonus); row.appendChild(btn);
+    container.appendChild(row);
+  });
+}
+document.getElementById('saves_container').addEventListener('click',(e)=>{
+  const btn = e.target.closest('.roll-btn');
+  if(!btn) return;
+  if(btn.dataset.save){ handleSaveRoll(btn.dataset.save, btn); }
+});
+
+/* -------------------------
+   Dice rolling utility
+   - supports expressions like: 1d8+3, 2d6 + 1d4 + 2, or d20+5
+   - damage multiline lines: each line parsed and rolled separately
+   ------------------------- */
+function parseDiceExpression(expr){
+  // return {total, breakdown}
+  expr = expr.replace(/\s+/g,'').toLowerCase();
+  if(!expr) return {total:0, breakdown:'0'};
+  const parts = expr.split(/(?=[+-])/); // split while preserving signs
+  let total = 0;
+  const breakdownParts = [];
+  for(const part of parts){
+    if(part==='') continue;
+    // match NdM or dM or integer
+    const m = part.match(/^([+-])?(\d*)d(\d+)([a-z%]*)/);
+    if(m){
+      const sign = (m[1]==='-')?-1:1;
+      let n = parseInt(m[2]); if(isNaN(n) || n===0) n = 1;
+      const sides = parseInt(m[3]);
+      const rolls = [];
+      for(let i=0;i<n;i++){ const r = 1 + Math.floor(Math.random()*sides); rolls.push(r); total += sign * r; }
+      breakdownParts.push((sign<0?'-':'') + `${n}d${sides} [${rolls.join(',')}]`);
+      continue;
+    }
+    const m2 = part.match(/^([+-])?(\d+)$/);
+    if(m2){
+      const sign = (m2[1]==='-')?-1:1;
+      const val = parseInt(m2[2]);
+      total += sign * val;
+      breakdownParts.push((sign<0?'-':'') + val);
+      continue;
+    }
+    // unknown token, ignore
+    breakdownParts.push(part);
+  }
+  return {total, breakdown: breakdownParts.join(' + ')};
+}
+
+function rollD20WithBonus(bonus){
+  const r = 1 + Math.floor(Math.random()*20);
+  return {roll: r, total: r + (bonus||0)};
+}
+
+/* -------------------------
+   Handlers for rolls (attacks / saves / damage)
+   ------------------------- */
+function handleSaveRoll(ab, btnEl){
+  const saveTextEl = document.getElementById('save_display_'+ab);
+  // compute bonus: the element save_bonus_AB has the text +N
+  const baseText = document.getElementById('save_bonus_'+ab).textContent || '+0';
+  const bonus = parseInt(baseText.replace('+','')) || 0;
+  const res = rollD20WithBonus(bonus);
+  addRollEntry(`${ab} Save`, `d20 ${res.roll} + ${bonus} = ${res.total}`, bonus);
+  animatePulse(btnEl);
+}
+
+function handleAttackRoll(index, btnEl){
+  const atk = window._attacks[index];
+  const bonusRaw = (atk && atk.bonus) ? atk.bonus.replace(/\s+/g,'') : '';
+  // allow input like +5 or 5
+  let b = parseInt(bonusRaw) || 0;
+  if(bonusRaw.startsWith('+')===false && bonusRaw!=='' && /\+/.test(bonusRaw)) b = parseInt(bonusRaw.split('+').pop())||b;
+  const res = rollD20WithBonus(b);
+  addRollEntry(`${atk.name || 'Attack'}`, `d20 ${res.roll} + ${b} = ${res.total}`, b);
+  animatePulse(btnEl);
+}
+
+function handleDamageRoll(index, btnEl){
+  const atk = window._attacks[index];
+  const dmgText = atk.damage || '';
+  const lines = dmgText.split('\n').map(l=>l.trim()).filter(l=>l);
+  if(lines.length===0){ alert('No damage lines entered.'); return; }
+  lines.forEach(line=>{
+    // attempt to extract dice expression from line (first token(s) before a space that include d or digits)
+    // we'll allow expressions containing d and digits and + -
+    const exprMatch = line.match(/([+-\d\s]*\d*d\d+[\d\s+\-d]*)/i);
+    const expr = exprMatch ? exprMatch[1].trim() : line;
+    const parsed = parseDiceExpression(expr);
+    addRollEntry(`${atk.name || 'Damage'}`, `${expr} -> ${parsed.breakdown} = ${parsed.total}`, parsed.total);
+  });
+  animatePulse(btnEl);
+}
+
+/* Add entry to roll log */
+function addRollEntry(title, resultText, bonusUsed){
+  const wrap = document.getElementById('roll_entries');
+  const el = document.createElement('div'); el.className='roll-entry';
+  el.innerHTML = `<strong>${escapeHtml(title)}</strong><div>${escapeHtml(resultText)}</div><small>${nowTimestamp()} • bonus ${bonusUsed>=0?'+':''}${bonusUsed}</small>`;
+  wrap.prepend(el);
+  showRollLogBrief();
+}
+
+/* pulse animation helper */
+function animatePulse(btn){
+  if(!btn) return;
+  btn.classList.add('pulse-on');
+  setTimeout(()=>btn.classList.remove('pulse-on'), 700);
+}
+
+/* show log briefly (fade in) */
+let logTimeout = null;
+function showRollLogBrief(){
+  const log = document.getElementById('rollLog');
+  log.classList.remove('collapsed');
+  if(logTimeout) clearTimeout(logTimeout);
+  logTimeout = setTimeout(()=>{ /* auto keep visible unless user toggles */ }, 1200);
+}
+
+/* Clear rolls */
+document.getElementById('clearRolls').addEventListener('click', ()=>{
+  document.getElementById('roll_entries').innerHTML = '';
+});
+
+/* Toggle log */
+document.getElementById('toggleLog').addEventListener('click', ()=>{
+  const log = document.getElementById('rollLog');
+  log.classList.toggle('collapsed');
+});
+
+/* -------------------------
+   Small helper: d20 SVG (neon cyan outline)
+   ------------------------- */
+function d20SVG(){
+  return `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l8 4.5v9L12 22 4 15.5v-9L12 2z" stroke="var(--roll-cyan)" stroke-width="1.6" fill="none" stroke-linejoin="round"/><path d="M12 22v-9" stroke="var(--roll-cyan)" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>`;
+}
+
+/* -------------------------
+   Save / Import / Export / Clear
+   ------------------------- */
+document.getElementById('export').addEventListener('click', ()=>{
+  const raw=localStorage.getItem(STORAGE_KEY);
+  if(!raw) return alert('No saved data found.');
+  const blob=new Blob([raw],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download=(document.getElementById('name').value||'character')+'.cyber.json';
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+});
+document.getElementById('importBtn').addEventListener('click', ()=>{
+  const input=document.createElement('input'); input.type='file'; input.accept='.json';
+  input.onchange=(e)=>{ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ try{ const parsed=JSON.parse(r.result); localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed)); applyState(parsed); alert('Import OK'); }catch(err){ alert('Import failed: invalid file'); } }; r.readAsText(f); }; input.click();
+});
+document.getElementById('print').addEventListener('click', ()=>window.print());
+document.getElementById('clear').addEventListener('click', ()=>{ if(confirm('Clear local sheet data? This cannot be undone.')){ localStorage.removeItem(STORAGE_KEY); location.reload(); } });
+document.getElementById('downloadJSON').addEventListener('click', ()=>document.getElementById('export').click && document.getElementById('export').click());
+document.getElementById('loadJSON').addEventListener('click', ()=>document.getElementById('importBtn').click && document.getElementById('importBtn').click());
+document.getElementById('clearLocal').addEventListener('click', ()=>document.getElementById('clear').click && document.getElementById('clear').click());
+
+/* -------------------------
+   Event listeners and boot
+   ------------------------- */
+function attachListeners(){
+  const watch = [
+    'level','attr_STR','attr_DEX','attr_CON','attr_INT','attr_WIS','attr_CHA',
+    'save_prof_STR','save_prof_DEX','save_prof_CON','save_prof_INT','save_prof_WIS','save_prof_CHA',
+    'sanity','corruption','hp_cur','hp_max','ac','init','notes'
+  ];
+  watch.forEach(id=>{
+    const el=document.getElementById(id); if(!el) return;
+    if(el.type==='checkbox') el.addEventListener('change', ()=>{ if(window._calcTimer) clearTimeout(window._calcTimer); window._calcTimer=setTimeout(()=>updateAllCalculations(),10);});
+    else el.addEventListener('input', ()=>{ if(window._calcTimer) clearTimeout(window._calcTimer); window._calcTimer=setTimeout(()=>updateAllCalculations(),180);});
+  });
+  Object.keys(SKILLS).forEach(s=>{
+    const p=document.getElementById('prof_'+s); const e=document.getElementById('exp_'+s);
+    if(p) p.addEventListener('change', updateAllCalculations);
+    if(e) e.addEventListener('change', updateAllCalculations);
+  });
+  document.querySelectorAll('input,textarea').forEach(el=>{
+    el.addEventListener('input', ()=>{
+      if(window._saveTimer) clearTimeout(window._saveTimer);
+      window._saveTimer = setTimeout(()=>saveToStorage(),420);
+    });
+  });
+
+  // add attack initial events
+  document.getElementById('attacks_list').addEventListener('click',(e)=>{}); // listeners above handle
+}
+
+// Create the saves UI and update values periodically
+function wireSavesUpdater(){
+  renderSavesUI();
+  // update displayed save values when underlying ones change
+  setInterval(()=>{
+    SAVE_ORDER.forEach(ab=>{
+      const displayed = document.getElementById('save_display_'+ab);
+      if(displayed) displayed.textContent = document.getElementById('save_bonus_'+ab).textContent || '+0';
+    });
+  }, 300);
+}
+
+/* -------------------------
+   Inject skill roll buttons in Core tab (ADDED)
+   - Adds a .roll-btn after each .skill-bonus element
+   - Buttons use dataset.skill = skillKey and are handled via delegated listener
+   ------------------------- */
+function injectSkillRollButtons(){
+  Object.keys(SKILLS).forEach(skill=>{
+    const bonusEl = document.getElementById('bonus_'+skill);
+    if(bonusEl && !bonusEl.parentElement.querySelector('.roll-btn')){
+      const btn = document.createElement('button');
+      btn.className = 'roll-btn pulse';
+      btn.title = 'Roll '+skill.charAt(0).toUpperCase()+skill.slice(1)+' Check';
+      btn.innerHTML = d20SVG();
+      btn.dataset.skill = skill;
+      // insert after the bonus element so it appears next to the bonus
+      bonusEl.insertAdjacentElement('afterend', btn);
+    }
+  });
+}
+
+/* Skill roll handler (ADDED) */
+function handleSkillRoll(skill, btnEl){
+  const el = document.getElementById('bonus_'+skill);
+  const bonusText = el ? el.textContent : '+0';
+  const bonus = parseInt(bonusText.replace('+','')) || 0;
+  const res = rollD20WithBonus(bonus);
+  const name = skill.charAt(0).toUpperCase()+skill.slice(1);
+  addRollEntry(name+' Check', `d20 ${res.roll} + ${bonus} = ${res.total}`, bonus);
+  animatePulse(btnEl);
+}
+
+/* Delegated listener for roll buttons (ATTACK/SAVE/SKILL reuse) */
+document.addEventListener('click',(e)=>{
+  const btn = e.target.closest('.roll-btn');
+  if(!btn) return;
+  if(btn.dataset.skill){
+    handleSkillRoll(btn.dataset.skill, btn);
+    return;
+  }
+  // other roll-btn types are handled elsewhere by their specific listeners (saves/attacks)
+});
+
+/* -------------------------
+   Boot
+   ------------------------- */
+attachListeners();
+renderFeats(); renderCyber(); renderAbilities(); renderSpells(); renderEquip(); renderVehicles();
+renderAttacks();
+wireSavesUpdater();
+setTimeout(()=>{ updateAllCalculations(); updateSnapshot(); },200);
+
+/* Inject the skill roll buttons after initial render/update */
+setTimeout(()=>{ injectSkillRollButtons(); },500);
+
+/* Load saved state after event loop */
+setTimeout(()=>{ loadFromStorage(); renderAttacks(); injectSkillRollButtons(); },300);
 
 </script>
 </body>
