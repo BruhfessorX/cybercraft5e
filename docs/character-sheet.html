@@ -16,7 +16,6 @@
     --accent-glow: 0 0 20px rgba(155,48,255,0.22), inset 0 0 8px rgba(0,0,0,0.35);
     --field-border: rgba(155,48,255,0.06);
 
-    /* Roll button cyan */
     --roll-cyan: #00E5FF;
     --roll-cyan-glow: 0 0 14px rgba(0,229,255,0.16), 0 0 34px rgba(0,229,255,0.06);
     --roll-cyan-press: 0 0 20px rgba(0,229,255,0.22);
@@ -111,22 +110,21 @@
   .roll-entry{padding:8px;border-radius:8px;background:rgba(0,0,0,0.2); margin-bottom:8px; border-left:3px solid rgba(0,229,255,0.08)}
   .roll-entry small{color:#bfefff;display:block;font-size:11px;margin-top:6px}
 
-  /* Compact attack layout */
-  .attack-row{display:grid; grid-template-columns: 1fr 120px 48px; gap:8px; align-items:start}
-  .attack-row .attack-damage{grid-column:1/3; width:100%; min-height:48px; padding:8px; resize:vertical}
-  .attack-controls{display:flex;flex-direction:column;gap:6px}
-  .attack-controls .roll-damage{align-self:flex-end;}
-  .attack-remove{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:6px;border-radius:6px;cursor:pointer}
+  /* Attack one-line layout */
+  .att-row{display:flex;gap:8px;align-items:center;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);margin-bottom:8px}
+  .att-row input.attack-name{flex:1}
+  .att-row input.attack-bonus{width:84px}
+  .att-row input.attack-damage{width:160px}
 
-  /* HP compact row */
-  .hp-compact{display:flex;gap:8px;align-items:center}
-  .hp-compact input{width:100%}
+  /* saves one-row container small tweaks */
+  .saves-row{display:flex;gap:8px;flex-wrap:nowrap;align-items:center}
+  .save-box{display:flex;flex-direction:column;align-items:center;min-width:88px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.02)}
 
-  /* small responsive tweaks */
   @media (max-width:980px){
     .roll-log{right:10px;left:10px;width:auto;}
     .saves-row{flex-wrap:wrap;}
-    .attacks-table .row{flex-direction:column;align-items:stretch;}
+    .att-row{flex-direction:column;align-items:stretch}
+    .att-row input.attack-damage{width:100%}
   }
 
   @media print{
@@ -370,7 +368,7 @@
               <div style="margin-top:12px">
                 <h4 style="margin:6px 0;color:#cfeeff;font-family:Orbitron;font-size:12px">Saving Throws</h4>
                 <div id="saves_container">
-                  <!-- Save rows injected here by JS -->
+                  <!-- Save row injected here by JS -->
                 </div>
               </div>
 
@@ -465,7 +463,7 @@ document.querySelectorAll('.tab').forEach(tab=>{
 });
 
 /* -------------------------
-   Dynamic lists: Feats, Cyber, Abilities, Spells, Equip, Vehicles (unchanged)
+   Dynamic lists: Feats, Cyber, Abilities, Spells, Equip, Vehicles
    ------------------------- */
 /* Generic renderer */
 function renderList(containerId, items, templateFn){
@@ -650,6 +648,7 @@ function gatherState(){
   state.feats = window._feats||[]; state.cyber = window._cyber||[]; state.abilities = window._abilities||[]; state.spells = window._spells||[];
   state.equip = window._equip||[]; state.vehicles = window._vehicles||[];
   state.attacks = window._attacks||[];
+  state.webhook = (document.getElementById('webhook_url')||{}).value || localStorage.getItem(WEBHOOK_KEY) || '';
   return state;
 }
 function applyState(state){
@@ -675,7 +674,8 @@ function applyState(state){
   renderAttacks();
   updateAllCalculations(); updateSnapshot();
   // restore webhook URL
-  const wh = localStorage.getItem(WEBHOOK_KEY); if(wh) document.getElementById('webhook_url').value = wh;
+  const wh = state.webhook || localStorage.getItem(WEBHOOK_KEY);
+  if(wh) { document.getElementById('webhook_url').value = wh; localStorage.setItem(WEBHOOK_KEY, wh); }
 }
 function saveToStorage(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(gatherState())); }catch(e){console.error(e);} }
 function loadFromStorage(){ try{ const raw=localStorage.getItem(STORAGE_KEY); if(!raw) return; applyState(JSON.parse(raw)); }catch(e){console.error(e);} }
@@ -737,20 +737,14 @@ function renderAttacks(){
   const wrap = document.getElementById('attacks_list');
   wrap.innerHTML = '';
   window._attacks.forEach((atk,i)=>{
-    const div = document.createElement('div'); div.className='list-item';
+    const div = document.createElement('div'); div.className='att-row';
     div.innerHTML = `
-      <div style="display:flex;gap:8px;align-items:center;width:100%">
-        <input class="attack_name" data-i="${i}" value="${escapeHtml(atk.name||'')}" placeholder="Attack name" style="flex:1"/>
-        <div style="display:flex;align-items:center;gap:6px">
-          <input class="attack_bonus" data-i="${i}" style="width:80px" value="${escapeHtml(atk.bonus||'')}" placeholder="+Atk"/>
-          <button class="roll-atk roll-btn pulse" data-i="${i}" title="Roll Attack">${d20SVG()}</button>
-        </div>
-        <div style="display:flex;align-items:center;gap:6px;margin-left:8px">
-          <input class="attack_damage_input" data-i="${i}" value="${escapeHtml(atk.damage||'')}" placeholder="damage e.g. 1d8+3" style="width:180px"/>
-          <button class="roll-dmg roll-btn pulse" data-i="${i}" title="Roll Damage">${d20SVG()}</button>
-        </div>
-        <div style="margin-left:8px"><button class="attack-remove" data-i="${i}">Remove</button></div>
-      </div>
+      <input class="attack-name" data-i="${i}" value="${escapeHtml(atk.name||'')}" placeholder="Attack name"/>
+      <input class="attack-bonus" data-i="${i}" value="${escapeHtml(atk.bonus||'')}" placeholder="+Atk"/>
+      <button class="roll-atk roll-btn pulse" data-i="${i}" title="Roll Attack">${d20SVG()}</button>
+      <input class="attack-damage" data-i="${i}" value="${escapeHtml(atk.damage||'')}" placeholder="damage e.g. 1d8+3"/>
+      <button class="roll-dmg roll-btn pulse" data-i="${i}" title="Roll Damage">${d20SVG()}</button>
+      <button class="attack-remove" data-i="${i}">Remove</button>
     `;
     wrap.appendChild(div);
   });
@@ -773,9 +767,9 @@ document.getElementById('attacks_list').addEventListener('click',(e)=>{
   if(e.target.closest('.roll-dmg')){ const i=parseInt(e.target.closest('.roll-dmg').dataset.i); handleDamageRoll(i, e.target.closest('.roll-dmg')); }
 });
 document.getElementById('attacks_list').addEventListener('input',(e)=>{
-  if(e.target.classList.contains('attack_name')){ const i=parseInt(e.target.dataset.i); window._attacks[i].name = e.target.value; saveToStorage(); }
-  if(e.target.classList.contains('attack_bonus')){ const i=parseInt(e.target.dataset.i); window._attacks[i].bonus = e.target.value; saveToStorage(); }
-  if(e.target.classList.contains('attack_damage_input')){ const i=parseInt(e.target.dataset.i); window._attacks[i].damage = e.target.value; saveToStorage(); }
+  if(e.target.classList.contains('attack-name')){ const i=parseInt(e.target.dataset.i); window._attacks[i].name = e.target.value; saveToStorage(); }
+  if(e.target.classList.contains('attack-bonus')){ const i=parseInt(e.target.dataset.i); window._attacks[i].bonus = e.target.value; saveToStorage(); }
+  if(e.target.classList.contains('attack-damage')){ const i=parseInt(e.target.dataset.i); window._attacks[i].damage = e.target.value; saveToStorage(); }
 });
 
 /* -------------------------
@@ -787,18 +781,9 @@ function renderSavesUI(){
   container.innerHTML = '';
   const row = document.createElement('div');
   row.className = 'saves-row';
-  row.style.display = 'flex';
-  row.style.gap = '10px';
-  row.style.alignItems = 'center';
   SAVE_ORDER.forEach(ab=>{
     const box = document.createElement('div');
-    box.style.display='flex';
-    box.style.flexDirection='column';
-    box.style.alignItems='center';
-    box.style.minWidth='90px';
-    box.style.padding='6px';
-    box.style.border='1px solid rgba(255,255,255,0.03)';
-    box.style.borderRadius='8px';
+    box.className = 'save-box';
     const label = document.createElement('div'); label.textContent = ab; label.style.fontSize='12px'; label.style.color='#c6cad2';
     const bonus = document.createElement('div'); bonus.id = 'save_display_'+ab; bonus.style.fontWeight='700'; bonus.style.fontSize='14px'; bonus.style.color='#fff';
     bonus.textContent = document.getElementById('save_bonus_'+ab).textContent || '+0';
@@ -861,7 +846,6 @@ function sendWebhook(payload){
   try{
     const url = (document.getElementById('webhook_url')||{}).value || localStorage.getItem(WEBHOOK_KEY);
     if(!url) return;
-    // fire and forget silently
     fetch(url, {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
@@ -879,7 +863,6 @@ function handleSaveRoll(ab, btnEl){
   const res = rollD20WithBonus(bonus);
   addRollEntry(`${ab} Save`, `d20 ${res.roll} + ${bonus} = ${res.total}`, bonus);
   animatePulse(btnEl);
-  // webhook
   sendWebhook({timestamp: isoTimestamp(), character: document.getElementById('name').value||'', roll_type:'Save', label: ab+' Save', roll: res.roll, bonus: bonus, total: res.total, raw: `d20 ${res.roll} + ${bonus} = ${res.total}`});
 }
 
@@ -896,7 +879,7 @@ function handleAttackRoll(index, btnEl){
 
 function handleDamageRoll(index, btnEl){
   const atk = window._attacks[index];
-  const dmgText = (atk && atk.damage) ? atk.damage : (document.querySelector(`.attack_damage_input[data-i=\"${index}\"]`) ? document.querySelector(`.attack_damage_input[data-i=\"${index}\"]`).value : '');
+  const dmgText = atk.damage || document.querySelector(`.attack-damage[data-i="${index}"]`)?.value || '';
   const lines = String(dmgText).split('\n').map(l=>l.trim()).filter(l=>l);
   if(lines.length===0){ alert('No damage lines entered.'); return; }
   lines.forEach(line=>{
@@ -943,7 +926,7 @@ function showRollLogBrief(){
   const log = document.getElementById('rollLog');
   log.classList.remove('collapsed');
   if(logTimeout) clearTimeout(logTimeout);
-  logTimeout = setTimeout(()=>{ /* auto keep visible unless user toggles */ }, 1200);
+  logTimeout = setTimeout(()=>{ /* keep visible for now */ }, 1200);
 }
 
 /* Clear rolls */
@@ -1017,7 +1000,6 @@ function attachListeners(){
   const wh = document.getElementById('webhook_url');
   if(wh){
     wh.addEventListener('input', ()=>{ localStorage.setItem(WEBHOOK_KEY, wh.value.trim()); });
-    // restore
     const stored = localStorage.getItem(WEBHOOK_KEY); if(stored) wh.value = stored;
   }
 }
@@ -1025,7 +1007,6 @@ function attachListeners(){
 // Create the saves UI and update values periodically
 function wireSavesUpdater(){
   renderSavesUI();
-  // update displayed save values when underlying ones change
   setInterval(()=>{
     SAVE_ORDER.forEach(ab=>{
       const displayed = document.getElementById('save_display_'+ab);
@@ -1035,7 +1016,7 @@ function wireSavesUpdater(){
 }
 
 /* -------------------------
-   Inject skill roll buttons beside skills (ADDED BEFORE)
+   Inject skill roll buttons beside skills (ADDED)
    ------------------------- */
 function injectSkillRollButtons(){
   Object.keys(SKILLS).forEach(skill=>{
@@ -1054,7 +1035,6 @@ document.addEventListener('click',(e)=>{
   const btn = e.target.closest('.roll-btn');
   if(!btn) return;
   if(btn.dataset.skill){ handleSkillRoll(btn.dataset.skill, btn); return; }
-  // other roll buttons handled elsewhere
 });
 
 /* -------------------------
