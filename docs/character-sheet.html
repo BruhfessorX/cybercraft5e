@@ -313,8 +313,14 @@
         <!-- RIGHT: snapshot & quick -->
         <div>
           <div class="card snapshot">
-            <h3>Snapshot</h3>
-            <div class="row"><strong>Name</strong><div id="snap_name" class="muted">—</div></div>
+			<h3>Snapshot</h3>
+			<div style="text-align:center;margin-bottom:12px">
+			  <img id="portrait_img" src="" style="width:100%;max-width:200px;height:200px;object-fit:cover;border-radius:8px;border:2px solid var(--field-border);background:var(--input);display:none"/>
+			  <div id="portrait_placeholder" style="width:100%;max-width:200px;height:200px;margin:0 auto;border-radius:8px;border:2px dashed var(--field-border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;background:var(--input)">No Portrait</div>
+			  <input type="file" id="portrait_upload" accept="image/*" style="display:none"/>
+			  <button id="upload_portrait_btn" style="margin-top:8px;width:100%">Upload Portrait</button>
+			</div>
+			<div class="row"><strong>Name</strong><div id="snap_name" class="muted">–</div></div>
             <div class="row"><strong>Class / Level</strong><div id="snap_class" class="muted">—</div></div>
             <div class="row"><strong>HP</strong><div id="snap_hp" class="muted">0 / 0</div></div>
             <div class="row"><strong>AC</strong><div id="snap_ac" class="muted">—</div></div>
@@ -442,6 +448,10 @@ function saveAllInputs(){
     obj._attacks = window._attacks || [];
     const wh = (document.getElementById('webhook_url')||{}).value || '';
     obj._webhook = wh;
+	const portraitImg = document.getElementById('portrait_img');
+	if(portraitImg && portraitImg.src && portraitImg.src.startsWith('data:')) {
+	  obj._portrait = portraitImg.src;
+	}
     try{ localStorage.setItem(WEBHOOK_KEY, wh); }catch(e){}
     localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
   }catch(e){ console.error('saveAllInputs failed', e); }
@@ -472,6 +482,15 @@ function loadAllInputs(){
     }
   }catch(e){ console.error('loadAllInputs failed', e); }
 }
+	if(obj._portrait) {
+	  const portraitImg = document.getElementById('portrait_img');
+	  const placeholder = document.getElementById('portrait_placeholder');
+	  if(portraitImg && placeholder) {
+		portraitImg.src = obj._portrait;
+		portraitImg.style.display = 'block';
+		placeholder.style.display = 'none';
+	  }
+	}
 function saveToStorage(){ saveAllInputs(); }
 
 /* Calculations */
@@ -698,6 +717,22 @@ function injectSkillRollButtons(){
   }
   });
 }
+
+/* Portrait handling */
+document.getElementById('upload_portrait_btn').addEventListener('click', ()=>{ document.getElementById('portrait_upload').click(); });
+document.getElementById('portrait_upload').addEventListener('change', (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev)=>{
+    const dataURL = ev.target.result;
+    document.getElementById('portrait_img').src = dataURL;
+    document.getElementById('portrait_img').style.display = 'block';
+    document.getElementById('portrait_placeholder').style.display = 'none';
+    saveToStorage();
+  };
+  reader.readAsDataURL(file);
+});
 
 /* Roll log controls */
 document.getElementById('clearRolls').addEventListener('click', ()=>{ document.getElementById('roll_entries').innerHTML=''; });
