@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Cybercraft 5e — Character Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e0e10;
+    --panel:#1a1a1c;
+    --input:#262628;
+    --neon:#9B30FF;
+    --muted:#c6cad2;
+    --glass: rgba(255,255,255,0.02);
+    --accent-glow: 0 0 20px rgba(155,48,255,0.22), inset 0 0 8px rgba(0,0,0,0.35);
+    --field-border: rgba(155,48,255,0.06);
+    --roll-cyan: #00E5FF;
+    --roll-cyan-glow: 0 0 14px rgba(0,229,255,0.16), 0 0 34px rgba(0,229,255,0.06);
+    --roll-cyan-press: 0 0 20px rgba(0,229,255,0.22);
+  }
+  html,body{height:100%;margin:0;background:
+    radial-gradient(900px 400px at 10% 8%, rgba(155,48,255,0.02), transparent),
+    linear-gradient(180deg,#080809 0%,var(--bg) 50%); color:var(--muted);
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+  .container{max-width:1120px;margin:28px auto;padding:22px;}
+  .titlebar{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+  .logo{width:56px;height:56px;background:linear-gradient(135deg,var(--neon), #5b0fbf);border-radius:10px;box-shadow:var(--accent-glow);display:flex;align-items:center;justify-content:center;font-family:Orbitron;color:#050005;font-weight:700}
+  .title-text h1{margin:0;font-family:Orbitron;color:var(--neon);font-size:20px;text-shadow:0 0 10px rgba(155,48,255,0.16)}
+  .title-text p{margin:0;font-size:12px;color:#aeb5c3}
+  .controls{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .tabs{display:flex;gap:8px;margin-bottom:14px}
+  .tab{padding:8px 12px;border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.02);cursor:pointer;color:var(--muted);font-weight:600}
+  .tab.active{background:linear-gradient(180deg, rgba(155,48,255,0.06), rgba(155,48,255,0.02));box-shadow:var(--accent-glow);color:white;border:1px solid rgba(155,48,255,0.25);transform:translateY(-2px)}
+  .panel{background:var(--panel);border-radius:12px;border:1px solid rgba(255,255,255,0.03);padding:16px;box-shadow:0 8px 40px rgba(0,0,0,0.6)}
+  .panel-grid{display:grid;grid-template-columns:1fr 360px;gap:16px}
+  @media (max-width:980px){.panel-grid{grid-template-columns:1fr}}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006));border-radius:10px;padding:12px;border:1px solid var(--field-border)}
+  .card h3{margin:0 0 8px 0;color:var(--neon);font-family:Orbitron;font-size:13px}
+  label{font-size:13px;color:#bfc5cf;min-width:120px}
+  .row{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+  input[type="text"], input[type="number"], select, textarea{width:100%;padding:8px 10px;background:var(--input);border-radius:7px;border:1px solid rgba(0,0,0,0.3);color:var(--muted);outline:none;font-size:13px;}
+  input:focus, textarea:focus, select:focus{box-shadow:var(--accent-glow);border-color:var(--neon);color:#fff;background:#1f1f20}
+  textarea{min-height:80px;resize:vertical}
+  .attributes{display:flex;gap:10px;flex-wrap:wrap}
+  .attr-box{width:82px;background:linear-gradient(180deg,rgba(0,0,0,0.12),transparent);border-radius:8px;padding:10px;text-align:center;border:1px solid var(--field-border)}
+  .attr-box .score{font-size:18px;color:#fff;font-weight:700}
+  .attr-box .label{font-size:12px;color:#c6cad2;margin-top:6px}
+  .save-row{font-size:12px;color:#c6cad2;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:8px}
+  .skill-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+  .skill-row label{min-width:160px;color:#c6cad2}
+  .checkbox-inline{display:flex;align-items:center;gap:6px;color:#bfc4cf;font-size:13px}
+  .skill-bonus{min-width:48px;text-align:right;font-weight:700;color:#fff}
+  .list-wrap{max-height:260px;overflow:auto;padding:6px;border-radius:8px;border:1px dashed rgba(155,48,255,0.04);background:rgba(255,255,255,0.005)}
+  .list-item{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
+  .list-item input, .list-item textarea{background:#1a1b1d}
+  .list-item .remove{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:4px 8px;border-radius:6px;cursor:pointer}
+  .btnbar{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+  button{background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted);padding:8px 10px;border-radius:8px;cursor:pointer}
+  button.primary{background:linear-gradient(90deg,var(--neon),#5b0fbf);color:white;box-shadow:var(--accent-glow);border:none}
+  .muted{color:#9aa0b5;font-size:12px}
+  .snapshot .row{justify-content:space-between}
+  .snapshot strong{color:#fff}
+  .roll-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg, rgba(0,0,0,0.16), rgba(255,255,255,0.01));display:inline-flex;align-items:center;justify-content:center;cursor:pointer;margin-left:8px;box-shadow:var(--roll-cyan-glow);transition:transform 0.12s ease, box-shadow 0.12s ease;}
+  .roll-btn:active{transform:translateY(1px) scale(0.99); box-shadow:var(--roll-cyan-press)}
+  .roll-btn svg{width:18px;height:18px;fill:none;stroke:var(--roll-cyan);stroke-width:1.8;opacity:0.98}
+  .pulse {position:relative;overflow:visible;}
+  .pulse::after{content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:0;height:0;border-radius:50%; background: rgba(0,229,255,0.12); transition: width 0.5s ease, height 0.5s ease, opacity 0.5s ease; z-index:-1;}
+  .pulse.pulse-on::after{width:140px;height:140px;opacity:0; transition: width 0.7s ease, height 0.7s ease, opacity 0.8s ease;}
+  .roll-log{position:fixed; right:18px; bottom:18px; width:320px; max-height:48vh; overflow:auto; border-radius:10px; padding:10px; background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4)); border:1px solid rgba(0,229,255,0.08); box-shadow:0 12px 40px rgba(0,0,0,0.6); color:#dffaff; font-size:13px; z-index:9999; transition:transform 0.28s ease, opacity 0.28s ease;}
+  .roll-log.collapsed{transform:translateY(18px) scale(0.98); opacity:0.02; pointer-events:none}
+  .roll-log h4{margin:0 0 8px 0; display:flex; align-items:center; gap:8px; color:var(--roll-cyan)}
+  .roll-entry{padding:8px;border-radius:8px;background:rgba(0,0,0,0.2); margin-bottom:8px; border-left:3px solid rgba(0,229,255,0.08)}
+  .roll-entry small{color:#bfefff;display:block;font-size:11px;margin-top:6px}
+  .att-row{display:flex;gap:8px;align-items:center;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);margin-bottom:8px}
+  .att-row input.attack-name{flex:1}
+  .att-row input.attack-bonus{width:84px}
+  .att-row input.attack-damage{width:160px}
+  .saves-row{display:flex;gap:8px;flex-wrap:nowrap;align-items:center}
+  .save-box{display:flex;flex-direction:column;align-items:center;min-width:88px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.02)}
+  @media (max-width:980px){
+    .roll-log{right:10px;left:10px;width:auto;}
+    .saves-row{flex-wrap:wrap;}
+    .att-row{flex-direction:column;align-items:stretch}
+    .att-row input.attack-damage{width:100%}
+  }
+  @media print{
+    body{background:white;color:black}
+    .titlebar, .tabs, .btnbar{display:none}
+    input,textarea{border:1px solid #aaa;color:black;background:white}
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="titlebar">
+      <div class="logo">CV</div>
+      <div class="title-text">
+        <h1>Cybercraft 5e</h1>
+        <p>Interactive Character Sheet</p>
+      </div>
+      <div class="controls">
+        <button id="export">Export</button>
+        <button id="importBtn">Import</button>
+        <button id="clear">Clear</button>
+        <button id="print" class="primary">Print</button>
+      </div>
+    </div>
+    <div class="tabs" role="tablist">
+      <div class="tab active" data-tab="core">Core</div>
+      <div class="tab" data-tab="feats">Feats & Cyberware</div>
+      <div class="tab" data-tab="abilities">Abilities & Spells</div>
+      <div class="tab" data-tab="eq">EQ & Notes</div>
+      <div class="tab" data-tab="combat">Combat Interface</div>
+    </div>
+    <div class="panel">
+      <div class="panel-grid">
+        <!-- LEFT MAIN -->
+        <div>
+          <!-- CORE TAB -->
+          <div class="tab-panel" id="tab-core">
+            <div class="card">
+              <h3>Identity</h3>
+              <div class="row"><label>Character Name</label><input id="name" type="text"></div>
+              <div class="row"><label>Player</label><input id="player" type="text"></div>
+              <div class="row"><label>Race</label><input id="race" type="text"></div>
+              <div class="row"><label>Class</label><input id="class_text" type="text"></div>
+              <div class="row"><label>Level</label><input id="level" type="number" min="1" value="1"></div>
+              <div class="row"><label>Background</label><input id="background" type="text"></div>
+              <div class="row"><label>Faction</label><input id="faction" type="text"></div>
+              <div class="row"><label>Alignment</label><input id="alignment" type="text"></div>
+            </div>
+            <div class="card" style="margin-top:12px">
+              <h3>Attributes & Saving Throws</h3>
+              <div style="display:flex;gap:12px;flex-wrap:wrap">
+                <div class="attr-box">
+                  <div><input id="attr_STR" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
+                  <div class="label">STR</div>
+                  <div class="save-row"><input id="save_prof_STR" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_STR">+0</div></div>
+                </div>
+                <div class="attr-box">
+                  <div><input id="attr_DEX" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
+                  <div class="label">DEX</div>
+                  <div class="save-row"><input id="save_prof_DEX" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_DEX">+0</div></div>
+                </div>
+                <div class="attr-box">
+                  <div><input id="attr_CON" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
+                  <div class="label">CON</div>
+                  <div class="save-row"><input id="save_prof_CON" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_CON">+0</div></div>
+                </div>
+                <div class="attr-box">
+                  <div><input id="attr_INT" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
+                  <div class="label">INT</div>
+                  <div class="save-row"><input id="save_prof_INT" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_INT">+0</div></div>
+                </div>
+                <div class="attr-box">
+                  <div><input id="attr_WIS" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
+                  <div class="label">WIS</div>
+                  <div class="save-row"><input id="save_prof_WIS" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_WIS">+0</div></div>
+                </div>
+                <div class="attr-box">
+                  <div><input id="attr_CHA" type="number" style="width:60px;text-align:center;background:transparent;border:none;color:#fff;font-size:18px;font-weight:700"/></div>
+                  <div class="label">CHA</div>
+                  <div class="save-row"><input id="save_prof_CHA" type="checkbox"/> <span style="font-size:12px;color:#c6cad2">Save Prof</span> <div style="margin-left:6px;font-weight:700;color:#fff" id="save_bonus_CHA">+0</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="card" style="margin-top:12px">
+              <h3>Skills</h3>
+              <p class="muted">Check Prof / Expertise — bonuses auto-calc from ability mods and proficiency.</p>
+              <div style="margin-top:8px">
+                <div class="skill-row"><label>Athletics (STR)</label><div class="checkbox-inline"><input id="prof_athletics" type="checkbox">Prof</div><div class="checkbox-inline"><input id="exp_athletics" type="checkbox">Expertise</div><div class="skill-bonus" id="bonus_athletics">+0</div></div>
+                <div class="skill-row"><label>Acrobatics (DEX)</label><div class="checkbox-inline"><input id="prof_acrobatics" type="checkbox">Prof</div><div class="checkbox-inline"><input id="exp_acrobatics" type="checkbox">Expertise</div><div class="skill-bonus" id="bonus_acrobatics">+0</div></div>
+                <div class="skill-row"><label>Sleight of Hand (DEX)</label><div class="checkbox-inline"><input id="prof_sleight" type="checkbox"></div><div class="checkbox-inline"><input id="exp_sleight" type="checkbox"></div><div class="skill-bonus" id="bonus_sleight">+0</div></div>
+                <div class="skill-row"><label>Stealth (DEX)</label><div class="checkbox-inline"><input id="prof_stealth" type="checkbox"></div><div class="checkbox-inline"><input id="exp_stealth" type="checkbox"></div><div class="skill-bonus" id="bonus_stealth">+0</div></div>
+                <div class="skill-row"><label>Driving (DEX)</label><div class="checkbox-inline"><input id="prof_driving" type="checkbox"></div><div class="checkbox-inline"><input id="exp_driving" type="checkbox"></div><div class="skill-bonus" id="bonus_driving">+0</div></div>
+                <div class="skill-row"><label>Arcana (INT)</label><div class="checkbox-inline"><input id="prof_arcana" type="checkbox"></div><div class="checkbox-inline"><input id="exp_arcana" type="checkbox"></div><div class="skill-bonus" id="bonus_arcana">+0</div></div>
+                <div class="skill-row"><label>History (INT)</label><div class="checkbox-inline"><input id="prof_history" type="checkbox"></div><div class="checkbox-inline"><input id="exp_history" type="checkbox"></div><div class="skill-bonus" id="bonus_history">+0</div></div>
+                <div class="skill-row"><label>Investigation (INT)</label><div class="checkbox-inline"><input id="prof_investigation" type="checkbox"></div><div class="checkbox-inline"><input id="exp_investigation" type="checkbox"></div><div class="skill-bonus" id="bonus_investigation">+0</div></div>
+                <div class="skill-row"><label>Nature (INT)</label><div class="checkbox-inline"><input id="prof_nature" type="checkbox"></div><div class="checkbox-inline"><input id="exp_nature" type="checkbox"></div><div class="skill-bonus" id="bonus_nature">+0</div></div>
+                <div class="skill-row"><label>Religion (INT)</label><div class="checkbox-inline"><input id="prof_religion" type="checkbox"></div><div class="checkbox-inline"><input id="exp_religion" type="checkbox"></div><div class="skill-bonus" id="bonus_religion">+0</div></div>
+                <div class="skill-row"><label>Technology (INT)</label><div class="checkbox-inline"><input id="prof_technology" type="checkbox"></div><div class="checkbox-inline"><input id="exp_technology" type="checkbox"></div><div class="skill-bonus" id="bonus_technology">+0</div></div>
+                <div class="skill-row"><label>Animal Handling (WIS)</label><div class="checkbox-inline"><input id="prof_animal" type="checkbox"></div><div class="checkbox-inline"><input id="exp_animal" type="checkbox"></div><div class="skill-bonus" id="bonus_animal">+0</div></div>
+                <div class="skill-row"><label>Insight (WIS)</label><div class="checkbox-inline"><input id="prof_insight" type="checkbox"></div><div class="checkbox-inline"><input id="exp_insight" type="checkbox"></div><div class="skill-bonus" id="bonus_insight">+0</div></div>
+                <div class="skill-row"><label>Medicine (WIS)</label><div class="checkbox-inline"><input id="prof_medicine" type="checkbox"></div><div class="checkbox-inline"><input id="exp_medicine" type="checkbox"></div><div class="skill-bonus" id="bonus_medicine">+0</div></div>
+                <div class="skill-row"><label>Perception (WIS)</label><div class="checkbox-inline"><input id="prof_perception" type="checkbox"></div><div class="checkbox-inline"><input id="exp_perception" type="checkbox"></div><div class="skill-bonus" id="bonus_perception">+0</div></div>
+                <div class="skill-row"><label>Survival (WIS)</label><div class="checkbox-inline"><input id="prof_survival" type="checkbox"></div><div class="checkbox-inline"><input id="exp_survival" type="checkbox"></div><div class="skill-bonus" id="bonus_survival">+0</div></div>
+                <div class="skill-row"><label>Deception (CHA)</label><div class="checkbox-inline"><input id="prof_deception" type="checkbox"></div><div class="checkbox-inline"><input id="exp_deception" type="checkbox"></div><div class="skill-bonus" id="bonus_deception">+0</div></div>
+                <div class="skill-row"><label>Intimidation (CHA)</label><div class="checkbox-inline"><input id="prof_intimidation" type="checkbox"></div><div class="checkbox-inline"><input id="exp_intimidation" type="checkbox"></div><div class="skill-bonus" id="bonus_intimidation">+0</div></div>
+                <div class="skill-row"><label>Performance (CHA)</label><div class="checkbox-inline"><input id="prof_performance" type="checkbox"></div><div class="checkbox-inline"><input id="exp_performance" type="checkbox"></div><div class="skill-bonus" id="bonus_performance">+0</div></div>
+                <div class="skill-row"><label>Persuasion (CHA)</label><div class="checkbox-inline"><input id="prof_persuasion" type="checkbox"></div><div class="checkbox-inline"><input id="exp_persuasion" type="checkbox"></div><div class="skill-bonus" id="bonus_persuasion">+0</div></div>
+              </div>
+            </div>
+            <div class="card" style="margin-top:12px">
+              <h3>Sanity & Corruption</h3>
+              <div class="row"><label>Sanity (cur / max)</label><input id="sanity" placeholder="12 / 20"></div>
+              <div class="row"><label>Corruption (cur / max)</label><input id="corruption" placeholder="0 / 20"></div>
+              <div style="margin-top:8px"><label>Notes</label><textarea id="sanity_notes" placeholder="Sanity scars, mutations, notes..."></textarea></div>
+            </div>
+          </div>
+          <!-- FEATS & CYBERWARE TAB -->
+          <div class="tab-panel" id="tab-feats" style="display:none">
+            <div class="card">
+              <h3>-- Feats --</h3>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input id="new_feat_name" placeholder="Feat name"/>
+                <button id="addFeat">Add</button>
+              </div>
+              <div class="list-wrap" id="feats_list"></div>
+            </div>
+            <div class="card" style="margin-top:12px">
+              <h3>-- Cyberware --</h3>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input id="new_cyber_name" placeholder="Cyberware name"/>
+                <button id="addCyber">Add</button>
+              </div>
+              <div class="list-wrap" id="cyber_list"></div>
+            </div>
+          </div>
+          <!-- ABILITIES & SPELLS TAB -->
+          <div class="tab-panel" id="tab-abilities" style="display:none">
+            <div class="card">
+              <h3>Abilities</h3>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input id="new_ability_name" placeholder="Ability name"/>
+                <button id="addAbility">Add</button>
+              </div>
+              <div class="list-wrap" id="abilities_list"></div>
+            </div>
+            <div class="card" style="margin-top:12px">
+              <h3>Spells</h3>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input id="new_spell_name" placeholder="Spell name"/>
+                <input id="new_spell_level" style="width:70px" placeholder="Lvl"/>
+                <button id="addSpell">Add</button>
+              </div>
+              <div class="list-wrap" id="spells_list"></div>
+            </div>
+          </div>
+          <!-- EQ & NOTES TAB -->
+          <div class="tab-panel" id="tab-eq" style="display:none">
+            <div class="card">
+              <h3>Equipment</h3>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input id="new_equip" placeholder="Item name (single-line)"/>
+                <button id="addEquip">Add</button>
+              </div>
+              <div class="list-wrap" id="equip_list"></div>
+            </div>
+            <div class="card" style="margin-top:12px">
+              <h3>Vehicles</h3>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input id="new_vehicle_name" placeholder="Vehicle name"/>
+                <button id="addVehicle">Add</button>
+              </div>
+              <div class="list-wrap" id="vehicles_list"></div>
+            </div>
+            <div class="card" style="margin-top:12px">
+              <h3>Notes</h3>
+              <textarea id="notes" placeholder="General notes, campaign hooks, NPCs..."></textarea>
+            </div>
+          </div>
+          <!-- COMBAT INTERFACE TAB (last) -->
+          <div class="tab-panel" id="tab-combat" style="display:none">
+            <div class="card">
+              <h3>Combat Interface</h3>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div>
+                  <div class="row"><label>Armor Class</label><input id="ac" type="text"></div>
+                  <div class="row"><label>Initiative</label><input id="init" type="text" readonly><button class="roll-btn pulse" id="roll-init" title="Roll Initiative"></button></div>
+                  <div class="row"><label>Speed</label><input id="speed" type="text"></div>
+                </div>
+                <div>
+                  <div class="row"><label>Proficiency</label><input id="prof_display" type="text" readonly></div>
+                  <div style="margin-top:8px">
+                    <label>HP</label>
+                    <div class="hp-compact">
+                      <input id="hp_max" placeholder="Max HP" type="number">
+                      <input id="hp_cur" placeholder="Current HP" type="number">
+                      <input id="hp_temp" placeholder="Temp HP" type="number">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top:12px; display:flex; gap:12px;">
+                <div style="flex:1">
+                  <label>Resistances</label>
+                  <textarea id="resistances" placeholder="e.g. fire, psychic — comma-separated"></textarea>
+                </div>
+                <div style="flex:1">
+                  <label>Immunities / Vulnerabilities</label>
+                  <textarea id="immunities" placeholder="Immunities / Vulnerabilities"></textarea>
+                </div>
+              </div>
+              <div style="margin-top:12px">
+                <h4 style="margin:6px 0;color:#cfeeff;font-family:Orbitron;font-size:12px">Saving Throws</h4>
+                <div id="saves_container"></div>
+              </div>
+            </div>
+            <div class="card" style="margin-top:12px">
+              <h3>Attacks</h3>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+				<input id="new_attack_name" placeholder="Attack name"/>
+				<input id="new_attack_bonus" style="width:80px" placeholder="+Atk"/>
+				<input id="new_attack_damage" style="width:160px" placeholder="Damage (e.g. 1d8+3)"/>
+				<button id="addAttack">Add</button>
+			  </div>
+              <div id="attacks_list" class="list-wrap"></div>
+            </div>
+          </div>
+        </div>
+        <!-- RIGHT: snapshot & quick -->
+        <div>
+          <div class="card snapshot">
+			<h3>Snapshot</h3>
+			  <div style="text-align:center;margin-bottom:12px">
+				<img id="portrait_img" src="" style="width:100%;max-width:200px;height:200px;object-fit:cover;border-radius:8px;border:2px solid var(--field-border);background:var(--input);display:none"/>
+				<div id="portrait_placeholder" style="width:100%;max-width:200px;height:200px;margin:0 auto;border-radius:8px;border:2px dashed var(--field-border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;background:var(--input)">No Portrait</div>
+				<div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+				  <input id="portrait_url" type="text" placeholder="Enter image URL" style="flex:1;font-size:12px;padding:6px 8px"/>
+				  <button id="update_portrait" style="white-space:nowrap">Update</button>
+				</div>
+				<p class="muted" style="margin-top:6px;font-size:11px">Use a direct image URL (e.g., from Imgur, Discord CDN)</p>
+			</div>
+			<div class="row"><strong>Name</strong><div id="snap_name" class="muted">–</div></div>
+            <div class="row"><strong>Class / Level</strong><div id="snap_class" class="muted">—</div></div>
+            <div class="row"><strong>HP</strong><div id="snap_hp" class="muted">0 / 0</div></div>
+            <div class="row"><strong>AC</strong><div id="snap_ac" class="muted">—</div></div>
+            <div class="row"><strong>Sanity / Corr.</strong><div id="snap_sanity" class="muted">—</div></div>
+          </div>
+          <div class="card" style="margin-top:12px">
+            <h3>Quick Actions</h3>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <button id="downloadJSON">Download JSON</button>
+              <button id="loadJSON">Load JSON</button>
+              <button id="clearLocal">Clear Local</button>
+            </div>
+            <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+              <label style="min-width:90px;color:#c6cad2">Webhook URL</label>
+              <input id="webhook_url" type="text" placeholder="https://discord.com/api/webhooks/..." style="flex:1"/>
+            </div>
+            <p class="muted" style="margin-top:10px">Autosaves as you type. Export to move or backup characters.</p>
+          </div>
+          <div class="card" style="margin-top:12px">
+            <h3>Help</h3>
+            <p class="muted" style="font-size:13px;margin:0">This sheet stores data locally in your browser. Use Export/Import to transfer characters.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="rollLog" class="roll-log collapsed" aria-live="polite">
+    <h4><svg width="14" height="14" viewBox="0 0 24 24" style="margin-right:6px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" stroke="none" fill="#00E5FF" /></svg>Roll Log <button id="toggleLog" style="margin-left:auto;background:transparent;border:none;color:#bfefff">▾</button></h4>
+    <div id="roll_entries"></div>
+    <div style="display:flex;gap:8px;margin-top:8px;justify-content:flex-end">
+      <button id="clearRolls">Clear</button>
+    </div>
+  </div>
+
+<script>
+/* ================
+   Full-file script
+   - Restored webhook logic from working file.
+   - Keeps localStorage persistence and single-roll handlers.
+   ================ */
+
+/* Constants and helpers */
+const STORAGE_KEY = 'cybercraft_sheet_v_final3';
+const WEBHOOK_KEY = 'cybercraft_sheet_webhook_url';
+const SKILLS = {athletics:'STR', acrobatics:'DEX', sleight:'DEX', stealth:'DEX', driving:'DEX', arcana:'INT', history:'INT', investigation:'INT', nature:'INT', religion:'INT', technology:'INT', animal:'WIS', insight:'WIS', medicine:'WIS', perception:'WIS', survival:'WIS', deception:'CHA', intimidation:'CHA', performance:'CHA', persuasion:'CHA'};
+function abilityMod(score){ const s=parseInt(score)||0; return Math.floor((s-10)/2); }
+function proficiencyByLevel(lvl){ lvl = parseInt(lvl)||1; return Math.ceil(lvl/4)+1; }
+function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function nowTimestamp(){ return new Date().toLocaleTimeString(); }
+function isoTimestamp(){ return new Date().toISOString(); }
+
+/* Tab switching */
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelectorAll('.tab-panel').forEach(p=>p.style.display='none');
+    document.getElementById('tab-' + tab.dataset.tab).style.display = 'block';
+  });
+});
+
+/* Generic list rendering */
+function renderList(containerId, items, templateFn){
+  const wrap = document.getElementById(containerId);
+  if(!wrap) return;
+  wrap.innerHTML = '';
+  items.forEach((it,i)=>{
+    const el = document.createElement('div'); el.className='list-item';
+    el.innerHTML = templateFn(it,i);
+    wrap.appendChild(el);
+  });
+}
+
+/* Application arrays */
+window._feats = window._feats || []; window._cyber = window._cyber || []; window._abilities = window._abilities || []; window._spells = window._spells || []; window._equip = window._equip || []; window._vehicles = window._vehicles || []; window._attacks = window._attacks || [];
+
+/* Renderers for lists */
+function renderFeats(){ renderList('feats_list', window._feats, (f,i)=>`<div style="flex:1"><input class="feat_name" data-i="${i}" value="${escapeHtml(f.name||'')}" placeholder="Feat name"/><textarea class="feat_desc" data-i="${i}" placeholder="Description">${escapeHtml(f.desc||'')}</textarea></div><div><button class="remove_feat" data-i="${i}">Remove</button></div>`); }
+function renderCyber(){ renderList('cyber_list', window._cyber, (c,i)=>`<div style="flex:1"><input class="cyber_name" data-i="${i}" value="${escapeHtml(c.name||'')}" placeholder="Cyberware name"/><textarea class="cyber_desc" data-i="${i}" placeholder="Description (optional)">${escapeHtml(c.desc||'')}</textarea></div><div><button class="remove_cyber" data-i="${i}">Remove</button></div>`); }
+function renderAbilities(){ renderList('abilities_list', window._abilities, (a,i)=>`<div style="flex:1"><input class="ability_name" data-i="${i}" value="${escapeHtml(a.name||'')}" placeholder="Ability name"/><textarea class="ability_desc" data-i="${i}" placeholder="Description">${escapeHtml(a.desc||'')}</textarea></div><div><button class="remove_ability" data-i="${i}">Remove</button></div>`); }
+function renderSpells(){ renderList('spells_list', window._spells, (s,i)=>`<div style="flex:1"><input class="spell_name" data-i="${i}" value="${escapeHtml(s.name||'')}" placeholder="Spell name"/><div style="display:flex;gap:8px;margin-top:6px"><input class="spell_level" data-i="${i}" style="width:70px" value="${escapeHtml(s.level||'')}" placeholder="Level"/><input class="spell_time" data-i="${i}" style="flex:1" value="${escapeHtml(s.time||'')}" placeholder="Casting time / Range / Duration"/></div><textarea class="spell_desc" data-i="${i}" placeholder="Details">${escapeHtml(s.desc||'')}</textarea></div><div><button class="remove_spell" data-i="${i}">Remove</button></div>`); }
+function renderEquip(){ renderList('equip_list', window._equip, (it,i)=>`<div style="flex:1"><input class="equip_item" data-i="${i}" value="${escapeHtml(it||'')}" placeholder="Item name"/></div><div><button class="remove_equip" data-i="${i}">Remove</button></div>`); }
+function renderVehicles(){ renderList('vehicles_list', window._vehicles, (v,i)=>`<div style="flex:1"><input class="veh_name" data-i="${i}" value="${escapeHtml(v.name||'')}" placeholder="Vehicle name"/><div style="display:flex;gap:8px;margin-top:6px"><input class="veh_type" data-i="${i}" style="width:120px" value="${escapeHtml(v.type||'')}" placeholder="Type"/><input class="veh_speed" data-i="${i}" style="width:100px" value="${escapeHtml(v.speed||'')}" placeholder="Speed"/><input class="veh_ac" data-i="${i}" style="width:80px" value="${escapeHtml(v.ac||'')}" placeholder="AC"/></div><textarea class="veh_desc" data-i="${i}" placeholder="Upgrades / Notes">${escapeHtml(v.desc||'')}</textarea></div><div><button class="remove_vehicle" data-i="${i}">Remove</button></div>`); }
+
+/* List wiring */
+document.getElementById('addFeat').addEventListener('click', ()=>{ const name=document.getElementById('new_feat_name').value.trim(); if(!name) return alert('Enter feat name'); window._feats.push({name:name,desc:''}); document.getElementById('new_feat_name').value=''; renderFeats(); saveToStorage(); });
+document.getElementById('feats_list').addEventListener('click',(e)=>{ if(e.target.classList.contains('remove_feat')){ const i=parseInt(e.target.dataset.i); window._feats.splice(i,1); renderFeats(); saveToStorage(); }});
+document.getElementById('feats_list').addEventListener('input',(e)=>{ const cls=e.target.className; const i=parseInt(e.target.dataset.i); if(cls.includes('feat_name')) window._feats[i].name = e.target.value; if(cls.includes('feat_desc')) window._feats[i].desc = e.target.value; saveToStorage(); });
+
+document.getElementById('addCyber').addEventListener('click', ()=>{ const name=document.getElementById('new_cyber_name').value.trim(); if(!name) return alert('Enter cyberware name'); window._cyber.push({name:name,desc:''}); document.getElementById('new_cyber_name').value=''; renderCyber(); saveToStorage(); });
+document.getElementById('cyber_list').addEventListener('click',(e)=>{ if(e.target.classList.contains('remove_cyber')){ const i=parseInt(e.target.dataset.i); window._cyber.splice(i,1); renderCyber(); saveToStorage(); }});
+document.getElementById('cyber_list').addEventListener('input',(e)=>{ const cls=e.target.className; const i=parseInt(e.target.dataset.i); if(cls.includes('cyber_name')) window._cyber[i].name = e.target.value; if(cls.includes('cyber_desc')) window._cyber[i].desc = e.target.value; saveToStorage(); });
+
+document.getElementById('addAbility').addEventListener('click', ()=>{ const name=document.getElementById('new_ability_name').value.trim(); if(!name) return alert('Enter ability name'); window._abilities.push({name:name,desc:''}); document.getElementById('new_ability_name').value=''; renderAbilities(); saveToStorage(); });
+document.getElementById('abilities_list').addEventListener('click',(e)=>{ if(e.target.classList.contains('remove_ability')){ const i=parseInt(e.target.dataset.i); window._abilities.splice(i,1); renderAbilities(); saveToStorage(); }});
+document.getElementById('abilities_list').addEventListener('input',(e)=>{ const cls=e.target.className; const i=parseInt(e.target.dataset.i); if(cls.includes('ability_name')) window._abilities[i].name = e.target.value; if(cls.includes('ability_desc')) window._abilities[i].desc = e.target.value; saveToStorage(); });
+
+document.getElementById('addSpell').addEventListener('click', ()=>{ const name=document.getElementById('new_spell_name').value.trim(); const lvl=document.getElementById('new_spell_level').value.trim(); if(!name) return alert('Enter spell name'); window._spells.push({name:name,level:lvl,time:'',desc:''}); document.getElementById('new_spell_name').value=''; document.getElementById('new_spell_level').value=''; renderSpells(); saveToStorage(); });
+document.getElementById('spells_list').addEventListener('click',(e)=>{ if(e.target.classList.contains('remove_spell')){ const i=parseInt(e.target.dataset.i); window._spells.splice(i,1); renderSpells(); saveToStorage(); }});
+document.getElementById('spells_list').addEventListener('input',(e)=>{ const cls=e.target.className; const i=parseInt(e.target.dataset.i); if(cls.includes('spell_name')) window._spells[i].name = e.target.value; if(cls.includes('spell_level')) window._spells[i].level = e.target.value; if(cls.includes('spell_time')) window._spells[i].time = e.target.value; if(cls.includes('spell_desc')) window._spells[i].desc = e.target.value; saveToStorage(); });
+
+document.getElementById('addEquip').addEventListener('click', ()=>{ const name=document.getElementById('new_equip').value.trim(); if(!name) return alert('Enter item'); window._equip.push(name); document.getElementById('new_equip').value=''; renderEquip(); saveToStorage(); });
+document.getElementById('equip_list').addEventListener('click',(e)=>{ if(e.target.classList.contains('remove_equip')){ const i=parseInt(e.target.dataset.i); window._equip.splice(i,1); renderEquip(); saveToStorage(); }});
+document.getElementById('equip_list').addEventListener('input',(e)=>{ if(e.target.classList.contains('equip_item')){ const i=parseInt(e.target.dataset.i); window._equip[i] = e.target.value; saveToStorage(); }});
+
+document.getElementById('addVehicle').addEventListener('click', ()=>{ const name=document.getElementById('new_vehicle_name').value.trim(); if(!name) return alert('Enter vehicle name'); window._vehicles.push({name:name,type:'',speed:'',ac:'',desc:''}); document.getElementById('new_vehicle_name').value=''; renderVehicles(); saveToStorage(); });
+document.getElementById('vehicles_list').addEventListener('click',(e)=>{ if(e.target.classList.contains('remove_vehicle')){ const i=parseInt(e.target.dataset.i); window._vehicles.splice(i,1); renderVehicles(); saveToStorage(); }});
+document.getElementById('vehicles_list').addEventListener('input',(e)=>{ const cls=e.target.className; const i=parseInt(e.target.dataset.i); if(cls.includes('veh_name')) window._vehicles[i].name = e.target.value; if(cls.includes('veh_type')) window._vehicles[i].type = e.target.value; if(cls.includes('veh_speed')) window._vehicles[i].speed = e.target.value; if(cls.includes('veh_ac')) window._vehicles[i].ac = e.target.value; if(cls.includes('veh_desc')) window._vehicles[i].desc = e.target.value; saveToStorage(); });
+
+/* UNIVERSAL persistence for all inputs/textarea/select with id */
+function saveAllInputs(){
+  try{
+    const obj = {};
+    document.querySelectorAll('input[id], textarea[id], select[id]').forEach(el=>{
+      if(!el.id) return;
+      if(el.type === 'checkbox') obj[el.id] = el.checked;
+      else obj[el.id] = el.value;
+    });
+    obj._feats = window._feats || [];
+    obj._cyber = window._cyber || [];
+    obj._abilities = window._abilities || [];
+    obj._spells = window._spells || [];
+    obj._equip = window._equip || [];
+    obj._vehicles = window._vehicles || [];
+    obj._attacks = window._attacks || [];
+    const wh = (document.getElementById('webhook_url')||{}).value || '';
+    obj._webhook = wh;
+	const portraitImg = document.getElementById('portrait_img');
+	if(portraitImg && portraitImg.src && portraitImg.src.startsWith('data:')) {
+	  obj._portrait = portraitImg.src;
+	}
+    try{ localStorage.setItem(WEBHOOK_KEY, wh); }catch(e){}
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+  }catch(e){ console.error('saveAllInputs failed', e); }
+}
+function loadAllInputs(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return;
+    const obj = JSON.parse(raw);
+    document.querySelectorAll('input[id], textarea[id], select[id]').forEach(el=>{
+      if(!el.id) return;
+      if(obj[el.id] === undefined) return;
+      if(el.type === 'file') return; // ✅ Skip file inputs (portrait upload)
+      if(el.type === 'checkbox') el.checked = !!obj[el.id];
+      else el.value = obj[el.id];
+    });
+    window._feats = obj._feats || window._feats || [];
+    window._cyber = obj._cyber || window._cyber || [];
+    window._abilities = obj._abilities || window._abilities || [];
+    window._spells = obj._spells || window._spells || [];
+    window._equip = obj._equip || window._equip || [];
+    window._vehicles = obj._vehicles || window._vehicles || [];
+    window._attacks = obj._attacks || window._attacks || [];
+
+    const storedWebhook = obj._webhook || localStorage.getItem(WEBHOOK_KEY) || '';
+    if(storedWebhook) {
+      const whEl = document.getElementById('webhook_url');
+      if(whEl) whEl.value = storedWebhook;
+      try{ localStorage.setItem(WEBHOOK_KEY, storedWebhook); }catch(e){}
+    }
+
+    if (obj._portrait) {
+      const portraitImg = document.getElementById('portrait_img');
+      const placeholder = document.getElementById('portrait_placeholder');
+      if (portraitImg && placeholder) {
+        portraitImg.src = obj._portrait;
+        portraitImg.style.display = 'block';
+        placeholder.style.display = 'none';
+      }
+    }
+
+  }catch(e){ console.error('loadAllInputs failed', e); }
+}
+function saveToStorage(){ saveAllInputs(); }
+
+/* Calculations */
+function updateAllCalculations(){
+  const level = parseInt(document.getElementById('level').value) || 1;
+  const prof = proficiencyByLevel(level);
+  document.getElementById('prof_display').value = (prof>=0?'+':'') + prof;
+  ['STR','DEX','CON','INT','WIS','CHA'].forEach(ab=>{
+    const el = document.getElementById('attr_'+ab);
+    const score = el ? (parseInt(el.value)||0) : 0;
+    const mod = abilityMod(score);
+    const profCheck = document.getElementById('save_prof_'+ab) ? document.getElementById('save_prof_'+ab).checked : false;
+    const total = mod + (profCheck ? prof : 0);
+    const disp = document.getElementById('save_bonus_'+ab);
+    if(disp) disp.textContent = (total>=0?'+':'') + total;
+  });
+  Object.keys(SKILLS).forEach(s=>{
+    const ab = SKILLS[s];
+    const score = parseInt(document.getElementById('attr_'+ab).value)||0;
+    const abmod = abilityMod(score);
+    const profCheck = document.getElementById('prof_'+s) ? document.getElementById('prof_'+s).checked : false;
+    const expCheck = document.getElementById('exp_'+s) ? document.getElementById('exp_'+s).checked : false;
+    let bonus = abmod;
+    if(profCheck) bonus += prof * (expCheck ? 2 : 1);
+    const el = document.getElementById('bonus_'+s);
+    if(el) el.textContent = (bonus>=0?'+':'') + bonus;
+  });
+  const dex = parseInt(document.getElementById('attr_DEX').value)||0;
+  const imod = abilityMod(dex);
+  document.getElementById('init').value = (imod>=0?'+':'') + imod;
+  saveToStorage();
+  updateSnapshot();
+}
+function updateSnapshot(){
+  document.getElementById('snap_name').textContent = document.getElementById('name').value || '—';
+  document.getElementById('snap_class').textContent = (document.getElementById('class_text').value||'—') + ' / ' + (document.getElementById('level').value||'—');
+  document.getElementById('snap_hp').textContent = (document.getElementById('hp_cur').value||'0') + ' / ' + (document.getElementById('hp_max').value||'0');
+  document.getElementById('snap_ac').textContent = document.getElementById('ac').value || '—';
+  document.getElementById('snap_sanity').textContent = (document.getElementById('sanity').value||'—') + ' / ' + (document.getElementById('corruption').value||'—');
+}
+
+/* Attacks UI */
+function d20SVG(){ return `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l8 4.5v9L12 22 4 15.5v-9L12 2z" stroke="var(--roll-cyan)" stroke-width="1.6" fill="none" stroke-linejoin="round"/><path d="M12 22v-9" stroke="var(--roll-cyan)" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>`; }
+function renderAttacks(){ const wrap = document.getElementById('attacks_list'); if(!wrap) return; wrap.innerHTML=''; window._attacks.forEach((atk,i)=>{ const div = document.createElement('div'); div.className='att-row'; div.innerHTML = `<input class="attack-name" data-i="${i}" value="${escapeHtml(atk.name||'')}" placeholder="Attack name"/><input class="attack-bonus" data-i="${i}" value="${escapeHtml(atk.bonus||'')}" placeholder="+Atk"/><button class="roll-atk roll-btn pulse" data-i="${i}" title="Roll Attack">${d20SVG()}</button><input class="attack-damage" data-i="${i}" value="${escapeHtml(atk.damage||'')}" placeholder="damage e.g. 1d8+3"/><button class="roll-dmg roll-btn pulse" data-i="${i}" title="Roll Damage">${d20SVG()}</button><button class="attack-remove" data-i="${i}">Remove</button>`; wrap.appendChild(div); }); }
+
+/* add attack */
+document.getElementById('addAttack').addEventListener('click', ()=>{ const name = document.getElementById('new_attack_name').value.trim(); const bonus = document.getElementById('new_attack_bonus').value.trim(); const damage = document.getElementById('new_attack_damage').value.trim(); if(!name) return alert('Enter attack name'); window._attacks.push({name:name, bonus:bonus, damage:damage}); document.getElementById('new_attack_name').value=''; document.getElementById('new_attack_bonus').value=''; document.getElementById('new_attack_damage').value=''; renderAttacks(); saveToStorage(); });
+
+/* edits / remove for attacks */
+document.getElementById('attacks_list').addEventListener('click',(e)=>{ if(e.target.classList.contains('attack-remove')){ const i=parseInt(e.target.dataset.i); window._attacks.splice(i,1); renderAttacks(); saveToStorage(); }});
+document.getElementById('attacks_list').addEventListener('input',(e)=>{ if(e.target.classList.contains('attack-name')){ const i=parseInt(e.target.dataset.i); window._attacks[i].name = e.target.value; saveToStorage(); } if(e.target.classList.contains('attack-bonus')){ const i=parseInt(e.target.dataset.i); window._attacks[i].bonus = e.target.value; saveToStorage(); } if(e.target.classList.contains('attack-damage')){ const i=parseInt(e.target.dataset.i); window._attacks[i].damage = e.target.value; saveToStorage(); } });
+
+/* Saves UI */
+const SAVE_ORDER = ['STR','DEX','CON','INT','WIS','CHA'];
+function renderSavesUI(){ const container = document.getElementById('saves_container'); if(!container) return; container.innerHTML=''; const row=document.createElement('div'); row.className='saves-row'; SAVE_ORDER.forEach(ab=>{ const box=document.createElement('div'); box.className='save-box'; const label=document.createElement('div'); label.textContent=ab; label.style.fontSize='12px'; label.style.color='#c6cad2'; const bonus=document.createElement('div'); bonus.id='save_display_'+ab; bonus.style.fontWeight='700'; bonus.style.fontSize='14px'; bonus.style.color='#fff'; bonus.textContent = document.getElementById('save_bonus_'+ab) ? document.getElementById('save_bonus_'+ab).textContent : '+0'; const btn=document.createElement('button'); btn.className='roll-btn pulse save-roll-btn'; btn.title=`Roll ${ab} save`; btn.innerHTML = d20SVG(); btn.setAttribute('data-save',ab); box.appendChild(label); box.appendChild(bonus); box.appendChild(btn); row.appendChild(box); }); container.appendChild(row); }
+
+/* Dice utils */
+function parseDiceExpression(expr){ expr = expr.replace(/\s+/g,'').toLowerCase(); if(!expr) return {total:0, breakdown:'0'}; const parts = expr.split(/(?=[+-])/); let total=0; const breakdownParts=[]; for(const part of parts){ if(part==='') continue; const m=part.match(/^([+-])?(\d*)d(\d+)([a-z%]*)/); if(m){ const sign = (m[1]==='-')?-1:1; let n=parseInt(m[2]); if(isNaN(n)||n===0) n=1; const sides=parseInt(m[3]); const rolls=[]; for(let i=0;i<n;i++){ const r=1+Math.floor(Math.random()*sides); rolls.push(r); total += sign*r; } breakdownParts.push((sign<0?'-':'')+`${n}d${sides} [${rolls.join(',')}]`); continue; } const m2 = part.match(/^([+-])?(\d+)$/); if(m2){ const sign=(m2[1]==='-')?-1:1; const val=parseInt(m2[2]); total += sign*val; breakdownParts.push((sign<0?'-':'')+val); continue; } breakdownParts.push(part); } return {total, breakdown: breakdownParts.join(' + ')}; }
+function rollD20WithBonus(bonus){ const r = 1 + Math.floor(Math.random()*20); return {roll: r, total: r + (bonus||0)}; }
+
+/* --- WEBHOOK SENDING: replaced with working logic from your v2 file --- */
+async function sendWebhook(payload) {
+  try {
+    const url = (document.getElementById('webhook_url') || {}).value || localStorage.getItem(WEBHOOK_KEY);
+    if (!url) return;
+
+    const characterName = document.getElementById('name')?.value?.trim() || 'Unknown Operative';
+    const portrait = document.getElementById('portrait_img')?.src;
+    const rollType = payload?.roll_type || 'Roll';
+    const formula = payload?.raw || '—';
+    const result = payload?.total !== undefined ? payload.total : (payload?.roll || '—');
+    
+    // Get the specific skill/ability name from the payload
+    const rollLabel = payload?.label || 'Unknown';
+    let displayRollType = rollType;
+    
+    // Customize the roll type display based on what was rolled
+    if (rollType === 'Skill') {
+      displayRollType = `Skill: ${rollLabel.replace(' Check', '')}`;
+    } else if (rollType === 'Save') {
+      displayRollType = `Saving Throw: ${rollLabel.replace(' Save', '')}`;
+    } else if (rollType === 'Attack') {
+      displayRollType = `Attack: ${rollLabel}`;
+    } else if (rollType === 'Damage') {
+      displayRollType = `Damage: ${rollLabel}`;
+    } else if (rollType === 'Initiative') {
+      displayRollType = 'Initiative';
+    } else {
+      displayRollType = `${rollType}: ${rollLabel}`;
+    }
+
+    // Clean embed format
+    const discordEmbed = {
+      title: `Cybercraft 5e — ${characterName}`,
+      color: 0x9B30FF,
+      fields: [
+        {
+          name: displayRollType,
+          value: `\`${formula}\``,
+          inline: false
+        },
+        {
+          name: "Result",
+          value: `**${result}**`,
+          inline: false
+        }
+      ],
+      timestamp: new Date().toISOString()
+    };
+
+    // Add thumbnail if we have a valid HTTP portrait
+    if (portrait && portrait.startsWith('http')) {
+      discordEmbed.thumbnail = { url: portrait };
+    }
+
+    const bodyObj = { 
+      embeds: [discordEmbed],
+      username: 'Cybercraft 5e Character Sheet'
+    };
+
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(bodyObj)
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      console.error('Discord webhook error:', res.status, errText);
+    } else {
+      console.log('Webhook sent successfully');
+    }
+
+  } catch (err) {
+    console.error('Webhook send error:', err);
+  }
+}
+
+
+/* Roll logging */
+function addRollEntry(title, resultText, bonusUsed){
+  const wrap=document.getElementById('roll_entries');
+  if(!wrap) return;
+  const el=document.createElement('div'); el.className='roll-entry';
+  el.innerHTML = `<strong>${escapeHtml(title)}</strong><div>${escapeHtml(resultText)}</div><small>${nowTimestamp()} • bonus ${bonusUsed>=0?'+':''}${bonusUsed}</small>`;
+  wrap.prepend(el);
+  document.getElementById('rollLog').classList.remove('collapsed');
+}
+function animatePulse(btn){ if(!btn) return; btn.classList.add('pulse-on'); setTimeout(()=>btn.classList.remove('pulse-on'),700); }
+
+/* Roll handlers */
+function handleSkillRoll(skill, btnEl){
+  const el = document.getElementById('bonus_'+skill);
+  const bonusText = el ? el.textContent : '+0';
+  const bonus = parseInt(bonusText.replace('+','')) || 0;
+  const res = rollD20WithBonus(bonus);
+  const name = skill.charAt(0).toUpperCase()+skill.slice(1);
+  addRollEntry(name+' Check', `d20 ${res.roll} + ${bonus} = ${res.total}`, bonus);
+  animatePulse(btnEl);
+  const payload = { timestamp: isoTimestamp(), character: document.getElementById('name').value||'', roll_type:'Skill', label: name+' Check', roll: res.roll, bonus: bonus, total: res.total, raw: `d20 ${res.roll} + ${bonus} = ${res.total}`};
+  sendWebhook(payload);
+  saveToStorage();
+}
+
+function handleSaveRoll(ab, btnEl){
+  const baseText = document.getElementById('save_bonus_'+ab).textContent || '+0';
+  const bonus = parseInt(baseText.replace('+','')) || 0;
+  const res = rollD20WithBonus(bonus);
+  addRollEntry(`${ab} Save`, `d20 ${res.roll} + ${bonus} = ${res.total}`, bonus);
+  animatePulse(btnEl);
+  const payload = { timestamp: isoTimestamp(), character: document.getElementById('name').value||'', roll_type:'Save', label: ab+' Save', roll: res.roll, bonus: bonus, total: res.total, raw: `d20 ${res.roll} + ${bonus} = ${res.total}`};
+  sendWebhook(payload);
+  saveToStorage();
+}
+
+function handleAttackRoll(index, btnEl){
+  const atk = window._attacks[index] || {};
+  const bonusRaw = (atk.bonus||'').toString().replace(/\s+/g,'');
+  let b = 0;
+  if(bonusRaw){
+    const parsed = parseInt(bonusRaw.replace('+','')) || 0;
+    b = parsed;
+  }
+  const res = rollD20WithBonus(b);
+  addRollEntry(`${atk.name || 'Attack'}`, `d20 ${res.roll} + ${b} = ${res.total}`, b);
+  animatePulse(btnEl);
+  const payload = { timestamp: isoTimestamp(), character: document.getElementById('name').value||'', roll_type:'Attack', label: atk.name||'Attack', roll: res.roll, bonus: b, total: res.total, raw: `d20 ${res.roll} + ${b} = ${res.total}`};
+  sendWebhook(payload);
+  saveToStorage();
+}
+
+function handleDamageRoll(index, btnEl){
+  const atk = window._attacks[index] || {};
+  const dmgText = (atk.damage||'') || (document.querySelector(`.attack-damage[data-i="${index}"]`)?.value || '');
+  const lines = String(dmgText).split('\n').map(l=>l.trim()).filter(l=>l);
+  if(lines.length===0){ addRollEntry(`${atk.name || 'Damage'}`, `No damage expression found`, 0); return; }
+  lines.forEach(line=>{
+    const exprMatch = line.match(/([+-\d\s]*\d*d\d+[\d\s+\-d]*)/i);
+    const expr = exprMatch ? exprMatch[1].trim() : line;
+    const parsed = parseDiceExpression(expr);
+    addRollEntry(`${atk.name || 'Damage'}`, `${expr} -> ${parsed.breakdown} = ${parsed.total}`, parsed.total);
+    const payload = { timestamp: isoTimestamp(), character: document.getElementById('name').value||'', roll_type:'Damage', label: atk.name||'Damage', roll: null, bonus: null, total: parsed.total, raw: `${expr} -> ${parsed.breakdown} = ${parsed.total}`};
+    sendWebhook(payload);
+  });
+  animatePulse(btnEl);
+  saveToStorage();
+}
+
+/* Click delegation for roll buttons (single binding) */
+document.addEventListener('click', function(e){
+  const btn = e.target.closest('button');
+  if(!btn) return;
+  
+  if(btn.id === 'roll-init'){
+    const initText = document.getElementById('init').value || '+0';
+    const bonus = parseInt(initText.replace('+','')) || 0;
+    const res = rollD20WithBonus(bonus);
+    addRollEntry('Initiative', `d20 ${res.roll} + ${bonus} = ${res.total}`, bonus);
+    animatePulse(btn);
+    const payload = { timestamp: isoTimestamp(), character: document.getElementById('name').value||'', roll_type:'Initiative', label: 'Initiative', roll: res.roll, bonus: bonus, total: res.total, raw: `d20 ${res.roll} + ${bonus} = ${res.total}`};
+    sendWebhook(payload);
+    saveToStorage();
+    return;
+  }
+
+  if(btn.dataset.skill){
+    handleSkillRoll(btn.dataset.skill, btn);
+    return;
+  }
+  if(btn.dataset.save){
+    handleSaveRoll(btn.dataset.save, btn);
+    return;
+  }
+  if(btn.classList.contains('roll-atk')){
+    const i = parseInt(btn.dataset.i);
+    if(!isNaN(i)) handleAttackRoll(i, btn);
+    return;
+  }
+  if(btn.classList.contains('roll-dmg')){
+    const i = parseInt(btn.dataset.i);
+    if(!isNaN(i)) handleDamageRoll(i, btn);
+    return;
+  }
+});
+
+/* Inject skill roll buttons */
+function injectSkillRollButtons(){
+  Object.keys(SKILLS).forEach(skill=>{
+    const bonusEl = document.getElementById('bonus_'+skill);
+    if(!bonusEl) return;
+    const existing = Array.from(bonusEl.parentElement.querySelectorAll('button')).find(b=>b.dataset && b.dataset.skill===skill);
+    if(existing) return;
+    const btn = document.createElement('button');
+    btn.className = 'roll-btn pulse';
+    btn.title = 'Roll '+skill.charAt(0).toUpperCase()+skill.slice(1)+' Check';
+    btn.innerHTML = d20SVG();
+    btn.dataset.skill = skill;
+    bonusEl.insertAdjacentElement('afterend', btn);
+	const initBtn = document.getElementById('roll-init');
+	if(initBtn && !initBtn.innerHTML) {
+    initBtn.innerHTML = d20SVG();
+  }
+  });
+}
+
+/* Portrait handling */
+/* Portrait URL handling */
+document.getElementById('update_portrait').addEventListener('click', () => {
+  const url = document.getElementById('portrait_url').value.trim();
+  if (!url) {
+    // Clear portrait if URL is empty
+    document.getElementById('portrait_img').src = '';
+    document.getElementById('portrait_img').style.display = 'none';
+    document.getElementById('portrait_placeholder').style.display = 'flex';
+    saveToStorage();
+    return;
+  }
+
+  // Basic URL validation
+  if (!url.startsWith('http://') && !url.startsWith('https://')) {
+    alert('Please enter a valid URL starting with http:// or https://');
+    return;
+  }
+
+  // Test if the image loads
+  const img = new Image();
+  img.onload = () => {
+    // Image loaded successfully
+    document.getElementById('portrait_img').src = url;
+    document.getElementById('portrait_img').style.display = 'block';
+    document.getElementById('portrait_placeholder').style.display = 'none';
+    saveToStorage();
+  };
+  img.onerror = () => {
+    alert('Could not load image from this URL. Please check the URL and try again.');
+  };
+  img.src = url;
+});
+
+/* Roll log controls */
+document.getElementById('clearRolls').addEventListener('click', ()=>{ document.getElementById('roll_entries').innerHTML=''; });
+document.getElementById('toggleLog').addEventListener('click', ()=>{ document.getElementById('rollLog').classList.toggle('collapsed'); });
+
+/* Export/Import/Print/Clear */
+document.getElementById('export').addEventListener('click', ()=>{ const raw=localStorage.getItem(STORAGE_KEY); if(!raw) return alert('No saved data found.'); const blob=new Blob([raw],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=(document.getElementById('name').value||'character')+'.cyber.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url); });
+document.getElementById('importBtn').addEventListener('click', ()=>{ const input=document.createElement('input'); input.type='file'; input.accept='.json'; input.onchange=(e)=>{ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ try{ const parsed=JSON.parse(r.result); localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed)); loadAllInputs(); renderFeats(); renderCyber(); renderAbilities(); renderSpells(); renderEquip(); renderVehicles(); renderAttacks(); postRenderInit(); updateAllCalculations(); updateSnapshot(); alert('Import OK'); }catch(err){ alert('Import failed: invalid file'); } }; r.readAsText(f); }; input.click(); });
+document.getElementById('print').addEventListener('click', ()=>window.print());
+document.getElementById('clear').addEventListener('click', ()=>{ if(confirm('Clear local sheet data? This cannot be undone.')){ localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(WEBHOOK_KEY); location.reload(); } });
+document.getElementById('downloadJSON').addEventListener('click', ()=>document.getElementById('export').click && document.getElementById('export').click());
+document.getElementById('loadJSON').addEventListener('click', ()=>document.getElementById('importBtn').click && document.getElementById('importBtn').click());
+document.getElementById('clearLocal').addEventListener('click', ()=>document.getElementById('clear').click && document.getElementById('clear').click());
+
+/* Input listeners */
+function attachListeners(){
+  document.querySelectorAll('input[id], textarea[id], select[id]').forEach(el=>{
+    if(el.type === 'checkbox'){
+      el.addEventListener('change', ()=>{ saveToStorage(); if(el.id.startsWith('attr_')||el.id==='level' || el.id.startsWith('save_prof_')) { if(window._calcTimer) clearTimeout(window._calcTimer); window._calcTimer=setTimeout(()=>updateAllCalculations(),10); } });
+    } else {
+      el.addEventListener('input', ()=>{ saveToStorage(); if(el.id.startsWith('attr_')||el.id==='level' || el.id.startsWith('save_prof_')) { if(window._calcTimer) clearTimeout(window._calcTimer); window._calcTimer=setTimeout(()=>updateAllCalculations(),160); } });
+    }
+  });
+  const wh = document.getElementById('webhook_url');
+  if(wh){
+    wh.addEventListener('input', ()=>{ try{ localStorage.setItem(WEBHOOK_KEY, (wh.value||'').trim()); }catch(e){} saveToStorage(); });
+    const stored = localStorage.getItem(WEBHOOK_KEY);
+    if(stored) wh.value = stored;
+  }
+}
+
+/* keep displayed save bonuses updated */
+function wireSavesUpdater(){ renderSavesUI(); setInterval(()=>{ SAVE_ORDER.forEach(ab=>{ const displayed = document.getElementById('save_display_'+ab); if(displayed) displayed.textContent = document.getElementById('save_bonus_'+ab).textContent || '+0'; }); },300); }
+
+/* post-render init */
+function postRenderInit(){ injectSkillRollButtons(); renderSavesUI(); }
+
+/* Auto-load portrait from saved URL on page load */
+function loadPortraitFromStorage() {
+  const portraitUrl = document.getElementById('portrait_url').value.trim();
+  if (!portraitUrl) return;
+  
+  // Only load if we have a valid HTTP URL
+  if (portraitUrl.startsWith('http://') || portraitUrl.startsWith('https://')) {
+    const img = new Image();
+    img.onload = () => {
+      // Image loaded successfully
+      document.getElementById('portrait_img').src = portraitUrl;
+      document.getElementById('portrait_img').style.display = 'block';
+      document.getElementById('portrait_placeholder').style.display = 'none';
+    };
+    img.onerror = () => {
+      console.warn('Could not load stored portrait URL:', portraitUrl);
+      // Keep the placeholder visible if image fails to load
+      document.getElementById('portrait_img').style.display = 'none';
+      document.getElementById('portrait_placeholder').style.display = 'flex';
+    };
+    img.src = portraitUrl;
+  }
+}
+
+/* Boot */
+attachListeners();
+loadAllInputs();
+renderFeats(); renderCyber(); renderAbilities(); renderSpells(); renderEquip(); renderVehicles(); renderAttacks();
+postRenderInit();
+wireSavesUpdater();
+setTimeout(()=>{ updateAllCalculations(); updateSnapshot(); },200);
+loadPortraitFromStorage();
+
+document.addEventListener('input', function(e){
+  if(!e.target.classList) return;
+  if(e.target.classList.contains('attack-name')||e.target.classList.contains('attack-bonus')||e.target.classList.contains('attack-damage')) saveToStorage();
+});
+
+window.addEventListener('beforeunload', ()=>{ saveToStorage(); });
+
+(function(){ const stored = localStorage.getItem(WEBHOOK_KEY); if(stored && document.getElementById('webhook_url')) document.getElementById('webhook_url').value = stored; })();
+</script>
+</body>
+</html>
