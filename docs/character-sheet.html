@@ -268,7 +268,7 @@
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
                 <div>
                   <div class="row"><label>Armor Class</label><input id="ac" type="text"></div>
-                  <div class="row"><label>Initiative</label><input id="init" type="text" readonly></div>
+                  <div class="row"><label>Initiative</label><input id="init" type="text" readonly><button class="roll-btn pulse" id="roll-init" title="Roll Initiative"></button></div>
                   <div class="row"><label>Speed</label><input id="speed" type="text"></div>
                 </div>
                 <div>
@@ -301,10 +301,11 @@
             <div class="card" style="margin-top:12px">
               <h3>Attacks</h3>
               <div style="display:flex;gap:8px;margin-bottom:8px">
-                <input id="new_attack_name" placeholder="Attack name"/>
-                <input id="new_attack_bonus" style="width:80px" placeholder="+Atk"/>
-                <button id="addAttack">Add</button>
-              </div>
+				<input id="new_attack_name" placeholder="Attack name"/>
+				<input id="new_attack_bonus" style="width:80px" placeholder="+Atk"/>
+				<input id="new_attack_damage" style="width:160px" placeholder="Damage (e.g. 1d8+3)"/>
+				<button id="addAttack">Add</button>
+			  </div>
               <div id="attacks_list" class="list-wrap"></div>
             </div>
           </div>
@@ -517,7 +518,7 @@ function d20SVG(){ return `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/200
 function renderAttacks(){ const wrap = document.getElementById('attacks_list'); if(!wrap) return; wrap.innerHTML=''; window._attacks.forEach((atk,i)=>{ const div = document.createElement('div'); div.className='att-row'; div.innerHTML = `<input class="attack-name" data-i="${i}" value="${escapeHtml(atk.name||'')}" placeholder="Attack name"/><input class="attack-bonus" data-i="${i}" value="${escapeHtml(atk.bonus||'')}" placeholder="+Atk"/><button class="roll-atk roll-btn pulse" data-i="${i}" title="Roll Attack">${d20SVG()}</button><input class="attack-damage" data-i="${i}" value="${escapeHtml(atk.damage||'')}" placeholder="damage e.g. 1d8+3"/><button class="roll-dmg roll-btn pulse" data-i="${i}" title="Roll Damage">${d20SVG()}</button><button class="attack-remove" data-i="${i}">Remove</button>`; wrap.appendChild(div); }); }
 
 /* add attack */
-document.getElementById('addAttack').addEventListener('click', ()=>{ const name = document.getElementById('new_attack_name').value.trim(); const bonus = document.getElementById('new_attack_bonus').value.trim(); if(!name) return alert('Enter attack name'); window._attacks.push({name:name, bonus:bonus, damage:''}); document.getElementById('new_attack_name').value=''; document.getElementById('new_attack_bonus').value=''; renderAttacks(); saveToStorage(); });
+document.getElementById('addAttack').addEventListener('click', ()=>{ const name = document.getElementById('new_attack_name').value.trim(); const bonus = document.getElementById('new_attack_bonus').value.trim(); const damage = document.getElementById('new_attack_damage').value.trim(); if(!name) return alert('Enter attack name'); window._attacks.push({name:name, bonus:bonus, damage:damage}); document.getElementById('new_attack_name').value=''; document.getElementById('new_attack_bonus').value=''; document.getElementById('new_attack_damage').value=''; renderAttacks(); saveToStorage(); });
 
 /* edits / remove for attacks */
 document.getElementById('attacks_list').addEventListener('click',(e)=>{ if(e.target.classList.contains('attack-remove')){ const i=parseInt(e.target.dataset.i); window._attacks.splice(i,1); renderAttacks(); saveToStorage(); }});
@@ -645,6 +646,18 @@ function handleDamageRoll(index, btnEl){
 document.addEventListener('click', function(e){
   const btn = e.target.closest('button');
   if(!btn) return;
+  
+  if(btn.id === 'roll-init'){
+    const initText = document.getElementById('init').value || '+0';
+    const bonus = parseInt(initText.replace('+','')) || 0;
+    const res = rollD20WithBonus(bonus);
+    addRollEntry('Initiative', `d20 ${res.roll} + ${bonus} = ${res.total}`, bonus);
+    animatePulse(btn);
+    const payload = { timestamp: isoTimestamp(), character: document.getElementById('name').value||'', roll_type:'Initiative', label: 'Initiative', roll: res.roll, bonus: bonus, total: res.total, raw: `d20 ${res.roll} + ${bonus} = ${res.total}`};
+    sendWebhook(payload);
+    saveToStorage();
+    return;
+  }
 
   if(btn.dataset.skill){
     handleSkillRoll(btn.dataset.skill, btn);
@@ -679,6 +692,10 @@ function injectSkillRollButtons(){
     btn.innerHTML = d20SVG();
     btn.dataset.skill = skill;
     bonusEl.insertAdjacentElement('afterend', btn);
+	const initBtn = document.getElementById('roll-init');
+	if(initBtn && !initBtn.innerHTML) {
+    initBtn.innerHTML = d20SVG();
+  }
   });
 }
 
