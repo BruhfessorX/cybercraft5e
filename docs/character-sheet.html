@@ -98,7 +98,7 @@
       <div class="logo">CV</div>
       <div class="title-text">
         <h1>Cybercraft 5e</h1>
-        <p>Interactive Character Sheet — Echo City</p>
+        <p>Interactive Character Sheet</p>
       </div>
       <div class="controls">
         <button id="export">Export</button>
@@ -474,23 +474,26 @@ function loadAllInputs(){
     window._equip = obj._equip || window._equip || [];
     window._vehicles = obj._vehicles || window._vehicles || [];
     window._attacks = obj._attacks || window._attacks || [];
+
     const storedWebhook = obj._webhook || localStorage.getItem(WEBHOOK_KEY) || '';
     if(storedWebhook) {
       const whEl = document.getElementById('webhook_url');
       if(whEl) whEl.value = storedWebhook;
       try{ localStorage.setItem(WEBHOOK_KEY, storedWebhook); }catch(e){}
     }
+
+    if (obj._portrait) {
+      const portraitImg = document.getElementById('portrait_img');
+      const placeholder = document.getElementById('portrait_placeholder');
+      if (portraitImg && placeholder) {
+        portraitImg.src = obj._portrait;
+        portraitImg.style.display = 'block';
+        placeholder.style.display = 'none';
+      }
+    }
+
   }catch(e){ console.error('loadAllInputs failed', e); }
 }
-	if(obj._portrait) {
-	  const portraitImg = document.getElementById('portrait_img');
-	  const placeholder = document.getElementById('portrait_placeholder');
-	  if(portraitImg && placeholder) {
-		portraitImg.src = obj._portrait;
-		portraitImg.style.display = 'block';
-		placeholder.style.display = 'none';
-	  }
-	}
 function saveToStorage(){ saveAllInputs(); }
 
 /* Calculations */
@@ -552,45 +555,47 @@ function parseDiceExpression(expr){ expr = expr.replace(/\s+/g,'').toLowerCase()
 function rollD20WithBonus(bonus){ const r = 1 + Math.floor(Math.random()*20); return {roll: r, total: r + (bonus||0)}; }
 
 /* --- WEBHOOK SENDING: replaced with working logic from your v2 file --- */
-async function sendWebhook(payload){
-  try{
-    const url = (document.getElementById('webhook_url')||{}).value || localStorage.getItem(WEBHOOK_KEY);
-    if(!url) return;
-    // Build entry used by your working webhook structure
-    const entry = {
-      title: `${payload.roll_type} — ${payload.label}`,
-      result: (payload.total !== null && payload.total !== undefined) ? payload.total : (payload.roll !== null && payload.roll !== undefined ? payload.roll : ''),
-      details: payload.raw || '',
-      ts: payload.timestamp || isoTimestamp()
+async function sendWebhook(payload) {
+  try {
+    const url = (document.getElementById('webhook_url') || {}).value || localStorage.getItem(WEBHOOK_KEY);
+    if (!url) return;
+
+    const characterName = document.getElementById('name')?.value || 'Unknown Operative';
+    const portrait = document.getElementById('portrait_img')?.src || '';
+    const rollType = payload.roll_type || 'Roll';
+    const formula = payload.raw || '';
+    const result = payload.total ?? payload.roll ?? '—';
+
+    const embed = {
+      title: `Cybercraft 5e — ${characterName}`,
+      color: parseInt('9B30FF', 16), // Neon purple
+      thumbnail: portrait ? { url: portrait } : undefined,
+      fields: [
+        { name: 'Roll Type', value: rollType, inline: false },
+        { name: 'Formula', value: `\`${formula}\``, inline: false },
+        { name: 'Result', value: `**${result}**`, inline: false }
+      ],
+      footer: {
+        text: `EchoGrid Systems // Transmission ${new Date().toLocaleTimeString()}`
+      },
+      timestamp: payload.timestamp
     };
-    const webhookPayload = {
-      embeds: [{
-        title: `Cybercraft 5e — ${ (document.getElementById('name')||{}).value || 'Unknown' }`,
-        color: parseInt('00' + ( (document.getElementById('name')? '': '0') ), 16),
-        fields: [
-          { name: 'Roll Type', value: payload.roll_type || '', inline: true },
-          { name: 'Label', value: payload.label || '', inline: true },
-          { name: 'Result', value: String(entry.result), inline: true },
-          { name: 'Details', value: entry.details || '', inline: false }
-        ],
-        timestamp: entry.ts
-      }]
-    };
-    // override color with dice color hex to int (if you have --dice-color)
-    try{
-      const hex = getComputedStyle(document.documentElement).getPropertyValue('--dice-color').trim() || '#00D1FF';
-      webhookPayload.embeds[0].color = parseInt(hex.replace('#',''),16);
-    }catch(e){}
-    // Use same fetch pattern as working file (no 'no-cors' here). Browser may block via CORS if environment restricts.
-    await fetch(url, { method:'POST', body: JSON.stringify(webhookPayload), headers: {'Content-Type':'application/json'} });
+
+    await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ embeds: [embed] })
+    });
+
     const rs = document.getElementById('rollStatus');
-    if(rs) rs.textContent = 'Webhook sent';
-  }catch(err){
+    if (rs) rs.textContent = 'Webhook sent';
+  } catch (err) {
     const rs = document.getElementById('rollStatus');
-    if(rs) rs.textContent = 'Webhook failed';
+    if (rs) rs.textContent = 'Webhook failed';
     console.error('Webhook error', err);
   }
 }
+
 
 /* Roll logging */
 function addRollEntry(title, resultText, bonusUsed){
